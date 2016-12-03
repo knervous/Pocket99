@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Qeynos2Scene.unity
+  isLoaded: 1
+  isActive: 1
