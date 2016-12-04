@@ -61,6 +61,27 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="I18N.MidEast">
+      <HintPath>Assets\Plugins\I18N.MidEast.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N">
+      <HintPath>Assets\Plugins\I18N.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.West">
+      <HintPath>Assets\Plugins\I18N.West.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.CJK">
+      <HintPath>Assets\Plugins\I18N.CJK.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip.Reduced">
+      <HintPath>Assets\Plugins\Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.Rare">
+      <HintPath>Assets\Plugins\I18N.Rare.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.Other">
+      <HintPath>Assets\Plugins\I18N.Other.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Standard Assets\2D\Scripts\Camera2DFollow.cs" />
@@ -169,6 +190,13 @@
     <Compile Include="Assets\Standard Assets\Utility\WaypointProgressTracker.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\HarmonySDK\ABOUT.txt" />
+    <None Include="Assets\HarmonySDK\README.txt" />
+    <None Include="Assets\HarmonySDK\README_Unity.txt" />
+    <None Include="Assets\HarmonySDK\Shaders\LitTransparentPremult.shader" />
+    <None Include="Assets\HarmonySDK\Shaders\LitTransparentPremultCutout.shader" />
+    <None Include="Assets\HarmonySDK\Shaders\UnlitTransparentPremult.shader" />
+    <None Include="Assets\HarmonySDK\Shaders\UnlitTransparentPremultCutout.shader" />
     <None Include="Assets\SocketIO\JSONObject\readme.txt" />
     <None Include="Assets\SocketIO\Readme.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
@@ -259,6 +287,23 @@
     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
     <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\BarbMaleAnimations\animation.xml" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\BarbMaleAnimations\drawingAnimation.xml" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\BarbMaleAnimations\skeleton.xml" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\BarbMaleAnimations\spriteSheets.xml" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\BarbMaleAnimations\stage.xml" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\SpaceDuck\animation.xml" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\SpaceDuck\drawingAnimation.xml" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\SpaceDuck\skeleton.xml" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\SpaceDuck\spriteSheets.xml" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\SpaceDuck\stage.xml" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\Wishling\animation.xml" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\Wishling\drawingAnimation.xml" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\Wishling\skeleton.xml" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\Wishling\spriteSheets.xml" />
+    <None Include="Assets\StreamingAssets\HarmonyResources\Wishling\stage.xml" />
+    <None Include="Assets\StreamingAssets\PreLoadAssets.txt" />
+    <None Include="Assets\StreamingAssets\RunExecutable\Windows\file_packer_py_Path.txt" />
     <None Include="Assets\Tiled2Unity\Imported\NQReal.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\QeynosTiled.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
