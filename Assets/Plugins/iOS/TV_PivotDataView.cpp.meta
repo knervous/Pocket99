@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: dbd3560decbb70247be741d26af79260
+timeCreated: 1469470767
+licenseType: Store
+PluginImporter:
+  serializedVersion: 1
+  iconMap: {}
+  executionOrder: {}
+  isPreloaded: 0
+  platformData:
+    Any:
+      enabled: 1
+      settings: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

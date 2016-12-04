@@ -1,0 +1,5 @@
+<stages>
+ <stage name="Idle1_Idle1">
+  <play drawingAnimation="Idle1_Top" name="Top" skeleton="Top" animation="Idle1_Top"/>
+ </stage>
+</stages>

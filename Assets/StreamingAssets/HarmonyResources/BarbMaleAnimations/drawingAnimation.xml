@@ -1,0 +1,34 @@
+<drawingAnimations>
+ <drawingAnimation spritesheet="sheet_Top" name="Idle1_Top">
+  <drawing node="head" name="22-head">
+   <drw frame="1" repeat="99" name="22-head-1.png"/>
+  </drawing>
+  <drawing node="Left_arm" name="20-Left_arm">
+   <drw frame="1" repeat="99" name="20-Left_arm-2.png"/>
+  </drawing>
+  <drawing node="Left_wrist" name="21-Left_wrist">
+   <drw frame="1" repeat="99" name="21-Left_wrist-1.png"/>
+  </drawing>
+  <drawing node="chest" name="25-chest">
+   <drw frame="1" repeat="99" name="25-chest-1.png"/>
+  </drawing>
+  <drawing node="left_leg_top_1" name="28-left_leg_top_1">
+   <drw frame="1" repeat="99" name="28-left_leg_top_1-1.png"/>
+  </drawing>
+  <drawing node="left_leg_bottom_1" name="29-left_leg_bottom_1">
+   <drw frame="1" repeat="99" name="29-left_leg_bottom_1-2.png"/>
+  </drawing>
+  <drawing node="right_leg_top" name="23-right_leg_top">
+   <drw frame="1" repeat="99" name="23-right_leg_top-1.png"/>
+  </drawing>
+  <drawing node="right_leg_bottom" name="24-right_leg_bottom">
+   <drw frame="1" repeat="99" name="24-right_leg_bottom-1.png"/>
+  </drawing>
+  <drawing node="right_arm" name="26-right_arm">
+   <drw frame="1" repeat="99" name="26-right_arm-1.png"/>
+  </drawing>
+  <drawing node="right_wrist" name="27-right_wrist">
+   <drw frame="1" repeat="99" name="27-right_wrist-1.png"/>
+  </drawing>
+ </drawingAnimation>
+</drawingAnimations>
