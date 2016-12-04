@@ -148,13 +148,6 @@
     <Compile Include="Assets\HarmonySDK\Editor\HarmonyPropEditor.cs" />
     <Compile Include="Assets\HarmonySDK\Editor\HarmonyRendererEditor.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\Editor\JSONChecker.cs" />
-    <Compile Include="Assets\Spriter2UnityDX\Editor\AnimationBuilder.cs" />
-    <Compile Include="Assets\Spriter2UnityDX\Editor\CustomEditors.cs" />
-    <Compile Include="Assets\Spriter2UnityDX\Editor\PrefabBuilder.cs" />
-    <Compile Include="Assets\Spriter2UnityDX\Editor\S2USettings.cs" />
-    <Compile Include="Assets\Spriter2UnityDX\Editor\ScmlImportOptions.cs" />
-    <Compile Include="Assets\Spriter2UnityDX\Editor\ScmlPostProcessor.cs" />
-    <Compile Include="Assets\Spriter2UnityDX\Editor\ScmlSupport.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Editor\CustomTiledImporterAttribute.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Editor\ICustomTiledImporter.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Editor\ImportTiled2Unity.Material.cs" />
