@@ -90,33 +90,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\HarmonySDK\Scripts\Core\HarmonyAnchor.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Core\HarmonyAnimation.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Core\HarmonyAudio.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Core\HarmonyCamera.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Core\HarmonyMeta.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Core\HarmonyProp.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Core\HarmonyRenderer.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Demo\DemoCallback.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Demo\DemoPhysics.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Previewer\BrowserUi.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Previewer\HarmonyRendererController.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Previewer\SceneSettings.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Previewer\ViewerUi.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Utils\DisplayFps.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Utils\LoopAll.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Utils\LoopOne.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Utils\Message.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Utils\PanCamera.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Utils\PixelLine.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\WebGL_FS\WebGL_FS.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Xml\XML_ProjectLoader.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Xml\XML_SaxParser.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Xml\XML_StageSaxParser.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Xml\XML_Types.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Zip\ZIP_AndroidAssets.cs" />
-    <Compile Include="Assets\HarmonySDK\Scripts\Zip\ZIP_Operations.cs" />
+    <Compile Include="Assets\LoadNorthQeynos.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\ChangeAnimation.cs" />
     <Compile Include="Assets\Scripts\ClickMove.cs" />
     <Compile Include="Assets\Scripts\CollisionDetection.cs" />
     <Compile Include="Assets\Scripts\NavigatePosition.cs" />
@@ -241,13 +217,6 @@
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TiledMap.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\HarmonySDK\ABOUT.txt" />
-    <None Include="Assets\HarmonySDK\README.txt" />
-    <None Include="Assets\HarmonySDK\README_Unity.txt" />
-    <None Include="Assets\HarmonySDK\Shaders\LitTransparentPremult.shader" />
-    <None Include="Assets\HarmonySDK\Shaders\LitTransparentPremultCutout.shader" />
-    <None Include="Assets\HarmonySDK\Shaders\UnlitTransparentPremult.shader" />
-    <None Include="Assets\HarmonySDK\Shaders\UnlitTransparentPremultCutout.shader" />
     <None Include="Assets\SocketIO\JSONObject\readme.txt" />
     <None Include="Assets\SocketIO\Readme.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />

@@ -31,12 +31,16 @@ public class CollisionDetection : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collider)
     {
-        Debug.Log("RELATIVE VELOCITY: " + GetComponent<Rigidbody2D>().velocity.normalized);
         
 
         collided = true;
-        
-        
+        if (!(collider.gameObject.tag == "Player"))
+        {
+            Debug.Log("Trying mags " + GetComponent<ClickMove>().XMag + " " + GetComponent<ClickMove>().YMag);
+            transform.Translate(-GetComponent<ClickMove>().XMag * Time.deltaTime, -GetComponent<ClickMove>().YMag * Time.deltaTime, 0);
+            GetComponent<ClickMove>().isMoving = false;
+        }
+
 
 
     }
@@ -45,10 +49,10 @@ public class CollisionDetection : MonoBehaviour {
     void OnCollisionStay2D(Collision2D collider)
     {
         collided = true;
-
+        
         if(!(collider.gameObject.tag == "Player"))
         {
-            transform.Translate(-GetComponent<ClickMove>().XMag * Time.deltaTime, -GetComponent<ClickMove>().YMag * Time.deltaTime, 0);
+            transform.Translate(-GetComponent<ClickMove>().XMag * Time.deltaTime * GetComponent<PlayerAttributes>().PlayerSpeed, -GetComponent<ClickMove>().YMag * Time.deltaTime * GetComponent<PlayerAttributes>().PlayerSpeed, 0);
             GetComponent<ClickMove>().isMoving = false;
         }
 

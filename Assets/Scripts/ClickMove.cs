@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.SceneManagement;
 
 public class ClickMove : MonoBehaviour {
 
@@ -45,8 +46,10 @@ public class ClickMove : MonoBehaviour {
 
         position = infposition;
         isMoving = true;
-        gameObject.GetComponent<CollisionDetection>().Collided = false;
+
     }
+
+
 
     void Update()
     {
@@ -68,7 +71,7 @@ public class ClickMove : MonoBehaviour {
                 }
                 else
                 {
-                    //gameObject.transform.Translate( -100 * xMag * Time.deltaTime , -100 * yMag * Time.deltaTime , 0);
+                    xMag = yMag = 0;
                     isMoving = false;
                     break;
                 }

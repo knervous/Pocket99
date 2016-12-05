@@ -25,7 +25,7 @@ namespace SpriterDotNet
         /// <summary>
         /// The animated Entity.
         /// </summary>
-        public SpriterEntity Entity { get; protected set; }
+        public SpriterEntity Entity { get;  set; }
 
         /// <summary>
         /// The current animation.

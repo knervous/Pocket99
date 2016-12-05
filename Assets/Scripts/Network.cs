@@ -16,6 +16,12 @@ public class Network : MonoBehaviour
 
     Dictionary<string, GameObject> players;
 
+    //void Awake()
+    //{
+    //    DontDestroyOnLoad(this);
+    //}
+
+
     void Start()
     {
         socket = GetComponent<SocketIOComponent>();
@@ -38,7 +44,6 @@ public class Network : MonoBehaviour
 
         players.Add(e.data["id"].ToString(), player);
         Debug.Log("count: " + players.Count);
-
     }
 
 

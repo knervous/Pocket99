@@ -13,6 +13,7 @@ namespace SpriterDotNetUnity
     {
         public string SortingLayer { get; set; }
         public int SortingOrder { get; set; }
+        public ChildData ChildData { get; set; }
 
         private const float DefaultPPU = 100.0f;
         private const float DefaultPivot = 0.5f;
@@ -94,7 +95,7 @@ namespace SpriterDotNetUnity
 
             renderer.sortingLayerName = SortingLayer;
             renderer.sortingOrder = SortingOrder * renderers.Length + index;
-
+            //renderer.sortingOrder = 3;
             ++index;
         }
 

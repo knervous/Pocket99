@@ -28,22 +28,22 @@ namespace SpriterDotNetUnity
     [ExecuteInEditMode]
     public class SpriterDotNetBehaviour : MonoBehaviour
     {
-        [HideInInspector]
+       // [HideInInspector]
         public string SortingLayer;
 
-        [HideInInspector]
+       // [HideInInspector]
         public int SortingOrder;
 
-        [HideInInspector]
+        //[HideInInspector]
         public ChildData ChildData;
 
-        [HideInInspector]
+        //[HideInInspector]
         public int EntityIndex;
 
-        [HideInInspector]
+       // [HideInInspector]
         public SpriterData SpriterData;
 
-        [HideInInspector]
+      //  [HideInInspector]
         public bool UseNativeTags;
 
         public UnityAnimator Animator { get; private set; }

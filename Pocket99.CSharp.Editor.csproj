@@ -139,14 +139,6 @@
     <Compile Include="Assets\Editor\ImageEffects\SunShaftsEditor.cs" />
     <Compile Include="Assets\Editor\ImageEffects\TonemappingEditor.cs" />
     <Compile Include="Assets\Editor\ImageEffects\VignetteAndChromaticAberrationEditor.cs" />
-    <Compile Include="Assets\HarmonySDK\Editor\CreateHarmonyCamera.cs" />
-    <Compile Include="Assets\HarmonySDK\Editor\CreateHarmonyGameObject.cs" />
-    <Compile Include="Assets\HarmonySDK\Editor\CreateHarmonyTextureObject.cs" />
-    <Compile Include="Assets\HarmonySDK\Editor\GenerateHarmonyMesh.cs" />
-    <Compile Include="Assets\HarmonySDK\Editor\GenerateHarmonyMeta.cs" />
-    <Compile Include="Assets\HarmonySDK\Editor\HarmonyAnchorEditor.cs" />
-    <Compile Include="Assets\HarmonySDK\Editor\HarmonyPropEditor.cs" />
-    <Compile Include="Assets\HarmonySDK\Editor\HarmonyRendererEditor.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\Editor\JSONChecker.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Editor\CustomTiledImporterAttribute.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Editor\ICustomTiledImporter.cs" />
@@ -161,13 +153,6 @@
     <Compile Include="Assets\Tiled2Unity\Scripts\Editor\TiledAssetPostProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\HarmonySDK\ABOUT.txt" />
-    <None Include="Assets\HarmonySDK\README.txt" />
-    <None Include="Assets\HarmonySDK\README_Unity.txt" />
-    <None Include="Assets\HarmonySDK\Shaders\LitTransparentPremult.shader" />
-    <None Include="Assets\HarmonySDK\Shaders\LitTransparentPremultCutout.shader" />
-    <None Include="Assets\HarmonySDK\Shaders\UnlitTransparentPremult.shader" />
-    <None Include="Assets\HarmonySDK\Shaders\UnlitTransparentPremultCutout.shader" />
     <None Include="Assets\SocketIO\JSONObject\readme.txt" />
     <None Include="Assets\SocketIO\Readme.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />

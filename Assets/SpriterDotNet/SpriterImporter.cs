@@ -60,7 +60,7 @@ namespace SpriterDotNetUnity
                 SpriterDotNetBehaviour behaviour = go.AddComponent<SpriterDotNetBehaviour>();
                 behaviour.UseNativeTags = UseNativeTags;
                 if (HasSound(entity)) go.AddComponent<AudioSource>();
-
+                
                 sprites.SetParent(go);
                 metadata.SetParent(go);
 

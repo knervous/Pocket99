@@ -61,26 +61,26 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="I18N.MidEast">
-      <HintPath>Assets\Plugins\I18N.MidEast.dll</HintPath>
+    <Reference Include="I18N.CJK">
+      <HintPath>Assets\Plugins\I18N.CJK.dll</HintPath>
     </Reference>
     <Reference Include="I18N">
       <HintPath>Assets\Plugins\I18N.dll</HintPath>
     </Reference>
-    <Reference Include="I18N.West">
-      <HintPath>Assets\Plugins\I18N.West.dll</HintPath>
+    <Reference Include="I18N.MidEast">
+      <HintPath>Assets\Plugins\I18N.MidEast.dll</HintPath>
     </Reference>
-    <Reference Include="I18N.CJK">
-      <HintPath>Assets\Plugins\I18N.CJK.dll</HintPath>
-    </Reference>
-    <Reference Include="Ionic.Zip.Reduced">
-      <HintPath>Assets\Plugins\Ionic.Zip.Reduced.dll</HintPath>
+    <Reference Include="I18N.Other">
+      <HintPath>Assets\Plugins\I18N.Other.dll</HintPath>
     </Reference>
     <Reference Include="I18N.Rare">
       <HintPath>Assets\Plugins\I18N.Rare.dll</HintPath>
     </Reference>
-    <Reference Include="I18N.Other">
-      <HintPath>Assets\Plugins\I18N.Other.dll</HintPath>
+    <Reference Include="I18N.West">
+      <HintPath>Assets\Plugins\I18N.West.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip.Reduced">
+      <HintPath>Assets\Plugins\Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -190,13 +190,6 @@
     <Compile Include="Assets\Standard Assets\Utility\WaypointProgressTracker.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\HarmonySDK\ABOUT.txt" />
-    <None Include="Assets\HarmonySDK\README.txt" />
-    <None Include="Assets\HarmonySDK\README_Unity.txt" />
-    <None Include="Assets\HarmonySDK\Shaders\LitTransparentPremult.shader" />
-    <None Include="Assets\HarmonySDK\Shaders\LitTransparentPremultCutout.shader" />
-    <None Include="Assets\HarmonySDK\Shaders\UnlitTransparentPremult.shader" />
-    <None Include="Assets\HarmonySDK\Shaders\UnlitTransparentPremultCutout.shader" />
     <None Include="Assets\SocketIO\JSONObject\readme.txt" />
     <None Include="Assets\SocketIO\Readme.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
