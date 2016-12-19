@@ -143,12 +143,6 @@ public class ChangeAnimation : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-
-
-
-
-
 
     private void SwitchAnimation(int offset)
     {

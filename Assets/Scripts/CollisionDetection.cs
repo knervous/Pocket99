@@ -31,8 +31,6 @@ public class CollisionDetection : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collider)
     {
-        
-
         collided = true;
         if (!(collider.gameObject.tag == "Player"))
         {
@@ -40,16 +38,12 @@ public class CollisionDetection : MonoBehaviour {
             transform.Translate(-GetComponent<ClickMove>().XMag * Time.deltaTime, -GetComponent<ClickMove>().YMag * Time.deltaTime, 0);
             GetComponent<ClickMove>().isMoving = false;
         }
-
-
-
     }
 
 
     void OnCollisionStay2D(Collision2D collider)
     {
         collided = true;
-        
         if(!(collider.gameObject.tag == "Player"))
         {
             transform.Translate(-GetComponent<ClickMove>().XMag * Time.deltaTime * GetComponent<PlayerAttributes>().PlayerSpeed, -GetComponent<ClickMove>().YMag * Time.deltaTime * GetComponent<PlayerAttributes>().PlayerSpeed, 0);

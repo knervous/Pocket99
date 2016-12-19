@@ -8,18 +8,26 @@ public class Network : MonoBehaviour
 
     // Use this for initialization
 
-    static SocketIOComponent socket;
-
+    public static SocketIOComponent socket;
+    public GameObject SocketObject;
     public GameObject playerPrefab;
+    public GameObject player;
 
-    public GameObject myPlayer;
+
+    private static Network instance;
 
     Dictionary<string, GameObject> players;
 
-    //void Awake()
-    //{
-    //    DontDestroyOnLoad(this);
-    //}
+    public void Awake()
+    {
+        if (instance)
+            DestroyImmediate(SocketObject);
+        else
+        {
+            DontDestroyOnLoad(SocketObject);
+            instance = this;
+        }
+    }
 
 
     void Start()
@@ -40,7 +48,9 @@ public class Network : MonoBehaviour
     void OnSpawn(SocketIOEvent e)
     {
         Debug.Log("spawned" + e.data);
+        
         var player = Instantiate(playerPrefab);
+        player.tag = "Player";
 
         players.Add(e.data["id"].ToString(), player);
         Debug.Log("count: " + players.Count);
@@ -58,12 +68,8 @@ public class Network : MonoBehaviour
         Debug.Log("player is moving" + e.data);
 
         var player = players[e.data["id"].ToString()];
-        //var navigatePos = player.GetComponent<NavigatePosition>();
-
         var position = new Vector3(GetFloatFromJson(e.data, "x"), GetFloatFromJson(e.data, "y"), -1);
-        //navigatePos.NavigateTo(position);
         Debug.Log("TRYING TO MOVE TO: " + position);
-        //player.transform.position = new Vector3(position.x, position.y, -1);
         var clickMove = player.GetComponent<ClickMove>();
         clickMove.Move(position);
 
@@ -71,7 +77,7 @@ public class Network : MonoBehaviour
 
     private void RequestPosition(SocketIOEvent e)
     {
-        socket.Emit("updatePosition", new JSONObject(VectorToJson(myPlayer.transform.position)));
+        socket.Emit("updatePosition", new JSONObject(VectorToJson(player.GetComponent<SelectedCharacter>().PlayerObject.transform.position)));
     }
 
     private void UpdatePosition(SocketIOEvent e)

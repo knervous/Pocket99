@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ClickMove : MonoBehaviour {
 
     public float duration = 20.0f;
-    private Vector3 position;
+    public Vector3 position;
     public bool isMoving = false;
     public static float colliderCoefficient = 1;
     public bool moveBackWards;
@@ -30,16 +30,10 @@ public class ClickMove : MonoBehaviour {
 	
 	public void OnClick (Vector3 infposition) {
         position = infposition;
-        var navPos = gameObject.GetComponent<NavigatePosition>();
-        var netMove = gameObject.GetComponent<NetworkMove>();
         Debug.Log("Navigating to: " + position);
-        netMove.OnMove(position);
-
+        Network.socket.Emit("move", new JSONObject(Network.VectorToJson(new Vector3(position.x, position.y, -1))));
         gameObject.GetComponent<CollisionDetection>().Collided = false;
         isMoving = true;
-     
-        Debug.Log("PLAYER POSITION: "+ gameObject.transform.position);
-        //navPos.NavigateTo(position);
 	}
 
     public void Move(Vector3 infposition) {
@@ -76,10 +70,6 @@ public class ClickMove : MonoBehaviour {
                     break;
                 }
             }
-
-        }
-        else
-        {
 
         }
         

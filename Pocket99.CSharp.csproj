@@ -95,12 +95,13 @@
     <Compile Include="Assets\Scripts\ChangeAnimation.cs" />
     <Compile Include="Assets\Scripts\ClickMove.cs" />
     <Compile Include="Assets\Scripts\CollisionDetection.cs" />
-    <Compile Include="Assets\Scripts\NavigatePosition.cs" />
     <Compile Include="Assets\Scripts\Network.cs" />
     <Compile Include="Assets\Scripts\NetworkMove.cs" />
+    <Compile Include="Assets\Scripts\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\PlayerAttributes.cs" />
     <Compile Include="Assets\Scripts\ScreenClicker.cs" />
     <Compile Include="Assets\Scripts\WallCollision.cs" />
+    <Compile Include="Assets\SelectedCharacter.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\JSONObject.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\JSONTemplates.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\VectorTemplates.cs" />
@@ -215,6 +216,7 @@
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TileAnimator.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TiledInitialShaderProperties.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TiledMap.cs" />
+    <Compile Include="Assets\WorldConnect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SocketIO\JSONObject\readme.txt" />
