@@ -23,7 +23,7 @@ public class ChangeAnimation : MonoBehaviour
 
     private GameObject player;
     private ClickMove clickMove;
-
+    private bool idleOn = true;
     
 
 
@@ -33,99 +33,98 @@ public class ChangeAnimation : MonoBehaviour
     private UnityAnimator animator;
     private Spriter spriter;
     private string direction = "Left";
-    private SpriterAnimation anim;
+    private string animateString = "Idle Right";
+
 
     private float Timer = .05f;
 
 
     void Start()
     {
-        player = this.gameObject;
-        clickMove = this.GetComponent<ClickMove>();
+        player = gameObject;
+        clickMove = GetComponent<ClickMove>();
     }
 
     void Update()
     {
 
-        // var  renderers = new SpriteRenderer[GetComponent<SpriterDotNetBehaviour>().ChildData.Sprites.Length];
-        //for (int i = 0; i < GetComponent<SpriterDotNetBehaviour>().ChildData.Sprites.Length; ++i)
-        //{
-        //    renderers[i] = GetComponent<SpriterDotNetBehaviour>().ChildData.Sprites[i].GetComponent<SpriteRenderer>();
-        //}
-
-        //renderers[0].sortingOrder = 3;
     
         if (animator == null)
         {
             animator = GetComponent<SpriterDotNetBehaviour>().Animator;
             spriter = animator.Entity.Spriter;
-            anim = new SpriterAnimation();
         }
 
         if(Input.GetKeyDown(KeyCode.F2))
+            {
+                
+            }
 
-        {
-            animator = GetComponent<SpriterDotNetBehaviour>().Animator;
-          
-          anim = animator.Entity.Spriter.Entities[4].Animations[0];
-            //animator.Play(x);
-            animator.Play(anim);
 
-        }
-
-        if (Input.GetKeyDown(KeyCode.F3))
-
-        {
-            animator = GetComponent<SpriterDotNetBehaviour>().Animator;
-            anim= animator.Entity.Spriter.Entities[4].Animations[1];
-            animator.Play(anim);
-            // animator.Play(x);
-        }
+        //List<string> animations = animator.GetAnimations().ToList();
+       // int index = animations.IndexOf(animator.CurrentAnimation.Name);
 
         if (clickMove.XMag < 0 && (Math.Abs(clickMove.XMag) > Math.Abs(clickMove.YMag)))
         {
-            if(direction != "Left")
+
+            if (idleOn || direction != "Left")
             {
                 Timer = 0;
             }
-
-            anim = spriter.Entities[(int)AnimationDirection.Left].Animations[(int)Animation.Walk];
+            idleOn = false;
             direction = "Left";
+            animateString = "Walk Left";
         }
         else if(clickMove.XMag > 0 && (Math.Abs(clickMove.XMag) > Math.Abs(clickMove.YMag)))
         {
-            if(direction != "Right")
+            if (idleOn || direction != "Right")
             {
                 Timer = 0;
             }
-
-            anim = spriter.Entities[(int)AnimationDirection.Right].Animations[(int)Animation.Walk];
+            idleOn = false;
             direction = "Right";
+            animateString = "Walk Right";
         }
-        //else if(clickMove.YMag < 0 && (Math.Abs(clickMove.YMag) > Math.Abs(clickMove.XMag)))
-        //{
-        //    if (direction != "Down")
-        //    {
-        //        Timer = 0;
-        //    }
-
-        //    anim = spriter.Entities[(int)AnimationDirection.Down].Animations[(int)Animation.Idle];
-        //    direction = "Down";
-        //}
-        else
+        else if (clickMove.YMag < 0 && (Math.Abs(clickMove.YMag) > Math.Abs(clickMove.XMag)))
         {
+            if (idleOn || direction != "Down")
+            {
+                Timer = 0;
+            }
+            idleOn = false;
+            direction = "Down";
+            animateString = "Walk Down";
+        }
+        else if (clickMove.YMag > 0 && (Math.Abs(clickMove.YMag) > Math.Abs(clickMove.XMag)))
+        {
+            if (idleOn || direction != "Up")
+            {
+                Timer = 0;
+            }
+            idleOn = false;
+            direction = "Up";
+            animateString = "Walk Up";
+        }
+        else if (!clickMove.isMoving)
+        {
+            if(!idleOn)
+            {
+                Timer = 0;
+                idleOn = true;
+            }  
             switch (direction)
             {
                 case "Left":
-                    anim = spriter.Entities[(int)AnimationDirection.Left].Animations[(int)Animation.Idle];
+                    animateString = "Idle Left";
                     break;
                 case "Right":
-                    anim = spriter.Entities[(int)AnimationDirection.Right].Animations[(int)Animation.Idle];
+                    animateString = "Idle Right";
                     break;
                 case "Up":
+                    animateString = "Idle Up";
                     break;
                 case "Down":
-                    anim = spriter.Entities[(int)AnimationDirection.Down].Animations[(int)Animation.Idle];
+                    animateString = "Idle Down";
                     break;
             }
         }
@@ -135,11 +134,9 @@ public class ChangeAnimation : MonoBehaviour
         Timer -= Time.deltaTime;
         if (Timer <= 0f)
         {
-            animator.Play(anim);
-            Timer = anim.Length / 1000;
+            animator.Play(animateString);
+            Timer = animator.CurrentAnimation.Length / 1000;
         }
-
-
 
     }
 

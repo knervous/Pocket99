@@ -12,6 +12,7 @@ public class ClickMove : MonoBehaviour {
     public bool moveBackWards;
     private float xMag = 0.0f;
     private float yMag = 0.0f;
+    public event EventHandler Changed;
 
     public float XMag
     {
@@ -40,7 +41,7 @@ public class ClickMove : MonoBehaviour {
 
         position = infposition;
         isMoving = true;
-
+        
     }
 
 

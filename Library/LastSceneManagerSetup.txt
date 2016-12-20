@@ -1,10 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/North Qeynos/Qeynos2Scene.unity
+- path: Assets/Scenes/Login System/EntryPoint.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/Scenes/Network/Network.unity
-  isLoaded: 0
-  isActive: 0
-- path: Assets/Scenes/Player Models/PlayerModels.unity
-  isLoaded: 0
-  isActive: 0

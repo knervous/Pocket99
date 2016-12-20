@@ -14,12 +14,11 @@ public class ScreenClicker : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         
-        rbody = player.GetComponent<Rigidbody2D>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (counter > 30)
+        if (counter > 15)
         {
             if (Input.GetMouseButtonDown(1))
             {
@@ -48,6 +47,17 @@ public class ScreenClicker : MonoBehaviour {
 #elif (UNITY_ANDROID || UNITY_IPHONE || UNITY_WP8)
    target = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 #endif
+
+        var hitCollider = Physics2D.OverlapPoint(target);
+        if(hitCollider)
+        {
+            switch(hitCollider.gameObject.tag)
+            {
+                case "Player":
+                    Debug.Log("Player clicked");
+                    break;
+            }
+        }
         clickMove.OnClick(new Vector3(target.x, target.y, 0));
     }
 }

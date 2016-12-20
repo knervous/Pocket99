@@ -5,16 +5,11 @@ using System;
 
 public class Network : MonoBehaviour
 {
-
-    // Use this for initialization
-
     public static SocketIOComponent socket;
     public GameObject SocketObject;
     public GameObject playerPrefab;
-    public GameObject player;
-
-
-    private static Network instance;
+    public GameObject myPlayer;
+    public static Network instance;
 
     Dictionary<string, GameObject> players;
 
@@ -39,7 +34,7 @@ public class Network : MonoBehaviour
         socket.On("disconnected", OnDisconnected);
         socket.On("requestPosition", RequestPosition);
         socket.On("updatePosition", UpdatePosition);
-
+        
         players = new Dictionary<string, GameObject>();
     }
 
@@ -50,7 +45,9 @@ public class Network : MonoBehaviour
         Debug.Log("spawned" + e.data);
         
         var player = Instantiate(playerPrefab);
+       
         player.tag = "Player";
+
 
         players.Add(e.data["id"].ToString(), player);
         Debug.Log("count: " + players.Count);
@@ -61,6 +58,7 @@ public class Network : MonoBehaviour
     void OnConnected(SocketIOEvent e)
     {
         Debug.Log("connected");
+        
     }
 
     private void OnMove(SocketIOEvent e)
@@ -77,7 +75,7 @@ public class Network : MonoBehaviour
 
     private void RequestPosition(SocketIOEvent e)
     {
-        socket.Emit("updatePosition", new JSONObject(VectorToJson(player.GetComponent<SelectedCharacter>().PlayerObject.transform.position)));
+        socket.Emit("updatePosition", new JSONObject(VectorToJson(myPlayer.transform.position)));
     }
 
     private void UpdatePosition(SocketIOEvent e)

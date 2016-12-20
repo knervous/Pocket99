@@ -1,0 +1,408 @@
+Initialize engine version: 5.4.1f1 (649f48bbbf0f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon (TM) R7 370 Series (ID=0x6811)
+    Vendor:   ATI
+    VRAM:     2029 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\I18N.dll (this message is harmless)
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\I18N.West.dll (this message is harmless)
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\I18N.CJK.dll (this message is harmless)
+Loading C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\I18N.CJK.dll into Unity Child Domain
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\I18N.dll (this message is harmless)
+Loading C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\I18N.dll into Unity Child Domain
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\I18N.MidEast.dll (this message is harmless)
+Loading C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\I18N.MidEast.dll into Unity Child Domain
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\I18N.Other.dll (this message is harmless)
+Loading C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\I18N.Other.dll into Unity Child Domain
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\I18N.Rare.dll (this message is harmless)
+Loading C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\I18N.Rare.dll into Unity Child Domain
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\I18N.West.dll (this message is harmless)
+Loading C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\I18N.West.dll into Unity Child Domain
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\Ionic.Zip.Reduced.dll (this message is harmless)
+Loading C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\Ionic.Zip.Reduced.dll into Unity Child Domain
+- Completed reload, in  0.157 seconds
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Paul\Source\Repos\Pocket99\Pocket99__Data\Managed\Mono.Security.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.109289 ms
+DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
+ 
+(Filename:  Line: 386)
+
+DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
+ 
+(Filename:  Line: 386)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+connected
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+connected
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+UnloadTime: 0.611111 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1636.
+Total: 0.938177 ms (FindLiveObjects: 0.086533 ms CreateObjectMapping: 0.054266 ms MarkObjects: 0.776355 ms  DeleteObjects: 0.013200 ms)
+
+Navigating to: (2640.7, -4745.1, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+spawned{"id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2865.956","y":"-4785.914","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2700.677","y":"-4762.084","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2817.309","y":"-4814.678","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2726.2, -4798.3, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2866.7, -4734.3, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2936.1, -4700.4, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2855.0, -4671.3, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2910.5, -4739.0, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2860.2, -4732.8, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2949.5, -4723.0, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2846.7, -4691.5, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2901.8, -4679.4, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2752.4, -4667.3, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2858.4, -4693.6, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2949.1, -4723.4, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2829.3, -4708.9, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2899.8, -4712.0, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2812.5, -4707.9, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2912.4, -4725.6, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2838.5, -4777.2, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2910.5, -4753.0, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2839.044","y":"-4801.78","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2760.908","y":"-4733.126","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2662.533","y":"-4740.254","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2861.287","y":"-4747.283","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2769.311","y":"-4704.316","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2711.969","y":"-4713.037","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2918.242","y":"-4719.397","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2846.712","y":"-4799.587","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2891.4","y":"-4698.846","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2931.823","y":"-4747.021","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2887.376","y":"-4727.752","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2999.854","y":"-4743.447","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2921.819","y":"-4747.524","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2996.41","y":"-4732.875","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2903.199","y":"-4762.309","id":"Byy9DaEEg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+spawned{"id":"rJUWuT4Eg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2704.665","y":"-4822.473","id":"rJUWuT4Eg"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Trying mags 0 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2946.6, -4756.1, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2831.7, -4693.9, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2938.8, -4684.9, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2955.8, -4647.0, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2852.7, -4639.2, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2727.9, -4623.9, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2849.4, -4683.8, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2783.3, -4787.4, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2855.4, -4809.7, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+spawned{"id":"S1r9upEEe"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Trying mags 0 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Trying mags 0 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Trying mags 0 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Trying mags 0 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2933.9, -4762.5, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2826.7, -4785.9, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+12/18/2016 9:41:14 PM|Fatal|WebSocket.acceptException|System.IO.IOException: EndRead failure ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host.
+                            
+                              at System.Net.Sockets.Socket+SocketAsyncResult.CheckIfThrowDelayedException () [0x00000] in <filename unknown>:0 
+                              at System.Net.Sockets.Socket.EndReceive (IAsyncResult asyncResult, System.Net.Sockets.SocketError& errorCode) [0x00000] in <filename unknown>:0 
+                              at System.Net.Sockets.Socket.EndReceive (IAsyncResult result) [0x00000] in <filename unknown>:0 
+                              at System.Net.Sockets.NetworkStream.EndRead (IAsyncResult ar) [0x00000] in <filename unknown>:0 
+                              --- End of inner exception stack trace ---
+                              at System.Net.Sockets.NetworkStream.EndRead (IAsyncResult ar) [0x00000] in <filename unknown>:0 
+                              at WebSocketSharp.Ext+<ReadBytesAsync>c__AnonStoreyC.<>m__2 (IAsyncResult ar) [0x00000] in <filename unknown>:0 
+connected
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+connected
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2729.4, -4802.8, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2636.8, -4794.8, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+spawned{"id":"SyARdpVNx"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2792.837","y":"-4802.043","id":"SyARdpVNx"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2664.544","y":"-4767.317","id":"SyARdpVNx"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2657.155","y":"-4723.199","id":"SyARdpVNx"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2908.474","y":"-4712.744","id":"SyARdpVNx"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2952.695","y":"-4750.748","id":"SyARdpVNx"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2978.244","y":"-4753.224","id":"SyARdpVNx"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2976.75","y":"-4753.182","id":"SyARdpVNx"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2749.226","y":"-4847.954","id":"SyARdpVNx"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2951.477","y":"-4827.506","id":"SyARdpVNx"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+player is moving{"x":"2980.482","y":"-4774.4","id":"SyARdpVNx"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2753.7, -4807.9, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Trying mags 0 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Trying mags 0 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Trying mags 0 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2776.9, -4769.0, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2807.2, -4737.1, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Trying mags 0.4771782 0.5228218
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Trying mags 0 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Trying mags 0.4771782 0.5228218
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Trying mags 0 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Navigating to: (2857.1, -4812.8, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 1ae4 -> priority: 1 
