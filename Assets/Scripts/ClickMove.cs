@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 
 public class ClickMove : MonoBehaviour {
 
@@ -32,10 +33,12 @@ public class ClickMove : MonoBehaviour {
 	public void OnClick (Vector3 infposition) {
         position = infposition;
         Debug.Log("Navigating to: " + position);
-        Network.socket.Emit("move", new JSONObject(Network.VectorToJson(new Vector3(position.x, position.y, -1))));
+        //Network.socket.Emit("move", new JSONObject(Network.VectorToJson(new Vector3(position.x, position.y, -1))));
         gameObject.GetComponent<CollisionDetection>().Collided = false;
-        isMoving = true;
-	}
+        //isMoving = true;
+        GetComponent<NavMeshAgent>().SetDestination(infposition);
+
+    }
 
     public void Move(Vector3 infposition) {
 
@@ -63,6 +66,7 @@ public class ClickMove : MonoBehaviour {
                 if (Math.Abs(total) > 10)
                 {
                     gameObject.transform.Translate(xMag * Time.deltaTime, yMag * Time.deltaTime, 0);
+                    
                 }
                 else
                 {

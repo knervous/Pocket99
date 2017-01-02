@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Login System/EntryPoint.unity
+- path: Assets/Scenes/EntryPoint.unity
   isLoaded: 1
   isActive: 1

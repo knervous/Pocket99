@@ -461,6 +461,10 @@ namespace WebSocketSharp
                ? _uri
                : _context.RequestUri;
       }
+            set
+            {
+                _uri = value;
+            }
     }
 
     #endregion

@@ -49,7 +49,7 @@ namespace SocketIO
 		public float pingInterval = 25f;
 		public float pingTimeout = 60f;
 
-		public WebSocket socket { get { return ws; } }
+		public WebSocket socket { get { return ws; } set { ws = value; } }
 		public string sid { get; set; }
 		public bool IsConnected { get { return connected; } }
 
@@ -123,6 +123,12 @@ namespace SocketIO
 		{
 			if (autoConnect) { Connect(); }
 		}
+
+        public void UpdateWebSocket(string inf_url)
+        {
+            ws.Url = new Uri(inf_url);
+            url = inf_url;
+        }
 
 		public void Update()
 		{
