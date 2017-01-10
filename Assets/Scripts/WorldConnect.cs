@@ -140,8 +140,8 @@ public class WorldConnect : MonoBehaviour {
         GameObject.Destroy(EntryPointUI);
         switch (player.race_)
         {
-            case (int)Player.RaceById.Barbarian:
-                break;
+            //case (int)Player.RaceById.Barbarian:
+            //    break;
             default:
                 SceneManager.LoadScene("Qeynos2Scene");
                 zoneConnectSocket.SetActive(true);
