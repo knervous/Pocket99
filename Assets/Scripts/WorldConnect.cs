@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using SocketIO;
 using UnityEngine.SceneManagement;
 using System;
+using Assets.Scripts.Data_Models;
+using Assets.Scripts.UI;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -11,16 +13,21 @@ public class WorldConnect : MonoBehaviour {
     public static WorldConnect instance;
     public GameObject WorldConnectObject;
     public GameObject SelectedChar;
-    public GameObject player;
+    public GameObject EntryPointUI;
+    public Camera loginCam;
     public Camera gameCam;
     public SocketIOComponent socket;
+    public GameObject zoneConnectSocket;
+    public CharacterSelect CharSelect;
+    public CharacterCreate CharCreate;
     public bool loggedIn = false;
 
+    public Account server_account;
+    public List<Player> server_player = new List<Player>();
+    public List<Inventory> server_inventory = new List<Inventory>();
 
-    public InputField server;
-    public InputField username;
-    public InputField password;
-    public Button connect;
+    public string username;
+    public string password;
 
     public void Awake()
     {
@@ -36,47 +43,127 @@ public class WorldConnect : MonoBehaviour {
     // Use this for initialization
     void Start () {
         instance = this;
-        SceneManager.activeSceneChanged += SpawnPlayer;
-        socket.On("loginsuccess", CharacterSelectConnect);
-        socket.On("login_connected", (e) => { loggedIn = true; AuthenticateUser(e); });
-        connect.onClick.AddListener(TryLogin);
+        //SceneManager.activeSceneChanged += SpawnPlayer;
+        socket.On("login_success", CharacterSelectConnect);
+        socket.On("login_connected", AuthenticateUser);
+        socket.On("password_failed", PasswordFailed);
+        socket.On("account_created", AccountCreated);
+        socket.On("name_check", CreateCharacter);
+        socket.On("character_created", CharacterCreated);
+        socket.On("enter_world", EnterWorld);
+    }
+
+    private void AccountCreated(SocketIOEvent e)
+    {
+        AuthenticateUser(e);
+        CharSelect.OpenPopupPanel("Account created: " + username);
+    }
+
+    private void PasswordFailed(SocketIOEvent e)
+    {
+        Debug.Log("password failed");
+        socket.Close();
+    }
+
+    public void CheckName(string name)
+    {
+        JSONObject obj = new JSONObject();
+        obj.AddField("name", name);
+        obj.AddField("exists", new bool());
+        socket.Emit("check_name", obj);
+    }
+
+    private void CreateCharacter(SocketIOEvent obj)
+    {
+        Debug.Log("name check hit");
+        if (obj.data["exists"].b)
+            CharSelect.OpenPopupPanel("Name already taken. Try another.");
+        else
+        {
+            CharSelect.OpenPopupPanel("Name accepted. Creating character now.");
+            socket.Emit("create_new_character", CharCreate.CreatedPlayer.CreateServerPlayer());
+        }
+    }
+
+    private void CharacterCreated(SocketIOEvent obj)
+    {
+        server_player.Clear();
+        server_inventory.Clear();
+        CharCreate.page = 1;
+        CharCreate.ResetValues();
+        AuthenticateUser(obj);
     }
 
     private void CharacterSelectConnect(SocketIOEvent e)
     {
-        Debug.Log("DATA: " + e.data["characters"]["character_one"]["name"].str);
-        var chars = e.data["characters"];
-        //chars["character_one"][]
+        server_account = gameObject.AddComponent<Account>();
+        server_account.PopulateFromServer(e);
+        
+        foreach (var char_ in e.data["characters"].list)
+        {
+            var tempPlayer = gameObject.AddComponent<Player>();
+            tempPlayer.PopulateFromServer(char_);
+            server_player.Add(tempPlayer);
+        }
+
+        //foreach (var inv_ in e.data["inventories"].list)
+        //{
+        //    server_inventory.Add(gameObject.AddComponent<Inventory>());
+        //    //populate from server method needed
+        //}
+
+        CharSelect.ToCharList();
     }
     private void AuthenticateUser(SocketIOEvent e)
     {
         JSONObject login = new JSONObject();
+        JSONObject account = new JSONObject();
         JSONObject characters = new JSONObject();
-        login.AddField("username", username.text);
-        login.AddField("password", password.text);
+        JSONObject inventories = new JSONObject();
+        login.AddField("username", username);
+        login.AddField("password", password);
+        login.AddField("account", account);
         login.AddField("characters", characters);
+        login.AddField("inventories", inventories);
+
         socket.Emit("trylogin", login);
     }
-    private void TryLogin()
+    public void TryLogin(string server)
     {
-        string serverurl = string.Empty;
-        serverurl += @"ws://";
-        serverurl += server.text.Length > 0 ? server.text : server.placeholder.GetComponent<Text>().text;
-        serverurl += @":7000/socket.io/?EIO=4&transport=websocket";
-        socket.UpdateWebSocket(serverurl);
+        socket.UpdateWebSocket(server);
         socket.Connect();
     }
 
-    void SpawnPlayer(Scene previousScene, Scene newScene)
+    public void DoEnterWorld(int index)
     {
-        player = Instantiate(SelectedChar.GetComponent<SelectedCharacter>().PlayerObject) as GameObject;
-       
-        gameCam.GetComponent<CameraFollow>().player = player;
-        gameCam.GetComponent<ScreenClicker>().player = player;
-        gameCam.GetComponent<CameraFollow>().StartCamera();
-        player.name = "My Player Character";
-        player.tag = "Player";
-        Network.instance.myPlayer = player;
+        var player = server_player[index];
+        GameObject.Destroy(EntryPointUI);
+        switch (player.race_)
+        {
+            case (int)Player.RaceById.Barbarian:
+                break;
+            default:
+                SceneManager.LoadScene("Qeynos2Scene");
+                zoneConnectSocket.SetActive(true);
+                socket.Emit("zone_into_world", player.CreateServerPlayer());
+                var newPlayer = Instantiate(Resources.Load("Prefabs/Character Models/BarbarianMale")) as GameObject;
+                newPlayer.name = player.name_;
+                newPlayer.tag = "Player";
+                DontDestroyOnLoad(newPlayer);
+                zoneConnectSocket.GetComponent<Network>().myPlayer = newPlayer;
+                loginCam.gameObject.SetActive(false);
+                gameCam.gameObject.SetActive(true);
+                gameCam.tag = "MainCamera";
+                gameCam.GetComponent<CameraFollow>().player = newPlayer;
+                gameCam.GetComponent<ScreenClicker>().player = newPlayer;
+                gameCam.GetComponent<CameraFollow>().StartCamera();
+                break;
+        }
+    }
+
+    public void EnterWorld(SocketIOEvent e)
+    {
+
     }
 
     // Update is called once per frame

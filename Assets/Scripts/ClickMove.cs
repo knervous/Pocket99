@@ -33,11 +33,9 @@ public class ClickMove : MonoBehaviour {
 	public void OnClick (Vector3 infposition) {
         position = infposition;
         Debug.Log("Navigating to: " + position);
-        //Network.socket.Emit("move", new JSONObject(Network.VectorToJson(new Vector3(position.x, position.y, -1))));
+        Network.socket.Emit("move", new JSONObject(Network.VectorToJson(new Vector3(position.x, position.y, -1))));
         gameObject.GetComponent<CollisionDetection>().Collided = false;
-        //isMoving = true;
-        GetComponent<NavMeshAgent>().SetDestination(infposition);
-
+        isMoving = true;
     }
 
     public void Move(Vector3 infposition) {

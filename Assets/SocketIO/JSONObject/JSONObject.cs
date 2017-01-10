@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Debug = UnityEngine.Debug;
+using System;
 
 /*
  * http://www.opensource.org/licenses/lgpl-2.1.php
@@ -988,6 +989,11 @@ public class JSONObject {
 	public static implicit operator bool(JSONObject o) {
 		return o != null;
 	}
+
+    public static implicit operator int(JSONObject v)
+    {
+        throw new NotImplementedException();
+    }
 #if POOLING
 	static bool pool = true;
 	public static void ClearPool() {
