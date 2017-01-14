@@ -1619,7 +1619,7 @@
             </timeline>
             <timeline id="3" name="BARB_MALE_BACK_LeftArm">
                 <key id="0" spin="0">
-                    <object folder="1" file="16" x="-1.369067" y="-7.88785" pivot_x="0.566272" pivot_y="0.790384" angle="100.244087" scale_x="1"/>
+                    <object folder="1" file="16" x="-1.369067" y="-7.88785" pivot_x="0.566272" pivot_y="0.790384" angle="100.244087"/>
                 </key>
             </timeline>
             <timeline id="4" name="BARB_MALE_BACK_LeftFoot">
@@ -1634,10 +1634,10 @@
             </timeline>
             <timeline id="6" name="BARB_MALE_BACK_LeftWrist">
                 <key id="0" spin="0">
-                    <object folder="1" file="19" x="-20.011367" y="0.633002" pivot_x="0.384384" pivot_y="0.911651" angle="88.842667" scale_x="1"/>
+                    <object folder="1" file="19" x="-20.011367" y="0.633002" pivot_x="0.384384" pivot_y="0.911651" angle="88.842667"/>
                 </key>
                 <key id="1" time="500" spin="0">
-                    <object folder="1" file="19" x="-36.063412" y="7.169747" pivot_x="0.384384" pivot_y="0.911651" angle="88.842667" scale_x="1"/>
+                    <object folder="1" file="19" x="-36.063412" y="7.169747" pivot_x="0.384384" pivot_y="0.911651" angle="88.842667"/>
                 </key>
             </timeline>
             <timeline id="7" name="BARB_MALE_BACK_RightArm">
@@ -1647,10 +1647,10 @@
             </timeline>
             <timeline id="8" name="BARB_MALE_BACK_RightFoot">
                 <key id="0" spin="0">
-                    <object folder="1" file="21" x="-14.265003" y="-15.701898" pivot_x="0.25738" pivot_y="0.493233" angle="326.565459" scale_x="1" scale_y="1"/>
+                    <object folder="1" file="21" x="-14.265003" y="-15.701898" pivot_x="0.25738" pivot_y="0.493233" angle="326.565459"/>
                 </key>
                 <key id="1" time="500" spin="0">
-                    <object folder="1" file="21" x="6.496727" y="8.046779" pivot_x="0.25738" pivot_y="0.493233" angle="326.565459" scale_x="1" scale_y="1"/>
+                    <object folder="1" file="21" x="6.496727" y="8.046779" pivot_x="0.25738" pivot_y="0.493233" angle="326.565459"/>
                 </key>
             </timeline>
             <timeline id="9" name="BARB_MALE_BACK_RightLeg">
@@ -1678,34 +1678,34 @@
             </timeline>
             <timeline id="13" obj="18" name="Right leg" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="106.705904" y="18.714869" angle="356.951302" scale_x="0.748449" scale_y="1"/>
+                    <bone x="106.705904" y="18.714869" angle="356.951302" scale_x="0.748449"/>
                 </key>
                 <key id="1" time="518" spin="0">
-                    <bone x="106.705904" y="18.714869" angle="356.951302" scale_x="1.029066" scale_y="1"/>
+                    <bone x="106.705904" y="18.714869" angle="356.951302" scale_x="1.029066"/>
                 </key>
             </timeline>
             <timeline id="14" obj="19" name="Left leg" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="111.043152" y="-20.575972" angle="0.425246" scale_x="1.079028" scale_y="1"/>
+                    <bone x="111.043152" y="-20.575972" angle="0.425246" scale_x="1.079028"/>
                 </key>
                 <key id="1" time="482">
-                    <bone x="111.043152" y="-20.575972" angle="358.829953" scale_x="0.926138" scale_y="1"/>
+                    <bone x="111.043152" y="-20.575972" angle="358.829953" scale_x="0.926138"/>
                 </key>
             </timeline>
             <timeline id="15" obj="20" name="Right Foot_000" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="167.498439" y="-0.933647" angle="135.356404" scale_x="1.336097" scale_y="1"/>
+                    <bone x="167.498439" y="-0.933647" angle="135.356404" scale_x="1.336097"/>
                 </key>
                 <key id="1" time="518" spin="0">
-                    <bone x="167.498439" y="-0.933647" angle="135.356404" scale_x="1.399812" scale_y="1"/>
+                    <bone x="167.498439" y="-0.933647" angle="135.356404" scale_x="1.399812"/>
                 </key>
             </timeline>
             <timeline id="16" obj="21" name="Left Foot_000" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="162.000266" y="-1.657549" angle="216.830411" scale_x="0.92676" scale_y="1"/>
+                    <bone x="162.000266" y="-1.657549" angle="216.830411" scale_x="0.92676"/>
                 </key>
                 <key id="1" time="482" spin="0">
-                    <bone x="162.000266" y="-1.657549" angle="216.830411" scale_x="1.079753" scale_y="1"/>
+                    <bone x="162.000266" y="-1.657549" angle="216.830411" scale_x="1.079753"/>
                 </key>
             </timeline>
             <timeline id="17" obj="22" name="Chest_000" object_type="bone">
@@ -1723,34 +1723,34 @@
             </timeline>
             <timeline id="19" obj="24" name="Left Arm_000" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="92.523364" y="47.663551" angle="169.755913" scale_x="1.011039" scale_y="1"/>
+                    <bone x="92.523364" y="47.663551" angle="169.755913" scale_x="1.011039"/>
                 </key>
                 <key id="1" time="500" spin="0">
-                    <bone x="92.523364" y="47.663551" angle="169.755913" scale_x="1.388296" scale_y="1"/>
+                    <bone x="92.523364" y="47.663551" angle="169.755913" scale_x="1.388296"/>
                 </key>
             </timeline>
             <timeline id="20" obj="25" name="Left Wrist_000" object_type="bone">
                 <key id="0">
-                    <bone x="71.303007" y="-0.409978" angle="11.401421" scale_x="0.781771" scale_y="1"/>
+                    <bone x="71.303007" y="-0.409978" angle="11.401421" scale_x="0.781771"/>
                 </key>
                 <key id="1" time="500" spin="-1">
-                    <bone x="70.714499" y="-0.564624" angle="20.45327" scale_x="0.752971" scale_y="1"/>
+                    <bone x="70.714499" y="-0.564624" angle="20.45327" scale_x="0.752971"/>
                 </key>
             </timeline>
             <timeline id="21" obj="26" name="Right Arm_000" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="100.934579" y="-51.401869" angle="186.604835" scale_x="1.22023" scale_y="1"/>
+                    <bone x="100.934579" y="-51.401869" angle="186.604835" scale_x="1.22023"/>
                 </key>
                 <key id="1" time="560" spin="0">
-                    <bone x="100.934579" y="-51.401869" angle="186.604835" scale_x="0.9498" scale_y="1"/>
+                    <bone x="100.934579" y="-51.401869" angle="186.604835" scale_x="0.9498"/>
                 </key>
             </timeline>
             <timeline id="22" obj="27" name="Right Wrist_000" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="76.980165" y="-1.099717" angle="348.080561" scale_x="0.903501" scale_y="1"/>
+                    <bone x="76.980165" y="-1.099717" angle="348.080561" scale_x="0.903501"/>
                 </key>
                 <key id="1" time="560" spin="0">
-                    <bone x="76.980165" y="-1.099717" angle="348.080561" scale_x="0.745037" scale_y="1"/>
+                    <bone x="76.980165" y="-1.099717" angle="348.080561" scale_x="0.745037"/>
                 </key>
             </timeline>
         </animation>
@@ -1799,7 +1799,7 @@
             </timeline>
             <timeline id="3" name="BARB_MALE_BACK_LeftArm">
                 <key id="0" spin="0">
-                    <object folder="1" file="16" x="-1.369067" y="-7.88785" pivot_x="0.566272" pivot_y="0.790384" angle="100.244087" scale_x="1"/>
+                    <object folder="1" file="16" x="-1.369067" y="-7.88785" pivot_x="0.566272" pivot_y="0.790384" angle="100.244087"/>
                 </key>
             </timeline>
             <timeline id="4" name="BARB_MALE_BACK_LeftFoot">
@@ -1814,7 +1814,7 @@
             </timeline>
             <timeline id="6" name="BARB_MALE_BACK_LeftWrist">
                 <key id="0" spin="0">
-                    <object folder="1" file="19" x="-20.011367" y="0.633002" pivot_x="0.384384" pivot_y="0.911651" angle="88.842667" scale_x="1"/>
+                    <object folder="1" file="19" x="-20.011367" y="0.633002" pivot_x="0.384384" pivot_y="0.911651" angle="88.842667"/>
                 </key>
             </timeline>
             <timeline id="7" name="BARB_MALE_BACK_RightArm">
@@ -1879,12 +1879,12 @@
             </timeline>
             <timeline id="19" obj="24" name="Left Arm_000" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="92.523364" y="47.663551" angle="169.755913" scale_x="1.249086" scale_y="1"/>
+                    <bone x="92.523364" y="47.663551" angle="169.755913" scale_x="1.249086"/>
                 </key>
             </timeline>
             <timeline id="20" obj="25" name="Left Wrist_000" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="71.303007" y="-0.409978" angle="11.401421" scale_x="0.908313" scale_y="1"/>
+                    <bone x="71.303007" y="-0.409978" angle="11.401421" scale_x="0.908313"/>
                 </key>
             </timeline>
             <timeline id="21" obj="26" name="Right Arm_000" object_type="bone">
@@ -2086,7 +2086,7 @@
             </timeline>
             <timeline id="1" name="BARB_MALE_FRONT_Head_000">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="-6.165414" y="-0" angle="270" scale_x="0.964676" scale_y="0.964676"/>
+                    <object folder="1" file="0" x="-6.165414" angle="270" scale_x="0.964676" scale_y="0.964676"/>
                 </key>
             </timeline>
             <timeline id="2" name="BARB_MALE_FRONT_Kilt_000">
