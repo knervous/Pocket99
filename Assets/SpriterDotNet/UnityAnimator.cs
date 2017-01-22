@@ -25,11 +25,13 @@ namespace SpriterDotNetUnity
         private int boxIndex;
         private int pointIndex;
 
+        private bool[] isSwapped;
+
         public UnityAnimator(SpriterEntity entity, ChildData childData, AudioSource audioSource) : base(entity)
         {
             this.childData = childData;
             this.audioSource = audioSource;
-
+            isSwapped = new bool[childData.Sprites.Length];
             renderers = new SpriteRenderer[childData.Sprites.Length];
             for (int i = 0; i < childData.Sprites.Length; ++i)
             {
@@ -65,6 +67,12 @@ namespace SpriterDotNetUnity
             }
         }
 
+        public void SetSprite(int index, string spritePath)
+        {
+            renderers[index].sprite = Resources.Load<Sprite>(spritePath);
+            isSwapped[index] = true;
+        }
+
         protected override void ApplySpriteTransform(Sprite sprite, SpriterObject info)
         {
             GameObject child = childData.Sprites[index];
@@ -77,8 +85,8 @@ namespace SpriterDotNetUnity
             SpriteRenderer renderer = renderers[index];
 
             float ppu = sprite.pixelsPerUnit;
-
-            renderer.sprite = sprite;
+            if (!isSwapped[index])
+            { renderer.sprite = sprite; }
             Vector3 size = sprite.bounds.size;
             float spritePivotX = sprite.pivot.x / ppu / size.x;
             float spritePivotY = sprite.pivot.y / ppu / size.y;

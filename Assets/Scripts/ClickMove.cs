@@ -11,21 +11,11 @@ public class ClickMove : MonoBehaviour {
     public bool isMoving = false;
     public static float colliderCoefficient = 1;
     public bool moveBackWards;
-    private float xMag = 0.0f;
-    private float yMag = 0.0f;
-    public event EventHandler Changed;
+    public GameObject playerModel;
 
-    public float XMag
-    {
-        get { return xMag; }
-        set { xMag = value; }
-    }
+    public float XMag { get; set; }
 
-    public float YMag
-    {
-        get { return yMag; }
-        set { yMag = value; }
-    }
+    public float YMag { get; set; }
 
     void Start () {
 	}
@@ -33,8 +23,9 @@ public class ClickMove : MonoBehaviour {
 	public void OnClick (Vector3 infposition) {
         position = infposition;
         Debug.Log("Navigating to: " + position);
+        if(Network.socket)
         Network.socket.Emit("move", new JSONObject(Network.VectorToJson(new Vector3(position.x, position.y, -1))));
-        gameObject.GetComponent<CollisionDetection>().Collided = false;
+        //gameObject.GetComponent<CollisionDetection>().Collided = false;
         isMoving = true;
     }
 
@@ -54,8 +45,8 @@ public class ClickMove : MonoBehaviour {
             var moveTotalX = position.x - gameObject.transform.position.x;
             var moveTotalY = position.y - gameObject.transform.position.y;
             var total = Math.Abs(moveTotalX) + Math.Abs(moveTotalY);
-            xMag = moveTotalX / total;
-            yMag = moveTotalY / total;
+            XMag = moveTotalX / total;
+            YMag = moveTotalY / total;
 
             var moveSpeed = gameObject.GetComponent<PlayerAttributes>().PlayerSpeed;
 
@@ -63,12 +54,12 @@ public class ClickMove : MonoBehaviour {
             {
                 if (Math.Abs(total) > 10)
                 {
-                    gameObject.transform.Translate(xMag * Time.deltaTime, yMag * Time.deltaTime, 0);
+                    gameObject.transform.Translate(XMag * Time.deltaTime, YMag * Time.deltaTime, 0);
                     
                 }
                 else
                 {
-                    xMag = yMag = 0;
+                    XMag = YMag = 0;
                     isMoving = false;
                     break;
                 }

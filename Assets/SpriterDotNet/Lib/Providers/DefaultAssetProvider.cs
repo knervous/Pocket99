@@ -5,6 +5,7 @@
 
 using SpriterDotNet.Helpers;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace SpriterDotNet.Providers
 {
@@ -54,6 +55,12 @@ namespace SpriterDotNet.Providers
         public virtual void Set(int folderId, int fileId, T asset)
         {
             Dictionary<int, T> objectsByFiles = AssetMappings.GetOrCreate(folderId);
+            objectsByFiles[fileId] = asset;
+        }
+
+        public virtual void Set(int fileId, T asset)
+        {
+            Dictionary<int, T> objectsByFiles = AssetMappings.GetOrCreate(0);
             objectsByFiles[fileId] = asset;
         }
 

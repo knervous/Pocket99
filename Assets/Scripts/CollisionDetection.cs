@@ -7,6 +7,7 @@ public class CollisionDetection : MonoBehaviour {
 
     public bool collided = false;
     public Collision2D collidedObject;
+    public GameObject player;
 
     public bool Collided
     {
@@ -14,19 +15,10 @@ public class CollisionDetection : MonoBehaviour {
         set { collided = value; }
     }
 
-
-    Vector3 lastPos;
-
 	void Start () {
-        lastPos = new Vector3();
+       
 	}
 	
-	
-
-    void Awake()
-    {
-        lastPos = transform.position;
-    }
 
 
     void OnCollisionEnter2D(Collision2D collider)
@@ -34,9 +26,10 @@ public class CollisionDetection : MonoBehaviour {
         collided = true;
         if (!(collider.gameObject.tag == "Player"))
         {
-            Debug.Log("Trying mags " + GetComponent<ClickMove>().XMag + " " + GetComponent<ClickMove>().YMag);
-            transform.Translate(-GetComponent<ClickMove>().XMag * Time.deltaTime, -GetComponent<ClickMove>().YMag * Time.deltaTime, 0);
-            GetComponent<ClickMove>().isMoving = false;
+            Debug.Log("Trying mags " + player.GetComponent<ClickMove>().XMag + " " + player.GetComponent<ClickMove>().YMag);
+            player.transform.Translate(-player.GetComponent<ClickMove>().XMag * Time.deltaTime, -player.GetComponent<ClickMove>().YMag * Time.deltaTime, 0);
+            player.GetComponent<ClickMove>().isMoving = false;
+            
         }
     }
 
@@ -46,18 +39,18 @@ public class CollisionDetection : MonoBehaviour {
         collided = true;
         if(!(collider.gameObject.tag == "Player"))
         {
-            transform.Translate(-GetComponent<ClickMove>().XMag * Time.deltaTime * GetComponent<PlayerAttributes>().PlayerSpeed, -GetComponent<ClickMove>().YMag * Time.deltaTime * GetComponent<PlayerAttributes>().PlayerSpeed, 0);
-            GetComponent<ClickMove>().isMoving = false;
+            player.transform.Translate(-player.GetComponent<ClickMove>().XMag * Time.deltaTime * player.GetComponent<PlayerAttributes>().PlayerSpeed, -player.GetComponent<ClickMove>().YMag * Time.deltaTime * player.GetComponent<PlayerAttributes>().PlayerSpeed, 0);
+            player.GetComponent<ClickMove>().isMoving = false;
         }
 
     }
 
     void OnCollisionExit2D(Collision2D collider)
     {
-      //  GetComponent<BoxCollider2D>().size = GetComponent<PlayerAttributes>().HitBoxSize;
+      //  player.GetComponent<BoxCollider2D>().size = player.GetComponent<PlayerAttributes>().HitBoxSize;
 
         //collided = false;
-        //GetComponent<ClickMove>().isMoving = true;
+        //player.GetComponent<ClickMove>().isMoving = true;
     }
 
     // Update is called once per frame

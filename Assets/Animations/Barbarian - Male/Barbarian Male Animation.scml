@@ -13,32 +13,29 @@
         <file id="9" name="Images/BARB_MALE_SIDE_Right_Leg_Lower.png" width="55" height="157" pivot_x="0" pivot_y="1"/>
         <file id="10" name="Images/BARB_MALE_SIDE_Right_Wrist.png" width="58" height="126" pivot_x="0" pivot_y="1"/>
         <file id="11" name="Images/BARB_MALE_SIDE_Right_Arm.png" width="53" height="114" pivot_x="0" pivot_y="1"/>
-    </folder>
-    <folder id="1" name="Images">
-        <file id="0" name="Images/BARB_MALE_FRONT_Head.png" width="53" height="81" pivot_x="0.509434" pivot_y="0.0246914"/>
-        <file id="1" name="Images/BARB_MALE_FRONT_Kilt.png" width="96" height="118" pivot_x="0.510417" pivot_y="0.813559"/>
-        <file id="2" name="Images/BARB_MALE_FRONT_Chest.png" width="111" height="157" pivot_x="0" pivot_y="1"/>
-        <file id="3" name="Images/BARB_MALE_FRONT_Left_Arm.png" width="33" height="98" pivot_x="0.242424" pivot_y="0.704082"/>
-        <file id="4" name="Images/BARB_MALE_FRONT_Left_Foot.png" width="32" height="56" pivot_x="0.25" pivot_y="0.892857"/>
-        <file id="5" name="Images/BARB_MALE_FRONT_Left_Shin.png" width="37" height="141" pivot_x="0.432432" pivot_y="0.943262"/>
-        <file id="6" name="Images/BARB_MALE_FRONT_Left_Wrist.png" width="32" height="98" pivot_x="0.4375" pivot_y="0.908163"/>
-        <file id="7" name="Images/BARB_MALE_FRONT_Right_Arm.png" width="32" height="94" pivot_x="0.65625" pivot_y="0.776596"/>
-        <file id="8" name="Images/BARB_MALE_FRONT_Right_Foot.png" width="29" height="49" pivot_x="0.586207" pivot_y="0.897959"/>
-        <file id="9" name="Images/BARB_MALE_FRONT_Right_Wrist.png" width="59" height="125" pivot_x="0" pivot_y="1"/>
-        <file id="10" name="Images/BARB_MALE_SIDE_Right_Wrist.png" width="58" height="126" pivot_x="0" pivot_y="1"/>
-        <file id="11" name="Images/BARB_MALE_FRONT_Right_Shin.png" width="37" height="140" pivot_x="0" pivot_y="1"/>
-        <file id="12" name="Images/GhostLayer.png" width="20" height="20" pivot_x="0" pivot_y="1"/>
-        <file id="13" name="Images/BARB_MALE_BACK_Chest.png" width="129" height="138" pivot_x="0" pivot_y="1"/>
-        <file id="14" name="Images/BARB_MALE_BACK_Kilt.png" width="89" height="112" pivot_x="0" pivot_y="1"/>
-        <file id="15" name="Images/BARB_MALE_BACK_Head.png" width="54" height="84" pivot_x="0" pivot_y="1"/>
-        <file id="16" name="Images/BARB_MALE_BACK_LeftArm.png" width="33" height="88" pivot_x="0" pivot_y="1"/>
-        <file id="17" name="Images/BARB_MALE_BACK_LeftFoot.png" width="28" height="34" pivot_x="0" pivot_y="1"/>
-        <file id="18" name="Images/BARB_MALE_BACK_LeftLeg.png" width="34" height="162" pivot_x="0" pivot_y="1"/>
-        <file id="19" name="Images/BARB_MALE_BACK_LeftWrist.png" width="40" height="103" pivot_x="0" pivot_y="1"/>
-        <file id="20" name="Images/BARB_MALE_BACK_RightArm.png" width="34" height="86" pivot_x="0" pivot_y="1"/>
-        <file id="21" name="Images/BARB_MALE_BACK_RightFoot.png" width="30" height="39" pivot_x="0" pivot_y="1"/>
-        <file id="22" name="Images/BARB_MALE_BACK_RightLeg.png" width="36" height="163" pivot_x="0" pivot_y="1"/>
-        <file id="23" name="Images/BARB_MALE_BACK_RightWrist.png" width="32" height="96" pivot_x="0" pivot_y="1"/>
+        <file id="11" name="Images/BARB_MALE_FRONT_Head.png" width="53" height="81" pivot_x="0.509434" pivot_y="0.0246914"/>
+        <file id="12" name="Images/BARB_MALE_FRONT_Kilt.png" width="96" height="118" pivot_x="0.510417" pivot_y="0.813559"/>
+        <file id="13" name="Images/BARB_MALE_FRONT_Chest.png" width="111" height="157" pivot_x="0" pivot_y="1"/>
+        <file id="14" name="Images/BARB_MALE_FRONT_Left_Arm.png" width="33" height="98" pivot_x="0.242424" pivot_y="0.704082"/>
+        <file id="15" name="Images/BARB_MALE_FRONT_Left_Foot.png" width="32" height="56" pivot_x="0.25" pivot_y="0.892857"/>
+        <file id="16" name="Images/BARB_MALE_FRONT_Left_Shin.png" width="37" height="141" pivot_x="0.432432" pivot_y="0.943262"/>
+        <file id="17" name="Images/BARB_MALE_FRONT_Left_Wrist.png" width="32" height="98" pivot_x="0.4375" pivot_y="0.908163"/>
+        <file id="18" name="Images/BARB_MALE_FRONT_Right_Arm.png" width="32" height="94" pivot_x="0.65625" pivot_y="0.776596"/>
+        <file id="19" name="Images/BARB_MALE_FRONT_Right_Foot.png" width="29" height="49" pivot_x="0.586207" pivot_y="0.897959"/>
+        <file id="20" name="Images/BARB_MALE_FRONT_Right_Wrist.png" width="59" height="125" pivot_x="0" pivot_y="1"/>
+        <file id="21" name="Images/BARB_MALE_SIDE_Right_Wrist.png" width="58" height="126" pivot_x="0" pivot_y="1"/>
+        <file id="22" name="Images/BARB_MALE_FRONT_Right_Shin.png" width="37" height="140" pivot_x="0" pivot_y="1"/>
+        <file id="23" name="Images/BARB_MALE_BACK_Chest.png" width="129" height="138" pivot_x="0" pivot_y="1"/>
+        <file id="24" name="Images/BARB_MALE_BACK_Kilt.png" width="89" height="112" pivot_x="0" pivot_y="1"/>
+        <file id="25" name="Images/BARB_MALE_BACK_Head.png" width="54" height="84" pivot_x="0" pivot_y="1"/>
+        <file id="26" name="Images/BARB_MALE_BACK_LeftArm.png" width="33" height="88" pivot_x="0" pivot_y="1"/>
+        <file id="27" name="Images/BARB_MALE_BACK_LeftFoot.png" width="28" height="34" pivot_x="0" pivot_y="1"/>
+        <file id="28" name="Images/BARB_MALE_BACK_LeftLeg.png" width="34" height="162" pivot_x="0" pivot_y="1"/>
+        <file id="29" name="Images/BARB_MALE_BACK_LeftWrist.png" width="40" height="103" pivot_x="0" pivot_y="1"/>
+        <file id="30" name="Images/BARB_MALE_BACK_RightArm.png" width="34" height="86" pivot_x="0" pivot_y="1"/>
+        <file id="31" name="Images/BARB_MALE_BACK_RightFoot.png" width="30" height="39" pivot_x="0" pivot_y="1"/>
+        <file id="32" name="Images/BARB_MALE_BACK_RightLeg.png" width="36" height="163" pivot_x="0" pivot_y="1"/>
+        <file id="33" name="Images/BARB_MALE_BACK_RightWrist.png" width="32" height="96" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="Barb Male Base">
         <obj_info name="bone_000" type="bone" w="180.755" h="10"/>

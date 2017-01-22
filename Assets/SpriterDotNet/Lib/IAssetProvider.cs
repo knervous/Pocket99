@@ -29,6 +29,11 @@ namespace SpriterDotNet
         /// </summary>
         void Set(int folderId, int fileId, T asset);
 
+
+        //Set without folder ID
+        void Set(int fileId, T asset);
+
+
         /// <summary>
         /// Swaps one asset with another
         /// </summary>

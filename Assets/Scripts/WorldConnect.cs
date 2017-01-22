@@ -20,6 +20,7 @@ public class WorldConnect : MonoBehaviour {
     public GameObject zoneConnectSocket;
     public CharacterSelect CharSelect;
     public CharacterCreate CharCreate;
+    public GameObject MainPlayer;
     public bool loggedIn = false;
 
     public Account server_account;
@@ -146,17 +147,28 @@ public class WorldConnect : MonoBehaviour {
                 SceneManager.LoadScene("Qeynos2Scene");
                 zoneConnectSocket.SetActive(true);
                 socket.Emit("zone_into_world", player.CreateServerPlayer());
+                MainPlayer.SetActive(true);
+
                 var newPlayer = Instantiate(Resources.Load("Prefabs/Character Models/BarbarianMale")) as GameObject;
-                newPlayer.name = player.name_;
+                newPlayer.transform.parent = MainPlayer.transform;
+                newPlayer.transform.localScale = new Vector3(1, 1, 1);
+                newPlayer.transform.position = new Vector3(1, 1, 1);
+                MainPlayer.transform.position = new Vector3(1, 1, 1);
+                newPlayer.GetComponent<Animation>().Player = MainPlayer;
+                newPlayer.GetComponent<CollisionDetection>().player = MainPlayer;
+                MainPlayer.GetComponent<ClickMove>().playerModel = newPlayer;
+                MainPlayer.name = player.name_;
                 newPlayer.tag = "Player";
                 DontDestroyOnLoad(newPlayer);
-                zoneConnectSocket.GetComponent<Network>().myPlayer = newPlayer;
+                zoneConnectSocket.GetComponent<Network>().myPlayer = MainPlayer;
                 loginCam.gameObject.SetActive(false);
                 gameCam.gameObject.SetActive(true);
                 gameCam.tag = "MainCamera";
-                gameCam.GetComponent<CameraFollow>().player = newPlayer;
-                gameCam.GetComponent<ScreenClicker>().player = newPlayer;
+                gameCam.GetComponent<CameraFollow>().player = MainPlayer;
+                gameCam.GetComponent<ScreenClicker>().player = MainPlayer;
                 gameCam.GetComponent<CameraFollow>().StartCamera();
+
+
                 break;
         }
     }

@@ -13,7 +13,7 @@ public class ScreenClicker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        
+        DontDestroyOnLoad(this);
     }
 	
 	// Update is called once per frame
@@ -58,6 +58,10 @@ public class ScreenClicker : MonoBehaviour {
                     break;
             }
         }
+
+        Debug.Log("TARGET WORLD POINT: " + target);
         clickMove.OnClick(new Vector3(target.x, target.y, 0));
+        //var hct = hitCollider.transform.position + hitCollider.transform.TransformDirection(new Vector3(0, 0, -1));
+        //clickMove.OnClick(hct);
     }
 }

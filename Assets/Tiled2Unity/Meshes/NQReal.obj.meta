@@ -92,6 +92,12 @@ ModelImporter:
     100168: mesh_0085
     100170: //RootNode
     100172: mesh_0086
+    100174: mesh_0087
+    100176: mesh_0088
+    100178: mesh_0089
+    100180: mesh_0090
+    100182: mesh_0091
+    100184: mesh_0092
     400000: mesh_0001
     400002: mesh_0002
     400004: mesh_0003
@@ -179,6 +185,12 @@ ModelImporter:
     400168: mesh_0085
     400170: //RootNode
     400172: mesh_0086
+    400174: mesh_0087
+    400176: mesh_0088
+    400178: mesh_0089
+    400180: mesh_0090
+    400182: mesh_0091
+    400184: mesh_0092
     2300000: mesh_0001
     2300002: mesh_0002
     2300004: mesh_0003
@@ -265,6 +277,12 @@ ModelImporter:
     2300166: mesh_0084
     2300168: mesh_0085
     2300170: mesh_0086
+    2300172: mesh_0087
+    2300174: mesh_0088
+    2300176: mesh_0089
+    2300178: mesh_0090
+    2300180: mesh_0091
+    2300182: mesh_0092
     3300000: mesh_0001
     3300002: mesh_0002
     3300004: mesh_0003
@@ -351,6 +369,12 @@ ModelImporter:
     3300166: mesh_0084
     3300168: mesh_0085
     3300170: mesh_0086
+    3300172: mesh_0087
+    3300174: mesh_0088
+    3300176: mesh_0089
+    3300178: mesh_0090
+    3300180: mesh_0091
+    3300182: mesh_0092
     4300000: mesh_0001
     4300002: mesh_0002
     4300004: mesh_0003
@@ -437,6 +461,12 @@ ModelImporter:
     4300166: mesh_0084
     4300168: mesh_0085
     4300170: mesh_0086
+    4300172: mesh_0087
+    4300174: mesh_0088
+    4300176: mesh_0089
+    4300178: mesh_0090
+    4300180: mesh_0091
+    4300182: mesh_0092
     11400000: mesh_0001
     11400002: mesh_0002
     11400004: mesh_0003
@@ -523,6 +553,12 @@ ModelImporter:
     11400166: mesh_0084
     11400168: mesh_0085
     11400170: mesh_0086
+    11400172: mesh_0087
+    11400174: mesh_0088
+    11400176: mesh_0089
+    11400178: mesh_0090
+    11400180: mesh_0091
+    11400182: mesh_0092
   materials:
     importMaterials: 0
     materialName: 0
@@ -569,6 +605,7 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -579,7 +616,10 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 0
   humanoidOversampling: 1

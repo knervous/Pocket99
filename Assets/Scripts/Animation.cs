@@ -8,17 +8,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using Assets.Scripts.Data_Models;
 
 public class Animation : MonoBehaviour
 {
-
-    // Use this for initialization
-
-
-    public Text Text;
-
-    
-
 
     [HideInInspector]
     public float AnimatorSpeed = 1.0f;
@@ -29,115 +22,125 @@ public class Animation : MonoBehaviour
     [HideInInspector]
     public float TransitionTime = 1.0f;
 
-    private GameObject player;
     private ClickMove clickMove;
     private bool idleOn = true;
 
     private UnityAnimator animator;
     private Spriter spriter;
+    public string charModel = "Barbarian";
     public string direction = "Down";
     public string animateString = "Idle Down";
 
+    public GameObject Player;
 
     private float Timer = .05f;
 
-
     void Start()
     {
-        player = gameObject;
-        clickMove = GetComponent<ClickMove>();
+        StartCoroutine(LateStart(.1f));
     }
 
-    void Update()
+    IEnumerator LateStart(float waitTime)
+    {
+        while (animator == null || Player == null)
+        {
+            yield return new WaitForSeconds(waitTime);
+            animator = GetComponent<SpriterDotNetBehaviour>().Animator;
+            clickMove = Player.GetComponent<ClickMove>();
+            spriter = animator.Entity.Spriter;
+
+            EquipmentTextureSwapper.Instance.SetCharacterModel(charModel, animator, new Inventory());
+        }
+    }
+
+void Update()
     {
 
-    
-        if (animator == null)
+        if (Input.GetKeyDown(KeyCode.F2))
         {
-            animator = GetComponent<SpriterDotNetBehaviour>().Animator;
-            spriter = animator.Entity.Spriter;
+            EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, new Inventory());
+
+            var g = EquipmentTextureSwapper.Instance;
+            var x = 0;
         }
 
-        if(Input.GetKeyDown(KeyCode.F2))
+        if (clickMove != null)
+        {
+            if (clickMove.XMag < 0 && (Math.Abs(clickMove.XMag) > Math.Abs(clickMove.YMag)))
             {
-                
-            }
 
-
-        if (clickMove.XMag < 0 && (Math.Abs(clickMove.XMag) > Math.Abs(clickMove.YMag)))
-        {
-
-            if (idleOn || direction != "Left")
-            {
-                Timer = 0;
+                if (idleOn || direction != "Left")
+                {
+                    Timer = 0;
+                }
+                idleOn = false;
+                direction = "Left";
+                animateString = "Walk Left";
             }
-            idleOn = false;
-            direction = "Left";
-            animateString = "Walk Left";
-        }
-        else if(clickMove.XMag > 0 && (Math.Abs(clickMove.XMag) > Math.Abs(clickMove.YMag)))
-        {
-            if (idleOn || direction != "Right")
+            else if (clickMove.XMag > 0 && (Math.Abs(clickMove.XMag) > Math.Abs(clickMove.YMag)))
             {
-                Timer = 0;
+                if (idleOn || direction != "Right")
+                {
+                    Timer = 0;
+                }
+                idleOn = false;
+                direction = "Right";
+                animateString = "Walk Right";
             }
-            idleOn = false;
-            direction = "Right";
-            animateString = "Walk Right";
-        }
-        else if (clickMove.YMag < 0 && (Math.Abs(clickMove.YMag) > Math.Abs(clickMove.XMag)))
-        {
-            if (idleOn || direction != "Down")
+            else if (clickMove.YMag < 0 && (Math.Abs(clickMove.YMag) > Math.Abs(clickMove.XMag)))
             {
-                Timer = 0;
+                if (idleOn || direction != "Down")
+                {
+                    Timer = 0;
+                }
+                idleOn = false;
+                direction = "Down";
+                animateString = "Walk Down";
             }
-            idleOn = false;
-            direction = "Down";
-            animateString = "Walk Down";
-        }
-        else if (clickMove.YMag > 0 && (Math.Abs(clickMove.YMag) > Math.Abs(clickMove.XMag)))
-        {
-            if (idleOn || direction != "Up")
+            else if (clickMove.YMag > 0 && (Math.Abs(clickMove.YMag) > Math.Abs(clickMove.XMag)))
             {
-                Timer = 0;
+                if (idleOn || direction != "Up")
+                {
+                    Timer = 0;
+                }
+                idleOn = false;
+                direction = "Up";
+                animateString = "Walk Up";
             }
-            idleOn = false;
-            direction = "Up";
-            animateString = "Walk Up";
-        }
-        else if (!clickMove.isMoving)
-        {
-            if(!idleOn)
+            else if (!clickMove.isMoving)
             {
-                Timer = 0;
-                idleOn = true;
-            }  
-            switch (direction)
-            {
-                case "Left":
-                    animateString = "Idle Left";
-                    break;
-                case "Right":
-                    animateString = "Idle Right";
-                    break;
-                case "Up":
-                    animateString = "Idle Up";
-                    break;
-                case "Down":
-                    animateString = "Idle Down";
-                    break;
+                if (!idleOn)
+                {
+                    Timer = 0;
+                    idleOn = true;
+                }
+                switch (direction)
+                {
+                    case "Left":
+                        animateString = "Idle Left";
+                        break;
+                    case "Right":
+                        animateString = "Idle Right";
+                        break;
+                    case "Up":
+                        animateString = "Idle Up";
+                        break;
+                    case "Down":
+                        animateString = "Idle Down";
+                        break;
+                }
             }
         }
 
-
-
-        Timer -= Time.deltaTime;
-        if (Timer <= 0f)
+        if (animator != null)
         {
-            animator.Play(animateString);
-            Timer = animator.CurrentAnimation.Length / 1000;
+            Timer -= Time.deltaTime;
+            if (Timer <= 0f)
+            {
+                animator.Play(animateString);
+                Timer = animator.CurrentAnimation.Length / 1000;
+            }
         }
-
     }
 
 
