@@ -95,7 +95,7 @@ void Update()
                 }
                 idleOn = false;
                 direction = "Down";
-                animateString = "Walk Down";
+                animateString = "Walk Front";
             }
             else if (clickMove.YMag > 0 && (Math.Abs(clickMove.YMag) > Math.Abs(clickMove.XMag)))
             {
@@ -105,7 +105,7 @@ void Update()
                 }
                 idleOn = false;
                 direction = "Up";
-                animateString = "Walk Up";
+                animateString = "Walk Back";
             }
             else if (!clickMove.isMoving)
             {
@@ -123,10 +123,10 @@ void Update()
                         animateString = "Idle Right";
                         break;
                     case "Up":
-                        animateString = "Idle Up";
+                        animateString = "Idle Back";
                         break;
                     case "Down":
-                        animateString = "Idle Down";
+                        animateString = "Idle Front";
                         break;
                 }
             }

@@ -149,7 +149,7 @@ public class WorldConnect : MonoBehaviour {
                 socket.Emit("zone_into_world", player.CreateServerPlayer());
                 MainPlayer.SetActive(true);
 
-                var newPlayer = Instantiate(Resources.Load("Prefabs/Character Models/BarbarianMale")) as GameObject;
+                var newPlayer = Instantiate(Resources.Load("Textures/Character Models/Barbarian/Male/Barbarian Male")) as GameObject;
                 newPlayer.transform.parent = MainPlayer.transform;
                 newPlayer.transform.localScale = new Vector3(1, 1, 1);
                 newPlayer.transform.position = new Vector3(1, 1, 1);

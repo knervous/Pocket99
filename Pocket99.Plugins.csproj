@@ -15,8 +15,8 @@
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>GamePlugins:3</UnityProjectType>
-    <UnityBuildTarget>Android:13</UnityBuildTarget>
-    <UnityVersion>5.5.0f3</UnityVersion>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityVersion>5.5.0p3</UnityVersion>
     <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
@@ -27,7 +27,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VIDEO;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;CROSS_PLATFORM_INPUT;MOBILE_INPUT</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VIDEO;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;CROSS_PLATFORM_INPUT</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -37,7 +37,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VIDEO;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;CROSS_PLATFORM_INPUT;MOBILE_INPUT</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VIDEO;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;CROSS_PLATFORM_INPUT</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -202,6 +202,224 @@
     <Compile Include="Assets\Standard Assets\Utility\WaypointProgressTracker.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Resources\Analog Bank\analog.txt" />
+    <None Include="Assets\Resources\FM Bank\fm.txt" />
+    <None Include="Assets\Resources\GM Bank\5thSawWave.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Accordion.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\AcousticBass.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Agogo.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\AltoSax.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Applause.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Atmosphere.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Bagpipe.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Bandoneon.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Banjo.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\BaritoneSax.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\BassLead.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Bassoon.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Bird.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\BottleBlow.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\BowedGlass.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Brass1.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\BreathNoise.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Brightness.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Brush.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Celesta.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Cello.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Charang.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\ChifferLead.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\ChoirAahs.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\ChurchOrgan1.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Clarinet.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Clav.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\CleanGtr.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Contrabass.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Crystal.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\DistortionGtr.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\EchoDrops.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\ElectricPiano1.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\ElectricPiano2.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Electronic.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\EnglishHorn.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Fantasia.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Fiddle.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\FingerBass.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Flute.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\FrenchHorns.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\FretlessBass.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Glockenspiel.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Goblin.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\GtFretNoise.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Gunshot.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\HaloPad.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\HarmonicGtr.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Harmonica.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Harp.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Harpsichord.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Helicopter.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Honkytonk.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\IceRain.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Jazz.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\JazzGtr.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Kalimba.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Koto.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Marimba.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\MeloTom1.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\MetalPad.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\MusicBox.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\MuteGtr.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\MuteTrumpet.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\NylonGtr.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Oboe.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Ocarina.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Orchestra.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\OrchestraHit.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Organ1.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Organ2.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Organ3.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\OverdriveGtr.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\PanFlute.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Piano1.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Piano2.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Piano3.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Piccolo.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\PickedBass.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\PizzicatoStr.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Polysynth.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Power.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Recorder.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\ReedOrgan.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\ReverseCym.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Room.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SFX.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Santur.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SawWave.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Seashore.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Shakuhachi.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Shamisen.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Shanai.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Sitar.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SlapBass1.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SlapBass2.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SlowStrings.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SoloVox.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SopranoSax.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Soundtrack.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SpaceVoice.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SquareWave.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Standard.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\StarTheme.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SteelDrums.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SteelGtr.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Strings.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SweepPad.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SynthBass1.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SynthBass2.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SynthBrass1.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SynthBrass2.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SynthCalliope.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SynthDrum.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SynthStrings1.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SynthStrings2.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\SynthVox.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\TR-808.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Taiko.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Telephone1.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\TenorSax.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Timpani.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\TinkleBell.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\TremoloStr.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Trombone.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Trumpet.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Tuba.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\TubularBell.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Vibraphone.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Viola.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Violin.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\VoiceOohs.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\WarmPad.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Whistle.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Woodblock.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\Xylophone.sfz.txt" />
+    <None Include="Assets\Resources\GM Bank\gm.txt" />
+    <None Include="Assets\Resources\Midis\Academy.mid.txt" />
+    <None Include="Assets\Resources\Midis\Ak%60Anon.mid.txt" />
+    <None Include="Assets\Resources\Midis\Arena.mid.txt" />
+    <None Include="Assets\Resources\Midis\Character Screen.mid.txt" />
+    <None Include="Assets\Resources\Midis\Combat1.mid.txt" />
+    <None Include="Assets\Resources\Midis\Combat2.mid.txt" />
+    <None Include="Assets\Resources\Midis\Combat3.mid.txt" />
+    <None Include="Assets\Resources\Midis\Crystal.mid.txt" />
+    <None Include="Assets\Resources\Midis\Death.mid.txt" />
+    <None Include="Assets\Resources\Midis\Desert of Ro.mid.txt" />
+    <None Include="Assets\Resources\Midis\Divinity.mid.txt" />
+    <None Include="Assets\Resources\Midis\E32.mid.txt" />
+    <None Include="Assets\Resources\Midis\Eerie 1.mid.txt" />
+    <None Include="Assets\Resources\Midis\Eerie 10 (Crushbone).mid.txt" />
+    <None Include="Assets\Resources\Midis\Eerie 11 (Blackburrow).mid.txt" />
+    <None Include="Assets\Resources\Midis\Eerie 12.mid.txt.txt" />
+    <None Include="Assets\Resources\Midis\Eerie 2 (Qeynos Catacombs).mid.txt" />
+    <None Include="Assets\Resources\Midis\Eerie 3.mid.txt" />
+    <None Include="Assets\Resources\Midis\Eerie 4.mid.txt" />
+    <None Include="Assets\Resources\Midis\Eerie 5.mid.txt" />
+    <None Include="Assets\Resources\Midis\Eerie 6 (Stronghold).mid.txt" />
+    <None Include="Assets\Resources\Midis\Eerie 7.mid.txt" />
+    <None Include="Assets\Resources\Midis\Eerie 8.mid.txt" />
+    <None Include="Assets\Resources\Midis\Eerie 9.mid.txt" />
+    <None Include="Assets\Resources\Midis\Everquest - Original Opening Theme.mid.txt" />
+    <None Include="Assets\Resources\Midis\Fanfare 1.mid.txt" />
+    <None Include="Assets\Resources\Midis\Fanfare 2.mid.txt" />
+    <None Include="Assets\Resources\Midis\Fanfare 3.mid.txt" />
+    <None Include="Assets\Resources\Midis\Felwithe.mid.txt" />
+    <None Include="Assets\Resources\Midis\FelwitheFinale.mid.txt" />
+    <None Include="Assets\Resources\Midis\FelwitheIntermission.mid.txt" />
+    <None Include="Assets\Resources\Midis\Freeport.mid.txt" />
+    <None Include="Assets\Resources\Midis\Guildmaster.mid.txt" />
+    <None Include="Assets\Resources\Midis\Hate.mid.txt" />
+    <None Include="Assets\Resources\Midis\Haven.mid.txt" />
+    <None Include="Assets\Resources\Midis\HavenFull.mid.txt" />
+    <None Include="Assets\Resources\Midis\Hideout.mid.txt" />
+    <None Include="Assets\Resources\Midis\Home.mid.txt" />
+    <None Include="Assets\Resources\Midis\Honor.mid.txt" />
+    <None Include="Assets\Resources\Midis\Inn.mid.txt" />
+    <None Include="Assets\Resources\Midis\Intense.mid.txt" />
+    <None Include="Assets\Resources\Midis\Island.mid.txt" />
+    <None Include="Assets\Resources\Midis\Jtbach.mid.txt" />
+    <None Include="Assets\Resources\Midis\Kaladim.mid.txt" />
+    <None Include="Assets\Resources\Midis\Kelethin.mid.txt" />
+    <None Include="Assets\Resources\Midis\KelethinFull.mid.txt" />
+    <None Include="Assets\Resources\Midis\Kerra Isle.mid.txt" />
+    <None Include="Assets\Resources\Midis\Lavastorm.mid.txt" />
+    <None Include="Assets\Resources\Midis\Market.mid.txt" />
+    <None Include="Assets\Resources\Midis\Merchant.mid.txt" />
+    <None Include="Assets\Resources\Midis\Mystery.mid.txt" />
+    <None Include="Assets\Resources\Midis\Peril.mid.txt" />
+    <None Include="Assets\Resources\Midis\PlaneofSky.mid.txt" />
+    <None Include="Assets\Resources\Midis\Pomp.mid.txt" />
+    <None Include="Assets\Resources\Midis\Qeynos.mid.txt" />
+    <None Include="Assets\Resources\Midis\Rest.mid.txt" />
+    <None Include="Assets\Resources\Midis\Rivervale.mid.txt" />
+    <None Include="Assets\Resources\Midis\Rumors.mid.txt" />
+    <None Include="Assets\Resources\Midis\Sanctuary.mid.txt" />
+    <None Include="Assets\Resources\Midis\Sea.mid.txt" />
+    <None Include="Assets\Resources\Midis\Secrets.mid.txt" />
+    <None Include="Assets\Resources\Midis\Slums.mid.txt" />
+    <None Include="Assets\Resources\Midis\Sneaking.mid.txt.txt" />
+    <None Include="Assets\Resources\Midis\Solitude.mid.txt" />
+    <None Include="Assets\Resources\Midis\Tavern.mid.txt" />
+    <None Include="Assets\Resources\Midis\ThurgadinA.mid.txt" />
+    <None Include="Assets\Resources\Midis\ThurgadinB.mid.txt" />
+    <None Include="Assets\Resources\Midis\Toxxulia Forest.mid.txt" />
+    <None Include="Assets\Resources\Midis\Traps.mid.txt" />
+    <None Include="Assets\Resources\Midis\Underwater.mid.txt" />
+    <None Include="Assets\Resources\Midis\VBar.mid.txt" />
+    <None Include="Assets\Resources\Midis\Velketor&apos;s Labyrinth 1.mid.txt" />
+    <None Include="Assets\Resources\Midis\Velketor&apos;s Labyrinth 2.mid.txt" />
+    <None Include="Assets\Resources\Midis\Wakening Lands.mid.txt" />
+    <None Include="Assets\Resources\Midis\Winding Roads.mid.txt" />
+    <None Include="Assets\Resources\Midis\opener2.midi.txt" />
+    <None Include="Assets\Resources\Midis\test.mid.txt" />
+    <None Include="Assets\Resources\Midis\test2.mid.txt" />
     <None Include="Assets\Resources\Text\WeaponIndex.txt" />
     <None Include="Assets\SocketIO\JSONObject\readme.txt" />
     <None Include="Assets\SocketIO\Readme.txt" />
