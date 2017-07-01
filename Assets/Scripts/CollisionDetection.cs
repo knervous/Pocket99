@@ -37,7 +37,8 @@ public class CollisionDetection : MonoBehaviour {
     void OnCollisionStay2D(Collision2D collider)
     {
         collided = true;
-        if(!(collider.gameObject.tag == "Player"))
+        //if(!(collider.gameObject.tag == "Player"))
+        if(collider.gameObject.GetComponent<PolygonCollider2D>() != null)
         {
             player.transform.Translate(-player.GetComponent<ClickMove>().XMag * Time.deltaTime * player.GetComponent<PlayerAttributes>().PlayerSpeed, -player.GetComponent<ClickMove>().YMag * Time.deltaTime * player.GetComponent<PlayerAttributes>().PlayerSpeed, 0);
             player.GetComponent<ClickMove>().isMoving = false;

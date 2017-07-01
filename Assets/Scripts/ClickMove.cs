@@ -11,7 +11,6 @@ public class ClickMove : MonoBehaviour {
     public bool isMoving = false;
     public static float colliderCoefficient = 1;
     public bool moveBackWards;
-    public GameObject playerModel;
 
     public float XMag { get; set; }
 

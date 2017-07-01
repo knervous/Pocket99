@@ -145,6 +145,9 @@ public class WorldConnect : MonoBehaviour {
             //    break;
             default:
                 SceneManager.LoadScene("Qeynos2Scene");
+                string newUrl = socket.url.Split(':')[2];
+
+                //zoneConnectSocket.GetComponent<SocketIOComponent>().url = "ws://localhost:5998/socket.io/?EIO=4&transport=websocket";
                 zoneConnectSocket.SetActive(true);
                 socket.Emit("zone_into_world", player.CreateServerPlayer());
                 MainPlayer.SetActive(true);
@@ -156,8 +159,8 @@ public class WorldConnect : MonoBehaviour {
                 MainPlayer.transform.position = new Vector3(1, 1, 1);
                 newPlayer.GetComponent<Animation>().Player = MainPlayer;
                 newPlayer.GetComponent<CollisionDetection>().player = MainPlayer;
-                MainPlayer.GetComponent<ClickMove>().playerModel = newPlayer;
                 MainPlayer.name = player.name_;
+                MainPlayer.GetComponent<PlayerAttributes>().player = player;
                 newPlayer.tag = "Player";
                 DontDestroyOnLoad(newPlayer);
                 zoneConnectSocket.GetComponent<Network>().myPlayer = MainPlayer;

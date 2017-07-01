@@ -56,11 +56,69 @@ public class Animation : MonoBehaviour
 void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.F2))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
-            EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, new Inventory());
+            Inventory i = new Inventory();
+            i.ArmSlot = new Item() { TextureId = 3};
+            i.ChestSlot = new Item() { TextureId = 3 };
+            i.FeetSlot = new Item() { TextureId = 3 };
+            i.GloveSlot = new Item() { TextureId = 3 };
+            i.LegSlot = new Item() { TextureId = 3 };
+            i.LeftWristSlot = new Item() { TextureId = 3 };
+            EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, i);
+            
 
             var g = EquipmentTextureSwapper.Instance;
+            g.CharModel.refresh();
+        }
+
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            Inventory i = new Inventory();
+            i.ArmSlot = new Item() { TextureId = 1 };
+            i.ChestSlot = new Item() { TextureId = 1  };
+            i.FeetSlot = new Item() { TextureId = 1 };
+            i.GloveSlot = new Item() { TextureId = 1 };
+            i.LegSlot = new Item() { TextureId = 1 };
+            i.LeftWristSlot = new Item() { TextureId = 1 };
+            EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, i);
+
+
+            var g = EquipmentTextureSwapper.Instance;
+            g.CharModel.refresh();
+        }
+
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            Inventory i = new Inventory();
+            i.ArmSlot = new Item() { TextureId = 0 };
+            i.ChestSlot = new Item() { TextureId = 0 };
+            i.FeetSlot = new Item() { TextureId = 0 };
+            i.GloveSlot = new Item() { TextureId = 0 };
+            i.LegSlot = new Item() { TextureId = 0 };
+            i.LeftWristSlot = new Item() { TextureId = 0 };
+            EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, i);
+
+
+            var g = EquipmentTextureSwapper.Instance;
+            g.CharModel.refresh();
+            var x = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            Inventory i = new Inventory();
+            i.ArmSlot = new Item() { TextureId = 2 };
+            i.ChestSlot = new Item() { TextureId = 2 };
+            i.FeetSlot = new Item() { TextureId = 2 };
+            i.GloveSlot = new Item() { TextureId = 2 };
+            i.LegSlot = new Item() { TextureId = 2 };
+            i.LeftWristSlot = new Item() { TextureId = 2 };
+            EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, i);
+
+
+            var g = EquipmentTextureSwapper.Instance;
+            g.CharModel.refresh();
             var x = 0;
         }
 

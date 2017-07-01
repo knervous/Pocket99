@@ -1,0 +1,161 @@
+-debug
+-target:library
+-nowarn:0169
+-langversion:4
+-out:Temp/Assembly-CSharp-Editor.dll
+-unsafe
+-r:"C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll"
+-r:"C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll"
+-r:Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll
+-r:Library/ScriptAssemblies/Assembly-CSharp.dll
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/nunit.framework.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/Editor/UnityEditor.Analytics.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/Editor/UnityEditor.Purchasing.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll"
+-r:"C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll"
+-r:"C:/Program Files/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll"
+-r:"C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll"
+-r:"C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/2015/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll"
+-r:Assets/Plugins/I18N.CJK.dll
+-r:Assets/Plugins/I18N.dll
+-r:Assets/Plugins/I18N.MidEast.dll
+-r:Assets/Plugins/I18N.Other.dll
+-r:Assets/Plugins/I18N.Rare.dll
+-r:Assets/Plugins/I18N.West.dll
+-r:Assets/Plugins/Ionic.Zip.Reduced.dll
+-r:"Assets/Third Party/Entitas/Entitas.Blueprints.dll"
+-r:"Assets/Third Party/Entitas/Entitas.CodeGeneration.Attributes.dll"
+-r:"Assets/Third Party/Entitas/Entitas.dll"
+-r:"Assets/Third Party/Entitas/Entitas.Unity.dll"
+-r:"Assets/Third Party/Entitas/Entitas.Utils.dll"
+-r:"Assets/Third Party/Entitas/Entitas.VisualDebugging.Unity.dll"
+-r:"Assets/Third Party/Entitas/fabl.dll"
+-r:"Assets/Third Party/Entitas/Editor/Entitas.CodeGeneration.CodeGenerator.dll"
+-r:"Assets/Third Party/Entitas/Editor/Entitas.CodeGeneration.dll"
+-r:"Assets/Third Party/Entitas/Editor/Entitas.CodeGeneration.Plugins.dll"
+-r:"Assets/Third Party/Entitas/Editor/Entitas.CodeGeneration.Unity.Editor.dll"
+-r:"Assets/Third Party/Entitas/Editor/Entitas.Migration.dll"
+-r:"Assets/Third Party/Entitas/Editor/Entitas.Migration.Unity.Editor.dll"
+-r:"Assets/Third Party/Entitas/Editor/Entitas.Unity.Editor.dll"
+-r:"Assets/Third Party/Entitas/Editor/Entitas.VisualDebugging.CodeGeneration.Plugins.dll"
+-r:"Assets/Third Party/Entitas/Editor/Entitas.VisualDebugging.Unity.Editor.dll"
+-define:UNITY_5_3_OR_NEWER
+-define:UNITY_5_4_OR_NEWER
+-define:UNITY_5_5_OR_NEWER
+-define:UNITY_5_6_OR_NEWER
+-define:UNITY_5_6_0
+-define:UNITY_5_6
+-define:UNITY_5
+-define:UNITY_64
+-define:ENABLE_AUDIO
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_DUCK_TYPING
+-define:ENABLE_GENERICS
+-define:ENABLE_PVR_GI
+-define:ENABLE_MICROPHONE
+-define:ENABLE_MULTIPLE_DISPLAYS
+-define:ENABLE_PHYSICS
+-define:ENABLE_RUNTIME_NAVMESH_BUILDING
+-define:ENABLE_SPRITERENDERER_FLIPPING
+-define:ENABLE_SPRITES
+-define:ENABLE_TERRAIN
+-define:ENABLE_RAKNET
+-define:ENABLE_UNET
+-define:ENABLE_LZMA
+-define:ENABLE_UNITYEVENTS
+-define:ENABLE_WEBCAM
+-define:ENABLE_WWW
+-define:ENABLE_CLOUD_SERVICES_COLLAB
+-define:ENABLE_CLOUD_SERVICES_ADS
+-define:ENABLE_CLOUD_HUB
+-define:ENABLE_CLOUD_PROJECT_ID
+-define:ENABLE_CLOUD_SERVICES_UNET
+-define:ENABLE_CLOUD_SERVICES_BUILD
+-define:ENABLE_CLOUD_LICENSE
+-define:ENABLE_EDITOR_METRICS
+-define:ENABLE_EDITOR_METRICS_CACHING
+-define:ENABLE_NATIVE_ARRAY
+-define:INCLUDE_DYNAMIC_GI
+-define:INCLUDE_GI
+-define:PLATFORM_SUPPORTS_MONO
+-define:RENDER_SOFTWARE_CURSOR
+-define:INCLUDE_PUBNUB
+-define:ENABLE_PLAYMODE_TESTS_RUNNER
+-define:ENABLE_SCRIPTING_NEW_CSHARP_COMPILER
+-define:ENABLE_VIDEO
+-define:UNITY_STANDALONE_WIN
+-define:UNITY_STANDALONE
+-define:ENABLE_SUBSTANCE
+-define:ENABLE_RUNTIME_GI
+-define:ENABLE_MOVIES
+-define:ENABLE_NETWORK
+-define:ENABLE_CRUNCH_TEXTURE_COMPRESSION
+-define:ENABLE_UNITYWEBREQUEST
+-define:ENABLE_CLOUD_SERVICES
+-define:ENABLE_CLOUD_SERVICES_ANALYTICS
+-define:ENABLE_CLOUD_SERVICES_PURCHASING
+-define:ENABLE_CLOUD_SERVICES_CRASH_REPORTING
+-define:ENABLE_EVENT_QUEUE
+-define:ENABLE_CLUSTERINPUT
+-define:ENABLE_VR
+-define:ENABLE_WEBSOCKET_HOST
+-define:ENABLE_MONO
+-define:NET_2_0_SUBSET
+-define:ENABLE_PROFILER
+-define:DEBUG
+-define:TRACE
+-define:UNITY_ASSERTIONS
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_64
+-define:UNITY_EDITOR_WIN
+-define:ENABLE_NATIVE_ARRAY_CHECKS
+-define:UNITY_TEAM_LICENSE
+-define:ENABLE_VSTU
+-define:CROSS_PLATFORM_INPUT
+Assets/Editor/CrossPlatformInput/CrossPlatformInputInitialize.cs
+Assets/Editor/ImageEffects/AntialiasingEditor.cs
+Assets/Editor/ImageEffects/BloomAndFlaresEditor.cs
+Assets/Editor/ImageEffects/BloomEditor.cs
+Assets/Editor/ImageEffects/CameraMotionBlurEditor.cs
+Assets/Editor/ImageEffects/ColorCorrectionCurvesEditor.cs
+Assets/Editor/ImageEffects/ColorCorrectionLookupEditor.cs
+Assets/Editor/ImageEffects/CreaseShadingEditor.cs
+Assets/Editor/ImageEffects/DepthOfFieldDeprecatedEditor.cs
+Assets/Editor/ImageEffects/DepthOfFieldEditor.cs
+Assets/Editor/ImageEffects/EdgeDetectionEditor.cs
+Assets/Editor/ImageEffects/NoiseAndGrainEditor.cs
+Assets/Editor/ImageEffects/SunShaftsEditor.cs
+Assets/Editor/ImageEffects/TonemappingEditor.cs
+Assets/Editor/ImageEffects/VignetteAndChromaticAberrationEditor.cs
+Assets/LeanPool/Editor/LeanPool_Editor.cs
+Assets/SocketIO/JSONObject/Editor/JSONChecker.cs
+Assets/Tiled2Unity/Scripts/Editor/CustomTiledImporterAttribute.cs
+Assets/Tiled2Unity/Scripts/Editor/ICustomTiledImporter.cs
+Assets/Tiled2Unity/Scripts/Editor/ImportTiled2Unity.Material.cs
+Assets/Tiled2Unity/Scripts/Editor/ImportTiled2Unity.Mesh.cs
+Assets/Tiled2Unity/Scripts/Editor/ImportTiled2Unity.Texture.cs
+Assets/Tiled2Unity/Scripts/Editor/ImportTiled2Unity.Xml.cs
+Assets/Tiled2Unity/Scripts/Editor/ImportTiled2Unity.cs
+Assets/Tiled2Unity/Scripts/Editor/ImportUtils.cs
+Assets/Tiled2Unity/Scripts/Editor/SortingLayerExposedEditor.cs
+Assets/Tiled2Unity/Scripts/Editor/Tiled2UnityMenuItems.cs
+Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\System.Runtime.Serialization.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\System.Xml.Linq.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\UnityScript.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\UnityScript.Lang.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\Boo.Lang.dll"
+-sdk:2.0

@@ -56,13 +56,13 @@
         <file id="18" name="None/bam_front_0_leftarm.png" width="20" height="50" pivot_x="0" pivot_y="1"/>
         <file id="19" name="None/bam_front_0_lefthand.png" width="19" height="19" pivot_x="0" pivot_y="1"/>
         <file id="20" name="None/bam_front_0_leftwrist.png" width="22" height="52" pivot_x="0" pivot_y="1"/>
-        <file id="21" name="None/bam_front_naked_leftfoot.png" width="25" height="68" pivot_x="0" pivot_y="1"/>
+        <file id="21" name="None/bam_front_0_leftfoot.png" width="25" height="68" pivot_x="0" pivot_y="1"/>
         <file id="22" name="None/bam_front_0_rightwrist.png" width="22" height="51" pivot_x="0" pivot_y="1"/>
         <file id="23" name="None/bam_front_0_righthand.png" width="19" height="19" pivot_x="0" pivot_y="1"/>
         <file id="24" name="None/bam_front_0_rightarm.png" width="20" height="49" pivot_x="0" pivot_y="1"/>
-        <file id="25" name="None/bam_front_naked_leftleg.png" width="28" height="72" pivot_x="0" pivot_y="1"/>
-        <file id="26" name="None/bam_front_naked_rightfoot.png" width="25" height="68" pivot_x="0" pivot_y="1"/>
-        <file id="27" name="None/bam_front_naked_rightleg.png" width="29" height="72" pivot_x="0" pivot_y="1"/>
+        <file id="25" name="None/bam_front_0_leftleg.png" width="28" height="72" pivot_x="0" pivot_y="1"/>
+        <file id="26" name="None/bam_front_0_rightfoot.png" width="25" height="68" pivot_x="0" pivot_y="1"/>
+        <file id="27" name="None/bam_front_0_rightleg.png" width="29" height="72" pivot_x="0" pivot_y="1"/>
         <file id="28" name="None/bam_back_0_chest.png" width="69" height="85" pivot_x="0" pivot_y="1"/>
         <file id="29" name="None/bam_back_0_head.png" width="30" height="43" pivot_x="0" pivot_y="1"/>
         <file id="30" name="None/bam_back_0_kilt.png" width="58" height="73" pivot_x="0" pivot_y="1"/>

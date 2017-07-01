@@ -16,8 +16,7 @@ namespace Assets.Scripts.Data_Models.RaceSpritePath
         bool rangedVisible { get; set; }
 
         void swapGloves();
-        void swapLeftWrist();
-        void swapRightWrist();
+        void swapWrist();
         void swapArms();
         void swapHead();
         void swapChest();
@@ -26,6 +25,8 @@ namespace Assets.Scripts.Data_Models.RaceSpritePath
         void swapPrimary();
         void swapSecondary();
         void swapRanged();
+
+        void refresh();
 
     }
 }

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using SocketIO;
-using System;
+using Assets.Scripts.Data_Models;
+
 
 public class Network : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Network : MonoBehaviour
     public static Network instance;
 
     Dictionary<string, GameObject> players;
+    Dictionary<string, GameObject> npcs;
 
     public void Awake()
     {
@@ -34,8 +36,10 @@ public class Network : MonoBehaviour
         socket.On("disconnected", OnDisconnected);
         socket.On("requestPosition", RequestPosition);
         socket.On("updatePosition", UpdatePosition);
-        
+        socket.On("npcSpawn", NpcSpawn);
+
         players = new Dictionary<string, GameObject>();
+        npcs = new Dictionary<string, GameObject>();
     }
 
     
@@ -48,9 +52,20 @@ public class Network : MonoBehaviour
        
         player.tag = "Player";
 
-
         players.Add(e.data["id"].ToString(), player);
         Debug.Log("count: " + players.Count);
+    }
+
+    void NpcSpawn(SocketIOEvent e)
+    {
+        Debug.Log("npc spawned" + e.data);
+        var n = Npc.CreateFromJSON(e.data.ToString());
+        var npc = Instantiate(Resources.Load(n.texture)) as GameObject;
+
+        npc.tag = "fire beetle";
+        npc.transform.position = new Vector3(GetFloatFromJson(e.data["position"], "x"), GetFloatFromJson(e.data["position"], "y"), -1);
+
+        npcs.Add(e.data["zoneId"].ToString(), npc);
     }
 
 
@@ -64,11 +79,11 @@ public class Network : MonoBehaviour
     private void OnMove(SocketIOEvent e)
     {
         Debug.Log("player is moving" + e.data);
-
-        var player = players[e.data["id"].ToString()];
+        var id = e.data["id"].ToString();
+        var mover = npcs[id];
         var position = new Vector3(GetFloatFromJson(e.data, "x"), GetFloatFromJson(e.data, "y"), -1);
         Debug.Log("TRYING TO MOVE TO: " + position);
-        var clickMove = player.GetComponent<ClickMove>();
+        var clickMove = mover.GetComponent<ClickMove>();
         clickMove.Move(position);
 
     }
