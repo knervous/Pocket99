@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/LeanPool/Examples/Simple Delayed Pooling.unity
+- path: Assets/Scenes/EntryPoint.unity
   isLoaded: 1
   isActive: 1

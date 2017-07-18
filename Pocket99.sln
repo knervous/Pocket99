@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pocket99.Plugins", "Pocket99.Plugins.csproj", "{6379A81D-C5D6-3024-8C8E-CA4E09232296}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pocket99", "Pocket99.csproj", "{05D68AA6-13C9-3B15-58E8-84E26C2C7B20}"

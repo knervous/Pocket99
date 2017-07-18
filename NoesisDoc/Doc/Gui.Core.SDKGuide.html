@@ -1,0 +1,1706 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.13.1: http://docutils.sourceforge.net/" />
+<title>noesisGUI Documentation: NoesisGUI Integration Tutorial</title>
+
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="description" content="NoesisGUI Documentation"/>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!--script src="https://use.typekit.net/taq4txx.js"></script-->
+    <!--script>try{Typekit.load({ async: true });}catch(e){}</script-->
+
+    <link rel="stylesheet" href="style/noesis.css" type="text/css" media="all"/>
+
+    <script type="text/javascript" src="/js/googleAnalytics.js?version=1.0"></script>
+    <!--[if lt IE 7]><script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE7.js" type="text/javascript"></script><![endif]-->
+
+    <script src="/js/vendor/modernizr.js"></script>
+
+
+</head>
+<body>
+<div class="document" id="noesisgui-integration-tutorial">
+
+
+    <!-- NOESIS WEB ------- BEGIN ------- -->
+
+    <div class="developers documentation">
+
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/js/vendor/selectivizr.js"></script>
+        <script type="text/javascript" src="/js/vendor/respond.js"></script>
+        <div class="old-browser-warning">
+            You are using a very old browser.<br>
+            To get the best possible experience using our website we recommend that you upgrade to a newer version or other web browser. <br>
+            A list of the most popular web browsers <a href="http://browsehappy.com/">can be found here</a>
+        </div>
+        <![endif]-->
+
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="svg-icon-social-vimeo" width="30" height="30" viewBox="-26 20 30 30">
+                <path d="M-23,30.2c2.1-1.7,5.1-4.8,7.5-4.8c2.3,0,2.9,2.2,3.2,4.7c0.3,2.5,1.2,7.8,2.5,7.8 c1.2,0,4.1-4.7,3.9-6.6c-0.2-1.8-2.2-1.6-3.3-1c1-3.7,3.4-5.8,6.5-5.8c3.1,0,3.8,2.3,3.8,4.9c0,3.9-8.2,16-13.1,16 c-3.1,0-3.8-4.4-4.4-6.6c-0.6-2.2-1.8-7.9-3.3-8.3c-0.6-0.1-2.1,1.1-2.1,1.1L-23,30.2z"/>
+            </symbol>
+            <symbol id="svg-icon-social-google" width="30" height="30" viewBox="-25 24 30 30">
+                <path d="M-6.3 45.9c0 1-.3 2-.8 2.8-1.7 2.9-5.2 3.9-8.3 3.9-2.5 0-5.5-.6-6.9-2.9-.4-.6-.6-1.4-.6-2.1 0-1.9 1.1-3.4 2.7-4.3 1.9-1.2 4.4-1.5 6.6-1.6-.6-.8-1-1.4-1-2.4 0-.5.1-.9.3-1.4-.4 0-.7.1-1.1.1-3.2 0-5.8-2.3-5.8-5.6 0-1.8.9-3.6 2.2-4.8 1.8-1.5 4.3-2.1 6.6-2.1h6.9l-2.3 1.4H-10c1.5 1.3 2.5 2.7 2.5 4.8 0 4.2-3.9 4.7-3.9 6.8 0 2 5.1 2.7 5.1 7.4zm-2.3 1.4c0-2.2-2.2-3.6-3.8-4.7h-.8c-2.7 0-6.6.9-6.6 4.2 0 3.2 3.5 4.3 6.1 4.3 2.4 0 5.1-1 5.1-3.8zm-2.8-11.5c.7-.7.9-1.6.9-2.6 0-2.4-1.4-6.5-4.4-6.5-.9 0-1.9.5-2.4 1.2-.6.7-.8 1.7-.8 2.6 0 2.5 1.4 6.3 4.3 6.3.8 0 1.8-.4 2.4-1zm14.4.9v1.8H-.5v3.6h-1.7v-3.6h-3.5v-1.8h3.5v-3.6h1.7v3.6H3z">
+            </symbol>
+            <symbol id="svg-icon-social-twitter" width="30" height="30" viewBox="-25 20 30 30">
+                <path d="M.4 29.7v.7c0 7-5.3 15.1-15.1 15.1-3 0-5.8-.9-8.1-2.4.4 0 .8.1 1.3.1 2.5 0 4.8-.8 6.6-2.3-2.3 0-4.3-1.6-5-3.7.3 0 .7.1 1 .1.5 0 1-.1 1.4-.2-2.4-.5-4.2-2.6-4.2-5.2v-.1c.7.4 1.5.6 2.4.7-1.4-1-2.4-2.6-2.4-4.4 0-1 .3-1.9.7-2.7 2.6 3.2 6.5 5.3 10.9 5.5-.1-.4-.1-.8-.1-1.2 0-2.9 2.4-5.3 5.3-5.3 1.5 0 2.9.6 3.9 1.7 1.2-.2 2.3-.7 3.4-1.3C2 26 1.2 27.1.1 27.7c1.1-.1 2.1-.4 3.1-.8C2.4 28 1.4 29 .4 29.7z">
+            </symbol>
+            <symbol id="svg-icon-social-facebook" width="30" height="30" viewBox="-31 24 30 30">
+                <path d="M-8.7 29.8h-2.6c-2 0-2.4 1-2.4 2.4v3.1h4.8l-.6 4.9h-4.2v12.5h-5V40.1h-4.2v-4.9h4.2v-3.6c0-4.2 2.5-6.4 6.2-6.4 1.8 0 3.3.1 3.7.2v4.4z">
+            </symbol>
+            <symbol id="svg-icon-social-youtube" width="30" height="30" viewBox="-26 25 30 30">
+                <path d="M.9 52c-.3 1.3-1.4 2.2-2.6 2.4-3 .3-6.1.3-9.1.3s-6.1 0-9.1-.3c-1.3-.1-2.3-1.1-2.6-2.4-.5-1.9-.5-3.9-.5-5.8s0-3.9.4-5.7c.3-1.3 1.4-2.2 2.6-2.4 3-.3 6.1-.3 9.1-.3s6.1 0 9.1.3c1.3.1 2.3 1.1 2.6 2.4.4 1.8.4 3.8.4 5.7.1 1.9.1 3.9-.3 5.8zm-17-9.8v-1.5h-5.1v1.5h1.7v9.3h1.6v-9.3h1.8zm2.7-16.9l-2 6.5v4.4H-17v-4.4c-.1-.8-.5-2-1-3.5-.4-1-.7-2.1-1.1-3.1h1.7l1.2 4.3 1.1-4.3h1.7zm1.8 26.2v-8.1h-1.5v6.2c-.3.5-.6.7-.9.7-.2 0-.3-.1-.3-.3v-6.6h-1.5v6.4c0 .6 0 1 .1 1.2.1.4.5.6 1 .6s1.1-.3 1.7-1v.9h1.4zM-9 33.6c0 .9-.1 1.5-.5 1.9-.4.6-1 .8-1.7.8s-1.3-.3-1.7-.8c-.3-.4-.5-1.1-.5-1.9v-2.9c0-.9.1-1.5.5-1.9.4-.6 1-.8 1.7-.8.8 0 1.3.3 1.7.8.3.4.5 1 .5 1.9v2.9zm-1.5-3.1c0-.8-.2-1.1-.7-1.1-.5 0-.7.4-.7 1.1v3.4c0 .8.2 1.1.7 1.1.5 0 .7-.4.7-1.1v-3.4zM-6 45.8c0-.8 0-1.3-.1-1.6-.2-.6-.6-.9-1.2-.9-.5 0-1 .3-1.5.9v-3.6h-1.5v10.9h1.5v-.8c.5.6 1 .9 1.5.9.6 0 1-.3 1.2-.9.1-.3.1-.9.1-1.6v-3.3zm-1.5 3.4c0 .7-.2 1.1-.6 1.1-.2 0-.5-.1-.7-.4V45c.2-.2.5-.4.7-.4.4 0 .6.4.6 1.1v3.5zm4-12.9H-5v-.9c-.6.7-1.1 1-1.7 1-.5 0-.8-.2-1-.6-.1-.2-.1-.6-.1-1.2v-6.5h1.5v6.6c0 .2.1.4.3.4.3 0 .6-.2.9-.7v-6.2h1.5v8.1zm3 12.4H-2v1c-.1.4-.3.6-.7.6-.5 0-.8-.4-.8-1.1v-1.4h2.9V46c0-.9-.1-1.5-.4-1.9-.4-.6-1-.8-1.7-.8-.8 0-1.3.3-1.8.8-.3.4-.5 1-.5 1.9v2.8c0 .9.2 1.5.5 1.9.4.6 1 .8 1.8.8s1.4-.3 1.8-.9c.2-.3.3-.6.3-.9v-1zM-2 46.5h-1.5v-.8c0-.7.2-1.1.7-1.1s.8.4.8 1.1v.8z">
+            </symbol>
+            <symbol id="svg-icon-social-linkedin" width="30" height="30" viewBox="-26 25 30 30">
+                <path d="M-22.6 51.3h5v-15h-5v15zm17.8-15.5c-2.2 0-3.5.8-4.8 2.6v-2.1h-5v15h5v-8.1c0-1.7.9-3.4 2.8-3.4 2 0 3.2 1.7 3.2 3.4v8.2h5v-8.5c0-6-4-7.1-6.2-7.1zM-20.1 29c-1.6 0-2.9 1.2-2.9 2.6 0 1.5 1.3 2.6 2.9 2.6 1.6 0 2.9-1.2 2.9-2.6.1-1.4-1.2-2.6-2.9-2.6z">
+            </symbol>
+            <symbol id="svg-scroll-down" width="48" height="48" viewBox="0 0 48 48">
+                <path d="M24 1C11.3 1 1 11.3 1 24s10.3 23 23 23 23-10.3 23-23S36.7 1 24 1zm0 31.5L11.9 21.6l1.3-1.5L24 29.8l10.7-9.7 1.3 1.5-12 10.9z">
+            </symbol>
+        </svg>
+
+        <header id="header" class="SOZO-header js-hide-nav">
+
+            <div class="wrapper">
+
+                <a href="/" class="logo animate-me" title="Noesis">
+                    <img src="/images/logos/noesis-gui-logo.svg" alt="NoesisGUI">
+                </a>
+
+                <div class="user-management">
+                    <iframe src="/includes/user.php" scrolling="no"></iframe>
+                </div>
+
+                <a title="Menu" href="/" class="mobile-menu" rel="nofollow">
+                    <i class="burger-icon"></i>
+                </a>
+
+                <nav class="primary-nav site-nav" role="navigation">
+                    <ul>
+                        <li><a href="/" title="NoesisGUI Main Features"><span>features</span></a></li>
+                        <li><a href="/licensing.php" title="NoesisGUI Licensing"><span>licensing</span></a></li>
+                        <li class="has-children"><a data-id="child-nav" href="/forums" title="NoesisGUI Developer Resources" class="js-mobile-2nd-nav active"><span>developer</span></a>
+                            <nav class="child-nav" id="child-nav">
+                                <ul>
+                                    <li><a href="/forums" title="NoesisGUI Forums">forums</a></li>
+                                    <li><a href="/developers/samples.php" title="NoesisGUI Samples">samples</a></li>
+                                    <li><a href="/developers/downloads.php" title="NoesisGUI Downloads">downloads</a></li>
+                                    <li><a href="/docs/Gui.Core.Index.html" title="NoesisGUI Documentation" class="active">documentation</a></li>
+                                    <li><a href="/docs/Gui.Core.Changelog.html" title="NoesisGUI Version Changelog">changelog</a></li>
+                                    <li><a href="https://bugs.noesisengine.com" target="_blank" rel="nofollow" title="NoesisGUI Bug Tracker">bugtracker</a></li>
+                                    <li><a href="https://trello.com/b/ktVkZaBG/noesisgui" target="_blank" rel="nofollow" title="NoesisGUI Roadmap">roadmap</a></li>
+                                </ul>
+                            </nav>
+                        </li>
+                        <li><a href="/contact.php" title="Contact Information"><span>Contact</span></a></li>
+                    </ul>
+                </nav>
+
+            </div>
+
+        </header>
+
+        <header id="doc-header">
+            <img src="noesis-gui-logo.svg" alt="NoesisGUI">
+        </header>
+
+        <div class="main-content" role="main">
+
+            <nav id="noesis-secondary-nav" class="secondary-nav site-nav js-hide-nav">
+                <div class="wrapper">
+                    <ul>
+                        <li><a href="/forums" title="NoesisGUI Forums">forums</a></li>
+                        <li><a href="/developers/samples.php" title="NoesisGUI Samples">samples</a></li>
+                        <li><a href="/developers/downloads.php" title="NoesisGUI Downloads">downloads</a></li>
+                        <li><a href="/docs/Gui.Core.Index.html" title="NoesisGUI Documentation" class="active">documentation</a></li>
+                        <li><a href="/docs/Gui.Core.Changelog.html" title="NoesisGUI Version Changelog">changelog</a></li>
+                        <li><a href="https://bugs.noesisengine.com" target="_blank" rel="nofollow" title="NoesisGUI Bug Tracker">bugtracker</a></li>
+                        <li><a href="https://trello.com/b/ktVkZaBG/noesisgui" target="_blank" rel="nofollow" title="roadmap">roadmap</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <div class="documentation-article">
+
+                <div class="wrapper">
+
+                    <div id="noesis_web_contenidosMain" class="noesis_web_contenidosMain sozo-content">
+                        <div id="noesis_doc_wrap">
+
+                            <div class="noesis_doc_header_menu">
+                                <a href="Gui.Core.Index.html" class="noesis_doc_header_link">Documentation Index</a>
+                            </div>
+
+                            <div class="noesis_doc_content">
+
+        <!-- NOESIS WEB ------- END ------- -->
+
+
+<h1 class="title">NoesisGUI Integration Tutorial</h1>
+
+<p><img alt="github" class="align-middle" src="github.png" /> <a class="reference external" href="https://github.com/Noesis/Tutorials/tree/master/Content/Integration">Tutorial Data</a></p>
+<p>This tutorial concentrates on the steps you must follow to render XAML interfaces with NoesisGUI inside your own application.</p>
+<p>Integration samples for <em>OpenGL</em>, <em>DirectX v9.0</em>, <em>DirectX v11</em>, <em>Windows Store</em>, <em>Android</em>, <em>iOS</em> and <em>Windows Phone</em> are provided. The code mentioned in this document is taken from that samples.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#directx-v9-0">DirectX v9.0</a></li>
+<li><a class="reference internal" href="#directx-v11-0">DirectX v11.0</a></li>
+<li><a class="reference internal" href="#windows-store">Windows Store</a></li>
+<li><a class="reference internal" href="#opengl">OpenGL</a></li>
+<li><a class="reference internal" href="#ios">iOS</a></li>
+<li><a class="reference internal" href="#android">Android</a></li>
+<li><a class="reference internal" href="#windows-phone-8-1">Windows Phone 8.1</a></li>
+</ul>
+<div class="section" id="prerequisites">
+<h1>Prerequisites</h1>
+<p>This tutorial assumes that you are familiar about the following:</p>
+<ul class="simple">
+<li>You know how to build .xaml files. If not, read the <a class="reference external" href="Resource.BuildTool.BuildTool.html">BuildTool</a> document.</li>
+<li>You understand how to extend NoesisGUI with your own classes as described in the <a class="reference external" href="Gui.Core.ExtendingTutorial.html">Extending NoesisGUI</a> tutorial.</li>
+</ul>
+</div>
+<div class="section" id="sdk-directories">
+<h1>SDK Directories</h1>
+<p>Apart from the SDK, that contains documentation and tools, you need a runtime for the platform you are working on. Runtimes for the supported platforms are provided independently. Inside each runtime you will find the following directories:</p>
+<ul class="simple">
+<li><strong>Bin/</strong>: This is the directory where dynamic libraries (.dll .so) can be found. Your executable must be able to reach this path. The easiest way is by copying these files to where your executable is located.</li>
+<li><strong>Include/</strong>: Directory for public headers. You must add this path to your <em>additional include directories</em> in your project</li>
+<li><strong>Lib/</strong>: Object libraries to link against are stored in this directory. Like the include directory, you must add this path to you <em>additional libraries directory</em>. Apart from adding this directory you must link with the proper library files.</li>
+</ul>
+</div>
+<div class="section" id="using-noesisgui">
+<h1>Using NoesisGUI</h1>
+<p>An overview is given in this section to understand the steps that are needed to use NoesisGUI. This section applies to all the platforms. For specific details about each platform and fully working samples please read the next sections.</p>
+<div class="section" id="api">
+<h2>API</h2>
+<p>NoesisGUI API is provided in a single file, <em>NoesisGUI.h</em> and under the C++ namespace <em>Noesis</em>.</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;NoesisGUI.h&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">Noesis</span><span class="p">;</span>
+</pre></div>
+<div class="admonition admonition-note">
+<p class="first admonition-title">Note</p>
+<p class="last">Being a big file, it is recommended adding <em>NoesisGUI.h</em> to a precompiled header. We are doing that in our samples.</p>
+</div>
+</div>
+<div class="section" id="initialization">
+<h2>Initialization</h2>
+<p>Before being able to render any XAML the following steps must be performed <em>once</em>:</p>
+<ol class="arabic simple">
+<li>Initialization by invoking a init function passing the rendering device and error handler.</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">ErrorHandler</span><span class="p">(</span><span class="k">const</span> <span class="n">NsChar</span><span class="o">*</span> <span class="n">filename</span><span class="p">,</span> <span class="n">NsInt</span> <span class="n">line</span><span class="p">,</span> <span class="k">const</span> <span class="n">NsChar</span><span class="o">*</span> <span class="n">desc</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">MessageBoxA</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">desc</span><span class="p">,</span> <span class="s">&quot;NoesisGUI Fatal Error&quot;</span><span class="p">,</span> <span class="n">MB_ICONERROR</span><span class="p">);</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">InitDirectX9</span><span class="p">(</span><span class="n">DXUTGetD3D9Device</span><span class="p">(),</span> <span class="n">ErrorHandler</span><span class="p">);</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+<ol class="arabic simple" start="2">
+<li>Register own classes (optional) as described <a class="reference external" href="Gui.Core.ExtendingTutorial.html">here</a>.</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="c1">// Register own classes</span>
+<span class="n">NsRegisterReflection</span><span class="p">(</span><span class="n">NsGetKernel</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetComponentFactory</span><span class="p">(),</span> <span class="nb">true</span><span class="p">);</span>
+</pre></div>
+<div class="admonition admonition-note">
+<p class="first admonition-title">Note</p>
+<p class="last">The provided error handler must never return. Errors notified through this function must be always considered fatal.</p>
+</div>
+<div class="admonition admonition-note">
+<p class="first admonition-title">Note</p>
+<p class="last">Optionally a Memory Allocator can be passed to the init function if you want to track all memory allocations done by NoesisGUI.</p>
+</div>
+</div>
+<div class="section" id="resource-loading">
+<h2>Resource Loading</h2>
+<p>XAMLs are loaded using the helper function <strong>LoadXaml</strong>. Once loaded, you need a renderer associated to the XAML. This renderer needs valid dimensions for the layout. Each time your window or surface dimensions change you must indicate it to the renderer.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Create the UI renderer</span>
+<span class="n">Ptr</span><span class="o">&lt;</span><span class="n">FrameworkElement</span><span class="o">&gt;</span> <span class="n">xaml</span> <span class="o">=</span> <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">LoadXaml</span><span class="o">&lt;</span><span class="n">FrameworkElement</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;UI.xaml&quot;</span><span class="p">);</span>
+<span class="n">xamlRenderer</span> <span class="o">=</span> <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">CreateRenderer</span><span class="p">(</span><span class="n">xaml</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+<span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">SetSize</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">768</span><span class="p">);</span>
+<span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">SetAntialiasingMode</span><span class="p">(</span><span class="n">Noesis</span><span class="o">::</span><span class="n">Gui</span><span class="o">::</span><span class="n">AntialiasingMode_PPAA</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="attaching-to-events">
+<h2>Attaching to events</h2>
+<p>You must connect UI events to local functions to allow UI interaction. An easy way is connecting control events with local <a class="reference external" href="Core.Kernel.Delegates.html">delegates</a>. You only have to find the desired controls by name and connect them to the proper delegates.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Attach to events</span>
+<span class="n">Slider</span><span class="o">*</span> <span class="n">slider</span> <span class="o">=</span> <span class="n">xaml</span><span class="o">-&gt;</span><span class="n">FindName</span><span class="o">&lt;</span><span class="n">Slider</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Luminance&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">slider</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">slider</span><span class="o">-&gt;</span><span class="n">ValueChanged</span><span class="p">()</span> <span class="o">+=</span> <span class="n">MakeDelegate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">LuminanceChanged</span><span class="p">);</span>
+</pre></div>
+<p>An alternative is using a <a class="reference external" href="Gui.Core.ApplicationTutorial.html#code-behind">Code-Behind</a> class.</p>
+</div>
+<div class="section" id="input-management">
+<h2>Input Management</h2>
+<p>There are functions in the renderer interface to pass input events from your application to the UI. Your application must collect the events from the operating system and translate them to IRenderer calls.</p>
+<div class="highlight"><pre><span></span><span class="n">renderer</span><span class="o">-&gt;</span><span class="n">MouseMove</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+<span class="n">renderer</span><span class="o">-&gt;</span><span class="n">MouseButtonDown</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">MouseButton_Left</span><span class="p">);</span>
+<span class="n">renderer</span><span class="o">-&gt;</span><span class="n">MouseButtonUp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">MouseButton_Left</span><span class="p">);</span>
+<span class="n">renderer</span><span class="o">-&gt;</span><span class="n">MouseWheel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">delta</span><span class="p">);</span>
+<span class="n">renderer</span><span class="o">-&gt;</span><span class="n">KeyDown</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+<span class="n">renderer</span><span class="o">-&gt;</span><span class="n">KeyUp</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+<span class="n">renderer</span><span class="o">-&gt;</span><span class="n">Char</span><span class="p">(</span><span class="kt">char</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="update-and-render">
+<h2>Update and Render</h2>
+<p>In the loop of your application your must perform the following steps:</p>
+<ol class="arabic simple">
+<li><strong>Tick</strong> the kernel to update all the systems.</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="c1">// Tick kernel</span>
+<span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">Tick</span><span class="p">();</span>
+</pre></div>
+<ol class="arabic simple" start="2">
+<li><strong>Update</strong> each renderer with the current time and collect its render commands.</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="c1">// Update UI</span>
+<span class="n">renderer</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">(</span><span class="n">timeInSeconds</span><span class="p">);</span>
+<span class="n">RenderCommands</span> <span class="n">commands</span> <span class="o">=</span> <span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">WaitForUpdate</span><span class="p">();</span>
+</pre></div>
+<div class="admonition admonition-note">
+<p class="first admonition-title">Note</p>
+<p class="last"><em>Update()</em> is asynchronous. To improve CPU usage you could perform additional work between <em>Update()</em> and <em>WaitForUpdate()</em>. Also if there is a render thread in your architecture you should invoke <em>WaitForUpdate</em> and <em>Render</em> in that thread.</p>
+</div>
+<ol class="arabic simple" start="3">
+<li><strong>Render</strong>: the returned render commands from <em>WaitForUpdate()</em> are executed by calling the Render() function that send the data to the GPU. This is the unique function that invoke GPU commands. There are two kind of blocks inside RenderCommands:</li>
+</ol>
+<ul class="simple">
+<li><em>Offscreen Commands</em>: these commands update textures that are needed by the main render. For optimal performance these commands must be executed <strong>before</strong> setting and clearing the final surface. This is critical for <em>tiled</em> architectures, present in most mobile GPUs.</li>
+<li><em>Direct Commands</em>: these are the commands that directly render in the active surface. These commands must be executed with the desired color and stencil surface properly bound. This step is normally done after rendering the 3D scene, that way the UI is rendered on top of the scene.</li>
+</ul>
+<div class="admonition admonition-note">
+<p class="first admonition-title">Note</p>
+<p class="last">Masking, used to hide part of a UI element, is implemented in NoesisGUI using the <strong>StencilBuffer</strong>. Make sure that you are binding a color buffer and a stencil buffer with at least 8 bits to properly visualize masks.</p>
+</div>
+<div class="admonition admonition-note">
+<p class="first admonition-title">Note</p>
+<p class="last">Because the <em>Render()</em> function modifies the GPU state, you must restore it properly to a sane state for your application. For performance reasons it is not done automatically. The most straightforward solution is to save device state before the call to <em>Render()</em> and restore it afterwards. Greater performance can be achieved if your application implements a way to invalidate its required states. This is faster because you avoid getting the current state from the driver.</p>
+</div>
+<div class="highlight"><pre><span></span><span class="c1">// Render offscreen</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">offscreenCommands</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">Render</span><span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">offscreenCommands</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// Start frame</span>
+<span class="n">glBindFramebuffer</span><span class="p">(</span><span class="n">GL_FRAMEBUFFER</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">);</span>
+
+<span class="c1">// Render Scene</span>
+<span class="c1">// ...</span>
+
+<span class="c1">// Render HUD</span>
+<span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">Render</span><span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">commands</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+
+<span class="c1">// SwapBuffers</span>
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<div class="section" id="finalization">
+<h2>Finalization</h2>
+<p>Before exiting from your application the kernel must be properly closed invoking the <strong>Shutdown()</strong> function. This will close all systems and free all resources. Remember to free all resources before that invocation (for example, if you have global objects).</p>
+<div class="highlight"><pre><span></span><span class="c1">// Free global resources and shutdown kernel</span>
+<span class="n">xamlRenderer</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+<span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">Shutdown</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="directx-v9-0">
+<h1>DirectX v9.0</h1>
+<p>Visual Studio 2005, 2008, 2010 and 2012 compiler versions are supported. We are going to describe how to configure a Visual Studio 2008 project. Similar steps must be performed on the rest.</p>
+<ol class="arabic simple">
+<li>Add path to <strong>Additional Include Directories</strong></li>
+<li>Add path to <strong>Additional Library Directories</strong></li>
+<li>Add the following libraries to additional Dependencies in <strong>Linker Input</strong>: <em>Noesis.lib</em></li>
+</ol>
+<p>The sample for DirectX v9.0 is a modified version of the <em>ShadowVolume</em> scene include in the DirectX SDK. For brevity only relevant parts are included here. Please download the full sample for more information.</p>
+<div class="section" id="id1">
+<h2>Initialization</h2>
+<div class="highlight"><pre><span></span><span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">InitDirectX9</span><span class="p">(</span><span class="n">DXUTGetD3D9Device</span><span class="p">(),</span> <span class="n">ErrorHandler</span><span class="p">);</span>
+<span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">AddResourceProvider</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">);</span>
+
+<span class="c1">// Create the UI renderer</span>
+<span class="n">Ptr</span><span class="o">&lt;</span><span class="n">FrameworkElement</span><span class="o">&gt;</span> <span class="n">xaml</span> <span class="o">=</span> <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">LoadXaml</span><span class="o">&lt;</span><span class="n">FrameworkElement</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;UI.xaml&quot;</span><span class="p">);</span>
+<span class="n">gXamlRenderer</span> <span class="o">=</span> <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">CreateRenderer</span><span class="p">(</span><span class="n">xaml</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+<span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">SetSize</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">);</span>
+<span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">SetAntialiasingMode</span><span class="p">(</span><span class="n">Noesis</span><span class="o">::</span><span class="n">Gui</span><span class="o">::</span><span class="n">AntialiasingMode_PPAA</span><span class="p">);</span>
+
+<span class="c1">// Attach to events</span>
+<span class="n">Slider</span><span class="o">*</span> <span class="n">slider</span> <span class="o">=</span> <span class="n">xaml</span><span class="o">-&gt;</span><span class="n">FindName</span><span class="o">&lt;</span><span class="n">Slider</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Luminance&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">slider</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">slider</span><span class="o">-&gt;</span><span class="n">ValueChanged</span><span class="p">()</span> <span class="o">+=</span> <span class="n">MakeDelegate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">LuminanceChanged</span><span class="p">);</span>
+
+<span class="n">ComboBox</span><span class="o">*</span> <span class="n">combo0</span> <span class="o">=</span> <span class="n">xaml</span><span class="o">-&gt;</span><span class="n">FindName</span><span class="o">&lt;</span><span class="n">ComboBox</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Background&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">combo0</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">combo0</span><span class="o">-&gt;</span><span class="n">SelectionChanged</span><span class="p">()</span> <span class="o">+=</span> <span class="n">MakeDelegate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">BackgroundChanged</span><span class="p">);</span>
+
+<span class="n">ComboBox</span><span class="o">*</span> <span class="n">combo1</span> <span class="o">=</span> <span class="n">xaml</span><span class="o">-&gt;</span><span class="n">FindName</span><span class="o">&lt;</span><span class="n">ComboBox</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Lights&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">combo1</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">combo1</span><span class="o">-&gt;</span><span class="n">SelectionChanged</span><span class="p">()</span> <span class="o">+=</span> <span class="n">MakeDelegate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">LightsChanged</span><span class="p">);</span>
+
+<span class="n">ComboBox</span><span class="o">*</span> <span class="n">combo2</span> <span class="o">=</span> <span class="n">xaml</span><span class="o">-&gt;</span><span class="n">FindName</span><span class="o">&lt;</span><span class="n">ComboBox</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Visualization&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">combo2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">combo2</span><span class="o">-&gt;</span><span class="n">SelectionChanged</span><span class="p">()</span> <span class="o">+=</span> <span class="n">MakeDelegate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">VisualizationChanged</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="message-handling">
+<h2>Message Handling</h2>
+<p>Mouse Capture can be easily implemented using <em>VisualTreeHelper::HitTest</em> as shown in the example code.</p>
+<div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">bool</span> <span class="n">captured</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">gXamlRenderer</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">uMsg</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">case</span> <span class="nl">WM_KEYDOWN</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">KeyDown</span><span class="p">(</span><span class="n">wParam</span> <span class="o">&lt;</span> <span class="mi">256</span> <span class="o">?</span> <span class="n">gKeyMap</span><span class="p">[</span><span class="n">wParam</span><span class="p">]</span> <span class="o">:</span> <span class="n">Noesis</span><span class="o">::</span><span class="n">Key_None</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="nl">WM_KEYUP</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">KeyUp</span><span class="p">(</span><span class="n">wParam</span> <span class="o">&lt;</span> <span class="mi">256</span> <span class="o">?</span> <span class="n">gKeyMap</span><span class="p">[</span><span class="n">wParam</span><span class="p">]</span> <span class="o">:</span> <span class="n">Noesis</span><span class="o">::</span><span class="n">Key_None</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="nl">WM_CHAR</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">Char</span><span class="p">(</span><span class="n">NsUInt32</span><span class="p">(</span><span class="n">wParam</span><span class="p">));</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="nl">WM_MOUSEMOVE</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">MouseMove</span><span class="p">(</span><span class="n">LOWORD</span><span class="p">(</span><span class="n">lParam</span><span class="p">),</span> <span class="n">HIWORD</span><span class="p">(</span><span class="n">lParam</span><span class="p">));</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="nl">WM_LBUTTONDOWN</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">MouseButtonDown</span><span class="p">(</span><span class="n">LOWORD</span><span class="p">(</span><span class="n">lParam</span><span class="p">),</span> <span class="n">HIWORD</span><span class="p">(</span><span class="n">lParam</span><span class="p">),</span> <span class="n">MouseButton_Left</span><span class="p">);</span>
+
+            <span class="n">Point</span> <span class="nf">p</span><span class="p">(</span><span class="n">LOWORD</span><span class="p">(</span><span class="n">lParam</span><span class="p">),</span> <span class="n">HIWORD</span><span class="p">(</span><span class="n">lParam</span><span class="p">));</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">VisualTreeHelper</span><span class="o">::</span><span class="n">HitTest</span><span class="p">(</span><span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">GetContent</span><span class="p">(),</span> <span class="n">p</span><span class="p">).</span><span class="n">visualHit</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">captured</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="nl">WM_LBUTTONUP</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">MouseButtonUp</span><span class="p">(</span><span class="n">LOWORD</span><span class="p">(</span><span class="n">lParam</span><span class="p">),</span> <span class="n">HIWORD</span><span class="p">(</span><span class="n">lParam</span><span class="p">),</span> <span class="n">MouseButton_Left</span><span class="p">);</span>
+            <span class="n">captured</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="nl">WM_MOUSEWHEEL</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">POINT</span> <span class="n">point</span><span class="p">;</span>
+            <span class="n">point</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">LOWORD</span><span class="p">(</span><span class="n">lParam</span><span class="p">);</span>
+            <span class="n">point</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">HIWORD</span><span class="p">(</span><span class="n">lParam</span><span class="p">);</span>
+            <span class="o">::</span><span class="n">ScreenToClient</span><span class="p">(</span><span class="n">hWnd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">point</span><span class="p">);</span>
+
+            <span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">MouseWheel</span><span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">GET_WHEEL_DELTA_WPARAM</span><span class="p">(</span><span class="n">wParam</span><span class="p">));</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">captured</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">g_Camera</span><span class="p">.</span><span class="n">HandleMessages</span><span class="p">(</span> <span class="n">hWnd</span><span class="p">,</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">lParam</span> <span class="p">);</span>
+    <span class="n">g_MCamera</span><span class="p">.</span><span class="n">HandleMessages</span><span class="p">(</span> <span class="n">hWnd</span><span class="p">,</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">lParam</span> <span class="p">);</span>
+    <span class="n">g_LCamera</span><span class="p">.</span><span class="n">HandleMessages</span><span class="p">(</span> <span class="n">hWnd</span><span class="p">,</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">lParam</span> <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="lost-device">
+<h2>Lost-Device</h2>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">gXamlRenderer</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">OnLostDevice</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="n">SAFE_RELEASE</span><span class="p">(</span><span class="n">gStateBlock</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="reset-device">
+<h2>Reset-Device</h2>
+<div class="highlight"><pre><span></span><span class="n">pd3dDevice</span><span class="o">-&gt;</span><span class="n">CreateStateBlock</span><span class="p">(</span><span class="n">D3DSBT_ALL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">gStateBlock</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">gXamlRenderer</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">OnResetDevice</span><span class="p">();</span>
+    <span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">SetSize</span><span class="p">(</span><span class="n">pBackBufferSurfaceDesc</span><span class="o">-&gt;</span><span class="n">Width</span><span class="p">,</span> <span class="n">pBackBufferSurfaceDesc</span><span class="o">-&gt;</span><span class="n">Height</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="frame">
+<h2>Frame</h2>
+<p>Note that in DirectX 9 we are using a StateBlock object to save and restore the GPU state.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Render the scene</span>
+<span class="k">if</span><span class="p">(</span> <span class="n">SUCCEEDED</span><span class="p">(</span> <span class="n">pd3dDevice</span><span class="o">-&gt;</span><span class="n">BeginScene</span><span class="p">()</span> <span class="p">)</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Tick kernel</span>
+    <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">Tick</span><span class="p">();</span>
+
+    <span class="c1">// Update UI</span>
+    <span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">(</span><span class="n">fTime</span><span class="p">);</span>
+    <span class="n">RenderCommands</span> <span class="n">commands</span> <span class="o">=</span> <span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">WaitForUpdate</span><span class="p">();</span>
+
+    <span class="c1">// Render offscreen textures</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">offscreenCommands</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">IDirect3DSurface9</span><span class="o">*</span> <span class="n">color</span><span class="p">;</span>
+        <span class="n">DXUTGetD3D9Device</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetRenderTarget</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">color</span><span class="p">);</span>
+        <span class="n">color</span><span class="o">-&gt;</span><span class="n">Release</span><span class="p">();</span>
+
+        <span class="n">IDirect3DSurface9</span><span class="o">*</span> <span class="n">depth</span><span class="p">;</span>
+        <span class="n">DXUTGetD3D9Device</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetDepthStencilSurface</span><span class="p">(</span><span class="o">&amp;</span><span class="n">depth</span><span class="p">);</span>
+        <span class="n">depth</span><span class="o">-&gt;</span><span class="n">Release</span><span class="p">();</span>
+
+        <span class="n">V</span><span class="p">(</span><span class="n">gStateBlock</span><span class="o">-&gt;</span><span class="n">Capture</span><span class="p">());</span>
+        <span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">Render</span><span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">offscreenCommands</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+        <span class="n">V</span><span class="p">(</span><span class="n">gStateBlock</span><span class="o">-&gt;</span><span class="n">Apply</span><span class="p">());</span>
+
+        <span class="n">DXUTGetD3D9Device</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">SetRenderTarget</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="p">);</span>
+        <span class="n">DXUTGetD3D9Device</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">SetDepthStencilSurface</span><span class="p">(</span><span class="n">depth</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Clear the render target and the zbuffer</span>
+    <span class="n">V</span><span class="p">(</span> <span class="n">pd3dDevice</span><span class="o">-&gt;</span><span class="n">Clear</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">D3DCLEAR_TARGET</span> <span class="o">|</span> <span class="n">D3DCLEAR_ZBUFFER</span><span class="p">,</span> <span class="n">D3DCOLOR_ARGB</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">121</span> <span class="p">),</span> <span class="mf">1.0f</span><span class="p">,</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">);</span>
+
+    <span class="p">...</span>
+    <span class="c1">///////////////////////</span>
+    <span class="c1">// RENDER SCENE</span>
+    <span class="c1">///////////////////////</span>
+    <span class="p">...</span>
+
+    <span class="c1">// Draw GUI</span>
+    <span class="n">V</span><span class="p">(</span><span class="n">gStateBlock</span><span class="o">-&gt;</span><span class="n">Capture</span><span class="p">());</span>
+    <span class="n">gXamlRenderer</span><span class="o">-&gt;</span><span class="n">Render</span><span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">commands</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+    <span class="n">V</span><span class="p">(</span><span class="n">gStateBlock</span><span class="o">-&gt;</span><span class="n">Apply</span><span class="p">());</span>
+
+
+    <span class="n">V</span><span class="p">(</span> <span class="n">pd3dDevice</span><span class="o">-&gt;</span><span class="n">EndScene</span><span class="p">()</span> <span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="shutdown">
+<h2>Shutdown</h2>
+<div class="highlight"><pre><span></span><span class="c1">// Free global resources and shutdown kernel</span>
+<span class="n">gXamlRenderer</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+<span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">Shutdown</span><span class="p">();</span>
+</pre></div>
+<img alt="SDKGuideImg1.jpg" src="SDKGuideImg1.jpg" />
+</div>
+</div>
+<div class="section" id="directx-v11-0">
+<h1>DirectX v11.0</h1>
+<p>The sample provided for DirectX 11 is very similar to the DirectX 9 one. We took a <a class="reference external" href="https://code.msdn.microsoft.com/windowsdesktop/Direct3D-Tutorial-Win32-829979ef">tutorial from MSDN</a> and adapted it. Similar steps must be performed. For initialization the function <em>InitDirectX11</em>  must be used instead.</p>
+<div class="highlight"><pre><span></span><span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">InitDirectX11</span><span class="p">(</span><span class="n">g_pd3dDevice</span><span class="p">,</span> <span class="n">ErrorHandler</span><span class="p">);</span>
+<span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">AddResourceProvider</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">);</span>
+
+<span class="n">Ptr</span><span class="o">&lt;</span><span class="n">FrameworkElement</span><span class="o">&gt;</span> <span class="n">xaml</span> <span class="o">=</span> <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">LoadXaml</span><span class="o">&lt;</span><span class="n">FrameworkElement</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ComboBox.xaml&quot;</span><span class="p">);</span>
+<span class="n">xamlRenderer</span> <span class="o">=</span> <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">CreateRenderer</span><span class="p">(</span><span class="n">xaml</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+<span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">SetSize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">);</span>
+<span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">SetAntialiasingMode</span><span class="p">(</span><span class="n">Noesis</span><span class="o">::</span><span class="n">Gui</span><span class="o">::</span><span class="n">AntialiasingMode_PPAA</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="windows-store">
+<h1>Windows Store</h1>
+<p>Follow the <a class="reference internal" href="#directx-v11-0">DirectX v11.0</a> guide for Windows Store.</p>
+</div>
+<div class="section" id="opengl">
+<h1>OpenGL</h1>
+<p>The desktop OpenGL sample includes projects for both <em>Visual Studio</em> and <em>Xcode</em>. The code, that uses <em>GLUT</em>, is quite straightforward and easy to understand.</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;pch.h&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">Noesis</span><span class="p">;</span>
+
+<span class="n">Ptr</span><span class="o">&lt;</span><span class="n">IRenderer</span><span class="o">&gt;</span> <span class="n">xamlRenderer</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">;</span>
+
+<span class="cp">#ifdef _MSC_VER</span>
+    <span class="cp">#define GL_FRAMEBUFFER 0x8D40</span>
+
+    <span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="n">WINAPI</span> <span class="o">*</span><span class="n">PFNGLBINDFRAMEBUFFERPROC</span><span class="p">)(</span><span class="n">GLenum</span> <span class="n">target</span><span class="p">,</span> <span class="n">GLuint</span> <span class="n">framebuffer</span><span class="p">);</span>
+    <span class="n">PFNGLBINDFRAMEBUFFERPROC</span> <span class="n">glBindFramebuffer</span><span class="p">;</span>
+
+    <span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="n">WINAPI</span> <span class="o">*</span> <span class="n">PFNGLUSEPROGRAMPROC</span><span class="p">)(</span><span class="n">GLuint</span> <span class="n">program</span><span class="p">);</span>
+    <span class="n">PFNGLUSEPROGRAMPROC</span> <span class="n">glUseProgram</span><span class="p">;</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/*</span>
+<span class="cm">** Function called to update rendering</span>
+<span class="cm">*/</span>
+<span class="kt">void</span> <span class="nf">DisplayFunc</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Tick kernel</span>
+    <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">Tick</span><span class="p">();</span>
+
+    <span class="c1">// Update UI</span>
+    <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">(</span><span class="n">glutGet</span><span class="p">(</span><span class="n">GLUT_ELAPSED_TIME</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1000.0f</span><span class="p">);</span>
+    <span class="c1">// ...Do something useful here because Update() is concurrent...</span>
+    <span class="n">RenderCommands</span> <span class="n">commands</span> <span class="o">=</span> <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">WaitForUpdate</span><span class="p">();</span>
+
+    <span class="c1">// Render offscreen textures</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">offscreenCommands</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">Render</span><span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">offscreenCommands</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">static</span> <span class="kt">float</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">glClearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="n">glEnable</span><span class="p">(</span><span class="n">GL_DEPTH_TEST</span><span class="p">);</span>
+    <span class="n">glDepthFunc</span><span class="p">(</span><span class="n">GL_LESS</span><span class="p">);</span>
+    <span class="n">glClearDepth</span><span class="p">(</span><span class="mf">1.0f</span><span class="p">);</span>
+    <span class="n">glDepthMask</span><span class="p">(</span><span class="n">GL_TRUE</span><span class="p">);</span>
+
+    <span class="n">glDisable</span><span class="p">(</span><span class="n">GL_CULL_FACE</span><span class="p">);</span>
+    <span class="n">glDisable</span><span class="p">(</span><span class="n">GL_ALPHA_TEST</span><span class="p">);</span>
+    <span class="n">glDisable</span><span class="p">(</span><span class="n">GL_STENCIL_TEST</span><span class="p">);</span>
+    <span class="n">glDisable</span><span class="p">(</span><span class="n">GL_BLEND</span><span class="p">);</span>
+    <span class="n">glDisable</span><span class="p">(</span><span class="n">GL_SCISSOR_TEST</span><span class="p">);</span>
+
+    <span class="n">glUseProgram</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">glBindFramebuffer</span><span class="p">(</span><span class="n">GL_FRAMEBUFFER</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
+    <span class="n">glColorMask</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="nb">true</span><span class="p">,</span> <span class="nb">true</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+
+    <span class="cm">/* Clear the buffer, clear the matrix */</span>
+    <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">);</span>
+    <span class="n">glLoadIdentity</span><span class="p">();</span>
+
+    <span class="cm">/* A step backward, then spin the cube */</span>
+    <span class="n">glTranslatef</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">);</span>
+    <span class="n">glRotatef</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">glRotatef</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="cm">/* We tell we want to draw quads */</span>
+    <span class="n">glBegin</span><span class="p">(</span><span class="n">GL_QUADS</span><span class="p">);</span>
+
+    <span class="cm">/* Every four calls to glVertex, a quad is drawn */</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">);</span>
+
+    <span class="cm">/* No more quads */</span>
+    <span class="n">glEnd</span><span class="p">();</span>
+
+    <span class="cm">/* Rotate a bit more */</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">;</span>
+
+    <span class="c1">// Draw GUI</span>
+    <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">Render</span><span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">commands</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+
+    <span class="cm">/* End */</span>
+    <span class="n">glFlush</span><span class="p">();</span>
+    <span class="n">glutSwapBuffers</span><span class="p">();</span>
+
+    <span class="cm">/* Update again and again */</span>
+    <span class="n">glutPostRedisplay</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">** Function called when the window is created or resized</span>
+<span class="cm">*/</span>
+<span class="kt">void</span> <span class="nf">ReshapeFunc</span><span class="p">(</span><span class="kt">int</span> <span class="n">width_</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height_</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="n">width_</span><span class="p">;</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">height_</span><span class="p">;</span>
+
+    <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_PROJECTION</span><span class="p">);</span>
+
+    <span class="n">glLoadIdentity</span><span class="p">();</span>
+    <span class="n">gluPerspective</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">width</span> <span class="o">/</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">height</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
+
+    <span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_MODELVIEW</span><span class="p">);</span>
+    <span class="n">glutPostRedisplay</span><span class="p">();</span>
+
+    <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">SetSize</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">KeyboardFunc</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="mi">9</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">KeyDown</span><span class="p">(</span><span class="n">Noesis</span><span class="o">::</span><span class="n">Key_Tab</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">KeyDown</span><span class="p">(</span><span class="n">Noesis</span><span class="o">::</span><span class="n">Key_Back</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">Char</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">KeyboardUpFunc</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="mi">9</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">KeyUp</span><span class="p">(</span><span class="n">Noesis</span><span class="o">::</span><span class="n">Key_Tab</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">KeyUp</span><span class="p">(</span><span class="n">Noesis</span><span class="o">::</span><span class="n">Key_Back</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">MouseFunc</span><span class="p">(</span><span class="kt">int</span> <span class="n">button</span><span class="p">,</span> <span class="kt">int</span> <span class="n">state</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">button</span> <span class="o">==</span> <span class="n">GLUT_LEFT_BUTTON</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">state</span> <span class="o">==</span> <span class="n">GLUT_UP</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">MouseButtonUp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">MouseButton_Left</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">MouseButtonDown</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">MouseButton_Left</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">MouseMove</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">MouseMove</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">ErrorHandler</span><span class="p">(</span><span class="k">const</span> <span class="n">NsChar</span><span class="o">*</span> <span class="n">filename</span><span class="p">,</span> <span class="n">NsInt</span> <span class="n">line</span><span class="p">,</span> <span class="k">const</span> <span class="n">NsChar</span><span class="o">*</span> <span class="n">desc</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">ERROR: %s</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">desc</span><span class="p">);</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Shutdown</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Free global resources and shutdown kernel</span>
+    <span class="n">xamlRenderer</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+    <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">Shutdown</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="cm">/* Creation of the window */</span>
+    <span class="n">glutInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+    <span class="n">glutInitDisplayMode</span><span class="p">(</span><span class="n">GLUT_RGB</span> <span class="o">|</span> <span class="n">GLUT_DOUBLE</span> <span class="o">|</span> <span class="n">GLUT_DEPTH</span> <span class="o">|</span> <span class="n">GLUT_STENCIL</span><span class="p">);</span>
+    <span class="n">glutInitWindowSize</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">);</span>
+    <span class="n">glutCreateWindow</span><span class="p">(</span><span class="s">&quot;Spinning cube&quot;</span><span class="p">);</span>
+
+<span class="cp">#ifdef _MSC_VER</span>
+    <span class="n">glBindFramebuffer</span> <span class="o">=</span> <span class="p">(</span><span class="n">PFNGLBINDFRAMEBUFFERPROC</span><span class="p">)</span><span class="n">wglGetProcAddress</span><span class="p">(</span><span class="s">&quot;glBindFramebuffer&quot;</span><span class="p">);</span>
+    <span class="n">glUseProgram</span> <span class="o">=</span> <span class="p">(</span><span class="n">PFNGLUSEPROGRAMPROC</span><span class="p">)</span><span class="n">wglGetProcAddress</span><span class="p">(</span><span class="s">&quot;glUseProgram&quot;</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+    <span class="c1">// NoesisGUI setup</span>
+    <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">InitOpenGL</span><span class="p">(</span><span class="n">ErrorHandler</span><span class="p">);</span>
+    <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">AddResourceProvider</span><span class="p">(</span><span class="s">&quot;..&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Create the UI renderer</span>
+    <span class="n">Ptr</span><span class="o">&lt;</span><span class="n">FrameworkElement</span><span class="o">&gt;</span> <span class="n">xaml</span> <span class="o">=</span> <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">LoadXaml</span><span class="o">&lt;</span><span class="n">FrameworkElement</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;UI.xaml&quot;</span><span class="p">);</span>
+    <span class="n">xamlRenderer</span> <span class="o">=</span> <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">CreateRenderer</span><span class="p">(</span><span class="n">xaml</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+    <span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">SetAntialiasingMode</span><span class="p">(</span><span class="n">Noesis</span><span class="o">::</span><span class="n">Gui</span><span class="o">::</span><span class="n">AntialiasingMode_PPAA</span><span class="p">);</span>
+
+    <span class="n">atexit</span><span class="p">(</span><span class="n">Shutdown</span><span class="p">);</span>
+
+    <span class="cm">/* Declaration of the callbacks */</span>
+    <span class="n">glutDisplayFunc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">DisplayFunc</span><span class="p">);</span>
+    <span class="n">glutReshapeFunc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ReshapeFunc</span><span class="p">);</span>
+    <span class="n">glutKeyboardFunc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">KeyboardFunc</span><span class="p">);</span>
+    <span class="n">glutKeyboardUpFunc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">KeyboardUpFunc</span><span class="p">);</span>
+    <span class="n">glutMouseFunc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MouseFunc</span><span class="p">);</span>
+    <span class="n">glutMotionFunc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MouseMove</span><span class="p">);</span>
+    <span class="n">glutPassiveMotionFunc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MouseMove</span><span class="p">);</span>
+
+    <span class="cm">/* Loop */</span>
+    <span class="n">glutMainLoop</span><span class="p">();</span>
+
+    <span class="cm">/* Never reached */</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* ========================================================================= */</span>
+</pre></div>
+<img alt="SDKGuideImg2.jpg" src="SDKGuideImg2.jpg" />
+</div>
+<div class="section" id="ios">
+<h1>iOS</h1>
+<p>The provided sample for iOS is configured using XCode 4.6. Include and Library directories and configured in the <strong>Search Paths</strong> section of the project settings. As dynamic libraries are not allowed in iOS we need to statically link against the library found in the <em>/Lib</em> folder. We used the following extra settings:</p>
+<div class="highlight"><pre><span></span><span class="n">ARCHS</span> <span class="o">=</span> <span class="n">armv7</span><span class="p">;</span>
+<span class="n">CLANG_CXX_LIBRARY</span> <span class="o">=</span> <span class="s">&quot;libstdc++&quot;</span><span class="p">;</span>
+<span class="n">GCC_SYMBOLS_PRIVATE_EXTERN</span> <span class="o">=</span> <span class="n">YES</span><span class="p">;</span>
+<span class="n">HEADER_SEARCH_PATHS</span> <span class="o">=</span> <span class="s">&quot;../../../Runtimes/NoesisGUI-ios/Include&quot;</span><span class="p">;</span>
+<span class="n">LIBRARY_SEARCH_PATHS</span> <span class="o">=</span> <span class="s">&quot;../../../Runtimes/NoesisGUI-ios/Lib&quot;</span><span class="p">;</span>
+<span class="n">OTHER_LDFLAGS</span> <span class="o">=</span> <span class="s">&quot;-lnoesis&quot;</span><span class="p">;</span>
+</pre></div>
+<p>Apart from that, the following <strong>Frameworks</strong> are needed:</p>
+<ul class="simple">
+<li>UIKit.framework</li>
+<li>Foundation.framework</li>
+<li>CoreGraphics.framework</li>
+<li>GLKit.framework</li>
+<li>OpenGLES.framework</li>
+</ul>
+<div class="section" id="id2">
+<h2>Initialization</h2>
+<div class="highlight"><pre><span></span><span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">InitOpenGL</span><span class="p">(</span><span class="n">ErrorHandler</span><span class="p">);</span>
+
+<span class="k">static</span> <span class="n">NsChar</span> <span class="n">rootPath</span><span class="p">[</span><span class="n">PATH_MAX</span><span class="p">];</span>
+<span class="n">CFBundleRef</span> <span class="n">mainBundle</span> <span class="o">=</span> <span class="n">CFBundleGetMainBundle</span><span class="p">();</span>
+<span class="n">CFURLRef</span> <span class="n">url</span> <span class="o">=</span> <span class="n">CFBundleCopyBundleURL</span><span class="p">(</span><span class="n">mainBundle</span><span class="p">);</span>
+<span class="n">CFStringRef</span> <span class="n">str</span> <span class="o">=</span> <span class="n">CFURLCopyFileSystemPath</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">kCFURLPOSIXPathStyle</span><span class="p">);</span>
+<span class="n">CFStringGetCString</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">rootPath</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">rootPath</span><span class="p">),</span> <span class="n">kCFStringEncodingUTF8</span><span class="p">);</span>
+<span class="n">CFRelease</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+<span class="n">CFRelease</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+
+<span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">AddResourceProvider</span><span class="p">(</span><span class="n">rootPath</span><span class="p">);</span>
+
+<span class="c1">// Create the UI renderer</span>
+<span class="n">Ptr</span><span class="o">&lt;</span><span class="n">FrameworkElement</span><span class="o">&gt;</span> <span class="n">xaml</span> <span class="o">=</span> <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">LoadXaml</span><span class="o">&lt;</span><span class="n">FrameworkElement</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Data/Tux.xaml&quot;</span><span class="p">);</span>
+<span class="n">_xamlRenderer</span> <span class="o">=</span> <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">CreateRenderer</span><span class="p">(</span><span class="n">xaml</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+</pre></div>
+</div>
+<div class="section" id="render">
+<h2>Render</h2>
+<div class="highlight"><pre><span></span><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">glkView</span><span class="p">:(</span><span class="n">GLKView</span> <span class="o">*</span><span class="p">)</span><span class="n">view</span> <span class="nl">drawInRect</span><span class="p">:(</span><span class="n">CGRect</span><span class="p">)</span><span class="n">rect</span>
+<span class="p">{</span>
+    <span class="c1">// Tick kernel</span>
+    <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">Tick</span><span class="p">();</span>
+
+    <span class="k">static</span> <span class="n">NsFloat64</span> <span class="n">t</span><span class="p">;</span>
+    <span class="n">t</span> <span class="o">+=</span> <span class="n">self</span><span class="p">.</span><span class="n">timeSinceLastUpdate</span><span class="p">;</span>
+
+    <span class="c1">// Update renderer</span>
+    <span class="n">_xamlRenderer</span><span class="o">-&gt;</span><span class="n">SetSize</span><span class="p">(</span><span class="n">view</span><span class="p">.</span><span class="n">drawableWidth</span><span class="p">,</span> <span class="n">view</span><span class="p">.</span><span class="n">drawableHeight</span><span class="p">);</span>
+    <span class="n">_xamlRenderer</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+    <span class="n">RenderCommands</span> <span class="n">commands</span> <span class="o">=</span> <span class="n">_xamlRenderer</span><span class="o">-&gt;</span><span class="n">WaitForUpdate</span><span class="p">();</span>
+
+    <span class="c1">// Render offscreen surfaces</span>
+    <span class="n">_xamlRenderer</span><span class="o">-&gt;</span><span class="n">Render</span><span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">offscreenCommands</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+
+    <span class="c1">// Restore the state</span>
+    <span class="p">[</span><span class="n">view</span> <span class="n">bindDrawable</span><span class="p">];</span>
+    <span class="n">glDisable</span><span class="p">(</span><span class="n">GL_BLEND</span><span class="p">);</span>
+    <span class="n">glEnable</span><span class="p">(</span><span class="n">GL_DEPTH_TEST</span><span class="p">);</span>
+    <span class="n">glDepthFunc</span><span class="p">(</span><span class="n">GL_LESS</span><span class="p">);</span>
+    <span class="n">glDepthMask</span><span class="p">(</span><span class="n">GL_TRUE</span><span class="p">);</span>
+    <span class="n">glClearDepthf</span><span class="p">(</span><span class="mf">1.0f</span><span class="p">);</span>
+
+    <span class="n">glClearColor</span><span class="p">(</span><span class="mf">0.40f</span><span class="p">,</span> <span class="mf">0.40f</span><span class="p">,</span> <span class="mf">0.40f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">);</span>
+    <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">);</span>
+
+    <span class="n">glBindVertexArrayOES</span><span class="p">(</span><span class="n">_vertexArray</span><span class="p">);</span>
+
+    <span class="c1">// Render the object with GLKit</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">effect</span> <span class="n">prepareToDraw</span><span class="p">];</span>
+
+    <span class="n">glDrawArrays</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">36</span><span class="p">);</span>
+
+    <span class="c1">// Render the object again with ES2</span>
+    <span class="n">glUseProgram</span><span class="p">(</span><span class="n">_program</span><span class="p">);</span>
+
+    <span class="n">glUniformMatrix4fv</span><span class="p">(</span><span class="n">uniforms</span><span class="p">[</span><span class="n">UNIFORM_MODELVIEWPROJECTION_MATRIX</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_modelViewProjectionMatrix</span><span class="p">.</span><span class="n">m</span><span class="p">);</span>
+    <span class="n">glUniformMatrix3fv</span><span class="p">(</span><span class="n">uniforms</span><span class="p">[</span><span class="n">UNIFORM_NORMAL_MATRIX</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_normalMatrix</span><span class="p">.</span><span class="n">m</span><span class="p">);</span>
+
+    <span class="n">glDrawArrays</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">36</span><span class="p">);</span>
+
+    <span class="c1">// Render HUD</span>
+    <span class="n">_xamlRenderer</span><span class="o">-&gt;</span><span class="n">Render</span><span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">commands</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+<img alt="SDKGuideImg3.jpg" src="SDKGuideImg3.jpg" />
+</div>
+</div>
+<div class="section" id="android">
+<h1>Android</h1>
+<p>The integration sample for Android uses the Native Android API. A Java Activity is needed to preload NoesisGUI library.</p>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.example.hellotriangle</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.app.NativeActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloTriangle</span> <span class="kd">extends</span> <span class="n">NativeActivity</span> <span class="o">{</span>
+
+    <span class="kd">static</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">loadLibrary</span><span class="o">(</span><span class="s">&quot;Noesis&quot;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_list_item</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+<p>Built resources must be copied inside the /assets folder. They are accesed by the AndroidResourceProvider that is created indicating where the data root is located.</p>
+<div class="highlight"><pre><span></span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">AndroidResourceProvider</span><span class="o">&gt;</span> <span class="n">provider</span> <span class="o">=</span> <span class="o">*</span><span class="k">new</span> <span class="n">AndroidResourceProvider</span><span class="p">(</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">app</span><span class="o">-&gt;</span><span class="n">activity</span><span class="o">-&gt;</span><span class="n">assetManager</span><span class="p">,</span> <span class="s">&quot;NoesisGUI/&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+</pre></div>
+<p>Apart from those details the sample is a very basic OpenGL ES 2.0 example.</p>
+<div class="highlight"><pre><span></span><span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="c1">/// Hello Triangle: An OpenGL ES 2.0 Example</span>
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+
+
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;android_native_app_glue.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;android/native_window.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;android/log.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;EGL/egl.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;GLES2/gl2.h&gt;</span><span class="cp"></span>
+
+
+<span class="cp">#define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, &quot;HelloTriangle&quot;, __VA_ARGS__))</span>
+<span class="cp">#define LOGE(...) ((void)__android_log_print(ANDROID_LOG_ERROR, &quot;HelloTriangle&quot;, __VA_ARGS__))</span>
+
+
+<span class="cp">#define NOESIS_GUI</span>
+
+<span class="cp">#ifdef NOESIS_GUI</span>
+    <span class="cp">#include</span> <span class="cpf">&lt;NoesisGUI.h&gt;</span><span class="cp"></span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">Noesis</span><span class="p">;</span>
+<span class="cp">#endif</span>
+
+
+<span class="k">struct</span> <span class="n">UserData</span>
+<span class="p">{</span>
+    <span class="n">android_app</span><span class="o">*</span> <span class="n">app</span><span class="p">;</span>
+
+    <span class="kt">bool</span> <span class="n">animating</span><span class="p">;</span>
+
+    <span class="n">EGLDisplay</span> <span class="n">display</span><span class="p">;</span>
+    <span class="n">EGLSurface</span> <span class="n">surface</span><span class="p">;</span>
+    <span class="n">EGLContext</span> <span class="n">context</span><span class="p">;</span>
+    <span class="n">EGLConfig</span> <span class="n">pixelFormat</span><span class="p">;</span>
+
+    <span class="n">GLuint</span> <span class="n">fbo</span><span class="p">;</span>
+
+    <span class="n">GLuint</span> <span class="n">vShader</span><span class="p">;</span>
+    <span class="n">GLuint</span> <span class="n">fShader</span><span class="p">;</span>
+    <span class="n">GLuint</span> <span class="n">programObject</span><span class="p">;</span>
+
+    <span class="n">GLint</span> <span class="n">width</span><span class="p">;</span>
+    <span class="n">GLint</span> <span class="n">height</span><span class="p">;</span>
+
+<span class="cp">#ifdef NOESIS_GUI</span>
+    <span class="n">Ptr</span><span class="o">&lt;</span><span class="n">IRenderer</span><span class="o">&gt;</span> <span class="n">xamlRenderer</span><span class="p">;</span>
+    <span class="n">RenderCommands</span> <span class="n">xamlCommands</span><span class="p">;</span>
+<span class="cp">#endif</span>
+<span class="p">};</span>
+
+<span class="cp">#ifdef NOESIS_GUI</span>
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">NoesisErrorHandler</span><span class="p">(</span><span class="k">const</span> <span class="n">NsChar</span><span class="o">*</span> <span class="n">filename</span><span class="p">,</span> <span class="n">NsInt</span> <span class="n">line</span><span class="p">,</span> <span class="k">const</span> <span class="n">NsChar</span><span class="o">*</span> <span class="n">desc</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Error: %s [%d] : %s&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">desc</span><span class="p">);</span>
+    <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">NoesisInit</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">InitOpenGL</span><span class="p">(</span><span class="n">NoesisErrorHandler</span><span class="p">);</span>
+
+    <span class="n">Ptr</span><span class="o">&lt;</span><span class="n">AndroidResourceProvider</span><span class="o">&gt;</span> <span class="n">provider</span> <span class="o">=</span> <span class="o">*</span><span class="k">new</span> <span class="n">AndroidResourceProvider</span><span class="p">(</span>
+        <span class="n">userData</span><span class="o">-&gt;</span><span class="n">app</span><span class="o">-&gt;</span><span class="n">activity</span><span class="o">-&gt;</span><span class="n">assetManager</span><span class="p">,</span> <span class="s">&quot;NoesisGUI/&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+    <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">AddResourceProvider</span><span class="p">(</span><span class="n">provider</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+
+    <span class="n">Ptr</span><span class="o">&lt;</span><span class="n">FrameworkElement</span><span class="o">&gt;</span> <span class="n">xaml</span> <span class="o">=</span> <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">LoadXaml</span><span class="o">&lt;</span><span class="n">FrameworkElement</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;UI.xaml&quot;</span><span class="p">);</span>
+
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlRenderer</span> <span class="o">=</span> <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">CreateRenderer</span><span class="p">(</span><span class="n">xaml</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">SetSize</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">,</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">);</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">SetAntialiasingMode</span><span class="p">(</span><span class="n">Noesis</span><span class="o">::</span><span class="n">Gui</span><span class="o">::</span><span class="n">AntialiasingMode_PPAA</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">NoesisResize</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">SetSize</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">,</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">NoesisTick</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// Tick kernel</span>
+    <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">Tick</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">NoesisPreRender</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Update renderer</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">(</span><span class="n">HighResTimer</span><span class="o">::</span><span class="n">Seconds</span><span class="p">()</span> <span class="o">-</span> <span class="n">HighResTimer</span><span class="o">::</span><span class="n">StartTime</span><span class="p">());</span>
+        <span class="c1">// ...Do something useful here because Update() is concurrent...</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlCommands</span> <span class="o">=</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">WaitForUpdate</span><span class="p">();</span>
+
+    <span class="c1">// Render offscreen textures</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlCommands</span><span class="p">.</span><span class="n">offscreenCommands</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">Render</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlCommands</span><span class="p">.</span><span class="n">offscreenCommands</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+        <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlCommands</span><span class="p">.</span><span class="n">offscreenCommands</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">NoesisPostRender</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Render GUI to the active surface</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">Render</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlCommands</span><span class="p">.</span><span class="n">commands</span><span class="p">.</span><span class="n">GetPtr</span><span class="p">());</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlCommands</span><span class="p">.</span><span class="n">commands</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">NoesisShutdown</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// free renderer resources</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlCommands</span><span class="p">.</span><span class="n">offscreenCommands</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlCommands</span><span class="p">.</span><span class="n">commands</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlRenderer</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+
+    <span class="c1">// shut down NoesisGUI</span>
+    <span class="n">Noesis</span><span class="o">::</span><span class="n">GUI</span><span class="o">::</span><span class="n">Shutdown</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="n">GLuint</span> <span class="nf">LoadShader</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">shaderSrc</span><span class="p">,</span> <span class="n">GLenum</span> <span class="n">type</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Create the shader object</span>
+    <span class="n">GLuint</span> <span class="n">shader</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">type</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">shader</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Unable to create shader [type=%X]&quot;</span><span class="p">,</span> <span class="n">type</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Load the shader source</span>
+    <span class="n">glShaderSource</span><span class="p">(</span><span class="n">shader</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">shaderSrc</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+    <span class="c1">// Compile the shader</span>
+    <span class="n">glCompileShader</span><span class="p">(</span><span class="n">shader</span><span class="p">);</span>
+
+    <span class="c1">// Check the compile status</span>
+    <span class="n">GLint</span> <span class="n">compiled</span><span class="p">;</span>
+    <span class="n">glGetShaderiv</span><span class="p">(</span><span class="n">shader</span><span class="p">,</span> <span class="n">GL_COMPILE_STATUS</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">compiled</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">compiled</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">GLint</span> <span class="n">infoLen</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">glGetShaderiv</span><span class="p">(</span><span class="n">shader</span><span class="p">,</span> <span class="n">GL_INFO_LOG_LENGTH</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">infoLen</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">infoLen</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">char</span> <span class="n">msg</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
+            <span class="n">glGetShaderInfoLog</span><span class="p">(</span><span class="n">shader</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">msg</span><span class="p">);</span>
+            <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Error compiling shader: %s&quot;</span><span class="p">,</span> <span class="n">msg</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">glDeleteShader</span><span class="p">(</span><span class="n">shader</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">shader</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">bool</span> <span class="nf">UpdateDisplaySize</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">GLint</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">;</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">app</span><span class="o">-&gt;</span><span class="n">contentRect</span><span class="p">.</span><span class="n">left</span> <span class="o">-</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">app</span><span class="o">-&gt;</span><span class="n">contentRect</span><span class="p">.</span><span class="n">right</span><span class="p">;</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">app</span><span class="o">-&gt;</span><span class="n">contentRect</span><span class="p">.</span><span class="n">top</span> <span class="o">-</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">app</span><span class="o">-&gt;</span><span class="n">contentRect</span><span class="p">.</span><span class="n">bottom</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">h</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">ANativeWindow_getWidth</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">app</span><span class="o">-&gt;</span><span class="n">window</span><span class="p">);</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">ANativeWindow_getHeight</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">app</span><span class="o">-&gt;</span><span class="n">window</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">h</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">eglQuerySurface</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">,</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">surface</span><span class="p">,</span> <span class="n">EGL_WIDTH</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">w</span><span class="p">);</span>
+            <span class="n">eglQuerySurface</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">,</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">surface</span><span class="p">,</span> <span class="n">EGL_HEIGHT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">h</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">!=</span> <span class="n">w</span> <span class="o">||</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">!=</span> <span class="n">h</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">userData</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="n">w</span><span class="p">;</span>
+        <span class="n">userData</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="n">h</span><span class="p">;</span>
+        <span class="n">LOGI</span><span class="p">(</span><span class="s">&quot;Surface size: %dx%d&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">bool</span> <span class="nf">InitDisplay</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// initialize OpenGL ES and EGL</span>
+    <span class="n">EGLSurface</span> <span class="n">surface</span><span class="p">;</span>
+    <span class="n">EGLContext</span> <span class="n">context</span><span class="p">;</span>
+
+    <span class="n">EGLDisplay</span> <span class="n">display</span> <span class="o">=</span> <span class="n">eglGetDisplay</span><span class="p">(</span><span class="n">EGL_DEFAULT_DISPLAY</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">eglInitialize</span><span class="p">(</span><span class="n">display</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="n">EGL_FALSE</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Can&#39;t initialize display&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">eglBindAPI</span><span class="p">(</span><span class="n">EGL_OPENGL_ES_API</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Can&#39;t bind OpenGL ES API&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Here specify the attributes of the desired configuration.</span>
+    <span class="c1">// Below, we select an EGLConfig with at least 8 bits per color</span>
+    <span class="c1">// component compatible with on-screen windows</span>
+    <span class="k">const</span> <span class="n">EGLint</span> <span class="n">attribs</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">EGL_RENDERABLE_TYPE</span><span class="p">,</span> <span class="n">EGL_OPENGL_ES2_BIT</span><span class="p">,</span>
+        <span class="n">EGL_SURFACE_TYPE</span><span class="p">,</span> <span class="n">EGL_WINDOW_BIT</span><span class="p">,</span>
+        <span class="n">EGL_BLUE_SIZE</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="n">EGL_GREEN_SIZE</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="n">EGL_RED_SIZE</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="n">EGL_ALPHA_SIZE</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="n">EGL_DEPTH_SIZE</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span>
+        <span class="n">EGL_STENCIL_SIZE</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="n">EGL_NONE</span>
+    <span class="p">};</span>
+
+    <span class="c1">// Here, the application chooses the configuration it desires. In this</span>
+    <span class="c1">// sample, we have a very simplified selection process, where we pick</span>
+    <span class="c1">// the first EGLConfig that matches our criteria</span>
+    <span class="n">EGLint</span> <span class="n">numConfigs</span><span class="p">;</span>
+    <span class="n">EGLConfig</span> <span class="n">config</span><span class="p">;</span>
+    <span class="n">eglChooseConfig</span><span class="p">(</span><span class="n">display</span><span class="p">,</span> <span class="n">attribs</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">numConfigs</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">numConfigs</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Unable to eglChooseConfig&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// EGL_NATIVE_VISUAL_ID is an attribute of the EGLConfig that is</span>
+    <span class="c1">// guaranteed to be accepted by ANativeWindow_setBuffersGeometry().</span>
+    <span class="c1">// As soon as we picked a EGLConfig, we can safely reconfigure the</span>
+    <span class="c1">// ANativeWindow buffers to match, using EGL_NATIVE_VISUAL_ID.</span>
+    <span class="n">EGLint</span> <span class="n">format</span><span class="p">;</span>
+    <span class="n">eglGetConfigAttrib</span><span class="p">(</span><span class="n">display</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">EGL_NATIVE_VISUAL_ID</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">format</span><span class="p">);</span>
+
+    <span class="n">ANativeWindow_setBuffersGeometry</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">app</span><span class="o">-&gt;</span><span class="n">window</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">format</span><span class="p">);</span>
+
+    <span class="n">surface</span> <span class="o">=</span> <span class="n">eglCreateWindowSurface</span><span class="p">(</span><span class="n">display</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">app</span><span class="o">-&gt;</span><span class="n">window</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+    <span class="c1">// Specify an OpenGL ES 2.0 context</span>
+    <span class="k">const</span> <span class="n">EGLint</span> <span class="n">contextAttribs</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">EGL_CONTEXT_CLIENT_VERSION</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">EGL_NONE</span>
+    <span class="p">};</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">eglCreateContext</span><span class="p">(</span><span class="n">display</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">contextAttribs</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">eglMakeCurrent</span><span class="p">(</span><span class="n">display</span><span class="p">,</span> <span class="n">surface</span><span class="p">,</span> <span class="n">surface</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="o">==</span> <span class="n">EGL_FALSE</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Unable to eglMakeCurrent&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">GLint</span> <span class="n">fbo</span><span class="p">;</span>
+    <span class="n">glGetIntegerv</span><span class="p">(</span><span class="n">GL_FRAMEBUFFER_BINDING</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fbo</span><span class="p">);</span>
+
+    <span class="c1">// Create a shader for rendering the triangle</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="n">vShaderStr</span><span class="p">[]</span> <span class="o">=</span>
+        <span class="s">&quot;attribute vec4 vPosition; </span><span class="se">\n</span><span class="s">&quot;</span>
+        <span class="s">&quot;void main() </span><span class="se">\n</span><span class="s">&quot;</span>
+        <span class="s">&quot;{ </span><span class="se">\n</span><span class="s">&quot;</span>
+        <span class="s">&quot;  gl_Position = vPosition; </span><span class="se">\n</span><span class="s">&quot;</span>
+        <span class="s">&quot;} </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="n">fShaderStr</span><span class="p">[]</span> <span class="o">=</span>
+        <span class="s">&quot;precision mediump float; </span><span class="se">\n</span><span class="s">&quot;</span>
+        <span class="s">&quot;void main() </span><span class="se">\n</span><span class="s">&quot;</span>
+        <span class="s">&quot;{ </span><span class="se">\n</span><span class="s">&quot;</span>
+        <span class="s">&quot;  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0); </span><span class="se">\n</span><span class="s">&quot;</span>
+        <span class="s">&quot;} </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Load the vertex/fragment shaders</span>
+    <span class="n">GLuint</span> <span class="n">vertexShader</span> <span class="o">=</span> <span class="n">LoadShader</span><span class="p">(</span><span class="n">vShaderStr</span><span class="p">,</span> <span class="n">GL_VERTEX_SHADER</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">vertexShader</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">GLuint</span> <span class="n">fragmentShader</span> <span class="o">=</span> <span class="n">LoadShader</span><span class="p">(</span><span class="n">fShaderStr</span><span class="p">,</span> <span class="n">GL_FRAGMENT_SHADER</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fragmentShader</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Create the program object</span>
+    <span class="n">GLuint</span> <span class="n">programObject</span> <span class="o">=</span> <span class="n">glCreateProgram</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">programObject</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Unable to create shader program object&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">glAttachShader</span><span class="p">(</span><span class="n">programObject</span><span class="p">,</span> <span class="n">vertexShader</span><span class="p">);</span>
+    <span class="n">glAttachShader</span><span class="p">(</span><span class="n">programObject</span><span class="p">,</span> <span class="n">fragmentShader</span><span class="p">);</span>
+
+    <span class="c1">// Bind vPosition to attribute 0</span>
+    <span class="n">glBindAttribLocation</span><span class="p">(</span><span class="n">programObject</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;vPosition&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Link the program</span>
+    <span class="n">glLinkProgram</span><span class="p">(</span><span class="n">programObject</span><span class="p">);</span>
+
+    <span class="c1">// Check the link status</span>
+    <span class="n">GLint</span> <span class="n">linked</span><span class="p">;</span>
+    <span class="n">glGetProgramiv</span><span class="p">(</span><span class="n">programObject</span><span class="p">,</span> <span class="n">GL_LINK_STATUS</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">linked</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">linked</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">GLint</span> <span class="n">infoLen</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">glGetProgramiv</span><span class="p">(</span><span class="n">programObject</span><span class="p">,</span> <span class="n">GL_INFO_LOG_LENGTH</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">infoLen</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">infoLen</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">char</span> <span class="n">msg</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
+            <span class="n">glGetProgramInfoLog</span><span class="p">(</span><span class="n">programObject</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">msg</span><span class="p">);</span>
+            <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Error linking program: %s&quot;</span><span class="p">,</span> <span class="n">msg</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">glDeleteProgram</span><span class="p">(</span><span class="n">programObject</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Store all created objects</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">display</span> <span class="o">=</span> <span class="n">display</span><span class="p">;</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">context</span> <span class="o">=</span> <span class="n">context</span><span class="p">;</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">surface</span> <span class="o">=</span> <span class="n">surface</span><span class="p">;</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">pixelFormat</span> <span class="o">=</span> <span class="n">config</span><span class="p">;</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">fbo</span> <span class="o">=</span> <span class="n">fbo</span><span class="p">;</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">vShader</span> <span class="o">=</span> <span class="n">vertexShader</span><span class="p">;</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">fShader</span> <span class="o">=</span> <span class="n">fragmentShader</span><span class="p">;</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">programObject</span> <span class="o">=</span> <span class="n">programObject</span><span class="p">;</span>
+
+    <span class="n">UpdateDisplaySize</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+
+    <span class="c1">// Initialize GL state</span>
+    <span class="n">glClearColor</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">);</span>
+
+<span class="cp">#ifdef NOESIS_GUI</span>
+    <span class="n">NoesisInit</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">ResizeDisplay</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">display</span> <span class="o">==</span> <span class="n">EGL_NO_DISPLAY</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">UpdateDisplaySize</span><span class="p">(</span><span class="n">userData</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="c1">// display size changed</span>
+<span class="cp">#ifdef NOESIS_GUI</span>
+        <span class="n">NoesisResize</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+<span class="cp">#endif</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">DrawFrame</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">display</span> <span class="o">==</span> <span class="n">EGL_NO_DISPLAY</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="cp">#ifdef NOESIS_GUI</span>
+    <span class="n">NoesisTick</span><span class="p">();</span>
+
+    <span class="n">NoesisPreRender</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+    <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ELEMENT_ARRAY_BUFFER</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">glBindFramebuffer</span><span class="p">(</span><span class="n">GL_FRAMEBUFFER</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="c1">// Set display dimensions</span>
+    <span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">,</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">);</span>
+
+    <span class="c1">// Clear the color buffer</span>
+    <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">);</span>
+
+    <span class="c1">// Use the program object</span>
+    <span class="n">glUseProgram</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">programObject</span><span class="p">);</span>
+
+    <span class="c1">// Load the vertex data</span>
+    <span class="n">GLfloat</span> <span class="n">vertices</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mf">0.0f</span><span class="p">,</span><span class="mf">0.5f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.5f</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span><span class="mf">0.0f</span> <span class="p">};</span>
+    <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">GL_FLOAT</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vertices</span><span class="p">);</span>
+    <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">glDrawArrays</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+
+<span class="cp">#ifdef NOESIS_GUI</span>
+    <span class="n">NoesisPostRender</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+    <span class="c1">// End</span>
+    <span class="n">glFlush</span><span class="p">();</span>
+    <span class="n">eglSwapBuffers</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">,</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">surface</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">ShutdownDisplay</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">display</span> <span class="o">==</span> <span class="n">EGL_NO_DISPLAY</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="cp">#ifdef NOESIS_GUI</span>
+    <span class="n">NoesisShutdown</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+    <span class="n">glDeleteProgram</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">vShader</span><span class="p">);</span>
+    <span class="n">glDeleteProgram</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">fShader</span><span class="p">);</span>
+    <span class="n">glDeleteProgram</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">programObject</span><span class="p">);</span>
+
+    <span class="n">eglMakeCurrent</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">,</span> <span class="n">EGL_NO_SURFACE</span><span class="p">,</span> <span class="n">EGL_NO_SURFACE</span><span class="p">,</span> <span class="n">EGL_NO_CONTEXT</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">context</span> <span class="o">!=</span> <span class="n">EGL_NO_CONTEXT</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">eglDestroyContext</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">,</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">context</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">surface</span> <span class="o">!=</span> <span class="n">EGL_NO_SURFACE</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">eglDestroySurface</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">,</span> <span class="n">userData</span><span class="o">-&gt;</span><span class="n">surface</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">eglTerminate</span><span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">);</span>
+
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">animating</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">display</span> <span class="o">=</span> <span class="n">EGL_NO_DISPLAY</span><span class="p">;</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">context</span> <span class="o">=</span> <span class="n">EGL_NO_CONTEXT</span><span class="p">;</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">surface</span> <span class="o">=</span> <span class="n">EGL_NO_SURFACE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">KeyDown</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">,</span> <span class="kt">int</span> <span class="n">keyCode</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#ifdef NOESIS_GUI</span>
+    <span class="c1">// TODO: translate key code to NoesisGUI key enum</span>
+    <span class="n">Key</span> <span class="n">key</span> <span class="o">=</span> <span class="n">Key_None</span><span class="p">;</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">KeyDown</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">KeyUp</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">,</span> <span class="kt">int</span> <span class="n">keyCode</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#ifdef NOESIS_GUI</span>
+    <span class="c1">// TODO: translate key code to NoesisGUI key enum</span>
+    <span class="n">Key</span> <span class="n">key</span> <span class="o">=</span> <span class="n">Key_None</span><span class="p">;</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">KeyUp</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">MouseDown</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">,</span> <span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#ifdef NOESIS_GUI</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">MouseButtonDown</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">y</span><span class="p">,</span> <span class="n">MouseButton_Left</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">MouseUp</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">,</span> <span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#ifdef NOESIS_GUI</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">MouseButtonUp</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">y</span><span class="p">,</span> <span class="n">MouseButton_Left</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">MouseMove</span><span class="p">(</span><span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span><span class="p">,</span> <span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#ifdef NOESIS_GUI</span>
+    <span class="n">userData</span><span class="o">-&gt;</span><span class="n">xamlRenderer</span><span class="o">-&gt;</span><span class="n">MouseMove</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">y</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">int32_t</span> <span class="nf">HandleInput</span><span class="p">(</span><span class="n">android_app</span><span class="o">*</span> <span class="n">app</span><span class="p">,</span> <span class="n">AInputEvent</span><span class="o">*</span> <span class="n">event</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span> <span class="o">=</span> <span class="p">(</span><span class="n">UserData</span><span class="o">*</span><span class="p">)</span><span class="n">app</span><span class="o">-&gt;</span><span class="n">userData</span><span class="p">;</span>
+
+    <span class="k">switch</span> <span class="p">(</span><span class="n">AInputEvent_getType</span><span class="p">(</span><span class="n">event</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="k">case</span> <span class="nl">AINPUT_EVENT_TYPE_KEY</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="k">switch</span> <span class="p">(</span><span class="n">AKeyEvent_getAction</span><span class="p">(</span><span class="n">event</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="k">case</span> <span class="nl">AKEY_EVENT_ACTION_DOWN</span><span class="p">:</span>
+                <span class="p">{</span>
+                    <span class="n">KeyDown</span><span class="p">(</span><span class="n">userData</span><span class="p">,</span> <span class="n">AKeyEvent_getKeyCode</span><span class="p">(</span><span class="n">event</span><span class="p">));</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">case</span> <span class="nl">AKEY_EVENT_ACTION_UP</span><span class="p">:</span>
+                <span class="p">{</span>
+                    <span class="n">KeyUp</span><span class="p">(</span><span class="n">userData</span><span class="p">,</span> <span class="n">AKeyEvent_getKeyCode</span><span class="p">(</span><span class="n">event</span><span class="p">));</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="nl">AINPUT_EVENT_TYPE_MOTION</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="kt">size_t</span> <span class="n">numPointers</span> <span class="o">=</span> <span class="n">AMotionEvent_getPointerCount</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">numPointers</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="kt">int32_t</span> <span class="n">action</span> <span class="o">=</span> <span class="n">AMotionEvent_getAction</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+
+                <span class="k">switch</span> <span class="p">(</span><span class="n">action</span> <span class="o">&amp;</span> <span class="n">AMOTION_EVENT_ACTION_MASK</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">case</span> <span class="nl">AMOTION_EVENT_ACTION_DOWN</span><span class="p">:</span>
+                    <span class="k">case</span> <span class="nl">AMOTION_EVENT_ACTION_POINTER_DOWN</span><span class="p">:</span>
+                    <span class="p">{</span>
+                        <span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="n">AMotionEvent_getX</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+                        <span class="kt">float</span> <span class="n">y</span> <span class="o">=</span> <span class="n">AMotionEvent_getY</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">app</span><span class="o">-&gt;</span><span class="n">contentRect</span><span class="p">.</span><span class="n">top</span><span class="p">;</span>
+                        <span class="n">MouseDown</span><span class="p">(</span><span class="n">userData</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="k">case</span> <span class="nl">AMOTION_EVENT_ACTION_UP</span><span class="p">:</span>
+                    <span class="k">case</span> <span class="nl">AMOTION_EVENT_ACTION_POINTER_UP</span><span class="p">:</span>
+                    <span class="p">{</span>
+                        <span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="n">AMotionEvent_getX</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+                        <span class="kt">float</span> <span class="n">y</span> <span class="o">=</span> <span class="n">AMotionEvent_getY</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">app</span><span class="o">-&gt;</span><span class="n">contentRect</span><span class="p">.</span><span class="n">top</span><span class="p">;</span>
+                        <span class="n">MouseUp</span><span class="p">(</span><span class="n">userData</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="k">case</span> <span class="nl">AMOTION_EVENT_ACTION_MOVE</span><span class="p">:</span>
+                    <span class="p">{</span>
+                        <span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="n">AMotionEvent_getX</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+                        <span class="kt">float</span> <span class="n">y</span> <span class="o">=</span> <span class="n">AMotionEvent_getY</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">app</span><span class="o">-&gt;</span><span class="n">contentRect</span><span class="p">.</span><span class="n">top</span><span class="p">;</span>
+                        <span class="n">MouseMove</span><span class="p">(</span><span class="n">userData</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">HandleAppCmd</span><span class="p">(</span><span class="n">android_app</span><span class="o">*</span> <span class="n">app</span><span class="p">,</span> <span class="kt">int32_t</span> <span class="n">cmd</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">UserData</span><span class="o">*</span> <span class="n">userData</span> <span class="o">=</span> <span class="p">(</span><span class="n">UserData</span><span class="o">*</span><span class="p">)</span><span class="n">app</span><span class="o">-&gt;</span><span class="n">userData</span><span class="p">;</span>
+
+    <span class="k">switch</span> <span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">case</span> <span class="nl">APP_CMD_INIT_WINDOW</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="c1">// The window is being shown, get it ready</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">userData</span><span class="o">-&gt;</span><span class="n">app</span><span class="o">-&gt;</span><span class="n">window</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">InitDisplay</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="nl">APP_CMD_CONTENT_RECT_CHANGED</span><span class="p">:</span>
+        <span class="k">case</span> <span class="nl">APP_CMD_WINDOW_RESIZED</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">ResizeDisplay</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="nl">APP_CMD_WINDOW_REDRAW_NEEDED</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">DrawFrame</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="nl">APP_CMD_TERM_WINDOW</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="c1">// The window is being hidden or closed, clean it up</span>
+            <span class="n">ShutdownDisplay</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="nl">APP_CMD_LOST_FOCUS</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="c1">// Stop animating</span>
+            <span class="n">userData</span><span class="o">-&gt;</span><span class="n">animating</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="n">DrawFrame</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="nl">APP_CMD_GAINED_FOCUS</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="c1">// Restart animating</span>
+            <span class="n">userData</span><span class="o">-&gt;</span><span class="n">animating</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="n">DrawFrame</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="nl">APP_CMD_CONFIG_CHANGED</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="n">ResizeDisplay</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span> <span class="nf">android_main</span><span class="p">(</span><span class="n">android_app</span><span class="o">*</span> <span class="n">app</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">LOGI</span><span class="p">(</span><span class="s">&quot;android_main BEGIN&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Ensure app wrapper code is not discarded</span>
+    <span class="n">app_dummy</span><span class="p">();</span>
+
+    <span class="n">UserData</span> <span class="n">userData</span><span class="p">;</span>
+    <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">userData</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">UserData</span><span class="p">));</span>
+    <span class="n">app</span><span class="o">-&gt;</span><span class="n">userData</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">userData</span><span class="p">;</span>
+    <span class="n">app</span><span class="o">-&gt;</span><span class="n">onAppCmd</span> <span class="o">=</span> <span class="n">HandleAppCmd</span><span class="p">;</span>
+    <span class="n">app</span><span class="o">-&gt;</span><span class="n">onInputEvent</span> <span class="o">=</span> <span class="n">HandleInput</span><span class="p">;</span>
+    <span class="n">userData</span><span class="p">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">app</span><span class="p">;</span>
+
+    <span class="kt">bool</span> <span class="n">loop</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">loop</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Read all pending events</span>
+        <span class="kt">int</span> <span class="n">events</span><span class="p">;</span>
+        <span class="n">android_poll_source</span><span class="o">*</span> <span class="n">source</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">ALooper_pollAll</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">events</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">source</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// Process this event</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">source</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">source</span><span class="o">-&gt;</span><span class="n">process</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">source</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="c1">// Check if exiting occurs before window was created</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">app</span><span class="o">-&gt;</span><span class="n">destroyRequested</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">LOGI</span><span class="p">(</span><span class="s">&quot;App destroyed&quot;</span><span class="p">);</span>
+                <span class="n">loop</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">loop</span> <span class="o">&amp;&amp;</span> <span class="n">userData</span><span class="p">.</span><span class="n">animating</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">DrawFrame</span><span class="p">(</span><span class="o">&amp;</span><span class="n">userData</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">LOGI</span><span class="p">(</span><span class="s">&quot;android_main END&quot;</span><span class="p">);</span>
+
+    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="windows-phone-8-1">
+<h1>Windows Phone 8.1</h1>
+<p>Follow the <a class="reference internal" href="#directx-v11-0">DirectX v11.0</a> guide for Windows Phone.</p>
+</div>
+
+
+        <!-- NOESIS WEB ------- BEGIN ------- -->
+
+                            </div> <!-- eo noesis_doc_content -->
+                        </div> <!-- eo doc_wrap -->
+                    </div> <!-- eo noesis_web_contenidosMain -->
+
+                </div> <!-- eo wrapper -->
+
+            </div>  <!-- eo documentation-article -->
+
+        </div> <!-- eo main-content -->
+
+        <footer id="footer" class="SOZO-footer">
+            <div class="wrapper">
+                <ul class="footer social-icon-list">
+                    <li>
+                        <a href="https://twitter.com/noesisengine" title="Noesis Twitter" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-twitter">
+                                    <use xlink:href="#svg-icon-social-twitter"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/noesis-technologies-sl" title="Noesis Linkedin" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-linkedin">
+                                    <use xlink:href="#svg-icon-social-linkedin"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://vimeo.com/noesisengine" title="Noesis Vimeo" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-vimeo">
+                                    <use xlink:href="#svg-icon-social-vimeo"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/user/NoesisTechnologies" title="Noesis Youtube" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-youtube">
+                                    <use xlink:href="#svg-icon-social-youtube"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="footer-extended">
+
+                    <div class="cols">
+
+                        <nav class="unit">
+                            <h3 class="title">home</h3>
+                            <ul>
+                                <li><a href="/#goto-home-main-features" class="goto" title="NoesisGUI Main Features">Features</a></li>
+                                <li><a href="/#goto-home-apis" class="goto" title="NoesisGUI APIs and Integrations">Integrations</a></li>
+                                <li><a href="/#goto-home-platforms" class="goto" title="NoesisGUI Supported Platforms">Platforms</a></li>
+                                <li><a href="/#goto-home-clients" class="goto" title="NoesisGUI Happy Clients">Clients</a></li>
+                            </ul>
+                        </nav>
+
+                        <nav class="unit">
+                            <h3 class="title">Licensing</h3>
+                            <ul>
+                                <li><a href="/licensing.php#goto-licensing-prices" class="goto" title="NoesisGUI Prices">Prices</a></li>
+                                <li><a href="/licensing.php#goto-licensing-faqs" class="goto" title="NoesisGUI Licensing FAqs">FAQs</a></li>
+                            </ul>
+                        </nav>
+
+                        <nav class="unit">
+                            <h3 class="title">Developers</h3>
+                            <ul>
+                                <li>
+                                    <div style="display:block;padding: 0.4em 0;">
+                                        <a href="/forums" class="goto" title="NoesisGUI Forums" style="display:inline;margin-right:1em;">Forums</a>
+                                        <a href="https://bugs.noesisengine.com" class="goto" target="_blank" rel="nofollow" title="NoesisGUI Bug Tracker"style="display:inline;">Bugtracker</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="display:block;padding: 0.4em 0;">
+                                        <a href="/developers/samples.php" class="goto" title="NoesisGUI Samples and Tutorials"style="display:inline;margin-right:1em;">Samples</a>
+                                        <a href="/developers/downloads.php" class="goto" title="NoesisGUI Downloads" style="display:inline;">Downloads</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="display:block;padding: 0.4em 0;">
+                                        <a href="https://trello.com/b/ktVkZaBG/noesisgui" class="goto" target="_blank" rel="nofollow" title="NoesisGUI Roadmap"style="display:inline;margin-right:1em;">Roadmap</a>
+                                        <a href="/docs/Gui.Core.Changelog.html" class="goto" title="NoesisGUI Version Changelog"style="display:inline;">Changelog</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="/docs/Gui.Core.Index.html" class="goto" title="NoesisGUI Documentation">Documentation</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <nav class="unit">
+                            <h3 class="title">Contact</h3>
+                            <ul>
+                                <li><a href="/contact.php#goto-contact-about" class="goto" title="About Noesis">About</a></li>
+                                <li><a href="/contact.php#goto-contact-details" class="goto" title="Contact Noesis">Contact details</a></li>
+                            </ul>
+                        </nav>
+
+                    </div>
+
+                    <nav class="legal">
+                        <figure class="SOZO-media logo">
+                            <img src="/images/logos/noesis-logo-stacked.png">
+                        </figure>
+                        <p>&copy; 2017 Noesis Technologies</p>
+                        <a href="/legal/privacy.php" title="Privacy Policy" rel="nofollow">Privacy</a>
+                        <a href="/legal/cookies.php" title="Cookie Policy" rel="nofollow">Cookies</a>
+                        <a href="/legal/terms-of-use.php" title="Terms and Conditions" rel="nofollow">Terms &amp; Conditions</a>
+                    </nav>
+
+                </div>
+
+                <div class="footer-reduced">
+                    <ul>
+                        <li><a href="/" class="goto" title="NoesisGUI Main Features">Features</a></li>
+                        <li><a href="/licensing.php" class="goto" title="NoesisGUI Prices">Licensing</a></li>
+                        <li><a href="/forums" class="goto" title="NoesisGUI Forums">Developer</a></li>
+                        <li><a href="/contact.php" class="goto" title="NoesisGUI Prices">Contact</a></li>
+                    </ul>
+                    <ul class="copyright-legal">
+                        <li>&copy; 2017 Noesis Technologies</li>
+                        <li><a href="/legal/privacy.php" title="Privacy Policy" rel="nofollow">Privacy</a></li>
+                        <li><a href="/legal/terms-of-use.php" title="Terms and Conditions" rel="nofollow">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+        <footer id="doc-footer">
+            <span>&copy; 2017 Noesis Technologies</span>
+        </footer>
+
+    </div> <!-- eo developers documentation -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!-- Use if you want latest version of 1x -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+
+    <!-- If using 1.11.3 make sure you update the fallback file below to 1.11.3 -->
+    <script>window.jQuery || document.write('<script src="/js/vendor/jquery.js"><\/script>')</script>
+
+    <script src="/js/plugins.1481882071.js"></script><script src="/js/main.1485346364.js"></script>
+
+    <!-- NOESIS WEB ------- END ------- -->
+
+
+</div>
+</body>
+</html>

@@ -170,19 +170,6 @@ public class CharacterSelect : MonoBehaviour {
 				break;
 			case 4:
 			//	WorldConnection.DoDeleteChar(CButton4Text.text);
-				break;
-			case 5:
-			//	WorldConnection.DoDeleteChar(CButton5Text.text);
-				break;
-			case 6:
-				//WorldConnection.DoDeleteChar(CButton6Text.text);
-				break;
-			case 7:
-			//	WorldConnection.DoDeleteChar(CButton7Text.text);
-				break;
-			case 8:
-			//	WorldConnection.DoDeleteChar(CButton8Text.text);
-				break;
 			default:
 				break;
 		}		
@@ -251,6 +238,7 @@ public class CharacterSelect : MonoBehaviour {
                     CButton4Text.color = Color.yellow;
                     break;
             }
+            WorldConnection.SpawnSelected(index);
         }
         else
         {

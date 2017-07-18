@@ -27,10 +27,12 @@ public class Animation : MonoBehaviour
 
     private UnityAnimator animator;
     private Spriter spriter;
+    private bool shouldUpdate = false;
     public string charModel = "Barbarian";
+    private string previousDirection = "Down";
     public string direction = "Down";
     public string animateString = "Idle Down";
-
+    public Inventory inventory;
     public GameObject Player;
 
     private float Timer = .05f;
@@ -50,76 +52,26 @@ public class Animation : MonoBehaviour
             spriter = animator.Entity.Spriter;
 
             EquipmentTextureSwapper.Instance.SetCharacterModel(charModel, animator, new Inventory());
+            RefreshTexture();
         }
     }
-
+    public void RefreshTexture()
+    {
+        animator = GetComponent<SpriterDotNetBehaviour>().Animator;
+        EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, inventory);
+        EquipmentTextureSwapper.Instance.CharModel.refresh();
+    }
 void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (shouldUpdate)
         {
-            Inventory i = new Inventory();
-            i.ArmSlot = new Item() { TextureId = 3};
-            i.ChestSlot = new Item() { TextureId = 3 };
-            i.FeetSlot = new Item() { TextureId = 3 };
-            i.GloveSlot = new Item() { TextureId = 3 };
-            i.LegSlot = new Item() { TextureId = 3 };
-            i.LeftWristSlot = new Item() { TextureId = 3 };
-            EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, i);
-            
-
-            var g = EquipmentTextureSwapper.Instance;
-            g.CharModel.refresh();
+            RefreshTexture();
         }
-
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            Inventory i = new Inventory();
-            i.ArmSlot = new Item() { TextureId = 1 };
-            i.ChestSlot = new Item() { TextureId = 1  };
-            i.FeetSlot = new Item() { TextureId = 1 };
-            i.GloveSlot = new Item() { TextureId = 1 };
-            i.LegSlot = new Item() { TextureId = 1 };
-            i.LeftWristSlot = new Item() { TextureId = 1 };
-            EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, i);
-
-
-            var g = EquipmentTextureSwapper.Instance;
-            g.CharModel.refresh();
-        }
-
-        if (Input.GetKeyDown(KeyCode.F3))
-        {
-            Inventory i = new Inventory();
-            i.ArmSlot = new Item() { TextureId = 0 };
-            i.ChestSlot = new Item() { TextureId = 0 };
-            i.FeetSlot = new Item() { TextureId = 0 };
-            i.GloveSlot = new Item() { TextureId = 0 };
-            i.LegSlot = new Item() { TextureId = 0 };
-            i.LeftWristSlot = new Item() { TextureId = 0 };
-            EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, i);
-
-
-            var g = EquipmentTextureSwapper.Instance;
-            g.CharModel.refresh();
-            var x = 0;
-        }
-
-        if (Input.GetKeyDown(KeyCode.F4))
-        {
-            Inventory i = new Inventory();
-            i.ArmSlot = new Item() { TextureId = 2 };
-            i.ChestSlot = new Item() { TextureId = 2 };
-            i.FeetSlot = new Item() { TextureId = 2 };
-            i.GloveSlot = new Item() { TextureId = 2 };
-            i.LegSlot = new Item() { TextureId = 2 };
-            i.LeftWristSlot = new Item() { TextureId = 2 };
-            EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, i);
-
-
-            var g = EquipmentTextureSwapper.Instance;
-            g.CharModel.refresh();
-            var x = 0;
+            EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, inventory);
+            EquipmentTextureSwapper.Instance.CharModel.refresh();
+            
         }
 
         if (clickMove != null)
@@ -188,6 +140,9 @@ void Update()
                         break;
                 }
             }
+            shouldUpdate = (previousDirection != direction);
+           
+            previousDirection = direction;
         }
 
         if (animator != null)
@@ -197,6 +152,7 @@ void Update()
             {
                 animator.Play(animateString);
                 Timer = animator.CurrentAnimation.Length / 1000;
+                
             }
         }
     }

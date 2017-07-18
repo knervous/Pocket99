@@ -19,7 +19,7 @@ namespace SpriterDotNetUnity
         private const float DefaultPivot = 0.5f;
 
         private ChildData childData;
-        private SpriteRenderer[] renderers;
+        public SpriteRenderer[] renderers;
         private AudioSource audioSource;
         private int index;
         private int boxIndex;

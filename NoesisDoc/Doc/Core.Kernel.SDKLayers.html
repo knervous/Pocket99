@@ -1,0 +1,432 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.13.1: http://docutils.sourceforge.net/" />
+<title>noesisGUI Documentation: NoesisEngine Architecture Layers</title>
+
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="description" content="NoesisGUI Documentation"/>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!--script src="https://use.typekit.net/taq4txx.js"></script-->
+    <!--script>try{Typekit.load({ async: true });}catch(e){}</script-->
+
+    <link rel="stylesheet" href="style/noesis.css" type="text/css" media="all"/>
+
+    <script type="text/javascript" src="/js/googleAnalytics.js?version=1.0"></script>
+    <!--[if lt IE 7]><script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE7.js" type="text/javascript"></script><![endif]-->
+
+    <script src="/js/vendor/modernizr.js"></script>
+
+
+</head>
+<body>
+<div class="document" id="noesisengine-architecture-layers">
+
+
+    <!-- NOESIS WEB ------- BEGIN ------- -->
+
+    <div class="developers documentation">
+
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/js/vendor/selectivizr.js"></script>
+        <script type="text/javascript" src="/js/vendor/respond.js"></script>
+        <div class="old-browser-warning">
+            You are using a very old browser.<br>
+            To get the best possible experience using our website we recommend that you upgrade to a newer version or other web browser. <br>
+            A list of the most popular web browsers <a href="http://browsehappy.com/">can be found here</a>
+        </div>
+        <![endif]-->
+
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="svg-icon-social-vimeo" width="30" height="30" viewBox="-26 20 30 30">
+                <path d="M-23,30.2c2.1-1.7,5.1-4.8,7.5-4.8c2.3,0,2.9,2.2,3.2,4.7c0.3,2.5,1.2,7.8,2.5,7.8 c1.2,0,4.1-4.7,3.9-6.6c-0.2-1.8-2.2-1.6-3.3-1c1-3.7,3.4-5.8,6.5-5.8c3.1,0,3.8,2.3,3.8,4.9c0,3.9-8.2,16-13.1,16 c-3.1,0-3.8-4.4-4.4-6.6c-0.6-2.2-1.8-7.9-3.3-8.3c-0.6-0.1-2.1,1.1-2.1,1.1L-23,30.2z"/>
+            </symbol>
+            <symbol id="svg-icon-social-google" width="30" height="30" viewBox="-25 24 30 30">
+                <path d="M-6.3 45.9c0 1-.3 2-.8 2.8-1.7 2.9-5.2 3.9-8.3 3.9-2.5 0-5.5-.6-6.9-2.9-.4-.6-.6-1.4-.6-2.1 0-1.9 1.1-3.4 2.7-4.3 1.9-1.2 4.4-1.5 6.6-1.6-.6-.8-1-1.4-1-2.4 0-.5.1-.9.3-1.4-.4 0-.7.1-1.1.1-3.2 0-5.8-2.3-5.8-5.6 0-1.8.9-3.6 2.2-4.8 1.8-1.5 4.3-2.1 6.6-2.1h6.9l-2.3 1.4H-10c1.5 1.3 2.5 2.7 2.5 4.8 0 4.2-3.9 4.7-3.9 6.8 0 2 5.1 2.7 5.1 7.4zm-2.3 1.4c0-2.2-2.2-3.6-3.8-4.7h-.8c-2.7 0-6.6.9-6.6 4.2 0 3.2 3.5 4.3 6.1 4.3 2.4 0 5.1-1 5.1-3.8zm-2.8-11.5c.7-.7.9-1.6.9-2.6 0-2.4-1.4-6.5-4.4-6.5-.9 0-1.9.5-2.4 1.2-.6.7-.8 1.7-.8 2.6 0 2.5 1.4 6.3 4.3 6.3.8 0 1.8-.4 2.4-1zm14.4.9v1.8H-.5v3.6h-1.7v-3.6h-3.5v-1.8h3.5v-3.6h1.7v3.6H3z">
+            </symbol>
+            <symbol id="svg-icon-social-twitter" width="30" height="30" viewBox="-25 20 30 30">
+                <path d="M.4 29.7v.7c0 7-5.3 15.1-15.1 15.1-3 0-5.8-.9-8.1-2.4.4 0 .8.1 1.3.1 2.5 0 4.8-.8 6.6-2.3-2.3 0-4.3-1.6-5-3.7.3 0 .7.1 1 .1.5 0 1-.1 1.4-.2-2.4-.5-4.2-2.6-4.2-5.2v-.1c.7.4 1.5.6 2.4.7-1.4-1-2.4-2.6-2.4-4.4 0-1 .3-1.9.7-2.7 2.6 3.2 6.5 5.3 10.9 5.5-.1-.4-.1-.8-.1-1.2 0-2.9 2.4-5.3 5.3-5.3 1.5 0 2.9.6 3.9 1.7 1.2-.2 2.3-.7 3.4-1.3C2 26 1.2 27.1.1 27.7c1.1-.1 2.1-.4 3.1-.8C2.4 28 1.4 29 .4 29.7z">
+            </symbol>
+            <symbol id="svg-icon-social-facebook" width="30" height="30" viewBox="-31 24 30 30">
+                <path d="M-8.7 29.8h-2.6c-2 0-2.4 1-2.4 2.4v3.1h4.8l-.6 4.9h-4.2v12.5h-5V40.1h-4.2v-4.9h4.2v-3.6c0-4.2 2.5-6.4 6.2-6.4 1.8 0 3.3.1 3.7.2v4.4z">
+            </symbol>
+            <symbol id="svg-icon-social-youtube" width="30" height="30" viewBox="-26 25 30 30">
+                <path d="M.9 52c-.3 1.3-1.4 2.2-2.6 2.4-3 .3-6.1.3-9.1.3s-6.1 0-9.1-.3c-1.3-.1-2.3-1.1-2.6-2.4-.5-1.9-.5-3.9-.5-5.8s0-3.9.4-5.7c.3-1.3 1.4-2.2 2.6-2.4 3-.3 6.1-.3 9.1-.3s6.1 0 9.1.3c1.3.1 2.3 1.1 2.6 2.4.4 1.8.4 3.8.4 5.7.1 1.9.1 3.9-.3 5.8zm-17-9.8v-1.5h-5.1v1.5h1.7v9.3h1.6v-9.3h1.8zm2.7-16.9l-2 6.5v4.4H-17v-4.4c-.1-.8-.5-2-1-3.5-.4-1-.7-2.1-1.1-3.1h1.7l1.2 4.3 1.1-4.3h1.7zm1.8 26.2v-8.1h-1.5v6.2c-.3.5-.6.7-.9.7-.2 0-.3-.1-.3-.3v-6.6h-1.5v6.4c0 .6 0 1 .1 1.2.1.4.5.6 1 .6s1.1-.3 1.7-1v.9h1.4zM-9 33.6c0 .9-.1 1.5-.5 1.9-.4.6-1 .8-1.7.8s-1.3-.3-1.7-.8c-.3-.4-.5-1.1-.5-1.9v-2.9c0-.9.1-1.5.5-1.9.4-.6 1-.8 1.7-.8.8 0 1.3.3 1.7.8.3.4.5 1 .5 1.9v2.9zm-1.5-3.1c0-.8-.2-1.1-.7-1.1-.5 0-.7.4-.7 1.1v3.4c0 .8.2 1.1.7 1.1.5 0 .7-.4.7-1.1v-3.4zM-6 45.8c0-.8 0-1.3-.1-1.6-.2-.6-.6-.9-1.2-.9-.5 0-1 .3-1.5.9v-3.6h-1.5v10.9h1.5v-.8c.5.6 1 .9 1.5.9.6 0 1-.3 1.2-.9.1-.3.1-.9.1-1.6v-3.3zm-1.5 3.4c0 .7-.2 1.1-.6 1.1-.2 0-.5-.1-.7-.4V45c.2-.2.5-.4.7-.4.4 0 .6.4.6 1.1v3.5zm4-12.9H-5v-.9c-.6.7-1.1 1-1.7 1-.5 0-.8-.2-1-.6-.1-.2-.1-.6-.1-1.2v-6.5h1.5v6.6c0 .2.1.4.3.4.3 0 .6-.2.9-.7v-6.2h1.5v8.1zm3 12.4H-2v1c-.1.4-.3.6-.7.6-.5 0-.8-.4-.8-1.1v-1.4h2.9V46c0-.9-.1-1.5-.4-1.9-.4-.6-1-.8-1.7-.8-.8 0-1.3.3-1.8.8-.3.4-.5 1-.5 1.9v2.8c0 .9.2 1.5.5 1.9.4.6 1 .8 1.8.8s1.4-.3 1.8-.9c.2-.3.3-.6.3-.9v-1zM-2 46.5h-1.5v-.8c0-.7.2-1.1.7-1.1s.8.4.8 1.1v.8z">
+            </symbol>
+            <symbol id="svg-icon-social-linkedin" width="30" height="30" viewBox="-26 25 30 30">
+                <path d="M-22.6 51.3h5v-15h-5v15zm17.8-15.5c-2.2 0-3.5.8-4.8 2.6v-2.1h-5v15h5v-8.1c0-1.7.9-3.4 2.8-3.4 2 0 3.2 1.7 3.2 3.4v8.2h5v-8.5c0-6-4-7.1-6.2-7.1zM-20.1 29c-1.6 0-2.9 1.2-2.9 2.6 0 1.5 1.3 2.6 2.9 2.6 1.6 0 2.9-1.2 2.9-2.6.1-1.4-1.2-2.6-2.9-2.6z">
+            </symbol>
+            <symbol id="svg-scroll-down" width="48" height="48" viewBox="0 0 48 48">
+                <path d="M24 1C11.3 1 1 11.3 1 24s10.3 23 23 23 23-10.3 23-23S36.7 1 24 1zm0 31.5L11.9 21.6l1.3-1.5L24 29.8l10.7-9.7 1.3 1.5-12 10.9z">
+            </symbol>
+        </svg>
+
+        <header id="header" class="SOZO-header js-hide-nav">
+
+            <div class="wrapper">
+
+                <a href="/" class="logo animate-me" title="Noesis">
+                    <img src="/images/logos/noesis-gui-logo.svg" alt="NoesisGUI">
+                </a>
+
+                <div class="user-management">
+                    <iframe src="/includes/user.php" scrolling="no"></iframe>
+                </div>
+
+                <a title="Menu" href="/" class="mobile-menu" rel="nofollow">
+                    <i class="burger-icon"></i>
+                </a>
+
+                <nav class="primary-nav site-nav" role="navigation">
+                    <ul>
+                        <li><a href="/" title="NoesisGUI Main Features"><span>features</span></a></li>
+                        <li><a href="/licensing.php" title="NoesisGUI Licensing"><span>licensing</span></a></li>
+                        <li class="has-children"><a data-id="child-nav" href="/forums" title="NoesisGUI Developer Resources" class="js-mobile-2nd-nav active"><span>developer</span></a>
+                            <nav class="child-nav" id="child-nav">
+                                <ul>
+                                    <li><a href="/forums" title="NoesisGUI Forums">forums</a></li>
+                                    <li><a href="/developers/samples.php" title="NoesisGUI Samples">samples</a></li>
+                                    <li><a href="/developers/downloads.php" title="NoesisGUI Downloads">downloads</a></li>
+                                    <li><a href="/docs/Gui.Core.Index.html" title="NoesisGUI Documentation" class="active">documentation</a></li>
+                                    <li><a href="/docs/Gui.Core.Changelog.html" title="NoesisGUI Version Changelog">changelog</a></li>
+                                    <li><a href="https://bugs.noesisengine.com" target="_blank" rel="nofollow" title="NoesisGUI Bug Tracker">bugtracker</a></li>
+                                    <li><a href="https://trello.com/b/ktVkZaBG/noesisgui" target="_blank" rel="nofollow" title="NoesisGUI Roadmap">roadmap</a></li>
+                                </ul>
+                            </nav>
+                        </li>
+                        <li><a href="/contact.php" title="Contact Information"><span>Contact</span></a></li>
+                    </ul>
+                </nav>
+
+            </div>
+
+        </header>
+
+        <header id="doc-header">
+            <img src="noesis-gui-logo.svg" alt="NoesisGUI">
+        </header>
+
+        <div class="main-content" role="main">
+
+            <nav id="noesis-secondary-nav" class="secondary-nav site-nav js-hide-nav">
+                <div class="wrapper">
+                    <ul>
+                        <li><a href="/forums" title="NoesisGUI Forums">forums</a></li>
+                        <li><a href="/developers/samples.php" title="NoesisGUI Samples">samples</a></li>
+                        <li><a href="/developers/downloads.php" title="NoesisGUI Downloads">downloads</a></li>
+                        <li><a href="/docs/Gui.Core.Index.html" title="NoesisGUI Documentation" class="active">documentation</a></li>
+                        <li><a href="/docs/Gui.Core.Changelog.html" title="NoesisGUI Version Changelog">changelog</a></li>
+                        <li><a href="https://bugs.noesisengine.com" target="_blank" rel="nofollow" title="NoesisGUI Bug Tracker">bugtracker</a></li>
+                        <li><a href="https://trello.com/b/ktVkZaBG/noesisgui" target="_blank" rel="nofollow" title="roadmap">roadmap</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <div class="documentation-article">
+
+                <div class="wrapper">
+
+                    <div id="noesis_web_contenidosMain" class="noesis_web_contenidosMain sozo-content">
+                        <div id="noesis_doc_wrap">
+
+                            <div class="noesis_doc_header_menu">
+                                <a href="Gui.Core.Index.html" class="noesis_doc_header_link">Documentation Index</a>
+                            </div>
+
+                            <div class="noesis_doc_content">
+
+        <!-- NOESIS WEB ------- END ------- -->
+
+
+<h1 class="title">NoesisEngine Architecture Layers</h1>
+
+<p>There are, at least, two possible ways to view the logical organization of NoesisSDK. One is as a set of modules where the packages belongs to. The other one is decomposing the organization in several usage layers. Both logical views are described in this section.</p>
+<div class="section" id="modules">
+<h1>Modules</h1>
+<p>Modules are high-level categories used to classify the package network. To identify a package, the module it belongs to is used as part of the identifier. For example, the full qualified name for the VirtualFileSystem package is File/VirtualFileSystem. To simplify the organization, there is only one hierarchical level of modules. Each module is stored physically in a folder inside the packages directory. All the packages belonging to that module are stored inside that folder. See <a class="reference external" href="Core.Kernel.SDKStructure.html">SDK</a> for more information.</p>
+<p>What follows is a brief description of the main modules that compose Noesis Engine.</p>
+<div class="section" id="core">
+<h2>Core</h2>
+<p>This is the module where low-level packages, in direct contact with the operating system are stored. The <strong>Kernel</strong> package is located in this module. This package is the main entry point for initializing the SDK. The Kernel controls the lifetime of the memory manager, logger and component factory. Kernel systems are managed by the Kernel. The reflection information of each component is stored inside the kernel. This information is accessible to other modules.</p>
+<p>The <strong>Serialization</strong> package is implemented in this category too. This package offers the functionality to save and load component information to streams. The serialization format is used by all the modules that want to save or load information from a file, network, etc.</p>
+<p>The <strong>Configsystem</strong> package offers configuration functionality to other systems. Inside the configsystem all kind of configuration properties can be stored (and they can be stored inside a file). The <strong>Commandsystem</strong> connects the configsystem with the console and offers the possibility to execute remotely commands and interacts with the configsystem.</p>
+<p>The <strong>Tasksystem</strong> is used to decompose high level algorithms in small tasks that can be easily parallelized. This package is used to obtain the maximum benefit from all the hardware threads that can be found in the different architectures.</p>
+</div>
+<div class="section" id="file">
+<h2>File</h2>
+<p>This is the module for file related packages. The different filesystems are implemented here. A filesystem offers an uniform access to a container of files. Examples of filesystem include the <strong>DiskFileSystem</strong> for files stored in the harddisk, <strong>ZipFileSystem</strong> for files stored inside a zip, etc.</p>
+<p>The <strong>VirtualFileSystem</strong> package allows for hooking different filesystem inside a common namespace. It offers an abstraction to access the different filesystem in an uniform way. This way, a program can load files without knowing the exact location of each file. They could be stored in the disk, in the network, inside a zip.</p>
+</div>
+<div class="section" id="math">
+<h2>Math</h2>
+<p>Packages related to math are stored here. The <strong>VectorMath</strong> package is located here. It offers implementation for vector, matrices, quaterions and related operations.</p>
+<p>The <strong>Tessellation</strong> package implements different tessellation algorithms.</p>
+</div>
+<div class="section" id="import">
+<h2>Import</h2>
+<p>All the data importers are located here. The <strong>ColladaMeshImporter</strong> imports geometries and materials from collada files. The <strong>ImageImporter</strong> imports typical image files like jpeg, tga, gif, png, dds, etc. <strong>ShaderImporter</strong> is able to import shader files to be used by the Render. <strong>SoundImporter</strong> reads sound file formats (wav, ogg).</p>
+<p>The <strong>ImporterSystem</strong> offers an interface to import all kind of formats. It maintains a database of source files and imported files that can be used to easily regenerate any resource in the database.</p>
+</div>
+<div class="section" id="gui">
+<h2>GUI</h2>
+<p>Packages related to User Interface are classified under this module. Noesis GUI System is implemented here. The <strong>UISystem</strong> implements a XAML interpreter that is able to render widgets described in that language.</p>
+</div>
+<div class="section" id="drawing">
+<h2>Drawing</h2>
+<p>The <strong>Image</strong>, a platform independent bitmap class, is implemented here with typical operations like conversion between different formats, resizing, cropping, rotation, etc.
+The <strong>VGL</strong>, a vector graphic library, is located inside this module. It offers an interface very similar to OpenVG and is implemented using the rendersystem. The <strong>FontRenderer</strong>, implements the font rasterizer using the VGL. The UISystem uses both he VGL and FontRenderer to draw the different GUI controls.</p>
+</div>
+<div class="section" id="render">
+<h2>Render</h2>
+<p>Inside the render module you find all packages related to 3D Rendering. Implementations for each platform of the RenderSystem are located here. The <strong>DX9RenderSystem</strong> implements the RenderSystem using the DirectX v9.0 API.</p>
+<p>Other packages related to the render driver are located here too. For example, the <strong>VCacheOptimizer</strong> offers an vertex cache optimizer that can be used to improve the render efficiency ofvertex buffers.</p>
+</div>
+<div class="section" id="audio">
+<h2>Audio</h2>
+<p>The audio driver is implemented here. The <strong>AudioSystem</strong> package offers the public platform independent interface for the driver. <strong>OALAudioSystem</strong> implements a driver using the OpenAL API.</p>
+</div>
+<div class="section" id="scene">
+<h2>Scene</h2>
+<p>Scene packages are related to high level rendering and algorithms like culling, kd-tree, light calculations, shadow mapping, etc.</p>
+</div>
+<div class="section" id="input">
+<h2>Input</h2>
+<p>Packages related to input devices are located under this module. The <strong>InputSystem</strong> offers functionality to read from keyboard, mouse and joysticks. Physical inputs can be mapped to virtual inputs allowing the application to read input that can be easily redefined using the configsystem.</p>
+</div>
+<div class="section" id="logic">
+<h2>Logic</h2>
+<p>In the Logic module, packages associated to the logic part of an application or game can be found. The <strong>Entity</strong> package implements the entity layer. The entity layer is an abstraction very useful to describe how an application interacts. Each entity is composed of several components that interacts using messages. Entity components allows for easily reusing functionality among different entities.</p>
+</div>
+</div>
+<div class="section" id="layers">
+<h1>Layers</h1>
+<p>NoesisSDK is structured in layers with each layer based in the previous one. From low-level to high-level we find the Kernel Layer, the System Layer and the Application Layer. What follows is a description of each one.</p>
+<div class="section" id="kernel-layer">
+<h2>Kernel Layer</h2>
+<p>The kernel layer is defined in the Core/Kernel package as a <a class="reference external" href="Core.Kernel.Singletons.html">singleton</a>. Before using any other part of the SDK, the kernel must be properly initialized. Core/Kernel is the unique package that is a mandatory dependency for the rest of the packages. A minimal Noesis distribution is the Core/Kernel package (and its dependencies, like the Core/Parser and Core/UnitTestSystem for example)</p>
+<div class="highlight"><pre><span></span><span class="c1">// Minimal example of Noesis Initialization</span>
+<span class="n">NS_TRY</span>
+<span class="p">{</span>
+
+    <span class="n">IKernel</span><span class="o">*</span> <span class="n">kernel</span> <span class="o">=</span> <span class="n">NsGetKernel</span><span class="p">();</span>
+
+    <span class="n">kernel</span><span class="o">-&gt;</span><span class="n">Init</span><span class="p">();</span>
+
+    <span class="c1">// Kernel initialized</span>
+    <span class="n">NS_INFO</span><span class="p">(</span><span class="n">NST</span><span class="p">(</span><span class="s">&quot;Inside Noesis!&quot;</span><span class="p">));</span>
+    <span class="c1">// ...</span>
+
+    <span class="n">kernel</span><span class="o">-&gt;</span><span class="n">Shutdown</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="n">NS_CATCH</span>
+<span class="p">{</span>
+    <span class="n">NS_SHOW_ERRORDIALOG</span><span class="p">;</span>
+    <span class="n">NS_CLEAR_CRITICALFLAG</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p>The kernel implements the core functionality of the engine through <a class="reference external" href="Core.Kernel.KernelModules.html">kernel modules</a>. The kernel <em>Init()</em> function initializes each kernel module in the appropiate order and kernel <em>Shutdown()</em> destroy them in reverse order.</p>
+<p>The kernel is designed to be:</p>
+<ul class="simple">
+<li><strong>Monolithic</strong>: Packages are not available in this layer, so kernel modules forming part of the Kernel are statically determined.</li>
+<li><strong>Minimalist</strong>: Due to previous point, kernel should be as small as possible. All the functionality that could be implemented in the System Layer must be done at that level.</li>
+</ul>
+</div>
+<div class="section" id="kernel-system-layer">
+<h2>Kernel System Layer</h2>
+<p>A Kernel System is a normal <a class="reference external" href="Core.Kernel.Component.html">component</a> implementing the IKernelSystem interface. As a normal component, the organization of Kernel System in <a class="reference external" href="Core.Kernel.Package.html">packages</a> is totally arbitrary. This is the layer where most of the reusable work should be implemented and it is the better way to expand the kernel functionality.</p>
+<p>KernelSystems are described in more depth in the <a class="reference external" href="Core.Kernel.KernelSystems.html">KernelSystem</a> section of the core documentation.</p>
+<p>Examples of Kernel System are: ConfigSystem, CommandSystem, RemoteCommandSystem, RenderSystem, UnitTestSystem</p>
+<p>Before initializing any system, components should be registered:</p>
+<div class="highlight"><pre><span></span><span class="n">kernel</span><span class="o">-&gt;</span><span class="n">RegisterDirectory</span><span class="p">(</span><span class="n">NST</span><span class="p">(</span><span class="s">&quot;AppDllDirectory&quot;</span><span class="p">));</span>
+</pre></div>
+<p>After that, Kernel Systems are explicitly initialized using system class identifier:</p>
+<div class="highlight"><pre><span></span><span class="n">kernel</span><span class="o">-&gt;</span><span class="n">AddSystem</span><span class="p">(</span><span class="n">NSS</span><span class="p">(</span><span class="s">&quot;ConfigSystem&quot;</span><span class="p">));</span>
+<span class="n">kernel</span><span class="o">-&gt;</span><span class="n">AddSystem</span><span class="p">(</span><span class="n">NSS</span><span class="p">(</span><span class="s">&quot;CommandSystem&quot;</span><span class="p">));</span>
+<span class="n">kernel</span><span class="o">-&gt;</span><span class="n">AddSystem</span><span class="p">(</span><span class="n">NSS</span><span class="p">(</span><span class="s">&quot;RemoteCommandSystem&quot;</span><span class="p">));</span>
+</pre></div>
+<p>Initialized Kernel Systems can be accessed from the kernel like <a class="reference external" href="Core.Kernel.Singletons.html">singleton</a>:</p>
+<div class="highlight"><pre><span></span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">IConfigSystem</span><span class="o">&gt;</span> <span class="n">configSystem</span> <span class="o">=</span> <span class="n">kernel</span><span class="o">-&gt;</span><span class="n">GetSystem</span><span class="p">(</span><span class="n">NSS</span><span class="p">(</span><span class="s">&quot;ConfigSystem&quot;</span><span class="p">));</span>
+<span class="n">Ptr</span><span class="o">&lt;</span><span class="n">ICommandSystem</span><span class="o">&gt;</span> <span class="n">commandSystem</span> <span class="o">=</span> <span class="n">kernel</span><span class="o">-&gt;</span><span class="n">GetSystem</span><span class="p">(</span><span class="n">NSS</span><span class="p">(</span><span class="s">&quot;CommandSystem&quot;</span><span class="p">));</span>
+</pre></div>
+<p>A user identifier could be assigned to any system instance, and use it instead of class identifier:</p>
+<div class="highlight"><pre><span></span><span class="n">kernel</span><span class="o">-&gt;</span><span class="n">AddSystem</span><span class="p">(</span><span class="n">NSS</span><span class="p">(</span><span class="s">&quot;DX9RenderSystem&quot;</span><span class="p">),</span> <span class="n">NSS</span><span class="p">(</span><span class="s">&quot;RenderSystem&quot;</span><span class="p">));</span>
+<span class="n">Ptr</span><span class="o">&lt;</span><span class="n">IRenderSystem</span><span class="o">&gt;</span> <span class="n">renderSystem</span> <span class="o">=</span> <span class="n">kernel</span><span class="o">-&gt;</span><span class="n">GetSystem</span><span class="p">(</span><span class="n">NSS</span><span class="p">(</span><span class="s">&quot;RenderSystem&quot;</span><span class="p">));</span>
+</pre></div>
+<p>Kernel Systems are uninitialized (when calling <em>Kernel::Shutdown()</em>) in the reverse order of initialization.</p>
+</div>
+<div class="section" id="application-layer">
+<h2>Application Layer</h2>
+<p>Applications are derived from specific platform dependant classes implemented in the GUI/Application package. For example, a Windows application must inherit from Gui::WindowsApplication.</p>
+</div>
+</div>
+
+
+        <!-- NOESIS WEB ------- BEGIN ------- -->
+
+                            </div> <!-- eo noesis_doc_content -->
+                        </div> <!-- eo doc_wrap -->
+                    </div> <!-- eo noesis_web_contenidosMain -->
+
+                </div> <!-- eo wrapper -->
+
+            </div>  <!-- eo documentation-article -->
+
+        </div> <!-- eo main-content -->
+
+        <footer id="footer" class="SOZO-footer">
+            <div class="wrapper">
+                <ul class="footer social-icon-list">
+                    <li>
+                        <a href="https://twitter.com/noesisengine" title="Noesis Twitter" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-twitter">
+                                    <use xlink:href="#svg-icon-social-twitter"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/noesis-technologies-sl" title="Noesis Linkedin" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-linkedin">
+                                    <use xlink:href="#svg-icon-social-linkedin"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://vimeo.com/noesisengine" title="Noesis Vimeo" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-vimeo">
+                                    <use xlink:href="#svg-icon-social-vimeo"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/user/NoesisTechnologies" title="Noesis Youtube" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-youtube">
+                                    <use xlink:href="#svg-icon-social-youtube"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="footer-extended">
+
+                    <div class="cols">
+
+                        <nav class="unit">
+                            <h3 class="title">home</h3>
+                            <ul>
+                                <li><a href="/#goto-home-main-features" class="goto" title="NoesisGUI Main Features">Features</a></li>
+                                <li><a href="/#goto-home-apis" class="goto" title="NoesisGUI APIs and Integrations">Integrations</a></li>
+                                <li><a href="/#goto-home-platforms" class="goto" title="NoesisGUI Supported Platforms">Platforms</a></li>
+                                <li><a href="/#goto-home-clients" class="goto" title="NoesisGUI Happy Clients">Clients</a></li>
+                            </ul>
+                        </nav>
+
+                        <nav class="unit">
+                            <h3 class="title">Licensing</h3>
+                            <ul>
+                                <li><a href="/licensing.php#goto-licensing-prices" class="goto" title="NoesisGUI Prices">Prices</a></li>
+                                <li><a href="/licensing.php#goto-licensing-faqs" class="goto" title="NoesisGUI Licensing FAqs">FAQs</a></li>
+                            </ul>
+                        </nav>
+
+                        <nav class="unit">
+                            <h3 class="title">Developers</h3>
+                            <ul>
+                                <li>
+                                    <div style="display:block;padding: 0.4em 0;">
+                                        <a href="/forums" class="goto" title="NoesisGUI Forums" style="display:inline;margin-right:1em;">Forums</a>
+                                        <a href="https://bugs.noesisengine.com" class="goto" target="_blank" rel="nofollow" title="NoesisGUI Bug Tracker"style="display:inline;">Bugtracker</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="display:block;padding: 0.4em 0;">
+                                        <a href="/developers/samples.php" class="goto" title="NoesisGUI Samples and Tutorials"style="display:inline;margin-right:1em;">Samples</a>
+                                        <a href="/developers/downloads.php" class="goto" title="NoesisGUI Downloads" style="display:inline;">Downloads</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="display:block;padding: 0.4em 0;">
+                                        <a href="https://trello.com/b/ktVkZaBG/noesisgui" class="goto" target="_blank" rel="nofollow" title="NoesisGUI Roadmap"style="display:inline;margin-right:1em;">Roadmap</a>
+                                        <a href="/docs/Gui.Core.Changelog.html" class="goto" title="NoesisGUI Version Changelog"style="display:inline;">Changelog</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="/docs/Gui.Core.Index.html" class="goto" title="NoesisGUI Documentation">Documentation</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <nav class="unit">
+                            <h3 class="title">Contact</h3>
+                            <ul>
+                                <li><a href="/contact.php#goto-contact-about" class="goto" title="About Noesis">About</a></li>
+                                <li><a href="/contact.php#goto-contact-details" class="goto" title="Contact Noesis">Contact details</a></li>
+                            </ul>
+                        </nav>
+
+                    </div>
+
+                    <nav class="legal">
+                        <figure class="SOZO-media logo">
+                            <img src="/images/logos/noesis-logo-stacked.png">
+                        </figure>
+                        <p>&copy; 2017 Noesis Technologies</p>
+                        <a href="/legal/privacy.php" title="Privacy Policy" rel="nofollow">Privacy</a>
+                        <a href="/legal/cookies.php" title="Cookie Policy" rel="nofollow">Cookies</a>
+                        <a href="/legal/terms-of-use.php" title="Terms and Conditions" rel="nofollow">Terms &amp; Conditions</a>
+                    </nav>
+
+                </div>
+
+                <div class="footer-reduced">
+                    <ul>
+                        <li><a href="/" class="goto" title="NoesisGUI Main Features">Features</a></li>
+                        <li><a href="/licensing.php" class="goto" title="NoesisGUI Prices">Licensing</a></li>
+                        <li><a href="/forums" class="goto" title="NoesisGUI Forums">Developer</a></li>
+                        <li><a href="/contact.php" class="goto" title="NoesisGUI Prices">Contact</a></li>
+                    </ul>
+                    <ul class="copyright-legal">
+                        <li>&copy; 2017 Noesis Technologies</li>
+                        <li><a href="/legal/privacy.php" title="Privacy Policy" rel="nofollow">Privacy</a></li>
+                        <li><a href="/legal/terms-of-use.php" title="Terms and Conditions" rel="nofollow">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+        <footer id="doc-footer">
+            <span>&copy; 2017 Noesis Technologies</span>
+        </footer>
+
+    </div> <!-- eo developers documentation -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!-- Use if you want latest version of 1x -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+
+    <!-- If using 1.11.3 make sure you update the fallback file below to 1.11.3 -->
+    <script>window.jQuery || document.write('<script src="/js/vendor/jquery.js"><\/script>')</script>
+
+    <script src="/js/plugins.1481882071.js"></script><script src="/js/main.1485346364.js"></script>
+
+    <!-- NOESIS WEB ------- END ------- -->
+
+
+</div>
+</body>
+</html>

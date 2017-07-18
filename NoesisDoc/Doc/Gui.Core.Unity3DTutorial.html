@@ -1,0 +1,534 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.13.1: http://docutils.sourceforge.net/" />
+<title>noesisGUI Documentation: Using NoesisGUI within Unity</title>
+
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="description" content="NoesisGUI Documentation"/>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!--script src="https://use.typekit.net/taq4txx.js"></script-->
+    <!--script>try{Typekit.load({ async: true });}catch(e){}</script-->
+
+    <link rel="stylesheet" href="style/noesis.css" type="text/css" media="all"/>
+
+    <script type="text/javascript" src="/js/googleAnalytics.js?version=1.0"></script>
+    <!--[if lt IE 7]><script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE7.js" type="text/javascript"></script><![endif]-->
+
+    <script src="/js/vendor/modernizr.js"></script>
+
+
+</head>
+<body>
+<div class="document" id="unity-first-steps-with-noesisgui-and-unity">
+
+
+    <!-- NOESIS WEB ------- BEGIN ------- -->
+
+    <div class="developers documentation">
+
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/js/vendor/selectivizr.js"></script>
+        <script type="text/javascript" src="/js/vendor/respond.js"></script>
+        <div class="old-browser-warning">
+            You are using a very old browser.<br>
+            To get the best possible experience using our website we recommend that you upgrade to a newer version or other web browser. <br>
+            A list of the most popular web browsers <a href="http://browsehappy.com/">can be found here</a>
+        </div>
+        <![endif]-->
+
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="svg-icon-social-vimeo" width="30" height="30" viewBox="-26 20 30 30">
+                <path d="M-23,30.2c2.1-1.7,5.1-4.8,7.5-4.8c2.3,0,2.9,2.2,3.2,4.7c0.3,2.5,1.2,7.8,2.5,7.8 c1.2,0,4.1-4.7,3.9-6.6c-0.2-1.8-2.2-1.6-3.3-1c1-3.7,3.4-5.8,6.5-5.8c3.1,0,3.8,2.3,3.8,4.9c0,3.9-8.2,16-13.1,16 c-3.1,0-3.8-4.4-4.4-6.6c-0.6-2.2-1.8-7.9-3.3-8.3c-0.6-0.1-2.1,1.1-2.1,1.1L-23,30.2z"/>
+            </symbol>
+            <symbol id="svg-icon-social-google" width="30" height="30" viewBox="-25 24 30 30">
+                <path d="M-6.3 45.9c0 1-.3 2-.8 2.8-1.7 2.9-5.2 3.9-8.3 3.9-2.5 0-5.5-.6-6.9-2.9-.4-.6-.6-1.4-.6-2.1 0-1.9 1.1-3.4 2.7-4.3 1.9-1.2 4.4-1.5 6.6-1.6-.6-.8-1-1.4-1-2.4 0-.5.1-.9.3-1.4-.4 0-.7.1-1.1.1-3.2 0-5.8-2.3-5.8-5.6 0-1.8.9-3.6 2.2-4.8 1.8-1.5 4.3-2.1 6.6-2.1h6.9l-2.3 1.4H-10c1.5 1.3 2.5 2.7 2.5 4.8 0 4.2-3.9 4.7-3.9 6.8 0 2 5.1 2.7 5.1 7.4zm-2.3 1.4c0-2.2-2.2-3.6-3.8-4.7h-.8c-2.7 0-6.6.9-6.6 4.2 0 3.2 3.5 4.3 6.1 4.3 2.4 0 5.1-1 5.1-3.8zm-2.8-11.5c.7-.7.9-1.6.9-2.6 0-2.4-1.4-6.5-4.4-6.5-.9 0-1.9.5-2.4 1.2-.6.7-.8 1.7-.8 2.6 0 2.5 1.4 6.3 4.3 6.3.8 0 1.8-.4 2.4-1zm14.4.9v1.8H-.5v3.6h-1.7v-3.6h-3.5v-1.8h3.5v-3.6h1.7v3.6H3z">
+            </symbol>
+            <symbol id="svg-icon-social-twitter" width="30" height="30" viewBox="-25 20 30 30">
+                <path d="M.4 29.7v.7c0 7-5.3 15.1-15.1 15.1-3 0-5.8-.9-8.1-2.4.4 0 .8.1 1.3.1 2.5 0 4.8-.8 6.6-2.3-2.3 0-4.3-1.6-5-3.7.3 0 .7.1 1 .1.5 0 1-.1 1.4-.2-2.4-.5-4.2-2.6-4.2-5.2v-.1c.7.4 1.5.6 2.4.7-1.4-1-2.4-2.6-2.4-4.4 0-1 .3-1.9.7-2.7 2.6 3.2 6.5 5.3 10.9 5.5-.1-.4-.1-.8-.1-1.2 0-2.9 2.4-5.3 5.3-5.3 1.5 0 2.9.6 3.9 1.7 1.2-.2 2.3-.7 3.4-1.3C2 26 1.2 27.1.1 27.7c1.1-.1 2.1-.4 3.1-.8C2.4 28 1.4 29 .4 29.7z">
+            </symbol>
+            <symbol id="svg-icon-social-facebook" width="30" height="30" viewBox="-31 24 30 30">
+                <path d="M-8.7 29.8h-2.6c-2 0-2.4 1-2.4 2.4v3.1h4.8l-.6 4.9h-4.2v12.5h-5V40.1h-4.2v-4.9h4.2v-3.6c0-4.2 2.5-6.4 6.2-6.4 1.8 0 3.3.1 3.7.2v4.4z">
+            </symbol>
+            <symbol id="svg-icon-social-youtube" width="30" height="30" viewBox="-26 25 30 30">
+                <path d="M.9 52c-.3 1.3-1.4 2.2-2.6 2.4-3 .3-6.1.3-9.1.3s-6.1 0-9.1-.3c-1.3-.1-2.3-1.1-2.6-2.4-.5-1.9-.5-3.9-.5-5.8s0-3.9.4-5.7c.3-1.3 1.4-2.2 2.6-2.4 3-.3 6.1-.3 9.1-.3s6.1 0 9.1.3c1.3.1 2.3 1.1 2.6 2.4.4 1.8.4 3.8.4 5.7.1 1.9.1 3.9-.3 5.8zm-17-9.8v-1.5h-5.1v1.5h1.7v9.3h1.6v-9.3h1.8zm2.7-16.9l-2 6.5v4.4H-17v-4.4c-.1-.8-.5-2-1-3.5-.4-1-.7-2.1-1.1-3.1h1.7l1.2 4.3 1.1-4.3h1.7zm1.8 26.2v-8.1h-1.5v6.2c-.3.5-.6.7-.9.7-.2 0-.3-.1-.3-.3v-6.6h-1.5v6.4c0 .6 0 1 .1 1.2.1.4.5.6 1 .6s1.1-.3 1.7-1v.9h1.4zM-9 33.6c0 .9-.1 1.5-.5 1.9-.4.6-1 .8-1.7.8s-1.3-.3-1.7-.8c-.3-.4-.5-1.1-.5-1.9v-2.9c0-.9.1-1.5.5-1.9.4-.6 1-.8 1.7-.8.8 0 1.3.3 1.7.8.3.4.5 1 .5 1.9v2.9zm-1.5-3.1c0-.8-.2-1.1-.7-1.1-.5 0-.7.4-.7 1.1v3.4c0 .8.2 1.1.7 1.1.5 0 .7-.4.7-1.1v-3.4zM-6 45.8c0-.8 0-1.3-.1-1.6-.2-.6-.6-.9-1.2-.9-.5 0-1 .3-1.5.9v-3.6h-1.5v10.9h1.5v-.8c.5.6 1 .9 1.5.9.6 0 1-.3 1.2-.9.1-.3.1-.9.1-1.6v-3.3zm-1.5 3.4c0 .7-.2 1.1-.6 1.1-.2 0-.5-.1-.7-.4V45c.2-.2.5-.4.7-.4.4 0 .6.4.6 1.1v3.5zm4-12.9H-5v-.9c-.6.7-1.1 1-1.7 1-.5 0-.8-.2-1-.6-.1-.2-.1-.6-.1-1.2v-6.5h1.5v6.6c0 .2.1.4.3.4.3 0 .6-.2.9-.7v-6.2h1.5v8.1zm3 12.4H-2v1c-.1.4-.3.6-.7.6-.5 0-.8-.4-.8-1.1v-1.4h2.9V46c0-.9-.1-1.5-.4-1.9-.4-.6-1-.8-1.7-.8-.8 0-1.3.3-1.8.8-.3.4-.5 1-.5 1.9v2.8c0 .9.2 1.5.5 1.9.4.6 1 .8 1.8.8s1.4-.3 1.8-.9c.2-.3.3-.6.3-.9v-1zM-2 46.5h-1.5v-.8c0-.7.2-1.1.7-1.1s.8.4.8 1.1v.8z">
+            </symbol>
+            <symbol id="svg-icon-social-linkedin" width="30" height="30" viewBox="-26 25 30 30">
+                <path d="M-22.6 51.3h5v-15h-5v15zm17.8-15.5c-2.2 0-3.5.8-4.8 2.6v-2.1h-5v15h5v-8.1c0-1.7.9-3.4 2.8-3.4 2 0 3.2 1.7 3.2 3.4v8.2h5v-8.5c0-6-4-7.1-6.2-7.1zM-20.1 29c-1.6 0-2.9 1.2-2.9 2.6 0 1.5 1.3 2.6 2.9 2.6 1.6 0 2.9-1.2 2.9-2.6.1-1.4-1.2-2.6-2.9-2.6z">
+            </symbol>
+            <symbol id="svg-scroll-down" width="48" height="48" viewBox="0 0 48 48">
+                <path d="M24 1C11.3 1 1 11.3 1 24s10.3 23 23 23 23-10.3 23-23S36.7 1 24 1zm0 31.5L11.9 21.6l1.3-1.5L24 29.8l10.7-9.7 1.3 1.5-12 10.9z">
+            </symbol>
+        </svg>
+
+        <header id="header" class="SOZO-header js-hide-nav">
+
+            <div class="wrapper">
+
+                <a href="/" class="logo animate-me" title="Noesis">
+                    <img src="/images/logos/noesis-gui-logo.svg" alt="NoesisGUI">
+                </a>
+
+                <div class="user-management">
+                    <iframe src="/includes/user.php" scrolling="no"></iframe>
+                </div>
+
+                <a title="Menu" href="/" class="mobile-menu" rel="nofollow">
+                    <i class="burger-icon"></i>
+                </a>
+
+                <nav class="primary-nav site-nav" role="navigation">
+                    <ul>
+                        <li><a href="/" title="NoesisGUI Main Features"><span>features</span></a></li>
+                        <li><a href="/licensing.php" title="NoesisGUI Licensing"><span>licensing</span></a></li>
+                        <li class="has-children"><a data-id="child-nav" href="/forums" title="NoesisGUI Developer Resources" class="js-mobile-2nd-nav active"><span>developer</span></a>
+                            <nav class="child-nav" id="child-nav">
+                                <ul>
+                                    <li><a href="/forums" title="NoesisGUI Forums">forums</a></li>
+                                    <li><a href="/developers/samples.php" title="NoesisGUI Samples">samples</a></li>
+                                    <li><a href="/developers/downloads.php" title="NoesisGUI Downloads">downloads</a></li>
+                                    <li><a href="/docs/Gui.Core.Index.html" title="NoesisGUI Documentation" class="active">documentation</a></li>
+                                    <li><a href="/docs/Gui.Core.Changelog.html" title="NoesisGUI Version Changelog">changelog</a></li>
+                                    <li><a href="https://bugs.noesisengine.com" target="_blank" rel="nofollow" title="NoesisGUI Bug Tracker">bugtracker</a></li>
+                                    <li><a href="https://trello.com/b/ktVkZaBG/noesisgui" target="_blank" rel="nofollow" title="NoesisGUI Roadmap">roadmap</a></li>
+                                </ul>
+                            </nav>
+                        </li>
+                        <li><a href="/contact.php" title="Contact Information"><span>Contact</span></a></li>
+                    </ul>
+                </nav>
+
+            </div>
+
+        </header>
+
+        <header id="doc-header">
+            <img src="noesis-gui-logo.svg" alt="NoesisGUI">
+        </header>
+
+        <div class="main-content" role="main">
+
+            <nav id="noesis-secondary-nav" class="secondary-nav site-nav js-hide-nav">
+                <div class="wrapper">
+                    <ul>
+                        <li><a href="/forums" title="NoesisGUI Forums">forums</a></li>
+                        <li><a href="/developers/samples.php" title="NoesisGUI Samples">samples</a></li>
+                        <li><a href="/developers/downloads.php" title="NoesisGUI Downloads">downloads</a></li>
+                        <li><a href="/docs/Gui.Core.Index.html" title="NoesisGUI Documentation" class="active">documentation</a></li>
+                        <li><a href="/docs/Gui.Core.Changelog.html" title="NoesisGUI Version Changelog">changelog</a></li>
+                        <li><a href="https://bugs.noesisengine.com" target="_blank" rel="nofollow" title="NoesisGUI Bug Tracker">bugtracker</a></li>
+                        <li><a href="https://trello.com/b/ktVkZaBG/noesisgui" target="_blank" rel="nofollow" title="roadmap">roadmap</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <div class="documentation-article">
+
+                <div class="wrapper">
+
+                    <div id="noesis_web_contenidosMain" class="noesis_web_contenidosMain sozo-content">
+                        <div id="noesis_doc_wrap">
+
+                            <div class="noesis_doc_header_menu">
+                                <a href="Gui.Core.Index.html" class="noesis_doc_header_link">Documentation Index</a>
+                            </div>
+
+                            <div class="noesis_doc_content">
+
+        <!-- NOESIS WEB ------- END ------- -->
+
+
+<h1 class="title"><img alt="Unity" class="align-middle" src="unity.jpg" /> First steps with NoesisGUI and Unity</h1>
+
+<p>First contact with the integration of NoesisGUI within Unity is described in this tutorial. It is recommended that you read the rest of <a class="reference external" href="Gui.Core.Index.html">tutorials</a> to familiarize yourself with the basic concepts of XAML and Noesis architecture.</p>
+<div class="section" id="installation">
+<h1>Installation</h1>
+<div class="admonition admonition-note">
+<p class="first admonition-title">NOTE</p>
+<p class="last">Although not strictly necessary we recommend removing the folder <em>/Assets/NoesisGUI</em> before installing a new version of NoesisGUI.</p>
+</div>
+<p>The first thing is installing the provided <strong>NoesisGUI-X.X.X.XXXX.unitypackage</strong> into your Unity project. You can do this by clicking on the Unity menu option:</p>
+<blockquote>
+<em>Assets</em> -&gt; <em>Import Package</em> -&gt; <em>Custom Package...</em></blockquote>
+<p>and selecting the file NoesisGUI-X.X.X.XXXX.unitypackage that you have downloaded from our web page. A faster alternative is just dragging the unitypackage into the project window.</p>
+<img alt="Unity3DTutorialImg1.png" src="Unity3DTutorialImg1.png" />
+<p>Once the installation finishes a welcome window should appear giving you information about the new installed version of NoesisGUI.</p>
+<div class="admonition admonition-note">
+<p class="first admonition-title">NOTE</p>
+<p class="last">Due to a restriction in Unity regarding native plugins you may get a warning requesting a restart of Unity.</p>
+</div>
+<img alt="Unity3DTutorialImg1_.png" src="Unity3DTutorialImg1_.png" />
+</div>
+<div class="section" id="configuring-noesisgui">
+<h1>Configuring NoesisGUI</h1>
+<p>Clicking on Unity menu option <em>Tools</em> -&gt; <em>NoesisGUI</em> -&gt; <em>Settings</em> will open an inspector window that displays global options for NoesisGUI. If you want more detail about a specific option just hover the mouse over it to get a useful tooltip description.</p>
+<img alt="Unity3DTutorialImg2.png" src="Unity3DTutorialImg2.png" />
+</div>
+<div class="section" id="xaml-assets">
+<h1>XAML assets</h1>
+<p>When you drag and drop a XAML file into Unity Asset folder it will automatically create a <em>NoesisXaml</em> asset. If the asset already exists it will update it. As Unity does not currently support importing custom file extensions you will end up having two files inside your project, the .xaml and the .asset. The .xaml file is the one you edit externally and the .asset if the resource that Unity understands. If you don't need to edit the .xaml you can remove it from your project because it is not necessary for the runtime. Although this is not strictly needed because .xaml files are not included in the final build produced by Unity.</p>
+<div class="admonition admonition-note">
+<p class="first admonition-title">NOTE</p>
+<p class="last">We recommend placing the <a class="reference external" href="Gui.Core.BlendTutorial.unity.html">Blend</a> project (.csproj) next to your <em>/Assets</em> folder and edit .xamls directly from there. Each time you make changes, Unity will update corresponding resources.</p>
+</div>
+<p><em>NoesisXaml</em> resources provide useful thumbnails and previews you can use to distinguish from the original .xaml in your project.</p>
+<img alt="Unity3DTutorialImg20.png" src="Unity3DTutorialImg20.png" />
+</div>
+<div class="section" id="texture-assets">
+<h1>Texture assets</h1>
+<p><a class="reference external" href="Gui.Core.ImagesTutorial.html">Images</a> used inside XAML generate a dependency to the corresponding Unity texture asset. The asset imported by Unity is directly used by Noesis. This means that all settings used under Import Settings are taken into account. Premultiplied alpha is needed in all images used by NoesisGUI. Make sure to set the <em>Alpha Source</em> to <em>Input Texture Alpha</em> and uncheck <em>Alpha is Transparency</em>.</p>
+<img alt="Unity3DTutorialImg22.png" src="Unity3DTutorialImg22.png" />
+<div class="admonition admonition-note">
+<p class="first admonition-title">NOTE</p>
+<p class="last">More information about premultplied alpha at our <a class="reference external" href="http://www.noesisengine.com/forums/viewtopic.php?f=3&amp;t=1036">forums</a>.</p>
+</div>
+</div>
+<div class="section" id="game-pad">
+<h1>Game Pad</h1>
+<p>NoesisGUI understands the following <em>Input Manager</em> axes and game actions:</p>
+<ul class="simple">
+<li><em>Noesis_Horizontal</em>: Joystic Axis</li>
+<li><em>Noesis_Vertical</em>: Joystick Axis</li>
+<li><em>Noesis_Select</em>: Key</li>
+<li><em>Noesis_Back</em>: Key</li>
+<li><em>Mouse ScrollWheel</em>: Mouse Movement</li>
+</ul>
+<p>Make sure to properly configure Unity Input Manager to map gamepad inputs to the UI.</p>
+<img alt="Unity3DTutorialImg21.png" src="Unity3DTutorialImg21.png" />
+</div>
+<div class="section" id="rendering">
+<h1>Rendering</h1>
+<p>The <em>MonoBehaviour</em> in charge of rendering XAMLs is <em>NoesisView</em>. You need to attach that component to your <em>GameObject</em>. If you attach to a <em>Camera</em> object then the user interface will be rendered as a layer on top of the camera.</p>
+<p>You can easily setup a user interface rendering to camera by doing drag and drop of a XAML asset into the <em>Scene View</em>. You can also drag and drop XAMLs into the <em>Hierarchy Window</em>.</p>
+<img alt="Unity3DTutorialImg4.png" src="Unity3DTutorialImg4.png" />
+<p>To display and interacts with the user interface you must enter Play mode.</p>
+<img alt="Unity3DTutorialImg3.png" src="Unity3DTutorialImg3.png" />
+<div class="admonition admonition-note">
+<p class="first admonition-title">NOTE</p>
+<p class="last">By default camera post processing effects will affect the GUI. In case you don't want this to happen. You need to create a new camera to render NoesisGUI. This camera must have a larger <em>Depth</em> value and must set <em>Clear Flags</em> to <em>Don't Clear</em>. You must also make sure the <em>Culling Mask</em> is set to <em>None</em> to avoid rendering 3D elements in this camera.</p>
+</div>
+<p>Sometimes you don't want the user interface to be directly rendered to the screen or camera. NoesisGUI supports rendering XAML to textures that are mapped to the mesh of an object. For that purpose you must create a <em>Render Texture</em> asset.</p>
+<img alt="Unity3DTutorialImg61.png" src="Unity3DTutorialImg61.png" />
+<div class="admonition admonition-note">
+<p class="first admonition-title">Note</p>
+<p class="last">For masking, NoesisGUI needs an active stencil buffer. This can be activated in Unity by selecting a 24-bits Depth Buffer.</p>
+</div>
+<p>This texture must be used by one of the materials of the <em>Mesh</em>, a <em>Plane</em> in this example.</p>
+<img alt="Unity3DTutorialImg62.png" src="Unity3DTutorialImg62.png" />
+<p>And finally, the <em>NoesisView</em> component must be attached to the object. Once this have been done, the XAML will be rendered onto the texture the next time you hit Play.</p>
+<img alt="Unity3DTutorialImg63.png" src="Unity3DTutorialImg63.png" />
+<p>If you want to interact with the GUI rendered in the texture, your <em>GameObject</em> must have a <em>MeshCollider</em> component so texture coordinates can be obtained when doing the hit testing projection.</p>
+</div>
+<div class="section" id="loading-xaml-by-code">
+<h1>Loading XAML by code</h1>
+<p>Similar to standard Unity assets, if you want to load XAML by code you need to have a reference to the corresponding <em>NoesisXaml</em> asset in a <em>MonoBehaviour</em> component or just store it in a <em>Resources/</em> folder and load it by using <em>Resources.Load()</em>.</p>
+<div class="highlight"><pre><span></span><span class="n">NoesisXaml</span> <span class="n">xaml</span> <span class="p">=</span> <span class="p">(</span><span class="n">NoesisXaml</span><span class="p">)</span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">Load</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="k">typeof</span><span class="p">(</span><span class="n">NoesisXaml</span><span class="p">));</span>
+<span class="n">Button</span> <span class="n">button</span> <span class="p">=</span> <span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="n">xaml</span><span class="p">.</span><span class="n">Load</span><span class="p">();</span>
+</pre></div>
+<p>Problem with this approach is that it is not compatible with WPF. In case you are interested in having code that is compatible with both Unity and WPF we provide a way to preload XAMLs by adding them to a list available in the <em>Settings</em> panel.</p>
+<img alt="Unity3DTutorialImg64.png" src="Unity3DTutorialImg64.png" />
+<p>Preloaded XAMLs can be loaded using string paths, for example.</p>
+<div class="highlight"><pre><span></span><span class="n">Button</span> <span class="n">button</span> <span class="p">=</span> <span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="n">Noesis</span><span class="p">.</span><span class="n">GUI</span><span class="p">.</span><span class="n">LoadXaml</span><span class="p">(</span><span class="s">&quot;Assets/UI/Button.xaml&quot;</span><span class="p">);</span>
+</pre></div>
+<div class="admonition admonition-note">
+<p class="first admonition-title">Note</p>
+<p class="last">Even if you move the .asset you must always use the original path that was used when the XAML was imported</p>
+</div>
+</div>
+<div class="section" id="hit-testing">
+<h1>Hit Testing</h1>
+<p>In some situations it is necessary to check if mouse is over or was clicked over any element of the UI. This can be done with the <em>HitTest</em> method available through the <em>VisualTreeHelper</em> class.</p>
+<p>Here is an example where a <em>Collider</em> mouse event was received and we want to find out if we should discard it because any UI element could have been clicked before:</p>
+<div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Noesis</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">HitTestSample</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="n">Visual</span> <span class="n">_root</span><span class="p">;</span>
+
+    <span class="k">void</span> <span class="nf">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">gui</span> <span class="p">=</span> <span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">NoesisView</span><span class="p">&gt;();</span>
+        <span class="n">_root</span> <span class="p">=</span> <span class="p">(</span><span class="n">Visual</span><span class="p">)</span><span class="n">gui</span><span class="p">.</span><span class="n">Content</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="nf">OnMouseDown</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">UnityEngine</span><span class="p">.</span><span class="n">Vector3</span> <span class="n">mousePos</span> <span class="p">=</span> <span class="n">Input</span><span class="p">.</span><span class="n">mousePosition</span><span class="p">;</span>
+        <span class="n">Point</span> <span class="n">point</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Point</span><span class="p">(</span><span class="n">mousePos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">Screen</span><span class="p">.</span><span class="n">height</span> <span class="p">-</span> <span class="n">mousePos</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+        <span class="n">HitTestResult</span> <span class="n">hit</span> <span class="p">=</span> <span class="n">VisualTreeHelper</span><span class="p">.</span><span class="n">HitTest</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_root</span><span class="p">,</span> <span class="n">point</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">hit</span><span class="p">.</span><span class="n">VisualHit</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// No UI element was hit</span>
+
+            <span class="c1">// ...your code here</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="software-keyboard">
+<h1>Software Keyboard</h1>
+<p>When using a mobile/touch platform a software keyboard is used to generate the input keys that are sent to the application. NoesisGUI uses the <em>TouchScreenKeyboard</em> provided by Unity to open the software keyboard whenever a <a class="reference external" href="Gui.Core._TextBox.html">TextBox</a> or <a class="reference external" href="Gui.Core._PasswordBox.html">PasswordBox</a> gets the application focus. The default software keyboard manager is exposed by the class <em>UnitySoftwareKeyboard</em>:</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">UnitySoftwareKeyboard</span><span class="p">:</span> <span class="n">SoftwareKeyboard</span>
+<span class="p">{</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// Override if you want to open the software keyboard for a TextBox with your own options.</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">protected</span> <span class="k">virtual</span> <span class="n">UnityEngine</span><span class="p">.</span><span class="n">TouchScreenKeyboard</span> <span class="n">ShowOnTextBox</span><span class="p">(</span><span class="n">TextBox</span> <span class="n">textBox</span><span class="p">);</span>
+
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// Override if you want to open the software keyboard for a PasswordBox with your own options.</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">protected</span> <span class="k">virtual</span> <span class="n">UnityEngine</span><span class="p">.</span><span class="n">TouchScreenKeyboard</span> <span class="n">ShowOnPasswordBox</span><span class="p">(</span><span class="n">PasswordBox</span> <span class="n">passwordBox</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>The default behavior can be overridden by inheriting from <em>UnitySoftwareKeyboard</em>:</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">AppKeyboardManager</span> <span class="p">:</span> <span class="n">Noesis</span><span class="p">.</span><span class="n">UnitySoftwareKeyboard</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="k">override</span> <span class="n">TouchScreenKeyboard</span> <span class="nf">ShowOnTextBox</span><span class="p">(</span><span class="n">Noesis</span><span class="p">.</span><span class="n">TextBox</span> <span class="n">textBox</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">textBox</span><span class="p">.</span><span class="n">GetName</span><span class="p">()</span> <span class="p">==</span> <span class="s">&quot;emailField&quot;</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">TouchScreenKeyboard</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="n">textBox</span><span class="p">.</span><span class="n">GetText</span><span class="p">(),</span> <span class="n">TouchScreenKeyboardType</span><span class="p">.</span><span class="n">EmailAddress</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">base</span><span class="p">.</span><span class="n">ShowOnTextBox</span><span class="p">(</span><span class="n">textBox</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">AppLogic</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="c1">// Use this for initialization</span>
+    <span class="k">void</span> <span class="nf">Start</span> <span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Noesis</span><span class="p">.</span><span class="n">GUI</span><span class="p">.</span><span class="n">SoftwareKeyboard</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AppKeyboardManager</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="building-on-ios">
+<h1>Building on iOS</h1>
+<p>For now, <em>Bitcode</em> is not supported. It must be disabled in the project settings.</p>
+<img alt="Unity3DTutorialImg102.png" src="Unity3DTutorialImg102.png" />
+</div>
+<div class="section" id="building-on-android">
+<h1>Building on Android</h1>
+<p>The process of building for Android is very simple, only a few settings should be taken into account. The steps to follow are:</p>
+<ol class="arabic simple">
+<li>Select <em>File -&gt; Build Settings</em>...</li>
+</ol>
+<img alt="Unity3DTutorialImg11.png" src="Unity3DTutorialImg11.png" />
+<ol class="arabic simple" start="2">
+<li>Select the Scenes to be deployed</li>
+<li>Select platform Android</li>
+<li>Adjust the desired Player Settings (Resolution, Icons, Splash Image...). Make sure that <strong>Minimum API Level</strong> is at least <em>Android 2.3.3 'Gingerbread'</em>. NoesisGUI is not compatible with previous Android versions.</li>
+<li>Click the Build button</li>
+<li>Select the location where you want to save the .apk file</li>
+<li>Install the .apk into your Android device and Run it</li>
+</ol>
+<p>You can also generate an <strong>Eclipse</strong> project to extend your application. In that case the steps are the following:</p>
+<ol class="arabic simple">
+<li>Select File -&gt; Build Settings...</li>
+<li>Select the Scenes to be deployed</li>
+<li>Select platform Android</li>
+<li>Adjust the desired Player Settings (Resolution, Icons, Splash Image...). Make sure that <strong>Minimum API Level</strong> is at least <em>Android 2.3.3 'Gingerbread'</em>. NoesisGUI is not compatible with previous Android versions.</li>
+<li>Click the Export button</li>
+<li>Select the location where you want to store the Eclipse project</li>
+<li>Optimize deployed data</li>
+<li>Build project with Eclipse to generate the .apk file</li>
+<li>Install the .apk into your Android device and Run it</li>
+</ol>
+<div class="admonition admonition-note">
+<p class="first admonition-title">Note</p>
+<p>If your application needs to use .OBB extension files you should probably have checked the option <strong>Split Application Binary</strong>. Then it is convinient to set Player Settings option <strong>Write Access</strong> to <tt class="docutils literal">External (SDCard)</tt>. We found several clients having problems running the application just after being installed, because Unity can't access the extension file and XAML resources won't be found.</p>
+<img alt="Unity3DTutorialImg12.png" class="last" src="Unity3DTutorialImg12.png" />
+</div>
+</div>
+<div class="section" id="building-on-universal-windows-platform">
+<h1>Building on Universal Windows Platform</h1>
+<p>Only <em>Universal Windows Platform</em> for Windows 10 is supported.</p>
+<ol class="arabic simple">
+<li>Make sure the SDK is set to &quot;Universal 10&quot;.</li>
+</ol>
+<img alt="Unity3DTutorialImg200.png" src="Unity3DTutorialImg200.png" />
+<ol class="arabic simple" start="2">
+<li>Press &quot;Build&quot; button.</li>
+<li>Open the generated Visual Studio project.</li>
+<li>Build the solution for the desired platform, ARM, x86 or x86_64.</li>
+<li>Deploy and Execute.</li>
+</ol>
+</div>
+
+
+        <!-- NOESIS WEB ------- BEGIN ------- -->
+
+                            </div> <!-- eo noesis_doc_content -->
+                        </div> <!-- eo doc_wrap -->
+                    </div> <!-- eo noesis_web_contenidosMain -->
+
+                </div> <!-- eo wrapper -->
+
+            </div>  <!-- eo documentation-article -->
+
+        </div> <!-- eo main-content -->
+
+        <footer id="footer" class="SOZO-footer">
+            <div class="wrapper">
+                <ul class="footer social-icon-list">
+                    <li>
+                        <a href="https://twitter.com/noesisengine" title="Noesis Twitter" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-twitter">
+                                    <use xlink:href="#svg-icon-social-twitter"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/noesis-technologies-sl" title="Noesis Linkedin" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-linkedin">
+                                    <use xlink:href="#svg-icon-social-linkedin"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://vimeo.com/noesisengine" title="Noesis Vimeo" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-vimeo">
+                                    <use xlink:href="#svg-icon-social-vimeo"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/user/NoesisTechnologies" title="Noesis Youtube" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-youtube">
+                                    <use xlink:href="#svg-icon-social-youtube"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="footer-extended">
+
+                    <div class="cols">
+
+                        <nav class="unit">
+                            <h3 class="title">home</h3>
+                            <ul>
+                                <li><a href="/#goto-home-main-features" class="goto" title="NoesisGUI Main Features">Features</a></li>
+                                <li><a href="/#goto-home-apis" class="goto" title="NoesisGUI APIs and Integrations">Integrations</a></li>
+                                <li><a href="/#goto-home-platforms" class="goto" title="NoesisGUI Supported Platforms">Platforms</a></li>
+                                <li><a href="/#goto-home-clients" class="goto" title="NoesisGUI Happy Clients">Clients</a></li>
+                            </ul>
+                        </nav>
+
+                        <nav class="unit">
+                            <h3 class="title">Licensing</h3>
+                            <ul>
+                                <li><a href="/licensing.php#goto-licensing-prices" class="goto" title="NoesisGUI Prices">Prices</a></li>
+                                <li><a href="/licensing.php#goto-licensing-faqs" class="goto" title="NoesisGUI Licensing FAqs">FAQs</a></li>
+                            </ul>
+                        </nav>
+
+                        <nav class="unit">
+                            <h3 class="title">Developers</h3>
+                            <ul>
+                                <li>
+                                    <div style="display:block;padding: 0.4em 0;">
+                                        <a href="/forums" class="goto" title="NoesisGUI Forums" style="display:inline;margin-right:1em;">Forums</a>
+                                        <a href="https://bugs.noesisengine.com" class="goto" target="_blank" rel="nofollow" title="NoesisGUI Bug Tracker"style="display:inline;">Bugtracker</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="display:block;padding: 0.4em 0;">
+                                        <a href="/developers/samples.php" class="goto" title="NoesisGUI Samples and Tutorials"style="display:inline;margin-right:1em;">Samples</a>
+                                        <a href="/developers/downloads.php" class="goto" title="NoesisGUI Downloads" style="display:inline;">Downloads</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="display:block;padding: 0.4em 0;">
+                                        <a href="https://trello.com/b/ktVkZaBG/noesisgui" class="goto" target="_blank" rel="nofollow" title="NoesisGUI Roadmap"style="display:inline;margin-right:1em;">Roadmap</a>
+                                        <a href="/docs/Gui.Core.Changelog.html" class="goto" title="NoesisGUI Version Changelog"style="display:inline;">Changelog</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="/docs/Gui.Core.Index.html" class="goto" title="NoesisGUI Documentation">Documentation</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <nav class="unit">
+                            <h3 class="title">Contact</h3>
+                            <ul>
+                                <li><a href="/contact.php#goto-contact-about" class="goto" title="About Noesis">About</a></li>
+                                <li><a href="/contact.php#goto-contact-details" class="goto" title="Contact Noesis">Contact details</a></li>
+                            </ul>
+                        </nav>
+
+                    </div>
+
+                    <nav class="legal">
+                        <figure class="SOZO-media logo">
+                            <img src="/images/logos/noesis-logo-stacked.png">
+                        </figure>
+                        <p>&copy; 2017 Noesis Technologies</p>
+                        <a href="/legal/privacy.php" title="Privacy Policy" rel="nofollow">Privacy</a>
+                        <a href="/legal/cookies.php" title="Cookie Policy" rel="nofollow">Cookies</a>
+                        <a href="/legal/terms-of-use.php" title="Terms and Conditions" rel="nofollow">Terms &amp; Conditions</a>
+                    </nav>
+
+                </div>
+
+                <div class="footer-reduced">
+                    <ul>
+                        <li><a href="/" class="goto" title="NoesisGUI Main Features">Features</a></li>
+                        <li><a href="/licensing.php" class="goto" title="NoesisGUI Prices">Licensing</a></li>
+                        <li><a href="/forums" class="goto" title="NoesisGUI Forums">Developer</a></li>
+                        <li><a href="/contact.php" class="goto" title="NoesisGUI Prices">Contact</a></li>
+                    </ul>
+                    <ul class="copyright-legal">
+                        <li>&copy; 2017 Noesis Technologies</li>
+                        <li><a href="/legal/privacy.php" title="Privacy Policy" rel="nofollow">Privacy</a></li>
+                        <li><a href="/legal/terms-of-use.php" title="Terms and Conditions" rel="nofollow">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+        <footer id="doc-footer">
+            <span>&copy; 2017 Noesis Technologies</span>
+        </footer>
+
+    </div> <!-- eo developers documentation -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!-- Use if you want latest version of 1x -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+
+    <!-- If using 1.11.3 make sure you update the fallback file below to 1.11.3 -->
+    <script>window.jQuery || document.write('<script src="/js/vendor/jquery.js"><\/script>')</script>
+
+    <script src="/js/plugins.1481882071.js"></script><script src="/js/main.1485346364.js"></script>
+
+    <!-- NOESIS WEB ------- END ------- -->
+
+
+</div>
+</body>
+</html>

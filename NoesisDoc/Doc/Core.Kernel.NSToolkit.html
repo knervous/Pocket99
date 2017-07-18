@@ -1,0 +1,638 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.13.1: http://docutils.sourceforge.net/" />
+<title>noesisGUI Documentation: NSToolkit Manual</title>
+
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="description" content="NoesisGUI Documentation"/>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!--script src="https://use.typekit.net/taq4txx.js"></script-->
+    <!--script>try{Typekit.load({ async: true });}catch(e){}</script-->
+
+    <link rel="stylesheet" href="style/noesis.css" type="text/css" media="all"/>
+
+    <script type="text/javascript" src="/js/googleAnalytics.js?version=1.0"></script>
+    <!--[if lt IE 7]><script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE7.js" type="text/javascript"></script><![endif]-->
+
+    <script src="/js/vendor/modernizr.js"></script>
+
+
+</head>
+<body>
+<div class="document" id="nstoolkit-manual">
+
+
+    <!-- NOESIS WEB ------- BEGIN ------- -->
+
+    <div class="developers documentation">
+
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/js/vendor/selectivizr.js"></script>
+        <script type="text/javascript" src="/js/vendor/respond.js"></script>
+        <div class="old-browser-warning">
+            You are using a very old browser.<br>
+            To get the best possible experience using our website we recommend that you upgrade to a newer version or other web browser. <br>
+            A list of the most popular web browsers <a href="http://browsehappy.com/">can be found here</a>
+        </div>
+        <![endif]-->
+
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="svg-icon-social-vimeo" width="30" height="30" viewBox="-26 20 30 30">
+                <path d="M-23,30.2c2.1-1.7,5.1-4.8,7.5-4.8c2.3,0,2.9,2.2,3.2,4.7c0.3,2.5,1.2,7.8,2.5,7.8 c1.2,0,4.1-4.7,3.9-6.6c-0.2-1.8-2.2-1.6-3.3-1c1-3.7,3.4-5.8,6.5-5.8c3.1,0,3.8,2.3,3.8,4.9c0,3.9-8.2,16-13.1,16 c-3.1,0-3.8-4.4-4.4-6.6c-0.6-2.2-1.8-7.9-3.3-8.3c-0.6-0.1-2.1,1.1-2.1,1.1L-23,30.2z"/>
+            </symbol>
+            <symbol id="svg-icon-social-google" width="30" height="30" viewBox="-25 24 30 30">
+                <path d="M-6.3 45.9c0 1-.3 2-.8 2.8-1.7 2.9-5.2 3.9-8.3 3.9-2.5 0-5.5-.6-6.9-2.9-.4-.6-.6-1.4-.6-2.1 0-1.9 1.1-3.4 2.7-4.3 1.9-1.2 4.4-1.5 6.6-1.6-.6-.8-1-1.4-1-2.4 0-.5.1-.9.3-1.4-.4 0-.7.1-1.1.1-3.2 0-5.8-2.3-5.8-5.6 0-1.8.9-3.6 2.2-4.8 1.8-1.5 4.3-2.1 6.6-2.1h6.9l-2.3 1.4H-10c1.5 1.3 2.5 2.7 2.5 4.8 0 4.2-3.9 4.7-3.9 6.8 0 2 5.1 2.7 5.1 7.4zm-2.3 1.4c0-2.2-2.2-3.6-3.8-4.7h-.8c-2.7 0-6.6.9-6.6 4.2 0 3.2 3.5 4.3 6.1 4.3 2.4 0 5.1-1 5.1-3.8zm-2.8-11.5c.7-.7.9-1.6.9-2.6 0-2.4-1.4-6.5-4.4-6.5-.9 0-1.9.5-2.4 1.2-.6.7-.8 1.7-.8 2.6 0 2.5 1.4 6.3 4.3 6.3.8 0 1.8-.4 2.4-1zm14.4.9v1.8H-.5v3.6h-1.7v-3.6h-3.5v-1.8h3.5v-3.6h1.7v3.6H3z">
+            </symbol>
+            <symbol id="svg-icon-social-twitter" width="30" height="30" viewBox="-25 20 30 30">
+                <path d="M.4 29.7v.7c0 7-5.3 15.1-15.1 15.1-3 0-5.8-.9-8.1-2.4.4 0 .8.1 1.3.1 2.5 0 4.8-.8 6.6-2.3-2.3 0-4.3-1.6-5-3.7.3 0 .7.1 1 .1.5 0 1-.1 1.4-.2-2.4-.5-4.2-2.6-4.2-5.2v-.1c.7.4 1.5.6 2.4.7-1.4-1-2.4-2.6-2.4-4.4 0-1 .3-1.9.7-2.7 2.6 3.2 6.5 5.3 10.9 5.5-.1-.4-.1-.8-.1-1.2 0-2.9 2.4-5.3 5.3-5.3 1.5 0 2.9.6 3.9 1.7 1.2-.2 2.3-.7 3.4-1.3C2 26 1.2 27.1.1 27.7c1.1-.1 2.1-.4 3.1-.8C2.4 28 1.4 29 .4 29.7z">
+            </symbol>
+            <symbol id="svg-icon-social-facebook" width="30" height="30" viewBox="-31 24 30 30">
+                <path d="M-8.7 29.8h-2.6c-2 0-2.4 1-2.4 2.4v3.1h4.8l-.6 4.9h-4.2v12.5h-5V40.1h-4.2v-4.9h4.2v-3.6c0-4.2 2.5-6.4 6.2-6.4 1.8 0 3.3.1 3.7.2v4.4z">
+            </symbol>
+            <symbol id="svg-icon-social-youtube" width="30" height="30" viewBox="-26 25 30 30">
+                <path d="M.9 52c-.3 1.3-1.4 2.2-2.6 2.4-3 .3-6.1.3-9.1.3s-6.1 0-9.1-.3c-1.3-.1-2.3-1.1-2.6-2.4-.5-1.9-.5-3.9-.5-5.8s0-3.9.4-5.7c.3-1.3 1.4-2.2 2.6-2.4 3-.3 6.1-.3 9.1-.3s6.1 0 9.1.3c1.3.1 2.3 1.1 2.6 2.4.4 1.8.4 3.8.4 5.7.1 1.9.1 3.9-.3 5.8zm-17-9.8v-1.5h-5.1v1.5h1.7v9.3h1.6v-9.3h1.8zm2.7-16.9l-2 6.5v4.4H-17v-4.4c-.1-.8-.5-2-1-3.5-.4-1-.7-2.1-1.1-3.1h1.7l1.2 4.3 1.1-4.3h1.7zm1.8 26.2v-8.1h-1.5v6.2c-.3.5-.6.7-.9.7-.2 0-.3-.1-.3-.3v-6.6h-1.5v6.4c0 .6 0 1 .1 1.2.1.4.5.6 1 .6s1.1-.3 1.7-1v.9h1.4zM-9 33.6c0 .9-.1 1.5-.5 1.9-.4.6-1 .8-1.7.8s-1.3-.3-1.7-.8c-.3-.4-.5-1.1-.5-1.9v-2.9c0-.9.1-1.5.5-1.9.4-.6 1-.8 1.7-.8.8 0 1.3.3 1.7.8.3.4.5 1 .5 1.9v2.9zm-1.5-3.1c0-.8-.2-1.1-.7-1.1-.5 0-.7.4-.7 1.1v3.4c0 .8.2 1.1.7 1.1.5 0 .7-.4.7-1.1v-3.4zM-6 45.8c0-.8 0-1.3-.1-1.6-.2-.6-.6-.9-1.2-.9-.5 0-1 .3-1.5.9v-3.6h-1.5v10.9h1.5v-.8c.5.6 1 .9 1.5.9.6 0 1-.3 1.2-.9.1-.3.1-.9.1-1.6v-3.3zm-1.5 3.4c0 .7-.2 1.1-.6 1.1-.2 0-.5-.1-.7-.4V45c.2-.2.5-.4.7-.4.4 0 .6.4.6 1.1v3.5zm4-12.9H-5v-.9c-.6.7-1.1 1-1.7 1-.5 0-.8-.2-1-.6-.1-.2-.1-.6-.1-1.2v-6.5h1.5v6.6c0 .2.1.4.3.4.3 0 .6-.2.9-.7v-6.2h1.5v8.1zm3 12.4H-2v1c-.1.4-.3.6-.7.6-.5 0-.8-.4-.8-1.1v-1.4h2.9V46c0-.9-.1-1.5-.4-1.9-.4-.6-1-.8-1.7-.8-.8 0-1.3.3-1.8.8-.3.4-.5 1-.5 1.9v2.8c0 .9.2 1.5.5 1.9.4.6 1 .8 1.8.8s1.4-.3 1.8-.9c.2-.3.3-.6.3-.9v-1zM-2 46.5h-1.5v-.8c0-.7.2-1.1.7-1.1s.8.4.8 1.1v.8z">
+            </symbol>
+            <symbol id="svg-icon-social-linkedin" width="30" height="30" viewBox="-26 25 30 30">
+                <path d="M-22.6 51.3h5v-15h-5v15zm17.8-15.5c-2.2 0-3.5.8-4.8 2.6v-2.1h-5v15h5v-8.1c0-1.7.9-3.4 2.8-3.4 2 0 3.2 1.7 3.2 3.4v8.2h5v-8.5c0-6-4-7.1-6.2-7.1zM-20.1 29c-1.6 0-2.9 1.2-2.9 2.6 0 1.5 1.3 2.6 2.9 2.6 1.6 0 2.9-1.2 2.9-2.6.1-1.4-1.2-2.6-2.9-2.6z">
+            </symbol>
+            <symbol id="svg-scroll-down" width="48" height="48" viewBox="0 0 48 48">
+                <path d="M24 1C11.3 1 1 11.3 1 24s10.3 23 23 23 23-10.3 23-23S36.7 1 24 1zm0 31.5L11.9 21.6l1.3-1.5L24 29.8l10.7-9.7 1.3 1.5-12 10.9z">
+            </symbol>
+        </svg>
+
+        <header id="header" class="SOZO-header js-hide-nav">
+
+            <div class="wrapper">
+
+                <a href="/" class="logo animate-me" title="Noesis">
+                    <img src="/images/logos/noesis-gui-logo.svg" alt="NoesisGUI">
+                </a>
+
+                <div class="user-management">
+                    <iframe src="/includes/user.php" scrolling="no"></iframe>
+                </div>
+
+                <a title="Menu" href="/" class="mobile-menu" rel="nofollow">
+                    <i class="burger-icon"></i>
+                </a>
+
+                <nav class="primary-nav site-nav" role="navigation">
+                    <ul>
+                        <li><a href="/" title="NoesisGUI Main Features"><span>features</span></a></li>
+                        <li><a href="/licensing.php" title="NoesisGUI Licensing"><span>licensing</span></a></li>
+                        <li class="has-children"><a data-id="child-nav" href="/forums" title="NoesisGUI Developer Resources" class="js-mobile-2nd-nav active"><span>developer</span></a>
+                            <nav class="child-nav" id="child-nav">
+                                <ul>
+                                    <li><a href="/forums" title="NoesisGUI Forums">forums</a></li>
+                                    <li><a href="/developers/samples.php" title="NoesisGUI Samples">samples</a></li>
+                                    <li><a href="/developers/downloads.php" title="NoesisGUI Downloads">downloads</a></li>
+                                    <li><a href="/docs/Gui.Core.Index.html" title="NoesisGUI Documentation" class="active">documentation</a></li>
+                                    <li><a href="/docs/Gui.Core.Changelog.html" title="NoesisGUI Version Changelog">changelog</a></li>
+                                    <li><a href="https://bugs.noesisengine.com" target="_blank" rel="nofollow" title="NoesisGUI Bug Tracker">bugtracker</a></li>
+                                    <li><a href="https://trello.com/b/ktVkZaBG/noesisgui" target="_blank" rel="nofollow" title="NoesisGUI Roadmap">roadmap</a></li>
+                                </ul>
+                            </nav>
+                        </li>
+                        <li><a href="/contact.php" title="Contact Information"><span>Contact</span></a></li>
+                    </ul>
+                </nav>
+
+            </div>
+
+        </header>
+
+        <header id="doc-header">
+            <img src="noesis-gui-logo.svg" alt="NoesisGUI">
+        </header>
+
+        <div class="main-content" role="main">
+
+            <nav id="noesis-secondary-nav" class="secondary-nav site-nav js-hide-nav">
+                <div class="wrapper">
+                    <ul>
+                        <li><a href="/forums" title="NoesisGUI Forums">forums</a></li>
+                        <li><a href="/developers/samples.php" title="NoesisGUI Samples">samples</a></li>
+                        <li><a href="/developers/downloads.php" title="NoesisGUI Downloads">downloads</a></li>
+                        <li><a href="/docs/Gui.Core.Index.html" title="NoesisGUI Documentation" class="active">documentation</a></li>
+                        <li><a href="/docs/Gui.Core.Changelog.html" title="NoesisGUI Version Changelog">changelog</a></li>
+                        <li><a href="https://bugs.noesisengine.com" target="_blank" rel="nofollow" title="NoesisGUI Bug Tracker">bugtracker</a></li>
+                        <li><a href="https://trello.com/b/ktVkZaBG/noesisgui" target="_blank" rel="nofollow" title="roadmap">roadmap</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <div class="documentation-article">
+
+                <div class="wrapper">
+
+                    <div id="noesis_web_contenidosMain" class="noesis_web_contenidosMain sozo-content">
+                        <div id="noesis_doc_wrap">
+
+                            <div class="noesis_doc_header_menu">
+                                <a href="Gui.Core.Index.html" class="noesis_doc_header_link">Documentation Index</a>
+                            </div>
+
+                            <div class="noesis_doc_content">
+
+        <!-- NOESIS WEB ------- END ------- -->
+
+
+<h1 class="title">NSToolkit Manual</h1>
+
+<p>NSToolkit is the hearth of Noesis. It can be used for lots of purposes related with a Noesis distribution. A Noesis distribution is a subset of an entire Noesis SDK. The distribution only has the packages that are needed to build the applications of that distribution.</p>
+<div class="section" id="configuration">
+<h1>Configuration</h1>
+<p>A configuration file must be provided to the NSToolkit containing the following sections (paths indicated in that file are relatives to the current path)</p>
+<div class="highlight"><pre><span></span># NSToolkit settings file
+
+[global]
+
+# A name that describes this distribution
+NAME = Cognition
+
+# Directory where binaries are stored when using NsToolkit dist command
+DISTDIR = Dist
+
+# Path to NoesisSDK in repository
+REMOTEROOT = svn://svn.noesis/Noesis/NoesisSDK/trunk
+
+# Local path where SDK is downloaded from the repository
+LOCALROOT = NoesisSDK
+
+# Root packages that from this distribution. The full distribution will be composed of these
+# packages and their dependencies
+PACKAGES = Apps/Sample, Test/A
+
+# Solution that will be generated containing all the packages
+SOLUTION = Tests.sln
+</pre></div>
+<p>All of these settings can be overriden from the commandline, using the &quot;--&quot; prefix (for example <em>--packages</em> to override <em>PACKAGES</em> setting).</p>
+<p>If everything is properly configured, you should be able to invoke NSToolkit and get the usage help:</p>
+<div class="highlight"><pre><span></span>python NoesisSDK\NSToolkit\NSToolkit.py
+</pre></div>
+<div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+ NSToolkit - NoesisEngine Toolkit - v0.65
+------------------------------------------------------------------------------
+
+ Usage:
+
+     NSToolkit command [options]
+
+ Commands:
+
+     make
+         Synchronizes source code, generates project files and solutions, and
+         copies third party binaries.
+
+     list
+         Lists needed packages.
+
+     info
+         Shows information about the selected packages.
+
+     graph
+         Generates a graph of the needed packages.
+
+     dist
+         Extracts a distribution.
+
+ Options:
+
+     --conf ConfigurationFile
+         The configuration file used by NSToolkit.
+
+     --packages PackageList
+         The list of packages used (enclosed by quotes and separated by commas
+         to specify more than one, for example: &quot;Test/A, Test/B, Test/C&quot;).
+         It overrides configuration file PACKAGES section.
+
+     --nodepends
+         Only specified packages used, dependencies ignored.
+
+     --allpackages
+         All packages in the repository used. It overrides --packages option
+         and configuration file PACKAGES section.
+
+     --sync
+         Synchronizes selected packages with last repository version.
+         Available for make command only.
+
+     --genprj
+         Generates a project file for each selected package. Available for
+         make command only.
+
+     --solution SolutionPath
+         The path name of the solution file. It overrides configuration file
+         SOLUTION section. Available for make command only.
+
+     --gensln
+         Generates a solution file with selected packages. Available for make
+         command only.
+
+     --platform [vs2005|vs2008]
+         Sets the target compiler to generate projects and/or solution.
+         Available for make command only.
+
+     --dist3rd
+         Copies needed third party binaries to Bin directory. Available for
+         make command only.
+
+     --compile action.configuration
+         Compile the selected packages. Available for make command only.
+         Possible actions are {build, rebuild, clean}. Configuration is the
+         name of a valid configuration. Example: &quot;--compile build.release&quot;
+
+     --output ImageFile
+         The name of the generated image. Available for graph command only.
+
+     --distdir DisttributionPath
+         Directory where the generated binary distributions are stored.
+         Available for dist command only.
+
+     --distconfig
+         This flag indicates that the .config files from the bin directory
+         must be distributed. By default they are not copied. Available for
+         dist command only.
+
+     --copypdb [public|private]
+         When used in the dist command, this flag indicates that the public
+         or private pdb
+         files must be copied to the dist directory.
+
+     --installer Script
+         This flag indicates to the dist command that an installer must be
+         generated using the configuration stored inside the Installer
+         directory.
+
+     --printcontext
+         Prints context properties. Only for debugging purposes.
+</pre></div>
+<p>The rest of the configuration files are described in the sections <a class="reference external" href="Core.Kernel.ThirdParties.html">ThirdParties in Noesis</a> and <a class="reference external" href="Core.Kernel.MetaFormat.html">Description of Package Meta definition file</a></p>
+<p>NOTE: in the future, NSToolkit will be a compiled executable for each platform to avoid the dependency with Python.</p>
+</div>
+<div class="section" id="make-command">
+<h1>Make command</h1>
+<div class="section" id="package-synchronization">
+<h2>Package Synchronization</h2>
+<p>Each time you want to sync your distribution you must execute</p>
+<div class="highlight"><pre><span></span>python NoesisSDK\NSToolkit\NSToolkit.py make --sync
+</pre></div>
+<p>Getting an output similar to this</p>
+<div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+ NSToolkit - NoesisEngine Toolkit - v0.40
+------------------------------------------------------------------------------
+
+   [Sync]
+
+     Getting NoesisSDK root directories...
+     Calculating dependencies...
+     Syncing needed packages from repository...
+       Updating 20 packages (in 6 modules)...
+        A    NoesisSDK\Src\Packages\Core\Kernel
+        A    NoesisSDK\Src\Packages\Core\Kernel\Include
+        A    NoesisSDK\Src\Packages\Core\Kernel\Include\NsCore
+        A    NoesisSDK\Src\Packages\Core\Kernel\Include\NsCore\IKernel.h
+        A    NoesisSDK\Src\Packages\Core\Kernel\Include\NsCore\Error.h
+        A    NoesisSDK\Src\Packages\Core\Kernel\Include\NsCore\ObjectPool.inl
+        A    NoesisSDK\Src\Packages\Core\Kernel\Include\NsCore\CompilerSettings.h
+        A    NoesisSDK\Src\Packages\Core\Kernel\Include\NsCore\IReflectionRegistry.h
+        A    NoesisSDK\Src\Packages\Core\Kernel\Include\NsCore\Exception.h
+        A    NoesisSDK\Src\Packages\Core\Kernel\Include\NsCore\InterlockMacros.h
+        A    NoesisSDK\Src\Packages\Core\Kernel\Include\NsCore\DynamicCast.h
+        A    NoesisSDK\Src\Packages\Core\Kernel\Include\NsCore\FixedAllocator.h
+</pre></div>
+</div>
+<div class="section" id="project-generation">
+<h2>Project Generation</h2>
+<p>NSToolkit can be used to generate projects for each platform. You can do it at the same time that you sync or as an alternate step.</p>
+<p>For example, this command will generate the .vcproj files for Microsoft Visual Studio for all the packages that are needed for the selected packages</p>
+<div class="highlight"><pre><span></span>python NoesisSDK\NSToolkit\NSToolkit.py make --genprj
+</pre></div>
+<div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+ NSToolkit - NoesisEngine Toolkit - v0.40
+------------------------------------------------------------------------------
+
+   [GenPrj]
+
+    + Core/Kernel
+    + Render/RenderSystem
+    + Core/UnitTestSystem
+    + Core/ConfigSystem
+    + Core/Parser
+    + Scene/VisualComponent
+    + Math/VectorMath
+    + Scene/Mesh
+    + Apps/Sample
+    + Math/Collision
+    + Import/DataCompiler
+    + Import/Importer
+    + Core/CommandSystem
+    + Core/RemoteCommandSystem
+    + Core/Stream
+    + Core/MemoryStream
+    + Core/Serialization
+    + Render/DX9RenderSystem
+    + Import/ColladaMeshImporter
+    + Import/ShaderImporter
+
+    20 packages generated
+</pre></div>
+</div>
+<div class="section" id="solution-generation">
+<h2>Solution Generation</h2>
+<p>Visual Studio solution files can be created also by NSToolkit. The solution will contain all the packages needed by the distribution with the project dependencies set correctly to be able to build in just one step. Solution path file name could be defined in the configuration file or using the --solution option. Distribution information is obtained from configuration file or corresponding options (--packages or --allpackages).</p>
+<div class="highlight"><pre><span></span>python NoesisSDK\NSToolkit\NSToolkit.py make --solution Sample.sln --gensln
+</pre></div>
+<div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+ NSToolkit - NoesisEngine Toolkit - v0.40
+------------------------------------------------------------------------------
+
+   [GenSln]
+
+     Sample.sln solution generated
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-command">
+<h1>List command</h1>
+<p>With the list command you can get the list of the packages needed for your distribution or all repository packages.</p>
+<div class="highlight"><pre><span></span>python NoesisSDK\NSToolkit\NSToolkit.py list --packages Apps/Sample
+</pre></div>
+<div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+ NSToolkit - NoesisEngine Toolkit - v0.40
+------------------------------------------------------------------------------
+
+     Calculating dependencies...
+     Listing 31 packages in use (sorted by dependency)...
+
+      + Core/Kernel
+      + Core/Serialization
+      + Core/ConfigSystem
+      + Core/UnitTestSystem
+      + Core/Parser
+      + Math/VectorMath
+      + File/FileId
+      + Core/Stream
+      + Core/MemoryStream
+      + Import/ResourceSystem
+      + Render/RenderSystem
+      + Import/DataCompiler
+      + Math/Utils
+      + File/FileSystem
+      + Import/Importer
+      + Scene/VisualSceneManager
+      + Scene/Mesh
+      + Apps/Sample
+      + Math/Collision
+      + Render/VCacheOptimizer
+      + Core/CommandSystem
+      + File/VirtualFileSystem
+      + Core/RemoteCommandSystem
+      + Gui/VGL
+      + Math/Tessellation
+      + File/DiskFileSystem
+      + Drawing/Image
+      + Render/DX9RenderSystem
+      + Import/ColladaMeshImporter
+      + Import/ShaderImporter
+      + Import/ImageImporter
+
+     Listing thirdparties in use...
+
+      + DXSDK
+      + FCollada
+      + FreeImage
+      + LibTess
+      + NVTT
+</pre></div>
+<p>As you can see. Dependencies from 3rdParties are listed too.</p>
+</div>
+<div class="section" id="info-command">
+<h1>Info command</h1>
+<p>To get full information about some package you will use the info command.</p>
+<div class="highlight"><pre><span></span>python NoesisSDK\NSToolkit\NSToolkit.py info --packages Render/RenderSystem --nodepends
+</pre></div>
+<div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+ NSToolkit - NoesisEngine Toolkit - v0.40
+------------------------------------------------------------------------------
+
+     * Render/RenderSystem
+
+      - Description:
+          Abstract package for the low-level RenderSystem implementation
+
+      - Dependencies:
+        + Core/Kernel
+        + Core/UnitTestSystem
+        + Core/Serialization
+        + Core/Stream
+        + Import/ResourceSystem
+        + File/FileSystem
+        + Math/VectorMath
+
+      - Used by:
+        + Apps/CursoOviedo
+        + Apps/Sample
+        + Gui/Controls
+        + Gui/UISystem
+        + Gui/VGL
+        + Import/ShaderImporter
+        + Render/DX9RenderSystem
+        + Render/NullRenderSystem
+        + Scene/Mesh
+        + Scene/VisualSceneManager
+</pre></div>
+</div>
+<div class="section" id="graph-command">
+<h1>Graph command</h1>
+<p>With this command you could generate an image that shows the dependencies of the packages in your distribution.</p>
+<div class="highlight"><pre><span></span>python NoesisSDK\NSToolkit\NSToolkit.py graph --packages Render/RenderSystem
+</pre></div>
+<div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+ NSToolkit - NoesisEngine Toolkit - v0.40
+------------------------------------------------------------------------------
+
+     Calculating dependencies...
+     Writing PkgGraph.png...
+</pre></div>
+<p>And this is the result image:</p>
+<blockquote>
+<a class="reference external image-reference" href="graph.png"><img alt="graph.png" class="align-center" src="graph.png" style="width: 600px;" /></a>
+</blockquote>
+</div>
+<div class="section" id="dist-command">
+<h1>Dist command</h1>
+<p>Dist command is used to generate binary distributions. It is used by the build machines to generate nightly builds. Installation files are generated with this command too.</p>
+</div>
+
+
+        <!-- NOESIS WEB ------- BEGIN ------- -->
+
+                            </div> <!-- eo noesis_doc_content -->
+                        </div> <!-- eo doc_wrap -->
+                    </div> <!-- eo noesis_web_contenidosMain -->
+
+                </div> <!-- eo wrapper -->
+
+            </div>  <!-- eo documentation-article -->
+
+        </div> <!-- eo main-content -->
+
+        <footer id="footer" class="SOZO-footer">
+            <div class="wrapper">
+                <ul class="footer social-icon-list">
+                    <li>
+                        <a href="https://twitter.com/noesisengine" title="Noesis Twitter" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-twitter">
+                                    <use xlink:href="#svg-icon-social-twitter"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/noesis-technologies-sl" title="Noesis Linkedin" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-linkedin">
+                                    <use xlink:href="#svg-icon-social-linkedin"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://vimeo.com/noesisengine" title="Noesis Vimeo" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-vimeo">
+                                    <use xlink:href="#svg-icon-social-vimeo"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/user/NoesisTechnologies" title="Noesis Youtube" target="_blank">
+                            <i class="svg-icon">
+                                <svg class="icon-social-youtube">
+                                    <use xlink:href="#svg-icon-social-youtube"></use>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="footer-extended">
+
+                    <div class="cols">
+
+                        <nav class="unit">
+                            <h3 class="title">home</h3>
+                            <ul>
+                                <li><a href="/#goto-home-main-features" class="goto" title="NoesisGUI Main Features">Features</a></li>
+                                <li><a href="/#goto-home-apis" class="goto" title="NoesisGUI APIs and Integrations">Integrations</a></li>
+                                <li><a href="/#goto-home-platforms" class="goto" title="NoesisGUI Supported Platforms">Platforms</a></li>
+                                <li><a href="/#goto-home-clients" class="goto" title="NoesisGUI Happy Clients">Clients</a></li>
+                            </ul>
+                        </nav>
+
+                        <nav class="unit">
+                            <h3 class="title">Licensing</h3>
+                            <ul>
+                                <li><a href="/licensing.php#goto-licensing-prices" class="goto" title="NoesisGUI Prices">Prices</a></li>
+                                <li><a href="/licensing.php#goto-licensing-faqs" class="goto" title="NoesisGUI Licensing FAqs">FAQs</a></li>
+                            </ul>
+                        </nav>
+
+                        <nav class="unit">
+                            <h3 class="title">Developers</h3>
+                            <ul>
+                                <li>
+                                    <div style="display:block;padding: 0.4em 0;">
+                                        <a href="/forums" class="goto" title="NoesisGUI Forums" style="display:inline;margin-right:1em;">Forums</a>
+                                        <a href="https://bugs.noesisengine.com" class="goto" target="_blank" rel="nofollow" title="NoesisGUI Bug Tracker"style="display:inline;">Bugtracker</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="display:block;padding: 0.4em 0;">
+                                        <a href="/developers/samples.php" class="goto" title="NoesisGUI Samples and Tutorials"style="display:inline;margin-right:1em;">Samples</a>
+                                        <a href="/developers/downloads.php" class="goto" title="NoesisGUI Downloads" style="display:inline;">Downloads</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="display:block;padding: 0.4em 0;">
+                                        <a href="https://trello.com/b/ktVkZaBG/noesisgui" class="goto" target="_blank" rel="nofollow" title="NoesisGUI Roadmap"style="display:inline;margin-right:1em;">Roadmap</a>
+                                        <a href="/docs/Gui.Core.Changelog.html" class="goto" title="NoesisGUI Version Changelog"style="display:inline;">Changelog</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="/docs/Gui.Core.Index.html" class="goto" title="NoesisGUI Documentation">Documentation</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <nav class="unit">
+                            <h3 class="title">Contact</h3>
+                            <ul>
+                                <li><a href="/contact.php#goto-contact-about" class="goto" title="About Noesis">About</a></li>
+                                <li><a href="/contact.php#goto-contact-details" class="goto" title="Contact Noesis">Contact details</a></li>
+                            </ul>
+                        </nav>
+
+                    </div>
+
+                    <nav class="legal">
+                        <figure class="SOZO-media logo">
+                            <img src="/images/logos/noesis-logo-stacked.png">
+                        </figure>
+                        <p>&copy; 2017 Noesis Technologies</p>
+                        <a href="/legal/privacy.php" title="Privacy Policy" rel="nofollow">Privacy</a>
+                        <a href="/legal/cookies.php" title="Cookie Policy" rel="nofollow">Cookies</a>
+                        <a href="/legal/terms-of-use.php" title="Terms and Conditions" rel="nofollow">Terms &amp; Conditions</a>
+                    </nav>
+
+                </div>
+
+                <div class="footer-reduced">
+                    <ul>
+                        <li><a href="/" class="goto" title="NoesisGUI Main Features">Features</a></li>
+                        <li><a href="/licensing.php" class="goto" title="NoesisGUI Prices">Licensing</a></li>
+                        <li><a href="/forums" class="goto" title="NoesisGUI Forums">Developer</a></li>
+                        <li><a href="/contact.php" class="goto" title="NoesisGUI Prices">Contact</a></li>
+                    </ul>
+                    <ul class="copyright-legal">
+                        <li>&copy; 2017 Noesis Technologies</li>
+                        <li><a href="/legal/privacy.php" title="Privacy Policy" rel="nofollow">Privacy</a></li>
+                        <li><a href="/legal/terms-of-use.php" title="Terms and Conditions" rel="nofollow">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+        <footer id="doc-footer">
+            <span>&copy; 2017 Noesis Technologies</span>
+        </footer>
+
+    </div> <!-- eo developers documentation -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!-- Use if you want latest version of 1x -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+
+    <!-- If using 1.11.3 make sure you update the fallback file below to 1.11.3 -->
+    <script>window.jQuery || document.write('<script src="/js/vendor/jquery.js"><\/script>')</script>
+
+    <script src="/js/plugins.1481882071.js"></script><script src="/js/main.1485346364.js"></script>
+
+    <!-- NOESIS WEB ------- END ------- -->
+
+
+</div>
+</body>
+</html>

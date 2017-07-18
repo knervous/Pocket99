@@ -7,6 +7,13 @@ using Assets.Scripts.Data_Models;
 using Assets.Scripts.UI;
 using UnityEngine.Events;
 using UnityEngine.UI;
+#if UNITY_5_3_OR_NEWER
+using Noesis;
+using Transform = UnityEngine.Transform;
+using Vector3 = UnityEngine.Vector3;
+#endif
+
+
 
 public class WorldConnect : MonoBehaviour {
 
@@ -21,6 +28,7 @@ public class WorldConnect : MonoBehaviour {
     public CharacterSelect CharSelect;
     public CharacterCreate CharCreate;
     public GameObject MainPlayer;
+    public GameObject selectedPlayer;
     public bool loggedIn = false;
 
     public Account server_account;
@@ -29,6 +37,8 @@ public class WorldConnect : MonoBehaviour {
 
     public string username;
     public string password;
+
+  
 
     public void Awake()
     {
@@ -52,6 +62,7 @@ public class WorldConnect : MonoBehaviour {
         socket.On("name_check", CreateCharacter);
         socket.On("character_created", CharacterCreated);
         socket.On("enter_world", EnterWorld);
+       // socket.On("receive_inventory", ReceiveInventory);
     }
 
     private void AccountCreated(SocketIOEvent e)
@@ -99,20 +110,18 @@ public class WorldConnect : MonoBehaviour {
     {
         server_account = gameObject.AddComponent<Account>();
         server_account.PopulateFromServer(e);
-        
-        foreach (var char_ in e.data["characters"].list)
+        for(int x = 0; x < e.data["characters"].list.Count; x++)
         {
+            var ch = e.data["characters"].list[x];
+            var inv = e.data["inventories"].list[x];
             var tempPlayer = gameObject.AddComponent<Player>();
-            tempPlayer.PopulateFromServer(char_);
+            tempPlayer.PopulateFromServer(ch,inv);
             server_player.Add(tempPlayer);
         }
-
-        //foreach (var inv_ in e.data["inventories"].list)
-        //{
-        //    server_inventory.Add(gameObject.AddComponent<Inventory>());
-        //    //populate from server method needed
-        //}
-
+        if(server_player.Count > 0)
+        {
+            SpawnSelected(0);
+        }
         CharSelect.ToCharList();
     }
     private void AuthenticateUser(SocketIOEvent e)
@@ -135,6 +144,24 @@ public class WorldConnect : MonoBehaviour {
         socket.Connect();
     }
 
+    public void SpawnSelected(int index)
+    {
+        Destroy(selectedPlayer);
+        var p = server_player[index];
+
+        selectedPlayer = Instantiate(Resources.Load("Textures/Character Models/Barbarian/Male/Barbarian Male")) as GameObject;
+        selectedPlayer.transform.parent = MainPlayer.transform;
+        selectedPlayer.transform.localScale = new UnityEngine.Vector3(8, 8, 1);
+        selectedPlayer.transform.localPosition = new UnityEngine.Vector3(0, 0, -1);
+        //MainPlayer.transform.position = new Vector3(1, 1, 1);
+        selectedPlayer.GetComponent<Animation>().Player = MainPlayer;
+        selectedPlayer.GetComponent<CollisionDetection>().player = MainPlayer;
+        selectedPlayer.GetComponent<Animation>().inventory = p.inventory_;
+        MainPlayer.name = p.name_;
+        MainPlayer.GetComponent<PlayerAttributes>().player = p;
+        
+    }
+
     public void DoEnterWorld(int index)
     {
         var player = server_player[index];
@@ -150,19 +177,10 @@ public class WorldConnect : MonoBehaviour {
                 //zoneConnectSocket.GetComponent<SocketIOComponent>().url = "ws://localhost:5998/socket.io/?EIO=4&transport=websocket";
                 zoneConnectSocket.SetActive(true);
                 socket.Emit("zone_into_world", player.CreateServerPlayer());
-                MainPlayer.SetActive(true);
-
-                var newPlayer = Instantiate(Resources.Load("Textures/Character Models/Barbarian/Male/Barbarian Male")) as GameObject;
-                newPlayer.transform.parent = MainPlayer.transform;
-                newPlayer.transform.localScale = new Vector3(1, 1, 1);
-                newPlayer.transform.position = new Vector3(1, 1, 1);
-                MainPlayer.transform.position = new Vector3(1, 1, 1);
-                newPlayer.GetComponent<Animation>().Player = MainPlayer;
-                newPlayer.GetComponent<CollisionDetection>().player = MainPlayer;
-                MainPlayer.name = player.name_;
-                MainPlayer.GetComponent<PlayerAttributes>().player = player;
-                newPlayer.tag = "Player";
-                DontDestroyOnLoad(newPlayer);
+                MainPlayer.transform.position = new UnityEngine.Vector3(1, 1, 1);
+                selectedPlayer.transform.localScale = new UnityEngine.Vector3(3, 3, 1);
+                selectedPlayer.tag = "Player";
+                DontDestroyOnLoad(selectedPlayer);
                 zoneConnectSocket.GetComponent<Network>().myPlayer = MainPlayer;
                 loginCam.gameObject.SetActive(false);
                 gameCam.gameObject.SetActive(true);
@@ -170,8 +188,7 @@ public class WorldConnect : MonoBehaviour {
                 gameCam.GetComponent<CameraFollow>().player = MainPlayer;
                 gameCam.GetComponent<ScreenClicker>().player = MainPlayer;
                 gameCam.GetComponent<CameraFollow>().StartCamera();
-
-
+                UIInventory.Inv.UpdateEquip();
                 break;
         }
     }

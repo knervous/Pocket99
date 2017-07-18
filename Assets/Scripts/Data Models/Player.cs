@@ -12,6 +12,7 @@ namespace Assets.Scripts.Data_Models
     {
         
         public Int32 zone_id_ = 0;
+        public Inventory inventory_;
         public float x_ = 0;
         public float y_ = 0;
         public float z_ = -1;
@@ -89,7 +90,7 @@ namespace Assets.Scripts.Data_Models
             return obj;
         }
 
-        public void PopulateFromServer(JSONObject e)
+        public void PopulateFromServer(JSONObject e, JSONObject inventory)
         {
             last_login_ = new DateTime((long)e["lastLogin"].n);
             time_played_ = new DateTime((long)e["timePlayed"].n);
@@ -132,6 +133,8 @@ namespace Assets.Scripts.Data_Models
             name_ = e["name"].str;
             lastName_ = e["lastName"].str;
             title_ = e["title"].str;
+
+            inventory_ = Inventory.Populate(inventory);
         }
 
         public static string GetClassById(int index)
