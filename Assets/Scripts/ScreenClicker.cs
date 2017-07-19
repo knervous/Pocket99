@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using Noesis;
+using Vector3 = UnityEngine.Vector3;
 
 public class ScreenClicker : MonoBehaviour {
 
@@ -10,9 +12,12 @@ public class ScreenClicker : MonoBehaviour {
     public GameObject player;
     private Rigidbody2D rbody;
     private int counter = 0;
+    private Visual _root;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        var gui = GetComponent<NoesisView>();
+        _root = (Visual)gui.Content;
         DontDestroyOnLoad(this);
     }
 	
@@ -38,6 +43,7 @@ public class ScreenClicker : MonoBehaviour {
 
     void TryMove(Vector3 target)
     {
+        
         counter = 0;
         var clickMove = player.GetComponent<ClickMove>();
 
@@ -47,6 +53,11 @@ public class ScreenClicker : MonoBehaviour {
 #elif (UNITY_ANDROID || UNITY_IPHONE || UNITY_WP8)
    target = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 #endif
+
+        Point point = new Point(target.x, Screen.height - target.y);
+        HitTestResult hit = VisualTreeHelper.HitTest(this._root, point);
+        if (hit.VisualHit != null)
+            return;
 
         var hitCollider = Physics2D.OverlapPoint(target);
         if(hitCollider)
@@ -59,9 +70,6 @@ public class ScreenClicker : MonoBehaviour {
             }
         }
 
-        Debug.Log("TARGET WORLD POINT: " + target);
         clickMove.OnClick(new Vector3(target.x, target.y, 0));
-        //var hct = hitCollider.transform.position + hitCollider.transform.TransformDirection(new Vector3(0, 0, -1));
-        //clickMove.OnClick(hct);
     }
 }
