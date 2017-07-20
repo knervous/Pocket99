@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="UIInventory.Equipment"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="400"
+>
+
+    <Viewbox Stretch="Uniform">
+        <Canvas x:Name="Canvas" Width="380" Height="380" Tag="{Binding ElementName=EmptySlot}">
+
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+
+                    <Button x:Name="Inventory_BackButton" Style="{DynamicResource DefaultButton}" Background="{DynamicResource Inventory_Open}" Width="66.67" Height="66.67"  ToolTip="Go Back"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Earring}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Neck}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Face}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Head}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Earring}" ToolTip="Left Earring"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Finger}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Wrist}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Arms}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Hands}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Wrist}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Finger}" ToolTip="Left Earring"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Shoulders}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Chest}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Back}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Belt}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Legs}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Feet}" ToolTip="Left Earring"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Primary}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Offhand}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Ranged}" ToolTip="Left Earring"/>
+                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Equipment_Ammo}" ToolTip="Left Earring"/>
+                    
+                </StackPanel>
+
+            </StackPanel>
+
+            <StackPanel x:Name="EquipSlots" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Border Width="66.67" Height="66.67"  ToolTip="Back Button"/>
+                    <Border x:Name="Inventory_LeftEar" Width="66.67" Height="66.67" Background="{DynamicResource RayHelix}"/>
+                    <Border x:Name="Inventory_Neck" Width="66.67" Height="66.67" />
+                    <Border x:Name="Inventory_Face" Width="66.67" Height="66.67" />
+                    <Border x:Name="Inventory_Head" Width="66.67" Height="66.67" />
+                    <Border x:Name="Inventory_RightEar" Width="66.67" Height="66.67" Background="{DynamicResource FireStorm}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Border x:Name="Inventory_LeftFinger" Width="66.67" Height="66.67"  />
+                    <Border x:Name="Inventory_LeftWrist" Width="66.67" Height="66.67"  />
+                    <Border x:Name="Inventory_Arms" Width="66.67" Height="66.67"  />
+                    <Border x:Name="Inventory_Hands" Width="66.67" Height="66.67"  />
+                    <Border x:Name="Inventory_RightWrist" Width="66.67" Height="66.67"  />
+                    <Border x:Name="Inventory_RightFinger" Width="66.67" Height="66.67"  />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Border x:Name="Inventory_Shoulders" Width="66.67" Height="66.67"  />
+                    <Border x:Name="Inventory_Chest" Width="66.67" Height="66.67"  />
+                    <Border x:Name="Inventory_Back" Width="66.67" Height="66.67"  />
+                    <Border x:Name="Inventory_Belt" Width="66.67" Height="66.67"  />
+                    <Border x:Name="Inventory_Legs" Width="66.67" Height="66.67"  />
+                    <Border x:Name="Inventory_Feet" Width="66.67" Height="66.67"  />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Border x:Name="Inventory_Primary" Width="66.67" Height="66.67"  />
+                    <Border x:Name="Inventory_Offhand" Width="66.67" Height="66.67"  />
+                    <Border x:Name="Inventory_Ranged" Width="66.67" Height="66.67"  />
+                    <Border x:Name="Inventory_Ammo" Width="66.67" Height="66.67"  />
+                </StackPanel>
+            </StackPanel>
+            <Border Width="120" Height="40"  Padding="5" Background="{DynamicResource Inventory_Rect}" Canvas.Left="10"  Canvas.Top="275" ToolTip="Left Earring">
+                <StackPanel Orientation="Horizontal">
+                    <Border Background="{DynamicResource Platinum}" Height="25"  Width="25"/>
+                    <TextBlock Foreground="White" Text="0" x:Name="PlatinumAmount" Height="30" Padding="5" FontSize="15" TextAlignment="Center"  Width="85"/>
+                </StackPanel>
+            </Border>
+            <Border Width="120" Height="40"  Background="{DynamicResource Inventory_Rect}" Canvas.Left="145"  Canvas.Top="275" ToolTip="Left Earring">
+                <StackPanel Orientation="Horizontal">
+                    <Border Background="{DynamicResource Gold}" Height="25"  Width="25"/>
+                    <TextBlock Foreground="White" Text="0" x:Name="GoldAmount" Height="30" Padding="5" FontSize="15" TextAlignment="Center" Width="85"/>
+                </StackPanel>
+            </Border>
+            <Border Width="120" Height="40"  Padding="5" Background="{DynamicResource Inventory_Rect}" Canvas.Left="10"  Canvas.Top="335" ToolTip="Left Earring">
+                <StackPanel Orientation="Horizontal">
+                    <Border Background="{DynamicResource Silver}" Height="25"  Width="25"/>
+                    <TextBlock Foreground="White" Text="0" x:Name="SilverAmount" Height="30" Padding="5" FontSize="15" TextAlignment="Center"  Width="85"/>
+                </StackPanel>
+            </Border>
+            <Border Width="120" Height="40"  Background="{DynamicResource Inventory_Rect}" Canvas.Left="145"  Canvas.Top="335" ToolTip="Left Earring">
+                <StackPanel Orientation="Horizontal">
+                    <Border Background="{DynamicResource Copper}" Height="25"  Width="25"/>
+                    <TextBlock Foreground="White" Text="0" x:Name="CopperAmount" Height="30" Padding="5" FontSize="15" TextAlignment="Center"   Width="85"/>
+                </StackPanel>
+            </Border>
+
+        </Canvas>
+    </Viewbox>
+</UserControl>

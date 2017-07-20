@@ -1,0 +1,48 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <ImageBrush x:Key="Equipment_BG" ImageSource="icons/wnd_bg_light_rock.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,1,1"/>
+
+    <ImageBrush x:Key="Equipment_Button" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".7,.43,.156,.156"/>
+    <ImageBrush x:Key="Platinum" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".35,.545,.068, .068"/>
+    <ImageBrush x:Key="Gold" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".42,.545,.068, .068"/>
+    <ImageBrush x:Key="Silver" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".49,.545,.068, .068"/>
+    <ImageBrush x:Key="Copper" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".556,.545,.068, .068"/>
+
+    <!-- Background for window-->
+    <ImageBrush x:Key="Window_Background" ImageSource="icons/border2.jpg" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,1,1"/>
+    
+    <!-- X Icon for Close Window-->
+    <ImageBrush x:Key="X_Icon" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".39, .355, .035, .037"/>
+    
+    <!-- Inventory Open Icon-->
+    <ImageBrush x:Key="Inventory_Open" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,.468,.1, .1"/>
+    
+    <!-- Background Item Slot-->
+    <ImageBrush x:Key="Inventory_Empty" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".703,.43,.156, .156"/>
+    <ImageBrush x:Key="Inventory_Rect" ImageSource="icons/window_pieces03.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".78125,.75,.1875,.094"/>
+    <!--  Equip Slot Backgrounds  -->
+    <ImageBrush x:Key="Equipment_Earring" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Neck" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".156,0,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Head" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".312,0,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Face" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".468,0,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Chest" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".624,0,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Offhand" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".780,0,.156, .156"/>
+
+    <ImageBrush x:Key="Equipment_Back" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,.156,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Arms" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".156,.156,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Shoulders" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".312,.156,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Wrist" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".468,.156,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Belt" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".624,.156,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Ranged" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".780,.156,.156, .156"/>
+
+    <ImageBrush x:Key="Equipment_Hands" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,.312,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Finger" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".156,.312,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Legs" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".312,.312,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Feet" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".468,.312,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Primary" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".624,.312,.156, .156"/>
+    <ImageBrush x:Key="Equipment_Ammo" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".780,.312,.156, .156"/>
+  
+</ResourceDictionary>

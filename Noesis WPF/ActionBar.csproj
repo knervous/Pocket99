@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B5CF36FE-B41C-46E6-A3AA-D02739233663}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ActionBar</RootNamespace>
+    <AssemblyName>ActionBar</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>12.0.60617.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <!--ItemGroup>
+    <None Include="C:\Users\root\source\Pocket99\Assets\NoesisGUI\Interface\**\*.xaml">
+      <Link>XAML\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\root\source\Pocket99\Assets\NoesisGUI\Interface\**\*.cs">
+      <Link>XAML\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </None>
+  </ItemGroup-->
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="Assets\InventoryUI\InventorySlots.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\InventoryUI\Equipment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\MainUI\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resources\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resources\Equipment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Assets\InventoryUI\Inventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Inventory.cs" />
+    <Compile Include="Assets\InventoryUI\InventorySlots.xaml.cs">
+      <DependentUpon>InventorySlots.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\InventoryUI\Equipment.xaml.cs">
+      <DependentUpon>Equipment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\Item.cs" />
+    <Compile Include="Assets\MainUI\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\Resources\Icons.xaml.cs">
+      <DependentUpon>Icons.xaml</DependentUpon>
+      <Generator>MSBuild:Compile</Generator>
+    </Compile>
+    <Compile Include="Assets\InventoryUI\Inventory.xaml.cs">
+      <DependentUpon>Inventory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Assets\Resources\icons\icp_20170714_070921.log" />
+    <None Include="Assets\Resources\icons\icp_20170714_071508.log" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Resources\icons\assist.png" />
+    <Resource Include="Assets\Resources\icons\AttackIndicator.png" />
+    <Resource Include="Assets\Resources\icons\background_dark.png" />
+    <Resource Include="Assets\Resources\icons\background_light.png" />
+    <Resource Include="Assets\Resources\icons\bard01.png" />
+    <Resource Include="Assets\Resources\icons\beastlord01.png" />
+    <Resource Include="Assets\Resources\icons\Berserker01.png" />
+    <Resource Include="Assets\Resources\icons\Berserker02.png" />
+    <Resource Include="Assets\Resources\icons\cart01.png" />
+    <Resource Include="Assets\Resources\icons\cart02.png" />
+    <Resource Include="Assets\Resources\icons\cart03.png" />
+    <Resource Include="Assets\Resources\icons\cart04.png" />
+    <Resource Include="Assets\Resources\icons\cleric01.png" />
+    <Resource Include="Assets\Resources\icons\cleric02.png" />
+    <Resource Include="Assets\Resources\icons\dragitem1.png" />
+    <Resource Include="Assets\Resources\icons\dragitem10.png" />
+    <Resource Include="Assets\Resources\icons\dragitem11.png" />
+    <Resource Include="Assets\Resources\icons\dragitem12.png" />
+    <Resource Include="Assets\Resources\icons\dragitem13.png" />
+    <Resource Include="Assets\Resources\icons\dragitem14.png" />
+    <Resource Include="Assets\Resources\icons\dragitem15.png" />
+    <Resource Include="Assets\Resources\icons\dragitem16.png" />
+    <Resource Include="Assets\Resources\icons\dragitem17.png" />
+    <Resource Include="Assets\Resources\icons\dragitem18.png" />
+    <Resource Include="Assets\Resources\icons\dragitem19.png" />
+    <Resource Include="Assets\Resources\icons\dragitem2.png" />
+    <Resource Include="Assets\Resources\icons\dragitem20.png" />
+    <Resource Include="Assets\Resources\icons\dragitem21.png" />
+    <Resource Include="Assets\Resources\icons\dragitem22.png" />
+    <Resource Include="Assets\Resources\icons\dragitem23.png" />
+    <Resource Include="Assets\Resources\icons\dragitem24.png" />
+    <Resource Include="Assets\Resources\icons\dragitem25.png" />
+    <Resource Include="Assets\Resources\icons\dragitem26.png" />
+    <Resource Include="Assets\Resources\icons\dragitem27.png" />
+    <Resource Include="Assets\Resources\icons\dragitem28.png" />
+    <Resource Include="Assets\Resources\icons\dragitem29.png" />
+    <Resource Include="Assets\Resources\icons\dragitem3.png" />
+    <Resource Include="Assets\Resources\icons\dragitem30.png" />
+    <Resource Include="Assets\Resources\icons\dragitem31.png" />
+    <Resource Include="Assets\Resources\icons\dragitem32.png" />
+    <Resource Include="Assets\Resources\icons\dragitem33.png" />
+    <Resource Include="Assets\Resources\icons\dragitem34.png" />
+    <Resource Include="Assets\Resources\icons\dragitem4.png" />
+    <Resource Include="Assets\Resources\icons\dragitem5.png" />
+    <Resource Include="Assets\Resources\icons\dragitem6.png" />
+    <Resource Include="Assets\Resources\icons\dragitem7.png" />
+    <Resource Include="Assets\Resources\icons\dragitem8.png" />
+    <Resource Include="Assets\Resources\icons\dragitem9.png" />
+    <Resource Include="Assets\Resources\icons\druid01.png" />
+    <Resource Include="Assets\Resources\icons\druid02.png" />
+    <Resource Include="Assets\Resources\icons\enchanter01.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_background_01.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_background_02.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_background_03.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_background_04.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_background_05.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_background_06.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_BlackFill.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_ESRBSplash01.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_ESRBSplash02.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_ESRBSplash03.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_ESRBSplash04.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_ESRBSplash05.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_ESRBSplash06.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_scrollbar_gutter.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_SOESplash01.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_SOESplash02.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_SOESplash03.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_SOESplash04.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_SOESplash05.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_SOESplash06.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_window_pieces_01.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_window_pieces_02.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_WndBorder_01.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_WndBorder_02.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_WndBorder_03.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_WndBorder_04.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_WndBorder_05.png" />
+    <Resource Include="Assets\Resources\icons\EQLS_WndBorder_06.png" />
+    <Resource Include="Assets\Resources\icons\gemicons01.png" />
+    <Resource Include="Assets\Resources\icons\gemicons02.png" />
+    <Resource Include="Assets\Resources\icons\gemicons03.png" />
+    <Resource Include="Assets\Resources\icons\magician01.png" />
+    <Resource Include="Assets\Resources\icons\magician02.png" />
+    <Resource Include="Assets\Resources\icons\magician03.png" />
+    <Resource Include="Assets\Resources\icons\mark0.png" />
+    <Resource Include="Assets\Resources\icons\mark1.png" />
+    <Resource Include="Assets\Resources\icons\mark2.png" />
+    <Resource Include="Assets\Resources\icons\mark3.png" />
+    <Resource Include="Assets\Resources\icons\mark4.png" />
+    <Resource Include="Assets\Resources\icons\mark5.png" />
+    <Resource Include="Assets\Resources\icons\mark6.png" />
+    <Resource Include="Assets\Resources\icons\menuicons01.png" />
+    <Resource Include="Assets\Resources\icons\monk01.png" />
+    <Resource Include="Assets\Resources\icons\monk02.png" />
+    <Resource Include="Assets\Resources\icons\necromancer01.png" />
+    <Resource Include="Assets\Resources\icons\note01.png" />
+    <Resource Include="Assets\Resources\icons\note02.png" />
+    <Resource Include="Assets\Resources\icons\note03.png" />
+    <Resource Include="Assets\Resources\icons\note04.png" />
+    <Resource Include="Assets\Resources\icons\paladin01.png" />
+    <Resource Include="Assets\Resources\icons\paladin02.png" />
+    <Resource Include="Assets\Resources\icons\ranger01.png" />
+    <Resource Include="Assets\Resources\icons\ranger02.png" />
+    <Resource Include="Assets\Resources\icons\rogue01.png" />
+    <Resource Include="Assets\Resources\icons\scrollbar_gutter.png" />
+    <Resource Include="Assets\Resources\icons\shadowknight01.png" />
+    <Resource Include="Assets\Resources\icons\shadowknight02.png" />
+    <Resource Include="Assets\Resources\icons\shaman01.png" />
+    <Resource Include="Assets\Resources\icons\spellbook01.png" />
+    <Resource Include="Assets\Resources\icons\spellbook02.png" />
+    <Resource Include="Assets\Resources\icons\spellbook03.png" />
+    <Resource Include="Assets\Resources\icons\spellbook04.png" />
+    <Resource Include="Assets\Resources\icons\spells01.png" />
+    <Resource Include="Assets\Resources\icons\spells02.png" />
+    <Resource Include="Assets\Resources\icons\spells03.png" />
+    <Resource Include="Assets\Resources\icons\spells04.png" />
+    <Resource Include="Assets\Resources\icons\spells05.png" />
+    <Resource Include="Assets\Resources\icons\spells06.png" />
+    <Resource Include="Assets\Resources\icons\spells07.png" />
+    <Resource Include="Assets\Resources\icons\Spell_Icons.png" />
+    <Resource Include="Assets\Resources\icons\startcity_bottom04.png" />
+    <Resource Include="Assets\Resources\icons\startcity_bottom05.png" />
+    <Resource Include="Assets\Resources\icons\startcity_bottom06.png" />
+    <Resource Include="Assets\Resources\icons\startcity_top01.png" />
+    <Resource Include="Assets\Resources\icons\startcity_top02.png" />
+    <Resource Include="Assets\Resources\icons\startcity_top03.png" />
+    <Resource Include="Assets\Resources\icons\TargetBox.png" />
+    <Resource Include="Assets\Resources\icons\TargetIndicator.png" />
+    <Resource Include="Assets\Resources\icons\warrior01.png" />
+    <Resource Include="Assets\Resources\icons\warrior02.png" />
+    <Resource Include="Assets\Resources\icons\warrior03.png" />
+    <Resource Include="Assets\Resources\icons\window_pieces01.png" />
+    <Resource Include="Assets\Resources\icons\window_pieces02.png" />
+    <Resource Include="Assets\Resources\icons\window_pieces03.png" />
+    <Resource Include="Assets\Resources\icons\window_pieces04.png" />
+    <Resource Include="Assets\Resources\icons\window_pieces05.png" />
+    <Resource Include="Assets\Resources\icons\window_pieces06.png" />
+    <Resource Include="Assets\Resources\icons\window_pieces07.png" />
+    <Resource Include="Assets\Resources\icons\wizard01.png" />
+    <Resource Include="Assets\Resources\icons\wizard02.png" />
+    <Resource Include="Assets\Resources\icons\wnd_bg_dark_rock.png" />
+    <Resource Include="Assets\Resources\icons\wnd_bg_light_rock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Resources\icons\border2.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
