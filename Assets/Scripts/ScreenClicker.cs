@@ -54,10 +54,10 @@ public class ScreenClicker : MonoBehaviour {
    target = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 #endif
 
-        Point point = new Point(target.x, Screen.height - target.y);
-        HitTestResult hit = VisualTreeHelper.HitTest(this._root, point);
-        if (hit.VisualHit != null)
-            return;
+        //Point point = new Point(target.x, Screen.height - target.y);
+        //HitTestResult hit = VisualTreeHelper.HitTest(this._root, point);
+        //if (hit.VisualHit != null)
+        //    return;
 
         var hitCollider = Physics2D.OverlapPoint(target);
         if(hitCollider)
