@@ -26,7 +26,7 @@ public class CollisionDetection : MonoBehaviour {
         collided = true;
         if (!(collider.gameObject.tag == "Player"))
         {
-            Debug.Log("Trying mags " + player.GetComponent<ClickMove>().XMag + " " + player.GetComponent<ClickMove>().YMag);
+          
             player.transform.Translate(-player.GetComponent<ClickMove>().XMag * Time.deltaTime, -player.GetComponent<ClickMove>().YMag * Time.deltaTime, 0);
             player.GetComponent<ClickMove>().isMoving = false;
             

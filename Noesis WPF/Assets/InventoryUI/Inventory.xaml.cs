@@ -16,7 +16,7 @@ using System.Diagnostics;
 #endif
 using System.Collections.Generic;
 
-namespace UIInventory
+namespace UserInterface
 {
     /// <summary>
     /// Interaction logic for Equipment.xaml
@@ -49,7 +49,19 @@ namespace UIInventory
         {
             _canvas = (Canvas)FindName("InventoryCanvas");
             _floating = (Border)FindName("InventoryFloating");
+
+            _canvas.Width = Constants.WinWidth;
+            _canvas.Height = Constants.WinHeight;
+            _floating.Width = Constants.WinHyp / 12;
+            _floating.Height = Constants.WinHyp / 12;
+            InventorySlots inventorySlots = FindName("InventorySlots") as InventorySlots;
+            Canvas.SetLeft(inventorySlots, Constants.WinWidth * .7f);
+            Canvas.SetTop(inventorySlots, Constants.WinHeight * .1f);
+
         }
+
+
+
 
         public static void InspectItem(object sender, MouseButtonEventArgs e)
         {
@@ -219,7 +231,6 @@ namespace UIInventory
         public static void UpdateEquip()
         {
 #if NOESIS
-
             var inv = MainPlayer.instance.GetComponent<PlayerAttributes>().player.inventory_;
             Border temp = Equipment.leftEar;
             Equipment.leftEar.Background = (ImageBrush)temp.FindResource("icon" + (inv.LeftEarSlot != null ? inv.LeftEarSlot.icon : 1723));

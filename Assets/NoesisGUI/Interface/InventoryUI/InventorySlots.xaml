@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="UIInventory.InventorySlots"
+﻿<UserControl x:Class="UserInterface.InventorySlots"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,20 +11,20 @@
         <Canvas x:Name="Canvas" Width="130" Height="267" Tag="{Binding ElementName=EmptySlot}" Background="{DynamicResource Equipment_BG}">
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
-                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
+                    <Border x:Name="Background_Slot1" Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
+                    <Border x:Name="Background_Slot2" Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
-                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
+                    <Border x:Name="Background_Slot3" Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
+                    <Border x:Name="Background_Slot4" Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
-                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
+                    <Border x:Name="Background_Slot5" Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
+                    <Border x:Name="Background_Slot6" Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
-                    <Border Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
+                    <Border x:Name="Background_Slot7" Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
+                    <Border x:Name="Background_Slot8" Width="66.67" Height="66.67"  Background="{DynamicResource Inventory_Empty}"/>
                 </StackPanel>
             </StackPanel>
 

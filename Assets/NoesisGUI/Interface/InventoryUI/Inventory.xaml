@@ -1,31 +1,19 @@
-﻿<UserControl x:Class="UIInventory.Inv"
+﻿<UserControl x:Class="UserInterface.Inv"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:views="clr-namespace:UIInventory"
+      xmlns:views="clr-namespace:UserInterface"
       mc:Ignorable="d" 
-      d:DesignHeight="480" d:DesignWidth="640"
->     
+      d:DesignHeight="720" d:DesignWidth="1280"
+>
 
-    <Viewbox Stretch="Uniform">
-        <Canvas x:Name="InventoryCanvas" Width="640" Height="400" Background="{DynamicResource Window_Background}">
-            <views:Equipment Padding="10" />
-            <views:InventorySlots Canvas.Left="456" Canvas.Top="68" />
-            <Border x:Name="InventoryFloating" Width="70" Height="70" Opacity="0.7" BorderThickness="2" Visibility="Collapsed"/>
-            <Border Visibility="Collapsed" Background="{DynamicResource Window_Background}" Height="213" Canvas.Left="54" Canvas.Top="87" Width="346">
-                <Canvas>
-                    <Button Style="{DynamicResource DefaultButton}" Width="20" Height="20" Background="{DynamicResource X_Icon}" Canvas.Left="321.5" Canvas.Top="3.96"/>
-                    <StackPanel Orientation="Vertical" >
-                        
-                    </StackPanel>
-                </Canvas>
-            </Border>
+    <Canvas x:Name="InventoryCanvas" Width="1280" Height="720" Background="{DynamicResource Window_Background}">
+        <views:Equipment Padding="10" />
+        <views:InventorySlots x:Name="InventorySlots" Canvas.Left="903" Canvas.Top="87" />
+        <Border x:Name="InventoryFloating" Width="70" Height="70" Opacity="0.7" BorderThickness="2" Visibility="Collapsed"/>
 
-
-        </Canvas>
-
-    </Viewbox>
+    </Canvas>
 
 
 

@@ -18,11 +18,8 @@ using System.Windows.Media;
 using System.Collections.Generic;
 
 
-namespace UIInventory
+namespace UserInterface
 {
-    /// <summary>
-    /// Interaction logic for Equipment.xaml
-    /// </summary>
     public partial class InventorySlots : UserControl
     {
         public static List<Border> slots_ = new List<Border>();
@@ -33,7 +30,6 @@ namespace UIInventory
         {
             Initialized += OnInitialized;
             InitializeComponent();
-            //DataContext = new Inventory();
         }
 #if NOESIS
         private void InitializeComponent()
@@ -54,7 +50,8 @@ namespace UIInventory
             slot7 = FindName("Inventory_Slot7") as Border;
             slot8 = FindName("Inventory_Slot8") as Border;
 
-
+            ResizeSlots("Inventory");
+            ResizeSlots("Background");
             foreach (var panel in slots.Children)
             {
                 if (typeof(StackPanel) == panel.GetType())
@@ -74,7 +71,30 @@ namespace UIInventory
 
             }
         }
+
+#if NOESIS
+        private void ResizeSlots(string str)
+        {
+            for (int i = 1; i < 9; i++)
+            {
+                var bg = FindName(System.String.Format("{0}_Slot{1}", str, i)) as Border;
+                bg.Width = Constants.WinHyp / 12;
+                bg.Height = Constants.WinHyp / 12;
+            }
+        }
+#else
+        private void ResizeSlots(string str)
+        {
+            for (int i = 1; i < 9; i++)
+            {
+                var bg = FindName(String.Format("{0}_Slot{1}", str, i)) as Border;
+                bg.Width = Constants.WinHyp / 12;
+                bg.Height = Constants.WinHyp / 12;
+            }
+        }
+#endif
     }
+
 
 
 }

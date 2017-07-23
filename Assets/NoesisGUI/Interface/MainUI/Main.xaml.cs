@@ -14,15 +14,17 @@ using System.Windows.Media;
 using System.Diagnostics;
 using System.Collections.Generic;
 #endif
-using UIInventory;
 
-namespace MainUI
+namespace UserInterface
 {
     /// <summary>
     /// Interaction logic for Main.xaml
     /// </summary>
+    ///
+    
     public partial class Main : UserControl
     {
+
         public Main()
         {
             Initialized += OnInitialized;
@@ -39,7 +41,14 @@ namespace MainUI
         private void OnInitialized(object sender, EventArgs e)
         {
             Inv.ToggleVisibility();
+            Canvas mainCanvas = (Canvas)FindName("MainCanvas");
             Button inventoryButton = (Button)this.FindName("InventoryButton");
+
+            mainCanvas.Width = Constants.WinWidth;
+            mainCanvas.Height = Constants.WinHeight;
+           // mainCanvas.Background = new SolidColorBrush(Colors.Blue);
+            inventoryButton.Width = (Constants.WinHyp / 15);
+            inventoryButton.Height = (Constants.WinHyp / 15);
             inventoryButton.Click += OpenInventory;
         }
 

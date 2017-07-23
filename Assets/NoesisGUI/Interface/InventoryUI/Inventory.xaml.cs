@@ -16,7 +16,7 @@ using System.Diagnostics;
 #endif
 using System.Collections.Generic;
 
-namespace UIInventory
+namespace UserInterface
 {
     /// <summary>
     /// Interaction logic for Equipment.xaml
@@ -49,7 +49,19 @@ namespace UIInventory
         {
             _canvas = (Canvas)FindName("InventoryCanvas");
             _floating = (Border)FindName("InventoryFloating");
+
+            _canvas.Width = Constants.WinWidth;
+            _canvas.Height = Constants.WinHeight;
+            _floating.Width = Constants.WinHyp / 12;
+            _floating.Height = Constants.WinHyp / 12;
+            InventorySlots inventorySlots = FindName("InventorySlots") as InventorySlots;
+            Canvas.SetLeft(inventorySlots, Constants.WinWidth * .7f);
+            Canvas.SetTop(inventorySlots, Constants.WinHeight * .1f);
+
         }
+
+
+
 
         public static void InspectItem(object sender, MouseButtonEventArgs e)
         {
@@ -185,11 +197,9 @@ namespace UIInventory
                 if (pos.X >= 0.0f && pos.X < size.Width &&
                     pos.Y >= 0.0f && pos.Y < size.Height)
                 {
-                    _selected.Background = slot.Background;
-                    slot.Background = _floating.Background;
-                    // slot.BorderBrush = _floating.BorderBrush;
-
-                   // UpdateEquip();
+                    //_selected.Background = slot.Background;
+                    //slot.Background = _floating.Background;
+                    ItemMoveRequest(_selected, slot);
                     break;
                 }
             }
@@ -201,14 +211,21 @@ namespace UIInventory
                 if (pos.X >= 0.0f && pos.X < size.Width &&
                     pos.Y >= 0.0f && pos.Y < size.Height)
                 {
-                    _selected.Background = slot.Background;
-                    slot.Background = _floating.Background;
-                    // slot.BorderBrush = _floating.BorderBrush;
-
-                    // UpdateEquip();
+                    //_selected.Background = slot.Background;
+                    //slot.Background = _floating.Background;
+                    ItemMoveRequest(_selected, slot);
                     break;
                 }
             }
+        }
+
+        private static void ItemMoveRequest(Border SelectedFrom, Border SlotTo)
+        {
+            JSONObject obj = new JSONObject();
+            obj.AddField("from", SelectedFrom.Name);
+            obj.AddField("to", SlotTo.Name);
+            obj.AddField("char", MainPlayer.instance.GetComponent<PlayerAttributes>().player.char_id_);
+            Network.socket.Emit("item_swap", obj);
         }
 
         public static void ToggleVisibility()
@@ -219,9 +236,9 @@ namespace UIInventory
         public static void UpdateEquip()
         {
 #if NOESIS
-
             var inv = MainPlayer.instance.GetComponent<PlayerAttributes>().player.inventory_;
             Border temp = Equipment.leftEar;
+
             Equipment.leftEar.Background = (ImageBrush)temp.FindResource("icon" + (inv.LeftEarSlot != null ? inv.LeftEarSlot.icon : 1723));
             Equipment.neck.Background = (ImageBrush)temp.FindResource("icon" + (inv.NeckSlot != null ? inv.NeckSlot.icon : 1723));
             Equipment.head.Background = (ImageBrush)temp.FindResource("icon" + (inv.HeadSlot != null ? inv.HeadSlot.icon : 1723));
@@ -243,6 +260,22 @@ namespace UIInventory
             Equipment.offhand.Background = (ImageBrush)temp.FindResource("icon" + (inv.SecondarySlot != null ? inv.SecondarySlot.icon : 1723));
             Equipment.ranged.Background = (ImageBrush)temp.FindResource("icon" + (inv.RangedSlot != null ? inv.RangedSlot.icon : 1723));
             Equipment.ammo.Background = (ImageBrush)temp.FindResource("icon" + (inv.RangedSlot != null ? inv.RangedSlot.icon : 1723));
+            if (inv.Slot1 != null)
+                InventorySlots.slot1.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot1.icon);
+            if (inv.Slot2 != null)
+                InventorySlots.slot2.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot2.icon);
+            if (inv.Slot3 != null)
+                InventorySlots.slot3.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot3.icon);
+            if (inv.Slot4 != null)
+                InventorySlots.slot4.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot4.icon);
+            if (inv.Slot5 != null)
+                InventorySlots.slot5.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot5.icon);
+            if (inv.Slot6 != null)
+                InventorySlots.slot6.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot6.icon);
+            if (inv.Slot7 != null)
+                InventorySlots.slot7.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot7.icon);
+            if (inv.Slot8 != null)
+                InventorySlots.slot8.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot8.icon);
 
 #endif
         }

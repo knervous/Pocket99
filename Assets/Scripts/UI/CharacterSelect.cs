@@ -45,6 +45,8 @@ public class CharacterSelect : MonoBehaviour {
     public Button QuitButton;
     public Text LoginStatus;
 	public WorldConnect WorldConnection;
+
+    public static string ServerUrl;
 	
 	public int CharSelected;
 	
@@ -105,7 +107,7 @@ public class CharacterSelect : MonoBehaviour {
 	{
         WorldConnection.username = UserNameInput.text;
         WorldConnection.password = PasswordInput.text;
-
+        ServerUrl = ServerInput.text.Length > 0 ? ServerInput.text : ServerInput.placeholder.GetComponent<Text>().text;
         string serverurl = string.Empty;
         serverurl += @"ws://";
         serverurl += ServerInput.text.Length > 0 ? ServerInput.text : ServerInput.placeholder.GetComponent<Text>().text;

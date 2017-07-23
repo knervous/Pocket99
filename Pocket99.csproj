@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.6.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -133,6 +135,8 @@
     <Compile Include="Assets\LeanPool\Scripts\LeanPool.cs" />
     <Compile Include="Assets\LeanPool\Scripts\LeanPooledRigidbody.cs" />
     <Compile Include="Assets\LeanPool\Scripts\LeanPooledRigidbody2D.cs" />
+    <Compile Include="Assets\NoesisGUI\Interface\ChatUI\Chat.xaml.cs" />
+    <Compile Include="Assets\NoesisGUI\Interface\Constants.cs" />
     <Compile Include="Assets\NoesisGUI\Interface\InventoryUI\Equipment.xaml.cs" />
     <Compile Include="Assets\NoesisGUI\Interface\InventoryUI\Inventory.xaml.cs" />
     <Compile Include="Assets\NoesisGUI\Interface\InventoryUI\InventorySlots.xaml.cs" />
@@ -705,6 +709,7 @@
     <Compile Include="Assets\Scripts\LoadNorthQeynos.cs" />
     <Compile Include="Assets\Scripts\LoginCamera.cs" />
     <Compile Include="Assets\Scripts\MainPlayer.cs" />
+    <Compile Include="Assets\Scripts\ChatNetwork.cs" />
     <Compile Include="Assets\Scripts\Network.cs" />
     <Compile Include="Assets\Scripts\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\PlayerAttributes.cs" />

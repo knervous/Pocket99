@@ -25,6 +25,7 @@ public class WorldConnect : MonoBehaviour {
     public Camera gameCam;
     public SocketIOComponent socket;
     public GameObject zoneConnectSocket;
+    public GameObject chatConnectSocket;
     public CharacterSelect CharSelect;
     public CharacterCreate CharCreate;
     public GameObject MainPlayer;
@@ -114,6 +115,7 @@ public class WorldConnect : MonoBehaviour {
         {
             var ch = e.data["characters"].list[x];
             var inv = e.data["inventories"].list[x];
+            Debug.Log(inv);
             var tempPlayer = gameObject.AddComponent<Player>();
             tempPlayer.PopulateFromServer(ch,inv);
             server_player.Add(tempPlayer);
@@ -172,9 +174,11 @@ public class WorldConnect : MonoBehaviour {
             //    break;
             default:
                 SceneManager.LoadScene("Qeynos2Scene");
-                string newUrl = socket.url.Split(':')[2];
-
-                //zoneConnectSocket.GetComponent<SocketIOComponent>().url = "ws://localhost:5998/socket.io/?EIO=4&transport=websocket";
+                zoneConnectSocket.GetComponent<SocketIOComponent>().url =
+                    String.Format("ws://{0}:5998/socket.io/?EIO=4&transport=websocket", CharacterSelect.ServerUrl);
+                chatConnectSocket.GetComponent<SocketIOComponent>().url =
+                    String.Format("ws://{0}:7500/socket.io/?EIO=4&transport=websocket", CharacterSelect.ServerUrl);
+                chatConnectSocket.SetActive(true);
                 zoneConnectSocket.SetActive(true);
                 socket.Emit("zone_into_world", player.CreateServerPlayer());
                 MainPlayer.transform.position = new UnityEngine.Vector3(1, 1, 1);
@@ -188,7 +192,7 @@ public class WorldConnect : MonoBehaviour {
                 gameCam.GetComponent<CameraFollow>().player = MainPlayer;
                 gameCam.GetComponent<ScreenClicker>().player = MainPlayer;
                 gameCam.GetComponent<CameraFollow>().StartCamera();
-                UIInventory.Inv.UpdateEquip();
+                UserInterface.Inv.UpdateEquip();
                 break;
         }
     }

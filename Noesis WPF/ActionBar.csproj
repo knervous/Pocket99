@@ -7,7 +7,7 @@
     <ProjectGuid>{B5CF36FE-B41C-46E6-A3AA-D02739233663}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ActionBar</RootNamespace>
+    <RootNamespace>UserInterface</RootNamespace>
     <AssemblyName>ActionBar</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -63,6 +63,10 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Assets\ChatUI\Chat.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Assets\InventoryUI\InventorySlots.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,6 +101,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ChatUI\Chat.xaml.cs">
+      <DependentUpon>Chat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\Constants.cs" />
     <Compile Include="Assets\Inventory.cs" />
     <Compile Include="Assets\InventoryUI\InventorySlots.xaml.cs">
       <DependentUpon>InventorySlots.xaml</DependentUpon>
@@ -290,6 +298,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Resources\icons\border2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Resources\icons\AlertBox.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

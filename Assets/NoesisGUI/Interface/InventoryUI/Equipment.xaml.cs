@@ -16,7 +16,7 @@ using System.Windows.Media;
 using System.Collections.Generic;
 
 
-namespace UIInventory
+namespace UserInterface
 {
     /// <summary>
     /// Interaction logic for Equipment.xaml
@@ -40,11 +40,8 @@ namespace UIInventory
             Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Interface/InventoryUI/Equipment.xaml");
         }
 #endif
-        private void OnInitialized(object sender, EventArgs e)
+        private void AssignStaticEquipSlots()
         {
-
-            var items = FindName("EquipSlots") as StackPanel;
-            Button butt = FindName("Inventory_BackButton") as Button;
             leftEar = FindName("Inventory_LeftEar") as Border;
             neck = FindName("Inventory_Neck") as Border;
             face = FindName("Inventory_Face") as Border;
@@ -66,10 +63,17 @@ namespace UIInventory
             offhand = FindName("Inventory_Offhand") as Border;
             ranged = FindName("Inventory_Ranged") as Border;
             ammo = FindName("Inventory_Ammo") as Border;
-
+        }
+        private void OnInitialized(object sender, EventArgs e)
+        {
+            var icons = FindName("EquipIcons") as StackPanel;
+            var items = FindName("EquipSlots") as StackPanel;
+            Canvas canvas = FindName("EquipmentCanvas") as Canvas;
+            Button butt = FindName("Inventory_BackButton") as Button;
             butt.Click += (object s, RoutedEventArgs r) => {
                 Inv.ToggleVisibility();
             };
+            AssignStaticEquipSlots();
 
             foreach (var panel in items.Children)
             {
@@ -79,24 +83,77 @@ namespace UIInventory
                     foreach (var item in p.Children)
                     {
                         var n = (Border)item;
-                        if (n.Name.Contains("Inventory"))
-                        {
                             n.MouseDown += Inv.DragItem;
                             n.MouseRightButtonUp += Inv.InspectItem;
                             n.MouseRightButtonDown += Inv.InspectItem;
                             equip_.Add(n);
+                            n.Width = Constants.WinHyp / 12;
+                            n.Height = Constants.WinHyp / 12;
+                    }
+                }
+                else { continue; }
+
+            }
+
+            foreach (var panel in icons.Children)
+            {
+                if (typeof(StackPanel) == panel.GetType())
+                {
+                    var p = (StackPanel)panel;
+                    foreach (var item in p.Children)
+                    {
+                        if (typeof(Border) == item.GetType())
+                        {
+                            var n = (Border)item;
+                            n.Width = Constants.WinHyp / 12;
+                            n.Height = Constants.WinHyp / 12;
+                        }else if(typeof(Button) == item.GetType())
+                        {
+                            var n = (Button)item;
+                            n.Width = Constants.WinHyp / 12;
+                            n.Height = Constants.WinHyp / 12;
                         }
                     }
                 }
                 else { continue; }
 
             }
+
+            Border platinum = (Border)FindName("Platinum");
+            Border gold = (Border)FindName("Gold");
+            Border silver = (Border)FindName("Silver");
+            Border copper = (Border)FindName("Copper");
+            CurrencyElementResize(platinum, .025f, .7f);
+            CurrencyElementResize(gold, .2f, .7f);
+            CurrencyElementResize(silver, .025f, .85f);
+            CurrencyElementResize(copper, .2f, .85f);
         }
 
-        public static void LoadInventory(Inventory inv)
+
+        private void CurrencyElementResize(Border el, float left, float top)
         {
-            //  leftEar.Background = (ImageBrush)FindResource("icon" + inv.LeftEarSlot.icon);
+            StackPanel elChild = el.Child as StackPanel;
+            el.Width = Constants.WinWidth * .15f;
+            el.Height = Constants.WinHeight * .075f;
+            Canvas.SetLeft(el, Constants.WinWidth * left);
+            Canvas.SetTop(el, Constants.WinHeight * top);
+            foreach (var p in elChild.Children)
+            {
+                if (typeof(Border) == p.GetType())
+                {
+                    var n = p as Border;
+                    n.Width = Constants.WinHyp * .02f;
+                    n.Height = Constants.WinHyp * .02f;
+                }
+                else if (typeof(TextBlock) == p.GetType())
+                {
+                    var n = p as TextBlock;
+                    n.Height = Constants.WinHyp * .02f;
+                    n.Width = Constants.WinHyp * .05f;
+                }
+            }
         }
+
     }
 
 

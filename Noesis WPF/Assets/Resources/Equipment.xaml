@@ -11,6 +11,17 @@
     <ImageBrush x:Key="Silver" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".49,.545,.068, .068"/>
     <ImageBrush x:Key="Copper" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".556,.545,.068, .068"/>
 
+    <!-- Solid Window BG Light-->
+    <ImageBrush x:Key="Window_Background_Solid" ImageSource="icons/wnd_bg_light_rock.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,1,1"/>
+    
+    <!-- Solid Window BG Light-->
+    <ImageBrush x:Key="Window_Background_Border" ImageSource="icons/EQLS_window_pieces_01.png" Stretch="Fill" Viewbox="0,0,1,1" ViewboxUnits="RelativeToBoundingBox"/>
+    <!-- Chat Window Header -->
+    <ImageBrush x:Key="Chat_Header" ImageSource="icons/EQLS_window_pieces_01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,.375,.95,.125"/>
+
+    <!-- Solid Window BG Light-->
+    <ImageBrush x:Key="ElementDrag" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".39,.435,.145,.075"/>
+
     <!-- Background for window-->
     <ImageBrush x:Key="Window_Background" ImageSource="icons/border2.jpg" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,1,1"/>
     
@@ -19,10 +30,14 @@
     
     <!-- Inventory Open Icon-->
     <ImageBrush x:Key="Inventory_Open" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,.468,.1, .1"/>
+
+    <!-- Rect Button-->
+    <ImageBrush x:Key="Inventory_RectButton" ImageSource="icons/window_pieces03.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".78125,.66,.1875,.094"/>
     
     <!-- Background Item Slot-->
     <ImageBrush x:Key="Inventory_Empty" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".703,.43,.156, .156"/>
     <ImageBrush x:Key="Inventory_Rect" ImageSource="icons/window_pieces03.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".78125,.75,.1875,.094"/>
+    
     <!--  Equip Slot Backgrounds  -->
     <ImageBrush x:Key="Equipment_Earring" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,.156, .156"/>
     <ImageBrush x:Key="Equipment_Neck" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".156,0,.156, .156"/>

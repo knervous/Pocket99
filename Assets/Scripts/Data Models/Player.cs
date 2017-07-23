@@ -50,7 +50,7 @@ namespace Assets.Scripts.Data_Models
         public string lastName_ = "";
         public string title_ = "";
         public string account_id_ = "";
-        public Int32 char_id_ = -1;
+        public string char_id_ = "";
 
         public JSONObject CreateServerPlayer()
         {
@@ -129,7 +129,7 @@ namespace Assets.Scripts.Data_Models
             lfg_ = (int)e["lfg"].n;
 
             account_id_ = e["accountId"].str;
-            char_id_ = (int) e["charId"].n;
+            char_id_ = e["charId"].str;
             name_ = e["name"].str;
             lastName_ = e["lastName"].str;
             title_ = e["title"].str;

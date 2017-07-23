@@ -121,7 +121,7 @@ namespace Assets.Scripts.Data_Models.RaceSpritePath
         public void swapFeet()
         {
             string Folder = "Textures/Character Models/Barbarian/Male/";
-            int m = inventory.ArmSlot != null ? inventory.FeetSlot.material : 0;
+            int m = inventory.FeetSlot != null ? inventory.FeetSlot.material : 0;
             switch (m)
             {
                 case 0: // naked
