@@ -312,24 +312,18 @@ namespace Assets.Scripts.Data_Models.RaceSpritePath
 
         public void swapPrimary()
         {
-            animator.SpriteProvider.Set(0, Resources.Load<Sprite>(EquipmentTextureSwapper.Instance.WeaponIndex[inventory.PrimarySlot.WeaponId][0]));
-            animator.SpriteProvider.Set(0, Resources.Load<Sprite>(EquipmentTextureSwapper.Instance.WeaponIndex[inventory.PrimarySlot.WeaponId][1]));
-            animator.SpriteProvider.Set(0, Resources.Load<Sprite>(EquipmentTextureSwapper.Instance.WeaponIndex[inventory.PrimarySlot.WeaponId][2]));
+            
         }
 
         public void swapRanged()
         {
-            animator.SpriteProvider.Set(0, Resources.Load<Sprite>(EquipmentTextureSwapper.Instance.WeaponIndex[inventory.RangedSlot.WeaponId][0]));
-            animator.SpriteProvider.Set(0, Resources.Load<Sprite>(EquipmentTextureSwapper.Instance.WeaponIndex[inventory.RangedSlot.WeaponId][1]));
-            animator.SpriteProvider.Set(0, Resources.Load<Sprite>(EquipmentTextureSwapper.Instance.WeaponIndex[inventory.RangedSlot.WeaponId][2]));
+            
         }
         
 
         public void swapSecondary()
         {
-            animator.SpriteProvider.Set(0, Resources.Load<Sprite>(EquipmentTextureSwapper.Instance.WeaponIndex[inventory.SecondarySlot.WeaponId][0]));
-            animator.SpriteProvider.Set(0, Resources.Load<Sprite>(EquipmentTextureSwapper.Instance.WeaponIndex[inventory.SecondarySlot.WeaponId][1]));
-            animator.SpriteProvider.Set(0, Resources.Load<Sprite>(EquipmentTextureSwapper.Instance.WeaponIndex[inventory.SecondarySlot.WeaponId][2]));
+            
         }
 
         public void refresh()

@@ -50,7 +50,7 @@ public class Network : MonoBehaviour
         Debug.Log("spawned" + e.data);
         
         var player = Instantiate(playerPrefab);
-       
+        
         player.tag = "Player";
 
         players.Add(e.data["id"].ToString(), player);
@@ -492,9 +492,17 @@ public class Network : MonoBehaviour
 
     private void OnMove(SocketIOEvent e)
     {
-
         var id = e.data["id"].ToString();
-        var mover = npcs[id];
+        GameObject mover = null;
+        if (e.data["type"].str == "npc")
+        {
+            mover = npcs[id];
+        }
+        else
+        {
+            mover = players[id];
+        }
+        
         var position = new Vector3(GetFloatFromJson(e.data, "x"), GetFloatFromJson(e.data, "y"), -1);
     
         var clickMove = mover.GetComponent<ClickMove>();

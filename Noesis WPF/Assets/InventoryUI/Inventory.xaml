@@ -12,7 +12,7 @@
         <views:Equipment Padding="10" />
         <views:InventorySlots x:Name="InventorySlots" Canvas.Left="903" Canvas.Top="87" />
         <Border x:Name="InventoryFloating" Width="70" Height="70" Opacity="0.7" BorderThickness="2" Visibility="Collapsed"/>
-
+        <Border x:Name="RightMag" Background="{DynamicResource Magnifying_Glass}" Visibility="Collapsed" Width="120" Height="120" Opacity="0.8" />
     </Canvas>
 
 

@@ -21,6 +21,8 @@ public class CameraFollow : MonoBehaviour
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10);
         //Calculate and store the offset value by getting the distance between the player's position and camera's position.
         offset = transform.position - player.transform.position;
+        
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 
     void Update()

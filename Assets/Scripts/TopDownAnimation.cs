@@ -49,20 +49,11 @@ public class TopDownAnimation : MonoBehaviour
             clickMove = gameObject.GetComponent<ClickMove>();
             spriter = animator.Entity.Spriter;
 
-            EquipmentTextureSwapper.Instance.SetCharacterModel(charModel, animator, new Inventory());
         }
     }
 
 void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, new Inventory());
-
-            var g = EquipmentTextureSwapper.Instance;
-            var x = 0;
-        }
 
         if (clickMove != null)
         {

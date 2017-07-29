@@ -34,7 +34,7 @@ public class Animation : MonoBehaviour
     public string animateString = "Idle Down";
     public Inventory inventory;
     public GameObject Player;
-
+    private EquipmentTextureSwapper swapper = new EquipmentTextureSwapper();
     private float Timer = .05f;
 
     void Start()
@@ -50,27 +50,32 @@ public class Animation : MonoBehaviour
             animator = GetComponent<SpriterDotNetBehaviour>().Animator;
             clickMove = Player.GetComponent<ClickMove>();
             spriter = animator.Entity.Spriter;
-
-            EquipmentTextureSwapper.Instance.SetCharacterModel(charModel, animator, new Inventory());
+            swapper.SetCharacterModel(charModel, animator, new Inventory());
             RefreshTexture();
         }
     }
     public void RefreshTexture()
     {
         animator = GetComponent<SpriterDotNetBehaviour>().Animator;
-        EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, inventory);
-        EquipmentTextureSwapper.Instance.CharModel.refresh();
+        swapper.SetCharacterModel("Barbarian", animator, inventory);
+        swapper.CharModel.refresh();
     }
 void Update()
     {
+        if(transform.parent.transform.position.x != transform.position.x || transform.parent.transform.position.y != transform.position.y)
+        {
+            transform.position = transform.parent.transform.position;
+        }
+
+
         if (shouldUpdate)
         {
             RefreshTexture();
         }
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            EquipmentTextureSwapper.Instance.SetCharacterModel("Barbarian", animator, inventory);
-            EquipmentTextureSwapper.Instance.CharModel.refresh();
+            swapper.SetCharacterModel("Barbarian", animator, inventory);
+            swapper.CharModel.refresh();
             
         }
 

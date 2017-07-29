@@ -84,8 +84,6 @@ namespace UserInterface
                     {
                         var n = (Border)item;
                             n.MouseDown += Inv.DragItem;
-                            n.MouseRightButtonUp += Inv.InspectItem;
-                            n.MouseRightButtonDown += Inv.InspectItem;
                             equip_.Add(n);
                             n.Width = Constants.WinHyp / 12;
                             n.Height = Constants.WinHyp / 12;

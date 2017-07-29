@@ -15,28 +15,30 @@ namespace Assets.Scripts.Data_Models
         public ITextureSwapper CharModel { get; set; }
 
         private static EquipmentTextureSwapper instance = null;
-        private static readonly object padlock = new object();
+        //private static readonly object padlock = new object();
 
 
-        EquipmentTextureSwapper()
+        public EquipmentTextureSwapper()
         {
-            PopulateWeaponIndex();
+           // To do make this a constant static dictionary
+            //   PopulateWeaponIndex();
         }
 
-        public static EquipmentTextureSwapper Instance
-        {
-            get
-            {
-                lock (padlock)
-                {
-                    if (instance == null)
-                    {
-                        instance = new EquipmentTextureSwapper();
-                    }
-                    return instance;
-                }
-            }
-        }
+        //Used to be singleton
+        //public static EquipmentTextureSwapper Instance
+        //{
+        //    get
+        //    {
+        //        lock (padlock)
+        //        {
+        //            if (instance == null)
+        //            {
+        //                instance = new EquipmentTextureSwapper();
+        //            }
+        //            return instance;
+        //        }
+        //    }
+        //}
 
         public void SetCharacterModel(string model, UnityAnimator anim, Inventory inv)
         {

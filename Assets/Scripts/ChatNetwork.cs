@@ -28,6 +28,7 @@ public class ChatNetwork : MonoBehaviour
         socket.On("open", OnConnected);
         socket.On("item_search_result", ItemSearchResult);
         socket.On("summon_item", SummonItem);
+        socket.On("chat_message", ChatMessage);
 
     }
 
@@ -82,6 +83,27 @@ public class ChatNetwork : MonoBehaviour
             }
             UserInterface.Chat.InsertChatMessage(System.String.Format("\r\n Found {0} or more Results \r\n", a.list.Count ));
         }
+    }
+
+    void ChatMessage(SocketIOEvent e)
+    {
+        string msg,type = string.Empty;
+        string sender = e.data["name"].str;
+        string content = e.data["content"].str;
+        switch ((int)e.data["type"].n)
+        {
+            case 0:
+                type = "says out of character";
+                break;
+            case 1:
+                type = "shouts";
+                break;
+            default:
+                type = "says";
+                break;
+        }
+        msg = sender + " " + type + ", '" + content + "'";
+        UserInterface.Chat.InsertChatMessage(msg);
     }
 
     void OnConnected(SocketIOEvent e)

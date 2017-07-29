@@ -44,6 +44,9 @@ dlldata.c
 project.lock.json
 artifacts/
 
+Pocket99-64__Data
+Pocket99-64_.exe
+
 *_i.c
 *_p.c
 *_i.h

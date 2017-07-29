@@ -3,6 +3,7 @@
 #endif
 
 #if NOESIS
+using Assets.Scripts.Data_Models;
 using Noesis;
 #else
 using System;
@@ -27,6 +28,8 @@ namespace UserInterface
         static Point _offset;
         static Border _floating;
         static Border _selected;
+        static Border _rightMag;
+        static Border _leftMag;
         const int NumSlots = 12;
         static List<Border> _inspected = new List<Border>();
 
@@ -49,6 +52,12 @@ namespace UserInterface
         {
             _canvas = (Canvas)FindName("InventoryCanvas");
             _floating = (Border)FindName("InventoryFloating");
+            _rightMag = (Border)FindName("RightMag");
+
+            _rightMag.Width = Constants.WinHyp * .1f;
+            _rightMag.Height = Constants.WinHyp * .1f;
+            Canvas.SetLeft(_rightMag, Constants.WinWidth * .85f);
+            Canvas.SetTop(_rightMag, Constants.WinHeight * .78f);
 
             _canvas.Width = Constants.WinWidth;
             _canvas.Height = Constants.WinHeight;
@@ -60,61 +69,190 @@ namespace UserInterface
 
         }
 
-
-
-
-        public static void InspectItem(object sender, MouseButtonEventArgs e)
+        public static void InspectItem(Item item)
         {
-            Border inspect = new Border();
+            Canvas inspect = new Canvas();
+            
             _canvas.Children.Add(inspect);
-            inspect.Width = 400;
-            inspect.Height = 300;
-            inspect.Background = (ImageBrush)inspect.FindResource("Window_Background");
+            inspect.Width = Constants.WinHyp * .6f;
+            inspect.Height = Constants.WinHyp * .4f;
+            //inspect.Background = (ImageBrush)inspect.FindResource("Window_Background");
             inspect.Tag = "InspectWindow";
 
-            Canvas inspectCanvas = new Canvas();
-            inspect.Child = inspectCanvas;
-            
-            Button closeWindow = new Button();
-            closeWindow.Height = 25;
-            closeWindow.Width = 25;
-            closeWindow.Background = (ImageBrush)inspect.FindResource("X_Icon");
-            closeWindow.Style = (Style)inspect.FindResource("DefaultButton");
+            Border bgTopLeft = new Border()
+            {
+                Width = inspect.Width * .5f,
+                Height = inspect.Height * .5f,
+                Background = (ImageBrush)inspect.FindResource("Inspect_TopLeft"),
+                BorderThickness = new Thickness(0),
+                ClipToBounds = true
+            };
+
+            Border bgTopRight = new Border()
+            {
+                Width = inspect.Width * .5f,
+                Height = inspect.Height * .5f,
+                Background = (ImageBrush)inspect.FindResource("Inspect_TopRight"),
+                BorderThickness = new Thickness(0),
+                ClipToBounds = true
+            };
+
+            Border bgBottomLeft = new Border()
+            {
+                Width = inspect.Width * .5f,
+                Height = inspect.Height * .5f,
+                Background = (ImageBrush)inspect.FindResource("Inspect_BottomLeft"),
+                BorderThickness = new Thickness(0),
+                ClipToBounds = true
+            };
+
+            Border bgBottomRight = new Border()
+            {
+                Width = inspect.Width * .5f,
+                Height = inspect.Height * .5f,
+                Background = (ImageBrush)inspect.FindResource("Inspect_BottomRight"),
+                BorderThickness = new Thickness(0),
+                ClipToBounds = true
+            };
+
+            inspect.Children.Add(bgTopLeft);
+            inspect.Children.Add(bgTopRight);
+            inspect.Children.Add(bgBottomLeft);
+            inspect.Children.Add(bgBottomRight);
+            Canvas.SetLeft(bgTopRight, inspect.Width * .49f);
+            Canvas.SetLeft(bgBottomRight, inspect.Width * .49f);
+            Canvas.SetTop(bgBottomLeft, inspect.Height * .49f);
+            Canvas.SetTop(bgBottomRight, inspect.Height * .49f);
+
+            Canvas inspectCanvas = new Canvas() {
+                Width = inspect.Width,
+                Height = inspect.Height
+            };
+            inspect.Children.Add(inspectCanvas);
+
+            Button closeWindow = new Button() {
+                Height = inspectCanvas.Height * .1f,
+                Width = inspectCanvas.Height * .1f,
+                Background = (ImageBrush)inspect.FindResource("X_Icon"),
+                Style = (Style)inspect.FindResource("DefaultButton"),
+            };
             closeWindow.Click += (object send, RoutedEventArgs args) =>
             {
-               
                 _canvas.Children.Remove(inspect);
-                _inspected.Remove(inspect);
+                //_inspected.Remove(inspect);
             };
-            Canvas.SetLeft(closeWindow, inspect.Width - closeWindow.Width - 15);
-            Canvas.SetTop(closeWindow, 15);
+            Canvas.SetRight(closeWindow, inspectCanvas.Width * .02f);
+            Canvas.SetTop(closeWindow, inspectCanvas.Height * .02f);
+
 #if NOESIS
-            TextBlock title = new TextBlock();
-            title.Text = "Item to inspect";
-            title.FontSize = 18;
-            title.Width = inspect.Width;
-            title.TextAlignment = TextAlignment.Center;
-            title.Foreground = new SolidColorBrush(Color.FromLinearRGB(255,255,255));
+            Border icon = new Border()
+            {
+                Background = (ImageBrush)inspect.FindResource("icon" + item.icon),
+                Width = Constants.WinHyp * .07f,
+                Height = Constants.WinHyp * .07f
+            };
+            inspectCanvas.Children.Add(icon);
+            Canvas.SetLeft(icon, inspectCanvas.Width * .75f);
+            Canvas.SetTop(icon, inspectCanvas.Height * .01f);
 
-            TextBlock stats = new TextBlock();
+            TextBlock text = new TextBlock() {
+                Text = item.Name,
+                FontSize = Constants.WinHyp * .02f,
+                FontWeight = FontWeight.Light,
+                Foreground = new SolidColorBrush(Color.FromLinearRGB(0, 0, 0, .8f)),
+                FontFamily = (FontFamily)icon.FindResource("ArialFont"),
+                Width = inspectCanvas.Width - inspectCanvas.Width * .1f,
+                TextWrapping = TextWrapping.WrapWithOverflow
+            };
 
-            inspectCanvas.Children.Add(title);
+            inspectCanvas.Children.Add(text);
+            Canvas.SetLeft(text, inspectCanvas.Width * .03f);
+            Canvas.SetTop(text, inspectCanvas.Height * .04f);
+            string temp = string.Empty;
+            text.Text += "\r\n";
+            text.Text += (item.magic != 0 ? "MAGIC ITEM" : "") + (item.nodrop != 1 ? " NO DROP" : "") + (item.norent != 1 ? " NO RENT" : "");
+            for(int x = 0; x < item.slots.Count; x++)
+            {
+                temp += " " + item.slots[x] + (x == item.slots.Count - 1 ? "" : ",");
+            }
+            text.Text += "\r\nSlot: " + temp;
+            temp = string.Empty;
+            if((item.itemtype >= 0 && item.itemtype < 8) ||
+                (item.itemtype == 23) || (item.itemtype == 24) || (item.itemtype == 25) || (item.itemtype == 26)
+                || (item.itemtype == 35) || (item.itemtype == 45)
+                )
+            {
+                text.Text += "\r\nSkill: " + Constants.ItemTypes[item.itemtype] + "  Atk Delay: " + item.delay;
+                text.Text += "\r\nDMG: " + item.damage;
+            }
+            if(item.ac != 0)
+            {
+                text.Text += "\r\nAC: " + item.ac;
+            }
+            if( item.astr != 0 || item.aagi != 0 || item.asta != 0 || item.adex != 0 || item.awis != 0 || item.aint != 0 || item.acha != 00
+                || item.fr != 0 || item.cr != 0 || item.dr != 0 || item.dr != 0 || item.pr != 0 || item.mr != 0
+                )
+            {
+                text.Text += "\r\n";
+            }
+            text.Text += item.astr != 0 ? "STR: " + (item.astr > 0 ? "+" : "-") + item.astr + "  " : "";
+            text.Text += item.asta != 0 ? "STA: " + (item.asta > 0 ? "+" : "-") + item.asta + "  " : "";
+            text.Text += item.aagi != 0 ? "AGI: " + (item.aagi > 0 ? "+" : "-") + item.aagi + "  " : "";
+            text.Text += item.adex != 0 ? "DEX: " + (item.adex > 0 ? "+" : "-") + item.adex + "  " : "";
+            
+            text.Text += item.awis != 0 ? "WIS: " + (item.awis > 0 ? "+" : "-") + item.awis + "  " : "";
+            text.Text += item.aint != 0 ? "INT: " + (item.aint > 0 ? "+" : "-") + item.aint + "  " : "";
+            text.Text += item.acha != 0 ? "CHA: " + (item.acha > 0 ? "+" : "-") + item.acha + "  " : "";
+            text.Text += item.fr != 0 ? "SV FIRE: " + (item.fr > 0 ? "+" : "-") + item.fr + "  " : "";
+            text.Text += item.cr != 0 ? "SV COLD: " + (item.cr > 0 ? "+" : "-") + item.cr + "  " : "";
+            text.Text += item.dr != 0 ? "SV DISEASE: " + (item.dr > 0 ? "+" : "-") + item.dr + "  " : "";
+            text.Text += item.pr != 0 ? "SV POISON: " + (item.pr > 0 ? "+" : "-") + item.pr + "  " : "";
+            text.Text += item.mr != 0 ? "SV MAGIC: " + (item.mr > 0 ? "+" : "-") + item.mr + "  " : "";
+            text.Text += item.worneffect != -1 ? "\r\nEffect: " + item.worneffect : "";
+            text.Text += "\r\nWT: " + (item.weight / 10).ToString("0.0");
+            if (item.classes.Count < 16)
+            {
+                item.classes.ForEach(s => {
+                    temp += s + " ";
+                });
+            }
+            else
+            {
+                temp += "ALL";
+            }
+            text.Text += "\r\nClass: " + temp;
+            temp = string.Empty;
+            if (item.races.Count < 16)
+            {
+                item.races.ForEach(s => {
+                    temp += s + " ";
+                });
+            }
+            else
+            {
+                temp += "ALL";
+            }
+
+            text.Text += "\r\nRace: " + temp;
+
+
+
 #endif
             inspectCanvas.Children.Add(closeWindow);
-            
-            
+
+
 
             Canvas.SetLeft(inspect, 75);
             Canvas.SetTop(inspect, 50);
             inspect.MouseDown += DragElement;
 
-            _inspected.Add(inspect);
-            
+            //_inspected.Add(inspect);
+
         }
 
         private static void DragElement(object sender, MouseButtonEventArgs e)
         {
-            var win = (Border)sender;
+            var win = (Canvas)sender;
             _offset = e.GetPosition(win);
             Point canvasPos = e.GetPosition(_canvas);
             Canvas.SetLeft(_floating, canvasPos.X - _offset.X);
@@ -125,15 +263,16 @@ namespace UserInterface
                 win.MouseUp += OnElementDrop;
             }
         }
-        private static void OnElementDrag(object sen, MouseEventArgs e) {
-            var win = (Border)sen;
+        private static void OnElementDrag(object sen, MouseEventArgs e)
+        {
+            var win = (Canvas)sen;
             Point canvasPos2 = e.GetPosition(_canvas);
             Canvas.SetLeft(win, canvasPos2.X - _offset.X);
             Canvas.SetTop(win, canvasPos2.Y - _offset.Y);
         }
         private static void OnElementDrop(object sen, MouseButtonEventArgs e)
         {
-            var win = (Border)sen;
+            var win = (Canvas)sen;
             win.ReleaseMouseCapture();
             win.MouseMove -= OnElementDrag;
             win.MouseUp -= OnElementDrop;
@@ -146,10 +285,10 @@ namespace UserInterface
             _selected = sender as Border;
             if (_selected != null)
             {
-                // Initiate drag
                 _floating.Background = _selected.Background;
                 _floating.BorderBrush = _selected.BorderBrush;
                 _floating.Visibility = Visibility.Visible;
+                _rightMag.Visibility = Visibility.Visible;
 
                 _offset = e.GetPosition(_selected);
                 Point canvasPos = e.GetPosition(_canvas);
@@ -179,7 +318,24 @@ namespace UserInterface
 
             _floating.Visibility = Visibility.Collapsed;
 
-            foreach(Border win in _inspected)
+            //Check to see if item inspect
+            Point p = e.GetPosition(_rightMag);
+            Size s = _rightMag.RenderSize;
+            if (p.X >= 0.0f && p.X < s.Width &&
+                p.Y >= 0.0f && p.Y < s.Height)
+            {
+                Border i = (Border)sender;
+                Item item = Constants.ItemFromXamlName(_selected.Name);
+                UnityEngine.Debug.Log(i.Name);
+                UnityEngine.Debug.Log(item.icon);
+                InspectItem(item);
+                _rightMag.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            _rightMag.Visibility = Visibility.Collapsed;
+
+            foreach (Border win in _inspected)
             {
                 Point pos = e.GetPosition(win);
                 Size size = win.RenderSize;
@@ -189,8 +345,14 @@ namespace UserInterface
                     return;
                 }
             }
+            
+            CheckSlots(Equipment.equip_, e);
+            CheckSlots(InventorySlots.slots_, e);
+        }
 
-            foreach (Border slot in Equipment.equip_)
+        private static void CheckSlots(List<Border> slots, MouseButtonEventArgs e)
+        {
+            foreach (Border slot in slots)
             {
                 Point pos = e.GetPosition(slot);
                 Size size = slot.RenderSize;
@@ -200,32 +362,20 @@ namespace UserInterface
                     //_selected.Background = slot.Background;
                     //slot.Background = _floating.Background;
                     ItemMoveRequest(_selected, slot);
-                    break;
-                }
-            }
-
-            foreach (Border slot in InventorySlots.slots_)
-            {
-                Point pos = e.GetPosition(slot);
-                Size size = slot.RenderSize;
-                if (pos.X >= 0.0f && pos.X < size.Width &&
-                    pos.Y >= 0.0f && pos.Y < size.Height)
-                {
-                    //_selected.Background = slot.Background;
-                    //slot.Background = _floating.Background;
-                    ItemMoveRequest(_selected, slot);
-                    break;
+                    return;
                 }
             }
         }
 
         private static void ItemMoveRequest(Border SelectedFrom, Border SlotTo)
         {
+#if NOESIS
             JSONObject obj = new JSONObject();
             obj.AddField("from", SelectedFrom.Name);
             obj.AddField("to", SlotTo.Name);
             obj.AddField("char", MainPlayer.instance.GetComponent<PlayerAttributes>().player.char_id_);
             Network.socket.Emit("item_swap", obj);
+#endif
         }
 
         public static void ToggleVisibility()
@@ -242,7 +392,7 @@ namespace UserInterface
             Equipment.leftEar.Background = (ImageBrush)temp.FindResource("icon" + (inv.LeftEarSlot != null ? inv.LeftEarSlot.icon : 1723));
             Equipment.neck.Background = (ImageBrush)temp.FindResource("icon" + (inv.NeckSlot != null ? inv.NeckSlot.icon : 1723));
             Equipment.head.Background = (ImageBrush)temp.FindResource("icon" + (inv.HeadSlot != null ? inv.HeadSlot.icon : 1723));
-            Equipment.face.Background = (ImageBrush)temp.FindResource("icon" + (inv.HeadSlot != null ? inv.FaceSlot.icon : 1723));
+            Equipment.face.Background = (ImageBrush)temp.FindResource("icon" + (inv.FaceSlot != null ? inv.FaceSlot.icon : 1723));
             Equipment.rightEar.Background = (ImageBrush)temp.FindResource("icon" + (inv.RightEarSlot != null ? inv.RightEarSlot.icon : 1723));
             Equipment.leftFinger.Background = (ImageBrush)temp.FindResource("icon" + (inv.LeftFingerSlot != null ? inv.LeftFingerSlot.icon : 1723));
             Equipment.leftWrist.Background = (ImageBrush)temp.FindResource("icon" + (inv.LeftWristSlot != null ? inv.LeftWristSlot.icon : 1723));
@@ -261,21 +411,37 @@ namespace UserInterface
             Equipment.ranged.Background = (ImageBrush)temp.FindResource("icon" + (inv.RangedSlot != null ? inv.RangedSlot.icon : 1723));
             Equipment.ammo.Background = (ImageBrush)temp.FindResource("icon" + (inv.RangedSlot != null ? inv.RangedSlot.icon : 1723));
             if (inv.Slot1 != null)
-                InventorySlots.slot1.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot1.icon);
+                InventorySlots.slot1.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot1.icon) != null ? (ImageBrush)temp.FindResource("icon" + inv.Slot1.icon) : (ImageBrush)temp.FindResource("icon1693");
+            else
+                InventorySlots.slot1.Background = null;
             if (inv.Slot2 != null)
-                InventorySlots.slot2.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot2.icon);
+                InventorySlots.slot2.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot2.icon) != null ? (ImageBrush)temp.FindResource("icon" + inv.Slot2.icon) : (ImageBrush)temp.FindResource("icon1693");
+            else
+                InventorySlots.slot2.Background = null;
             if (inv.Slot3 != null)
-                InventorySlots.slot3.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot3.icon);
+                InventorySlots.slot3.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot3.icon) != null ? (ImageBrush)temp.FindResource("icon" + inv.Slot3.icon) : (ImageBrush)temp.FindResource("icon1693");
+            else
+                InventorySlots.slot3.Background = null;
             if (inv.Slot4 != null)
-                InventorySlots.slot4.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot4.icon);
+                InventorySlots.slot4.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot4.icon) != null ? (ImageBrush)temp.FindResource("icon" + inv.Slot4.icon) : (ImageBrush)temp.FindResource("icon1693");
+            else
+                InventorySlots.slot4.Background = null;
             if (inv.Slot5 != null)
-                InventorySlots.slot5.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot5.icon);
+                InventorySlots.slot5.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot5.icon) != null ? (ImageBrush)temp.FindResource("icon" + inv.Slot5.icon) : (ImageBrush)temp.FindResource("icon1693");
+            else
+                InventorySlots.slot5.Background = null;
             if (inv.Slot6 != null)
-                InventorySlots.slot6.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot6.icon);
+                InventorySlots.slot6.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot6.icon) != null ? (ImageBrush)temp.FindResource("icon" + inv.Slot6.icon) : (ImageBrush)temp.FindResource("icon1693");
+            else
+                InventorySlots.slot6.Background = null;
             if (inv.Slot7 != null)
-                InventorySlots.slot7.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot7.icon);
+                InventorySlots.slot7.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot7.icon) != null ? (ImageBrush)temp.FindResource("icon" + inv.Slot7.icon) : (ImageBrush)temp.FindResource("icon1693");
+            else
+                InventorySlots.slot7.Background = null;
             if (inv.Slot8 != null)
-                InventorySlots.slot8.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot8.icon);
+                InventorySlots.slot8.Background = (ImageBrush)temp.FindResource("icon" + inv.Slot8.icon) != null ? (ImageBrush)temp.FindResource("icon" + inv.Slot8.icon) : (ImageBrush)temp.FindResource("icon1693");
+            else
+                InventorySlots.slot8.Background = null;
 
 #endif
         }

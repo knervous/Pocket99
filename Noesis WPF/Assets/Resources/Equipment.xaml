@@ -11,6 +11,15 @@
     <ImageBrush x:Key="Silver" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".49,.545,.068, .068"/>
     <ImageBrush x:Key="Copper" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".556,.545,.068, .068"/>
 
+    <!-- Inspect Background Four Pieces-->
+    <ImageBrush x:Key="Inspect_TopLeft" ImageSource="icons/cart01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,1,1"/>
+    <ImageBrush x:Key="Inspect_TopRight" ImageSource="icons/cart02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,1,1"/>
+    <ImageBrush x:Key="Inspect_BottomLeft" ImageSource="icons/cart03.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,1,1"/>
+    <ImageBrush x:Key="Inspect_BottomRight" ImageSource="icons/cart04.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,1,1"/>
+    
+    <!-- Magnifying glass for inspect item-->
+    <ImageBrush x:Key="Magnifying_Glass" ImageSource="icons/magnifying.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,1,1"/>
+    
     <!-- Solid Window BG Light-->
     <ImageBrush x:Key="Window_Background_Solid" ImageSource="icons/wnd_bg_light_rock.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,1,1"/>
     
@@ -59,5 +68,9 @@
     <ImageBrush x:Key="Equipment_Feet" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".468,.312,.156, .156"/>
     <ImageBrush x:Key="Equipment_Primary" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".624,.312,.156, .156"/>
     <ImageBrush x:Key="Equipment_Ammo" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".780,.312,.156, .156"/>
+    
+    
+    <!-- FONT FAMILIES -->
+    <FontFamily x:Key="ArialFont">fonts/#Arial</FontFamily>
   
 </ResourceDictionary>

@@ -37,11 +37,11 @@ namespace UnityMidi
 
         public void Awake()
         {
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
             
-#elif (UNITY_ANDROID || UNITY_IPHONE || UNITY_WP8)
-   channel=1;
-#endif
+//#elif (UNITY_ANDROID || UNITY_IPHONE || UNITY_WP8)
+//   channel=1;
+//#endif
             synthesizer = new Synthesizer(sampleRate, channel, bufferSize, 1);
             sequencer = new MidiFileSequencer(synthesizer);
             audioSource = GetComponent<AudioSource>();

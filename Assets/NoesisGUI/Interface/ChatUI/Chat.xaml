@@ -9,13 +9,33 @@
     <Canvas x:Name="ChatContainer" Width="1280" Height="520">
         <Canvas x:Name="ChatCanvas" Width="1280" Height="520">
             <Canvas x:Name="ChatCanvasInner" Width="1280" Height="440" Canvas.Top="75" Background="{DynamicResource Window_Background}">
-                <ScrollViewer x:Name="ChatTextScroll" >
-                    <TextBlock x:Name="ChatText" Height="Auto" Foreground="AntiqueWhite" Background="Transparent" TextWrapping="Wrap" Text="TextBlock 123" Canvas.Top="101" Width="1018"/>
+                <ScrollViewer
+                    x:Name="ChatTextContainer"
+                    VerticalScrollBarVisibility="Visible"
+                    
+                    HorizontalScrollBarVisibility="Disabled" >
+                    <TextBlock Width="Auto"
+                           Height="Auto"
+                           FontStretch="Condensed"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                       x:Name="ChatText" 
+                       Foreground="AntiqueWhite" 
+                       Background="Transparent"
+                           />
                 </ScrollViewer>
-                <TextBox x:Name="ChatEntry" Height="44" Foreground="AntiqueWhite" Background="{DynamicResource Window_Background_Solid}" TextWrapping="Wrap" Text="TextBox" Width="1260" Canvas.Left="10"/>
+                <!--<ScrollViewer x:Name="ChatTextScroll" >
+                    <TextBlock x:Name="ChatText" Height="Auto" Foreground="AntiqueWhite" Background="Transparent" TextWrapping="Wrap" Text="TextBlock 123" Canvas.Top="101" Width="1018"/>
+                </ScrollViewer>-->
+                <TextBox x:Name="ChatEntry" Height="44" Foreground="AntiqueWhite" Background="{DynamicResource Window_Background_Solid}" TextWrapping="Wrap" Width="1260" Canvas.Left="10"/>
+                <ComboBox x:Name="MessageType">
+                    <ComboBoxItem>Find</ComboBoxItem>
+                    <ComboBoxItem>Summon</ComboBoxItem>
+                    <ComboBoxItem>OOC</ComboBoxItem>
+                </ComboBox>
                 <Button x:Name="ChatSend" Style="{DynamicResource DefaultButton}" Height="44" Width="120" Background="{DynamicResource Inventory_RectButton}" Canvas.Left="945" Canvas.Top="346" >
                     <TextBlock x:Name="ChatSendText" Foreground="AntiqueWhite">
-                        =>
+                        SEND
                     </TextBlock>
                 </Button>
             </Canvas>
@@ -25,7 +45,7 @@
                     Main Chat
                 </TextBlock>
             </Border>
-            <Border x:Name="ChatDrag" Canvas.Left="600" Background="{DynamicResource ElementDrag}" Width="80" Height="50" />
+            <Border x:Name="ChatDrag" Background="{DynamicResource ElementDrag}" />
         </Canvas>
     </Canvas>
 
