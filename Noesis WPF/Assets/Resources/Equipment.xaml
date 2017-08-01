@@ -10,6 +10,13 @@
     <ImageBrush x:Key="Gold" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".42,.545,.068, .068"/>
     <ImageBrush x:Key="Silver" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".49,.545,.068, .068"/>
     <ImageBrush x:Key="Copper" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".556,.545,.068, .068"/>
+    
+    <!-- Gold Background With Blue-->
+    <ImageBrush x:Key="BlueBackground" ImageSource="icons/AlertBox.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,1,1"/>
+    
+    <!-- Healtn and Mana Bars-->
+    <ImageBrush x:Key="HealthManaBar" ImageSource="icons/window_pieces01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".425,.118,.4,.03"/>
+    
 
     <!-- Inspect Background Four Pieces-->
     <ImageBrush x:Key="Inspect_TopLeft" ImageSource="icons/cart01.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,1,1"/>
@@ -39,7 +46,13 @@
     
     <!-- Inventory Open Icon-->
     <ImageBrush x:Key="Inventory_Open" ImageSource="icons/window_pieces02.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,.468,.1, .1"/>
-
+    
+    <!--  Target Icon  -->
+    <ImageBrush x:Key="Target" ImageSource="icons/window_pieces03.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,.56,.6, .3"/>
+    
+    <!-- Character Open Icon -->
+    <ImageBrush x:Key="Character_Open" ImageSource="icons/CharButton.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox="0,0,1,1"/>
+    
     <!-- Rect Button-->
     <ImageBrush x:Key="Inventory_RectButton" ImageSource="icons/window_pieces03.png" Stretch="Fill" ViewboxUnits="RelativeToBoundingBox" Viewbox=".78125,.66,.1875,.094"/>
     

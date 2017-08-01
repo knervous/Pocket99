@@ -16,7 +16,7 @@ namespace UnityMidi
         [SerializeField] StreamingAssetResouce midiSource;
         [SerializeField] bool loadOnAwake = true;
         [SerializeField] bool playOnAwake = true;
-        [SerializeField] int channel = 1;
+        [SerializeField] int channel = 2;
         [SerializeField] int sampleRate = 44100;
         [SerializeField] int bufferSize = 1024;
         PatchBank bank;
@@ -37,11 +37,11 @@ namespace UnityMidi
 
         public void Awake()
         {
-//#if UNITY_EDITOR
-            
-//#elif (UNITY_ANDROID || UNITY_IPHONE || UNITY_WP8)
-//   channel=1;
-//#endif
+#if UNITY_EDITOR
+
+#elif (UNITY_ANDROID || UNITY_IPHONE || UNITY_WP8)
+               channel=1;
+#endif
             synthesizer = new Synthesizer(sampleRate, channel, bufferSize, 1);
             sequencer = new MidiFileSequencer(synthesizer);
             audioSource = GetComponent<AudioSource>();

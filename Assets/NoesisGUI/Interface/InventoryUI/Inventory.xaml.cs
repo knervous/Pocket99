@@ -16,6 +16,8 @@ using System.Diagnostics;
 
 #endif
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Timers;
 
 namespace UserInterface
 {
@@ -32,7 +34,8 @@ namespace UserInterface
         static Border _leftMag;
         const int NumSlots = 12;
         static List<Border> _inspected = new List<Border>();
-
+        static Stopwatch ClickTimer;
+        
         public Inv()
         {
             Initialized += OnInitialized;
@@ -67,6 +70,9 @@ namespace UserInterface
             Canvas.SetLeft(inventorySlots, Constants.WinWidth * .7f);
             Canvas.SetTop(inventorySlots, Constants.WinHeight * .1f);
 
+
+            ClickTimer = new Stopwatch();
+           
         }
 
         public static void InspectItem(Item item)
@@ -189,7 +195,13 @@ namespace UserInterface
             {
                 text.Text += "\r\nAC: " + item.ac;
             }
-            if( item.astr != 0 || item.aagi != 0 || item.asta != 0 || item.adex != 0 || item.awis != 0 || item.aint != 0 || item.acha != 00
+            if (item.hp != 0 || item.mana != 0   )
+            {
+                text.Text += "\r\n";
+            }
+            text.Text += item.hp != 0 ? "HP: " + (item.hp > 0 ? "+" : "-") + item.hp + "  " : "";
+            text.Text += item.mana != 0 ? "Mana: " + (item.mana > 0 ? "+" : "-") + item.mana + "  " : "";
+            if ( item.astr != 0 || item.aagi != 0 || item.asta != 0 || item.adex != 0 || item.awis != 0 || item.aint != 0 || item.acha != 00
                 || item.fr != 0 || item.cr != 0 || item.dr != 0 || item.dr != 0 || item.pr != 0 || item.mr != 0
                 )
             {
@@ -252,6 +264,8 @@ namespace UserInterface
 
         private static void DragElement(object sender, MouseButtonEventArgs e)
         {
+            
+            
             var win = (Canvas)sender;
             _offset = e.GetPosition(win);
             Point canvasPos = e.GetPosition(_canvas);
@@ -265,6 +279,7 @@ namespace UserInterface
         }
         private static void OnElementDrag(object sen, MouseEventArgs e)
         {
+            
             var win = (Canvas)sen;
             Point canvasPos2 = e.GetPosition(_canvas);
             Canvas.SetLeft(win, canvasPos2.X - _offset.X);
@@ -282,6 +297,7 @@ namespace UserInterface
 
         public static void DragItem(object sender, MouseButtonEventArgs e)
         {
+            ClickTimer.Start();
             _selected = sender as Border;
             if (_selected != null)
             {
@@ -297,24 +313,38 @@ namespace UserInterface
 
                 if (_floating.CaptureMouse())
                 {
-                    _floating.MouseMove += OnFloatingDrag;
-                    _floating.MouseUp += OnFloatingDrop;
+                    _floating.MouseMove += OnItemDrag;
+                    _floating.MouseUp += OnItemDrop;
                 }
             }
         }
 
-        private static void OnFloatingDrag(object sender, MouseEventArgs e)
+        private static void OnItemDrag(object sender, MouseEventArgs e)
         {
+            //UnityEngine.Debug.Log(Stop.ElapsedMilliseconds);
             Point canvasPos = e.GetPosition(_canvas);
             Canvas.SetLeft(_floating, canvasPos.X - _offset.X);
             Canvas.SetTop(_floating, canvasPos.Y - _offset.Y);
         }
 
-        private static void OnFloatingDrop(object sender, MouseButtonEventArgs e)
+        private static void OnItemDrop(object sender, MouseButtonEventArgs e)
         {
+            if(ClickTimer.ElapsedMilliseconds < 300)
+            {
+                Point originItem = e.GetPosition(_selected);
+                Size originSize = _selected.RenderSize;
+                if (originItem.X >= 0.0f && originItem.X < originSize.Width &&
+                originItem.Y >= 0.0f && originItem.Y < originSize.Height)
+                {
+                    Item item = Constants.ItemFromXamlName(_selected.Name);
+                    InspectItem(item);
+                }
+            }
+            ClickTimer.Stop();
+            ClickTimer.Reset();
             _floating.ReleaseMouseCapture();
-            _floating.MouseMove -= OnFloatingDrag;
-            _floating.MouseUp -= OnFloatingDrop;
+            _floating.MouseMove -= OnItemDrag;
+            _floating.MouseUp -= OnItemDrop;
 
             _floating.Visibility = Visibility.Collapsed;
 
@@ -326,8 +356,6 @@ namespace UserInterface
             {
                 Border i = (Border)sender;
                 Item item = Constants.ItemFromXamlName(_selected.Name);
-                UnityEngine.Debug.Log(i.Name);
-                UnityEngine.Debug.Log(item.icon);
                 InspectItem(item);
                 _rightMag.Visibility = Visibility.Collapsed;
                 return;

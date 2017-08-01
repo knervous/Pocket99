@@ -17,8 +17,10 @@
     </UserControl.Resources>
     <Viewbox Stretch="Uniform">
         <Canvas x:Name="MainCanvas" Width="1280" Height="720">
+            <views:HealthManaBar x:Name="HealthMana"/>
             <Button Style ="{DynamicResource DefaultButton}" Width="40" Height="40" x:Name="InventoryButton" Background="{DynamicResource Inventory_Open}" />
-            
+            <Button Style="{DynamicResource DefaultButton}" Width="40" Height="40" Canvas.Left="40" x:Name="CharButton" Background="{StaticResource Character_Open}" />
+
             <views:Chat/>
             <views:Inv/>
         </Canvas>

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.IO;
 using AudioSynthesis;
+using System.Collections;
 
 namespace UnityMidi
 {
@@ -31,7 +32,18 @@ namespace UnityMidi
 
         public Stream OpenResourceForRead()
         {
+#if UNITY_EDITOR
             return File.OpenRead(Path.Combine(Application.streamingAssetsPath, streamingAssetPath));
+
+#elif UNITY_ANDROID
+            string filePath = "jar:file://" + Application.dataPath + "!/assets/" + streamingAssetPath;
+            WWW data = new WWW(filePath);
+            while (!data.isDone) { }
+            Stream stream = new MemoryStream(data.bytes);
+            return stream;
+#else
+
+#endif
         }
 
         public Stream OpenResourceForWrite()

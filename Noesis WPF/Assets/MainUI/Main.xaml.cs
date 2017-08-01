@@ -41,15 +41,26 @@ namespace UserInterface
         private void OnInitialized(object sender, EventArgs e)
         {
             Inv.ToggleVisibility();
+            float r = (float) Constants.WinHyp * .08f;
             Canvas mainCanvas = (Canvas)FindName("MainCanvas");
+            UserControl healthMana = (UserControl)FindName("HealthMana");
             Button inventoryButton = (Button)this.FindName("InventoryButton");
+            Button charButton = (Button)FindName("CharButton");
+
 
             mainCanvas.Width = Constants.WinWidth;
             mainCanvas.Height = Constants.WinHeight;
-           // mainCanvas.Background = new SolidColorBrush(Colors.Blue);
-            inventoryButton.Width = (Constants.WinHyp / 15);
-            inventoryButton.Height = (Constants.WinHyp / 15);
+            // mainCanvas.Background = new SolidColorBrush(Colors.Blue);
+            inventoryButton.Width = r;
+            inventoryButton.Height = r;
             inventoryButton.Click += OpenInventory;
+
+            charButton.Width = r;
+            charButton.Height = r;
+            charButton.Click += OpenCharacter;
+            Canvas.SetLeft(charButton, r);
+
+            Canvas.SetLeft(healthMana, r * 2);
         }
 
         private void OpenInventory(object sender, RoutedEventArgs args)
@@ -57,5 +68,11 @@ namespace UserInterface
            
             Inv.ToggleVisibility();
         }
+        
+        private void OpenCharacter(object sender, RoutedEventArgs args)
+        {
+            //Open Char stats yo
+        }
+    
     }
 }
