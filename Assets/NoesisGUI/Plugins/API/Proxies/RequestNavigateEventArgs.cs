@@ -44,28 +44,30 @@ public class RequestNavigateEventArgs : RoutedEventArgs {
     }
   }
 
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    RequestNavigateEventHandler handler_ = (RequestNavigateEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new RequestNavigateEventArgs(args, false));
+    }
+  }
+
   public string Uri {
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.RequestNavigateEventArgs_Uri_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
-      NoesisGUI_PINVOKE.FreeString(strPtr);
       return str;
     }
   }
 
-  public string TargetName {
+  public string Target {
     get {
-      IntPtr strPtr = NoesisGUI_PINVOKE.RequestNavigateEventArgs_TargetName_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      IntPtr strPtr = NoesisGUI_PINVOKE.RequestNavigateEventArgs_Target_get(swigCPtr);
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
-      NoesisGUI_PINVOKE.FreeString(strPtr);
       return str;
     }
   }
 
-  public RequestNavigateEventArgs(object source_, RoutedEvent event_, string uri_, string targetName_) : this(NoesisGUI_PINVOKE.new_RequestNavigateEventArgs(Noesis.Extend.GetInstanceHandle(source_), RoutedEvent.getCPtr(event_), uri_ != null ? uri_ : string.Empty, targetName_ != null ? targetName_ : string.Empty), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  public RequestNavigateEventArgs(object source_, RoutedEvent event_, string uri_, string target_) : this(NoesisGUI_PINVOKE.new_RequestNavigateEventArgs(Noesis.Extend.GetInstanceHandle(source_), RoutedEvent.getCPtr(event_), uri_ != null ? uri_ : string.Empty, target_ != null ? target_ : string.Empty), true) {
   }
 
 }

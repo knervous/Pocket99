@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class CommandBindingCollection : Collection {
+public class CommandBindingCollection : UICollection<CommandBinding> {
   internal new static CommandBindingCollection CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new CommandBindingCollection(cPtr, cMemoryOwn);
   }
@@ -27,18 +27,17 @@ public class CommandBindingCollection : Collection {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
+  new internal static IntPtr GetStaticType() {
+    IntPtr ret = NoesisGUI_PINVOKE.CommandBindingCollection_GetStaticType();
+    return ret;
+  }
+
   public CommandBindingCollection() {
   }
 
   protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
     registerExtend = false;
-    return NoesisGUI_PINVOKE.new_CommandBindingCollection__SWIG_0();
-  }
-
-  new internal static IntPtr GetStaticType() {
-    IntPtr ret = NoesisGUI_PINVOKE.CommandBindingCollection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
+    return NoesisGUI_PINVOKE.new_CommandBindingCollection();
   }
 
 }

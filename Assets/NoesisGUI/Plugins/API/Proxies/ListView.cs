@@ -38,26 +38,22 @@ public class ListView : ListBox {
   public static DependencyProperty ViewProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ListView_ViewProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
-  public ViewBase View {
+  public new ViewBase View {
     set {
       NoesisGUI_PINVOKE.ListView_View_set(swigCPtr, ViewBase.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ListView_View_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (ViewBase)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ListView_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

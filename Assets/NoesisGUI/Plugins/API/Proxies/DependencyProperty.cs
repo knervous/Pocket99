@@ -60,7 +60,6 @@ public partial class DependencyProperty : BaseComponent {
   public static object UnsetValue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.DependencyProperty_UnsetValue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -68,7 +67,6 @@ public partial class DependencyProperty : BaseComponent {
   public string Name {
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.DependencyProperty_Name_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -77,32 +75,27 @@ public partial class DependencyProperty : BaseComponent {
   public bool ReadOnly {
     get {
       bool ret = NoesisGUI_PINVOKE.DependencyProperty_ReadOnly_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.DependencyProperty_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private IntPtr GetOwnerTypeHelper() {
     IntPtr ret = NoesisGUI_PINVOKE.DependencyProperty_GetOwnerTypeHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private IntPtr GetPropertyTypeHelper() {
     IntPtr ret = NoesisGUI_PINVOKE.DependencyProperty_GetPropertyTypeHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private PropertyMetadata GetMetadataHelper(IntPtr type) {
     IntPtr cPtr = NoesisGUI_PINVOKE.DependencyProperty_GetMetadataHelper(swigCPtr, type);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (PropertyMetadata)Noesis.Extend.GetProxy(cPtr, false);
   }
 

@@ -43,7 +43,6 @@ public class WrapPanel : Panel {
   public static DependencyProperty ItemWidthProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.WrapPanel_ItemWidthProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -51,7 +50,6 @@ public class WrapPanel : Panel {
   public static DependencyProperty ItemHeightProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.WrapPanel_ItemHeightProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -59,7 +57,6 @@ public class WrapPanel : Panel {
   public static DependencyProperty OrientationProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.WrapPanel_OrientationProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -67,11 +64,9 @@ public class WrapPanel : Panel {
   public float ItemWidth {
     set {
       NoesisGUI_PINVOKE.WrapPanel_ItemWidth_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.WrapPanel_ItemWidth_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -79,11 +74,9 @@ public class WrapPanel : Panel {
   public float ItemHeight {
     set {
       NoesisGUI_PINVOKE.WrapPanel_ItemHeight_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.WrapPanel_ItemHeight_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -91,26 +84,20 @@ public class WrapPanel : Panel {
   public Orientation Orientation {
     set {
       NoesisGUI_PINVOKE.WrapPanel_Orientation_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       Orientation ret = (Orientation)NoesisGUI_PINVOKE.WrapPanel_Orientation_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.WrapPanel_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_WrapPanel(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_WrapPanel(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

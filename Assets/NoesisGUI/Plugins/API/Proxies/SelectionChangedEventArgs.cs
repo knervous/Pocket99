@@ -45,6 +45,13 @@ public class SelectionChangedEventArgs : RoutedEventArgs {
     }
   }
 
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    SelectionChangedEventHandler handler_ = (SelectionChangedEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new SelectionChangedEventArgs(args, false));
+    }
+  }
+
   public IList AddedItems {
     get {
       return new ListWrapper(this, 0);
@@ -138,30 +145,25 @@ public class SelectionChangedEventArgs : RoutedEventArgs {
   }
 
   public SelectionChangedEventArgs(object s) : this(NoesisGUI_PINVOKE.new_SelectionChangedEventArgs(Noesis.Extend.GetInstanceHandle(s)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   private bool ContainsListHelper(int listId, object value) {
     bool ret = NoesisGUI_PINVOKE.SelectionChangedEventArgs_ContainsListHelper(swigCPtr, listId, Noesis.Extend.GetInstanceHandle(value));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private int IndexOfListHelper(int listId, object value) {
     int ret = NoesisGUI_PINVOKE.SelectionChangedEventArgs_IndexOfListHelper(swigCPtr, listId, Noesis.Extend.GetInstanceHandle(value));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private object GetItemListHelper(int listId, int index) {
     IntPtr cPtr = NoesisGUI_PINVOKE.SelectionChangedEventArgs_GetItemListHelper(swigCPtr, listId, index);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return Noesis.Extend.GetProxy(cPtr, false);
   }
 
   private int CountListHelper(int listId) {
     int ret = NoesisGUI_PINVOKE.SelectionChangedEventArgs_CountListHelper(swigCPtr, listId);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

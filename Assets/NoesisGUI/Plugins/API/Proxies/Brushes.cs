@@ -19,7 +19,6 @@ public static class Brushes {
   public static SolidColorBrush AliceBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_AliceBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -27,7 +26,6 @@ public static class Brushes {
   public static SolidColorBrush AntiqueWhite {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_AntiqueWhite_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -35,7 +33,6 @@ public static class Brushes {
   public static SolidColorBrush Aqua {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Aqua_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -43,7 +40,6 @@ public static class Brushes {
   public static SolidColorBrush Aquamarine {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Aquamarine_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -51,7 +47,6 @@ public static class Brushes {
   public static SolidColorBrush Azure {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Azure_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -59,7 +54,6 @@ public static class Brushes {
   public static SolidColorBrush Beige {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Beige_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -67,7 +61,6 @@ public static class Brushes {
   public static SolidColorBrush Bisque {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Bisque_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -75,7 +68,6 @@ public static class Brushes {
   public static SolidColorBrush Black {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Black_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -83,7 +75,6 @@ public static class Brushes {
   public static SolidColorBrush BlanchedAlmond {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_BlanchedAlmond_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -91,7 +82,6 @@ public static class Brushes {
   public static SolidColorBrush Blue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Blue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -99,7 +89,6 @@ public static class Brushes {
   public static SolidColorBrush BlueViolet {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_BlueViolet_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -107,7 +96,6 @@ public static class Brushes {
   public static SolidColorBrush Brown {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Brown_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -115,7 +103,6 @@ public static class Brushes {
   public static SolidColorBrush BurlyWood {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_BurlyWood_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -123,7 +110,6 @@ public static class Brushes {
   public static SolidColorBrush CadetBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_CadetBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -131,7 +117,6 @@ public static class Brushes {
   public static SolidColorBrush Chartreuse {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Chartreuse_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -139,7 +124,6 @@ public static class Brushes {
   public static SolidColorBrush Chocolate {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Chocolate_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -147,7 +131,6 @@ public static class Brushes {
   public static SolidColorBrush Coral {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Coral_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -155,7 +138,6 @@ public static class Brushes {
   public static SolidColorBrush CornflowerBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_CornflowerBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -163,7 +145,6 @@ public static class Brushes {
   public static SolidColorBrush Cornsilk {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Cornsilk_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -171,7 +152,6 @@ public static class Brushes {
   public static SolidColorBrush Crimson {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Crimson_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -179,7 +159,6 @@ public static class Brushes {
   public static SolidColorBrush Cyan {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Cyan_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -187,7 +166,6 @@ public static class Brushes {
   public static SolidColorBrush DarkBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -195,7 +173,6 @@ public static class Brushes {
   public static SolidColorBrush DarkCyan {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkCyan_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -203,7 +180,6 @@ public static class Brushes {
   public static SolidColorBrush DarkGoldenrod {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkGoldenrod_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -211,7 +187,6 @@ public static class Brushes {
   public static SolidColorBrush DarkGray {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkGray_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -219,7 +194,6 @@ public static class Brushes {
   public static SolidColorBrush DarkGreen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkGreen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -227,7 +201,6 @@ public static class Brushes {
   public static SolidColorBrush DarkKhaki {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkKhaki_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -235,7 +208,6 @@ public static class Brushes {
   public static SolidColorBrush DarkMagenta {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkMagenta_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -243,7 +215,6 @@ public static class Brushes {
   public static SolidColorBrush DarkOliveGreen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkOliveGreen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -251,7 +222,6 @@ public static class Brushes {
   public static SolidColorBrush DarkOrange {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkOrange_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -259,7 +229,6 @@ public static class Brushes {
   public static SolidColorBrush DarkOrchid {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkOrchid_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -267,7 +236,6 @@ public static class Brushes {
   public static SolidColorBrush DarkRed {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkRed_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -275,7 +243,6 @@ public static class Brushes {
   public static SolidColorBrush DarkSalmon {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkSalmon_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -283,7 +250,6 @@ public static class Brushes {
   public static SolidColorBrush DarkSeaGreen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkSeaGreen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -291,7 +257,6 @@ public static class Brushes {
   public static SolidColorBrush DarkSlateBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkSlateBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -299,7 +264,6 @@ public static class Brushes {
   public static SolidColorBrush DarkSlateGray {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkSlateGray_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -307,7 +271,6 @@ public static class Brushes {
   public static SolidColorBrush DarkTurquoise {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkTurquoise_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -315,7 +278,6 @@ public static class Brushes {
   public static SolidColorBrush DarkViolet {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DarkViolet_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -323,7 +285,6 @@ public static class Brushes {
   public static SolidColorBrush DeepPink {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DeepPink_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -331,7 +292,6 @@ public static class Brushes {
   public static SolidColorBrush DeepSkyBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DeepSkyBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -339,7 +299,6 @@ public static class Brushes {
   public static SolidColorBrush DimGray {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DimGray_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -347,7 +306,6 @@ public static class Brushes {
   public static SolidColorBrush DodgerBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_DodgerBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -355,7 +313,6 @@ public static class Brushes {
   public static SolidColorBrush Firebrick {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Firebrick_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -363,7 +320,6 @@ public static class Brushes {
   public static SolidColorBrush FloralWhite {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_FloralWhite_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -371,7 +327,6 @@ public static class Brushes {
   public static SolidColorBrush ForestGreen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_ForestGreen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -379,7 +334,6 @@ public static class Brushes {
   public static SolidColorBrush Fuchsia {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Fuchsia_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -387,7 +341,6 @@ public static class Brushes {
   public static SolidColorBrush Gainsboro {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Gainsboro_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -395,7 +348,6 @@ public static class Brushes {
   public static SolidColorBrush GhostWhite {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_GhostWhite_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -403,7 +355,6 @@ public static class Brushes {
   public static SolidColorBrush Gold {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Gold_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -411,7 +362,6 @@ public static class Brushes {
   public static SolidColorBrush Goldenrod {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Goldenrod_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -419,7 +369,6 @@ public static class Brushes {
   public static SolidColorBrush Gray {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Gray_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -427,7 +376,6 @@ public static class Brushes {
   public static SolidColorBrush Green {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Green_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -435,7 +383,6 @@ public static class Brushes {
   public static SolidColorBrush GreenYellow {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_GreenYellow_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -443,7 +390,6 @@ public static class Brushes {
   public static SolidColorBrush Honeydew {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Honeydew_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -451,7 +397,6 @@ public static class Brushes {
   public static SolidColorBrush HotPink {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_HotPink_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -459,7 +404,6 @@ public static class Brushes {
   public static SolidColorBrush IndianRed {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_IndianRed_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -467,7 +411,6 @@ public static class Brushes {
   public static SolidColorBrush Indigo {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Indigo_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -475,7 +418,6 @@ public static class Brushes {
   public static SolidColorBrush Ivory {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Ivory_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -483,7 +425,6 @@ public static class Brushes {
   public static SolidColorBrush Khaki {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Khaki_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -491,7 +432,6 @@ public static class Brushes {
   public static SolidColorBrush Lavender {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Lavender_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -499,7 +439,6 @@ public static class Brushes {
   public static SolidColorBrush LavenderBlush {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LavenderBlush_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -507,7 +446,6 @@ public static class Brushes {
   public static SolidColorBrush LawnGreen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LawnGreen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -515,7 +453,6 @@ public static class Brushes {
   public static SolidColorBrush LemonChiffon {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LemonChiffon_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -523,7 +460,6 @@ public static class Brushes {
   public static SolidColorBrush LightBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LightBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -531,7 +467,6 @@ public static class Brushes {
   public static SolidColorBrush LightCoral {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LightCoral_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -539,7 +474,6 @@ public static class Brushes {
   public static SolidColorBrush LightCyan {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LightCyan_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -547,7 +481,6 @@ public static class Brushes {
   public static SolidColorBrush LightGoldenrodYellow {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LightGoldenrodYellow_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -555,7 +488,6 @@ public static class Brushes {
   public static SolidColorBrush LightGray {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LightGray_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -563,7 +495,6 @@ public static class Brushes {
   public static SolidColorBrush LightGreen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LightGreen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -571,7 +502,6 @@ public static class Brushes {
   public static SolidColorBrush LightPink {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LightPink_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -579,7 +509,6 @@ public static class Brushes {
   public static SolidColorBrush LightSalmon {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LightSalmon_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -587,7 +516,6 @@ public static class Brushes {
   public static SolidColorBrush LightSeaGreen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LightSeaGreen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -595,7 +523,6 @@ public static class Brushes {
   public static SolidColorBrush LightSkyBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LightSkyBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -603,7 +530,6 @@ public static class Brushes {
   public static SolidColorBrush LightSlateGray {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LightSlateGray_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -611,7 +537,6 @@ public static class Brushes {
   public static SolidColorBrush LightSteelBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LightSteelBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -619,7 +544,6 @@ public static class Brushes {
   public static SolidColorBrush LightYellow {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LightYellow_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -627,7 +551,6 @@ public static class Brushes {
   public static SolidColorBrush Lime {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Lime_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -635,7 +558,6 @@ public static class Brushes {
   public static SolidColorBrush LimeGreen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_LimeGreen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -643,7 +565,6 @@ public static class Brushes {
   public static SolidColorBrush Linen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Linen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -651,7 +572,6 @@ public static class Brushes {
   public static SolidColorBrush Magenta {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Magenta_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -659,7 +579,6 @@ public static class Brushes {
   public static SolidColorBrush Maroon {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Maroon_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -667,7 +586,6 @@ public static class Brushes {
   public static SolidColorBrush MediumAquamarine {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_MediumAquamarine_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -675,7 +593,6 @@ public static class Brushes {
   public static SolidColorBrush MediumBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_MediumBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -683,7 +600,6 @@ public static class Brushes {
   public static SolidColorBrush MediumOrchid {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_MediumOrchid_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -691,7 +607,6 @@ public static class Brushes {
   public static SolidColorBrush MediumPurple {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_MediumPurple_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -699,7 +614,6 @@ public static class Brushes {
   public static SolidColorBrush MediumSeaGreen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_MediumSeaGreen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -707,7 +621,6 @@ public static class Brushes {
   public static SolidColorBrush MediumSlateBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_MediumSlateBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -715,7 +628,6 @@ public static class Brushes {
   public static SolidColorBrush MediumSpringGreen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_MediumSpringGreen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -723,7 +635,6 @@ public static class Brushes {
   public static SolidColorBrush MediumTurquoise {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_MediumTurquoise_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -731,7 +642,6 @@ public static class Brushes {
   public static SolidColorBrush MediumVioletRed {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_MediumVioletRed_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -739,7 +649,6 @@ public static class Brushes {
   public static SolidColorBrush MidnightBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_MidnightBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -747,7 +656,6 @@ public static class Brushes {
   public static SolidColorBrush MintCream {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_MintCream_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -755,7 +663,6 @@ public static class Brushes {
   public static SolidColorBrush MistyRose {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_MistyRose_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -763,7 +670,6 @@ public static class Brushes {
   public static SolidColorBrush Moccasin {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Moccasin_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -771,7 +677,6 @@ public static class Brushes {
   public static SolidColorBrush NavajoWhite {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_NavajoWhite_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -779,7 +684,6 @@ public static class Brushes {
   public static SolidColorBrush Navy {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Navy_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -787,7 +691,6 @@ public static class Brushes {
   public static SolidColorBrush OldLace {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_OldLace_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -795,7 +698,6 @@ public static class Brushes {
   public static SolidColorBrush Olive {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Olive_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -803,7 +705,6 @@ public static class Brushes {
   public static SolidColorBrush OliveDrab {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_OliveDrab_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -811,7 +712,6 @@ public static class Brushes {
   public static SolidColorBrush Orange {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Orange_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -819,7 +719,6 @@ public static class Brushes {
   public static SolidColorBrush OrangeRed {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_OrangeRed_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -827,7 +726,6 @@ public static class Brushes {
   public static SolidColorBrush Orchid {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Orchid_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -835,7 +733,6 @@ public static class Brushes {
   public static SolidColorBrush PaleGoldenrod {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_PaleGoldenrod_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -843,7 +740,6 @@ public static class Brushes {
   public static SolidColorBrush PaleGreen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_PaleGreen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -851,7 +747,6 @@ public static class Brushes {
   public static SolidColorBrush PaleTurquoise {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_PaleTurquoise_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -859,7 +754,6 @@ public static class Brushes {
   public static SolidColorBrush PaleVioletRed {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_PaleVioletRed_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -867,7 +761,6 @@ public static class Brushes {
   public static SolidColorBrush PapayaWhip {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_PapayaWhip_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -875,7 +768,6 @@ public static class Brushes {
   public static SolidColorBrush PeachPuff {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_PeachPuff_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -883,7 +775,6 @@ public static class Brushes {
   public static SolidColorBrush Peru {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Peru_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -891,7 +782,6 @@ public static class Brushes {
   public static SolidColorBrush Pink {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Pink_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -899,7 +789,6 @@ public static class Brushes {
   public static SolidColorBrush Plum {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Plum_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -907,7 +796,6 @@ public static class Brushes {
   public static SolidColorBrush PowderBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_PowderBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -915,7 +803,6 @@ public static class Brushes {
   public static SolidColorBrush Purple {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Purple_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -923,7 +810,6 @@ public static class Brushes {
   public static SolidColorBrush Red {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Red_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -931,7 +817,6 @@ public static class Brushes {
   public static SolidColorBrush RosyBrown {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_RosyBrown_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -939,7 +824,6 @@ public static class Brushes {
   public static SolidColorBrush RoyalBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_RoyalBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -947,7 +831,6 @@ public static class Brushes {
   public static SolidColorBrush SaddleBrown {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_SaddleBrown_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -955,7 +838,6 @@ public static class Brushes {
   public static SolidColorBrush Salmon {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Salmon_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -963,7 +845,6 @@ public static class Brushes {
   public static SolidColorBrush SandyBrown {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_SandyBrown_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -971,7 +852,6 @@ public static class Brushes {
   public static SolidColorBrush SeaGreen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_SeaGreen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -979,7 +859,6 @@ public static class Brushes {
   public static SolidColorBrush SeaShell {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_SeaShell_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -987,7 +866,6 @@ public static class Brushes {
   public static SolidColorBrush Sienna {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Sienna_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -995,7 +873,6 @@ public static class Brushes {
   public static SolidColorBrush Silver {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Silver_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1003,7 +880,6 @@ public static class Brushes {
   public static SolidColorBrush SkyBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_SkyBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1011,7 +887,6 @@ public static class Brushes {
   public static SolidColorBrush SlateBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_SlateBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1019,7 +894,6 @@ public static class Brushes {
   public static SolidColorBrush SlateGray {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_SlateGray_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1027,7 +901,6 @@ public static class Brushes {
   public static SolidColorBrush Snow {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Snow_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1035,7 +908,6 @@ public static class Brushes {
   public static SolidColorBrush SpringGreen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_SpringGreen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1043,7 +915,6 @@ public static class Brushes {
   public static SolidColorBrush SteelBlue {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_SteelBlue_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1051,7 +922,6 @@ public static class Brushes {
   public static SolidColorBrush Tan {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Tan_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1059,7 +929,6 @@ public static class Brushes {
   public static SolidColorBrush Teal {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Teal_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1067,7 +936,6 @@ public static class Brushes {
   public static SolidColorBrush Thistle {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Thistle_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1075,7 +943,6 @@ public static class Brushes {
   public static SolidColorBrush Tomato {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Tomato_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1083,7 +950,6 @@ public static class Brushes {
   public static SolidColorBrush Transparent {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Transparent_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1091,7 +957,6 @@ public static class Brushes {
   public static SolidColorBrush Turquoise {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Turquoise_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1099,7 +964,6 @@ public static class Brushes {
   public static SolidColorBrush Violet {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Violet_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1107,7 +971,6 @@ public static class Brushes {
   public static SolidColorBrush Wheat {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Wheat_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1115,7 +978,6 @@ public static class Brushes {
   public static SolidColorBrush White {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_White_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1123,7 +985,6 @@ public static class Brushes {
   public static SolidColorBrush WhiteSmoke {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_WhiteSmoke_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1131,7 +992,6 @@ public static class Brushes {
   public static SolidColorBrush Yellow {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_Yellow_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -1139,7 +999,6 @@ public static class Brushes {
   public static SolidColorBrush YellowGreen {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brushes_YellowGreen_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SolidColorBrush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }

@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class UIElementCollection : VisualCollection {
+public class UIElementCollection : UICollection<UIElement> {
   internal new static UIElementCollection CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new UIElementCollection(cPtr, cMemoryOwn);
   }
@@ -27,21 +27,14 @@ public class UIElementCollection : VisualCollection {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
-  public UIElementCollection() {
+  protected UIElementCollection() {
   }
 
-  protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
-    registerExtend = false;
-    return NoesisGUI_PINVOKE.new_UIElementCollection__SWIG_0();
-  }
-
-  public UIElementCollection(Visual visualParent, FrameworkElement logicalParent) : this(NoesisGUI_PINVOKE.new_UIElementCollection__SWIG_1(Visual.getCPtr(visualParent), FrameworkElement.getCPtr(logicalParent)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  public UIElementCollection(UIElement visualParent, FrameworkElement logicalParent) : this(NoesisGUI_PINVOKE.new_UIElementCollection(UIElement.getCPtr(visualParent), FrameworkElement.getCPtr(logicalParent)), true) {
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.UIElementCollection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

@@ -44,32 +44,28 @@ public class DragStartedEventArgs : RoutedEventArgs {
     }
   }
 
-  public float horizontalOffset {
-    set {
-      NoesisGUI_PINVOKE.DragStartedEventArgs_horizontalOffset_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    } 
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    DragStartedEventHandler handler_ = (DragStartedEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new DragStartedEventArgs(args, false));
+    }
+  }
+
+  public float HorizontalOffset {
     get {
-      float ret = NoesisGUI_PINVOKE.DragStartedEventArgs_horizontalOffset_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      float ret = NoesisGUI_PINVOKE.DragStartedEventArgs_HorizontalOffset_get(swigCPtr);
       return ret;
     } 
   }
 
-  public float verticalOffset {
-    set {
-      NoesisGUI_PINVOKE.DragStartedEventArgs_verticalOffset_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    } 
+  public float VerticalOffset {
     get {
-      float ret = NoesisGUI_PINVOKE.DragStartedEventArgs_verticalOffset_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      float ret = NoesisGUI_PINVOKE.DragStartedEventArgs_VerticalOffset_get(swigCPtr);
       return ret;
     } 
   }
 
   public DragStartedEventArgs(object s, float h, float v) : this(NoesisGUI_PINVOKE.new_DragStartedEventArgs(Noesis.Extend.GetInstanceHandle(s), h, v), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

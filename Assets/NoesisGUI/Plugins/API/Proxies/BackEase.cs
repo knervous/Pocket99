@@ -38,7 +38,6 @@ public class BackEase : EasingFunctionBase {
   public static DependencyProperty AmplitudeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.BackEase_AmplitudeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,18 +45,15 @@ public class BackEase : EasingFunctionBase {
   public float Amplitude {
     set {
       NoesisGUI_PINVOKE.BackEase_Amplitude_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.BackEase_Amplitude_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.BackEase_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

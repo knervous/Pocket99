@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class VisualStateGroupCollection : Collection {
+public class VisualStateGroupCollection : UICollection<VisualStateGroup> {
   internal new static VisualStateGroupCollection CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new VisualStateGroupCollection(cPtr, cMemoryOwn);
   }
@@ -27,18 +27,17 @@ public class VisualStateGroupCollection : Collection {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
+  new internal static IntPtr GetStaticType() {
+    IntPtr ret = NoesisGUI_PINVOKE.VisualStateGroupCollection_GetStaticType();
+    return ret;
+  }
+
   public VisualStateGroupCollection() {
   }
 
   protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
     registerExtend = false;
-    return NoesisGUI_PINVOKE.new_VisualStateGroupCollection__SWIG_0();
-  }
-
-  new internal static IntPtr GetStaticType() {
-    IntPtr ret = NoesisGUI_PINVOKE.VisualStateGroupCollection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
+    return NoesisGUI_PINVOKE.new_VisualStateGroupCollection();
   }
 
 }

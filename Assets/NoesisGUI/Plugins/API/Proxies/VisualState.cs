@@ -38,11 +38,9 @@ public class VisualState : DependencyObject {
   public string Name {
     set {
       NoesisGUI_PINVOKE.VisualState_Name_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.VisualState_Name_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -51,18 +49,15 @@ public class VisualState : DependencyObject {
   public Storyboard Storyboard {
     set {
       NoesisGUI_PINVOKE.VisualState_Storyboard_set(swigCPtr, Storyboard.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.VisualState_Storyboard_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Storyboard)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.VisualState_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

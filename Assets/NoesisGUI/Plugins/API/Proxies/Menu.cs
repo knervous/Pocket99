@@ -43,7 +43,6 @@ public class Menu : MenuBase {
   public static DependencyProperty IsMainMenuProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Menu_IsMainMenuProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -51,26 +50,20 @@ public class Menu : MenuBase {
   public bool IsMainMenu {
     set {
       NoesisGUI_PINVOKE.Menu_IsMainMenu_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.Menu_IsMainMenu_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Menu_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_Menu(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_Menu(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

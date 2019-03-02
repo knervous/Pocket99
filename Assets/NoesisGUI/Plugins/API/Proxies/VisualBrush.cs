@@ -38,7 +38,6 @@ public class VisualBrush : TileBrush {
   public static DependencyProperty VisualProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.VisualBrush_VisualProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,18 +45,15 @@ public class VisualBrush : TileBrush {
   public Visual Visual {
     set {
       NoesisGUI_PINVOKE.VisualBrush_Visual_set(swigCPtr, Visual.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.VisualBrush_Visual_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Visual)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.VisualBrush_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

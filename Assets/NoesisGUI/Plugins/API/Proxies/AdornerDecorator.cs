@@ -28,7 +28,6 @@ public class AdornerDecorator : Decorator {
   }
 
   public AdornerDecorator(bool logicalChild) : this(NoesisGUI_PINVOKE.new_AdornerDecorator__SWIG_0(logicalChild), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public AdornerDecorator() {
@@ -41,17 +40,14 @@ public class AdornerDecorator : Decorator {
 
   public void AddLayer(Visual layerRoot) {
     NoesisGUI_PINVOKE.AdornerDecorator_AddLayer(swigCPtr, Visual.getCPtr(layerRoot));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void RemoveLayer(Visual layerRoot) {
     NoesisGUI_PINVOKE.AdornerDecorator_RemoveLayer(swigCPtr, Visual.getCPtr(layerRoot));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.AdornerDecorator_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

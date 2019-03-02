@@ -16,6 +16,7 @@ namespace Noesis
                 bool registerExtend;
                 IntPtr cPtr = CreateCPtr(type, out registerExtend);
                 Init(cPtr, true, registerExtend);
+                Noesis.Extend.Initialize(this);
             }
             else
             {
@@ -62,6 +63,10 @@ namespace Noesis
                     component.swigCPtr = new HandleRef(null, IntPtr.Zero);
                     Noesis.Extend.RemoveProxy(cPtr);
                 }
+                else
+                {
+                    Noesis.Extend.ForceRemoveExtend(instance, cPtr);
+                }
 
                 Release(cPtr);
             }
@@ -82,6 +87,11 @@ namespace Noesis
         {
             registerExtend = true;
             return Noesis.Extend.NewCPtr(type, this);
+        }
+
+        public bool IsDisposed
+        {
+            get { return swigCPtr.Handle == IntPtr.Zero; }
         }
 
         public static bool operator ==(BaseComponent a, BaseComponent b)

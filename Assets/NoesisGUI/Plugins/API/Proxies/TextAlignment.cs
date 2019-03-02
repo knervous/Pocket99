@@ -16,10 +16,10 @@ namespace Noesis
 {
 
 public enum TextAlignment {
-  Center,
-  Justify,
   Left,
-  Right
+  Right,
+  Center,
+  Justify
 }
 
 }

@@ -29,7 +29,6 @@ public class Label : ContentControl {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Label_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
@@ -46,11 +45,8 @@ public class Label : ContentControl {
     }
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_Label(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_Label(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

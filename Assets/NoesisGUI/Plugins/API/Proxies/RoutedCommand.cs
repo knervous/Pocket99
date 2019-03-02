@@ -32,44 +32,31 @@ public class RoutedCommand : BaseComponent {
 
   public bool CanExecute(object param, UIElement target) {
     bool ret = NoesisGUI_PINVOKE.RoutedCommand_CanExecute__SWIG_0(swigCPtr, Noesis.Extend.GetInstanceHandle(param), UIElement.getCPtr(target));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void Execute(object param, UIElement target) {
     NoesisGUI_PINVOKE.RoutedCommand_Execute__SWIG_0(swigCPtr, Noesis.Extend.GetInstanceHandle(param), UIElement.getCPtr(target));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  public string GetName() {
-    IntPtr strPtr = NoesisGUI_PINVOKE.RoutedCommand_GetName(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
-    return str;
   }
 
   public bool CanExecute(object param) {
     bool ret = NoesisGUI_PINVOKE.RoutedCommand_CanExecute__SWIG_1(swigCPtr, Noesis.Extend.GetInstanceHandle(param));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void Execute(object param) {
     NoesisGUI_PINVOKE.RoutedCommand_Execute__SWIG_1(swigCPtr, Noesis.Extend.GetInstanceHandle(param));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public InputGestureCollection InputGestures {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RoutedCommand_InputGestures_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (InputGestureCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.RoutedCommand_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

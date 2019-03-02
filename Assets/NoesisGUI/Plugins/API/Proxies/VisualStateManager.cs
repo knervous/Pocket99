@@ -37,42 +37,35 @@ public class VisualStateManager : DependencyObject {
 
   public static VisualStateManager GetCustomVisualStateManager(DependencyObject obj) {
     IntPtr cPtr = NoesisGUI_PINVOKE.VisualStateManager_GetCustomVisualStateManager(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (VisualStateManager)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public static void SetCustomVisualStateManager(DependencyObject obj, VisualStateManager value) {
     NoesisGUI_PINVOKE.VisualStateManager_SetCustomVisualStateManager(DependencyObject.getCPtr(obj), VisualStateManager.getCPtr(value));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static VisualStateGroupCollection GetVisualStateGroups(DependencyObject obj) {
     IntPtr cPtr = NoesisGUI_PINVOKE.VisualStateManager_GetVisualStateGroups(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (VisualStateGroupCollection)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public static void SetVisualStateGroups(DependencyObject obj, VisualStateGroupCollection groups) {
     NoesisGUI_PINVOKE.VisualStateManager_SetVisualStateGroups(DependencyObject.getCPtr(obj), VisualStateGroupCollection.getCPtr(groups));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static bool GoToState(FrameworkElement control, string stateName, bool useTransitions) {
     bool ret = NoesisGUI_PINVOKE.VisualStateManager_GoToState(FrameworkElement.getCPtr(control), stateName != null ? stateName : string.Empty, useTransitions);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static bool GoToElementState(FrameworkElement root, string stateName, bool useTransitions) {
     bool ret = NoesisGUI_PINVOKE.VisualStateManager_GoToElementState(FrameworkElement.getCPtr(root), stateName != null ? stateName : string.Empty, useTransitions);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static DependencyProperty CustomVisualStateManagerProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.VisualStateManager_CustomVisualStateManagerProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -80,14 +73,12 @@ public class VisualStateManager : DependencyObject {
   public static DependencyProperty VisualStateGroupsProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.VisualStateManager_VisualStateGroupsProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.VisualStateManager_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

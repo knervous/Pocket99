@@ -40,7 +40,6 @@ public class ItemContainerGenerator : BaseComponent, Noesis.IRecyclingItemContai
         _ItemsChanged.Add(swigCPtr.Handle, null);
 
         NoesisGUI_PINVOKE.BindEvent_ItemContainerGenerator_ItemsChanged(_raiseItemsChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       }
 
       _ItemsChanged[swigCPtr.Handle] += value;
@@ -52,7 +51,6 @@ public class ItemContainerGenerator : BaseComponent, Noesis.IRecyclingItemContai
 
         if (_ItemsChanged[swigCPtr.Handle] == null) {
           NoesisGUI_PINVOKE.UnbindEvent_ItemContainerGenerator_ItemsChanged(_raiseItemsChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
 
           _ItemsChanged.Remove(swigCPtr.Handle);
         }
@@ -81,7 +79,7 @@ public class ItemContainerGenerator : BaseComponent, Noesis.IRecyclingItemContai
       }
     }
     catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
+      Noesis.Error.UnhandledException(exception);
     }
   }
 
@@ -97,7 +95,6 @@ public class ItemContainerGenerator : BaseComponent, Noesis.IRecyclingItemContai
         _StatusChanged.Add(swigCPtr.Handle, null);
 
         NoesisGUI_PINVOKE.BindEvent_ItemContainerGenerator_StatusChanged(_raiseStatusChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       }
 
       _StatusChanged[swigCPtr.Handle] += value;
@@ -109,7 +106,6 @@ public class ItemContainerGenerator : BaseComponent, Noesis.IRecyclingItemContai
 
         if (_StatusChanged[swigCPtr.Handle] == null) {
           NoesisGUI_PINVOKE.UnbindEvent_ItemContainerGenerator_StatusChanged(_raiseStatusChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
 
           _StatusChanged.Remove(swigCPtr.Handle);
         }
@@ -138,7 +134,7 @@ public class ItemContainerGenerator : BaseComponent, Noesis.IRecyclingItemContai
       }
     }
     catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
+      Noesis.Error.UnhandledException(exception);
     }
   }
 
@@ -162,12 +158,14 @@ public class ItemContainerGenerator : BaseComponent, Noesis.IRecyclingItemContai
   }
 
   DependencyObject IItemContainerGenerator.GenerateNext() {
-    return GenerateNextHelper();
+    IntPtr cPtr = GenerateNextHelper();
+    return (DependencyObject)Noesis.Extend.GetProxy(cPtr, true);
   }
 
   DependencyObject IItemContainerGenerator.GenerateNext(out bool isNewlyRealized) {
     isNewlyRealized = false;
-    return GenerateNextRealizedHelper(ref isNewlyRealized);
+    IntPtr cPtr = GenerateNextRealizedHelper(ref isNewlyRealized);
+    return (DependencyObject)Noesis.Extend.GetProxy(cPtr, true);
   }
 
   void IItemContainerGenerator.PrepareItemContainer(DependencyObject container) {
@@ -215,32 +213,27 @@ public class ItemContainerGenerator : BaseComponent, Noesis.IRecyclingItemContai
 
   public DependencyObject ContainerFromIndex(int index) {
     IntPtr cPtr = NoesisGUI_PINVOKE.ItemContainerGenerator_ContainerFromIndex(swigCPtr, index);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public DependencyObject ContainerFromItem(object item) {
     IntPtr cPtr = NoesisGUI_PINVOKE.ItemContainerGenerator_ContainerFromItem(swigCPtr, Noesis.Extend.GetInstanceHandle(item));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public int IndexFromContainer(DependencyObject container) {
     int ret = NoesisGUI_PINVOKE.ItemContainerGenerator_IndexFromContainer(swigCPtr, DependencyObject.getCPtr(container));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public object ItemFromContainer(DependencyObject container) {
     IntPtr cPtr = NoesisGUI_PINVOKE.ItemContainerGenerator_ItemFromContainer(swigCPtr, DependencyObject.getCPtr(container));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public GeneratorStatus Status {
     get {
       GeneratorStatus ret = (GeneratorStatus)NoesisGUI_PINVOKE.ItemContainerGenerator_Status_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -248,66 +241,54 @@ public class ItemContainerGenerator : BaseComponent, Noesis.IRecyclingItemContai
   private ItemContainerGenerator GetItemContainerGeneratorForPanelHelper(Panel panel) {
     IntPtr cPtr = NoesisGUI_PINVOKE.ItemContainerGenerator_GetItemContainerGeneratorForPanelHelper(swigCPtr, Panel.getCPtr(panel));
     ItemContainerGenerator ret = (cPtr == IntPtr.Zero) ? null : new ItemContainerGenerator(cPtr, false);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private void GeneratorPositionFromIndexHelper(int itemIndex, ref GeneratorPosition position) {
     NoesisGUI_PINVOKE.ItemContainerGenerator_GeneratorPositionFromIndexHelper(swigCPtr, itemIndex, ref position);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   private int IndexFromGeneratorPositionHelper(GeneratorPosition position) {
     int ret = NoesisGUI_PINVOKE.ItemContainerGenerator_IndexFromGeneratorPositionHelper(swigCPtr, ref position);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private void StartAtHelper(GeneratorPosition position, GeneratorDirection direction, bool allowStartAtRealizedItem) {
     NoesisGUI_PINVOKE.ItemContainerGenerator_StartAtHelper(swigCPtr, ref position, (int)direction, allowStartAtRealizedItem);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
-  private DependencyObject GenerateNextHelper() {
-    IntPtr cPtr = NoesisGUI_PINVOKE.ItemContainerGenerator_GenerateNextHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
+  private IntPtr GenerateNextHelper() {
+    IntPtr ret = NoesisGUI_PINVOKE.ItemContainerGenerator_GenerateNextHelper(swigCPtr);
+    return ret;
   }
 
-  private DependencyObject GenerateNextRealizedHelper(ref bool isNewlyRealized) {
-    IntPtr cPtr = NoesisGUI_PINVOKE.ItemContainerGenerator_GenerateNextRealizedHelper(swigCPtr, ref isNewlyRealized);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
+  private IntPtr GenerateNextRealizedHelper(ref bool isNewlyRealized) {
+    IntPtr ret = NoesisGUI_PINVOKE.ItemContainerGenerator_GenerateNextRealizedHelper(swigCPtr, ref isNewlyRealized);
+    return ret;
   }
 
   private void StopHelper() {
     NoesisGUI_PINVOKE.ItemContainerGenerator_StopHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   private void PrepareItemContainerHelper(DependencyObject container) {
     NoesisGUI_PINVOKE.ItemContainerGenerator_PrepareItemContainerHelper(swigCPtr, DependencyObject.getCPtr(container));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   private void RemoveAllHelper() {
     NoesisGUI_PINVOKE.ItemContainerGenerator_RemoveAllHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   private void RemoveHelper(GeneratorPosition position, int count) {
     NoesisGUI_PINVOKE.ItemContainerGenerator_RemoveHelper(swigCPtr, ref position, count);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   private void RecycleHelper(GeneratorPosition position, int count) {
     NoesisGUI_PINVOKE.ItemContainerGenerator_RecycleHelper(swigCPtr, ref position, count);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ItemContainerGenerator_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

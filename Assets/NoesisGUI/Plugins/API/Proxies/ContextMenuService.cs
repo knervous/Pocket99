@@ -19,11 +19,9 @@ public static class ContextMenuService {
   public static DependencyProperty ContextMenuProperty {
     set {
       NoesisGUI_PINVOKE.ContextMenuService_ContextMenuProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContextMenuService_ContextMenuProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -31,11 +29,9 @@ public static class ContextMenuService {
   public static DependencyProperty HasDropShadowProperty {
     set {
       NoesisGUI_PINVOKE.ContextMenuService_HasDropShadowProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContextMenuService_HasDropShadowProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -43,11 +39,9 @@ public static class ContextMenuService {
   public static DependencyProperty HorizontalOffsetProperty {
     set {
       NoesisGUI_PINVOKE.ContextMenuService_HorizontalOffsetProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContextMenuService_HorizontalOffsetProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -55,11 +49,9 @@ public static class ContextMenuService {
   public static DependencyProperty IsEnabledProperty {
     set {
       NoesisGUI_PINVOKE.ContextMenuService_IsEnabledProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContextMenuService_IsEnabledProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -67,11 +59,9 @@ public static class ContextMenuService {
   public static DependencyProperty PlacementProperty {
     set {
       NoesisGUI_PINVOKE.ContextMenuService_PlacementProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContextMenuService_PlacementProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -79,11 +69,9 @@ public static class ContextMenuService {
   public static DependencyProperty PlacementRectangleProperty {
     set {
       NoesisGUI_PINVOKE.ContextMenuService_PlacementRectangleProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContextMenuService_PlacementRectangleProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -91,11 +79,9 @@ public static class ContextMenuService {
   public static DependencyProperty PlacementTargetProperty {
     set {
       NoesisGUI_PINVOKE.ContextMenuService_PlacementTargetProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContextMenuService_PlacementTargetProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -103,11 +89,9 @@ public static class ContextMenuService {
   public static DependencyProperty ShowOnDisabledProperty {
     set {
       NoesisGUI_PINVOKE.ContextMenuService_ShowOnDisabledProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContextMenuService_ShowOnDisabledProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -115,11 +99,9 @@ public static class ContextMenuService {
   public static DependencyProperty VerticalOffsetProperty {
     set {
       NoesisGUI_PINVOKE.ContextMenuService_VerticalOffsetProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContextMenuService_VerticalOffsetProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -127,11 +109,9 @@ public static class ContextMenuService {
   public static RoutedEvent ContextMenuClosingEvent {
     set {
       NoesisGUI_PINVOKE.ContextMenuService_ContextMenuClosingEvent_set(RoutedEvent.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContextMenuService_ContextMenuClosingEvent_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -139,73 +119,60 @@ public static class ContextMenuService {
   public static RoutedEvent ContextMenuOpeningEvent {
     set {
       NoesisGUI_PINVOKE.ContextMenuService_ContextMenuOpeningEvent_set(RoutedEvent.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContextMenuService_ContextMenuOpeningEvent_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public static ContextMenu GetContextMenu(DependencyObject obj) {
     IntPtr cPtr = NoesisGUI_PINVOKE.ContextMenuService_GetContextMenu(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (ContextMenu)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public static void SetContextMenu(DependencyObject obj, ContextMenu contextMenu) {
     NoesisGUI_PINVOKE.ContextMenuService_SetContextMenu(DependencyObject.getCPtr(obj), ContextMenu.getCPtr(contextMenu));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static bool GetHasDropShadow(DependencyObject obj) {
     bool ret = NoesisGUI_PINVOKE.ContextMenuService_GetHasDropShadow(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetHasDropShadow(DependencyObject obj, bool hasDropShadow) {
     NoesisGUI_PINVOKE.ContextMenuService_SetHasDropShadow(DependencyObject.getCPtr(obj), hasDropShadow);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static float GetHorizontalOffset(DependencyObject obj) {
     float ret = NoesisGUI_PINVOKE.ContextMenuService_GetHorizontalOffset(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetHorizontalOffset(DependencyObject obj, float offset) {
     NoesisGUI_PINVOKE.ContextMenuService_SetHorizontalOffset(DependencyObject.getCPtr(obj), offset);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static bool GetIsEnabled(DependencyObject obj) {
     bool ret = NoesisGUI_PINVOKE.ContextMenuService_GetIsEnabled(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetIsEnabled(DependencyObject obj, bool isEnabled) {
     NoesisGUI_PINVOKE.ContextMenuService_SetIsEnabled(DependencyObject.getCPtr(obj), isEnabled);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static PlacementMode GetPlacement(DependencyObject obj) {
     PlacementMode ret = (PlacementMode)NoesisGUI_PINVOKE.ContextMenuService_GetPlacement(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetPlacement(DependencyObject obj, PlacementMode mode) {
     NoesisGUI_PINVOKE.ContextMenuService_SetPlacement(DependencyObject.getCPtr(obj), (int)mode);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static Rect GetPlacementRectangle(DependencyObject obj) {
     IntPtr ret = NoesisGUI_PINVOKE.ContextMenuService_GetPlacementRectangle(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Rect>(ret);
     }
@@ -216,40 +183,33 @@ public static class ContextMenuService {
 
   public static void SetPlacementRectangle(DependencyObject obj, Rect rect) {
     NoesisGUI_PINVOKE.ContextMenuService_SetPlacementRectangle(DependencyObject.getCPtr(obj), ref rect);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static UIElement GetPlacementTarget(DependencyObject obj) {
     IntPtr cPtr = NoesisGUI_PINVOKE.ContextMenuService_GetPlacementTarget(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public static void SetPlacementTarget(DependencyObject obj, UIElement target) {
     NoesisGUI_PINVOKE.ContextMenuService_SetPlacementTarget(DependencyObject.getCPtr(obj), UIElement.getCPtr(target));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static bool GetShowOnDisabled(DependencyObject obj) {
     bool ret = NoesisGUI_PINVOKE.ContextMenuService_GetShowOnDisabled(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetShowOnDisabled(DependencyObject obj, bool showOnDisable) {
     NoesisGUI_PINVOKE.ContextMenuService_SetShowOnDisabled(DependencyObject.getCPtr(obj), showOnDisable);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static float GetVerticalOffset(DependencyObject obj) {
     float ret = NoesisGUI_PINVOKE.ContextMenuService_GetVerticalOffset(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetVerticalOffset(DependencyObject obj, float offset) {
     NoesisGUI_PINVOKE.ContextMenuService_SetVerticalOffset(DependencyObject.getCPtr(obj), offset);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

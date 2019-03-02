@@ -33,7 +33,6 @@ public class ImageSource : Animatable {
   public float Width {
     get {
       float ret = NoesisGUI_PINVOKE.ImageSource_Width_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -41,14 +40,12 @@ public class ImageSource : Animatable {
   public float Height {
     get {
       float ret = NoesisGUI_PINVOKE.ImageSource_Height_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ImageSource_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

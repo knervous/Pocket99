@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class ManipulationInertiaStartingEventArgs : RoutedEventArgs {
+public class ManipulationInertiaStartingEventArgs : InputEventArgs {
   private HandleRef swigCPtr;
 
   internal ManipulationInertiaStartingEventArgs(IntPtr cPtr, bool cMemoryOwn) : base(cPtr, cMemoryOwn) {
@@ -44,123 +44,88 @@ public class ManipulationInertiaStartingEventArgs : RoutedEventArgs {
     }
   }
 
-  public Noesis.UIElement ManipulationContainer {
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    ManipulationInertiaStartingEventHandler handler_ = (ManipulationInertiaStartingEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new ManipulationInertiaStartingEventArgs(args, false));
+    }
+  }
+
+  public UIElement ManipulationContainer {
     get {
       return GetManipulationContainerHelper();
     }
   }
 
-  public Noesis.Point ManipulationOrigin {
-    get {
-      return GetManipulationOriginHelper();
-    }
+  public Point ManipulationOrigin {
     set {
-      SetManipulationOriginHelper(value);
+      NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_ManipulationOrigin_set(swigCPtr, ref value);
     }
+
+    get {
+      IntPtr ret = NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_ManipulationOrigin_get(swigCPtr);
+      if (ret != IntPtr.Zero) {
+        return Marshal.PtrToStructure<Point>(ret);
+      }
+      else {
+        return new Point();
+      }
+    }
+
   }
 
-  public Noesis.ManipulationVelocities InitialVelocities {
+  public ManipulationVelocities InitialVelocities {
     get {
-      return GetInitialVelocitiesHelper();
-    }
+      IntPtr cPtr = NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_InitialVelocities_get(swigCPtr);
+      ManipulationVelocities ret = (cPtr == IntPtr.Zero) ? null : new ManipulationVelocities(cPtr, false);
+      return ret;
+    } 
   }
 
-  public Noesis.InertiaExpansionBehavior ExpansionBehavior {
-    get {
-      return GetExpansionBehaviorHelper();
-    }
+  public InertiaRotationBehavior RotationBehavior {
     set {
-      SetExpansionBehaviorHelper(value);
-    }
+      NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_RotationBehavior_set(swigCPtr, InertiaRotationBehavior.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_RotationBehavior_get(swigCPtr);
+      InertiaRotationBehavior ret = (cPtr == IntPtr.Zero) ? null : new InertiaRotationBehavior(cPtr, false);
+      return ret;
+    } 
   }
 
-  public Noesis.InertiaTranslationBehavior TranslationBehavior {
-    get {
-      return GetTranslationBehaviorHelper();
-    }
+  public InertiaExpansionBehavior ExpansionBehavior {
     set {
-      SetTranslationBehaviorHelper(value);
-    }
+      NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_ExpansionBehavior_set(swigCPtr, InertiaExpansionBehavior.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_ExpansionBehavior_get(swigCPtr);
+      InertiaExpansionBehavior ret = (cPtr == IntPtr.Zero) ? null : new InertiaExpansionBehavior(cPtr, false);
+      return ret;
+    } 
   }
 
-  public Noesis.InertiaRotationBehavior RotationBehavior {
-    get {
-      return GetRotationBehaviorHelper();
-    }
+  public InertiaTranslationBehavior TranslationBehavior {
     set {
-      SetRotationBehaviorHelper(value);
-    }
+      NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_TranslationBehavior_set(swigCPtr, InertiaTranslationBehavior.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_TranslationBehavior_get(swigCPtr);
+      InertiaTranslationBehavior ret = (cPtr == IntPtr.Zero) ? null : new InertiaTranslationBehavior(cPtr, false);
+      return ret;
+    } 
   }
 
   public ManipulationInertiaStartingEventArgs(object s, RoutedEvent e, Visual manipulationContainer, Point manipulationOrigin, ManipulationVelocities initialVelocities) : this(NoesisGUI_PINVOKE.new_ManipulationInertiaStartingEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), Visual.getCPtr(manipulationContainer), ref manipulationOrigin, ManipulationVelocities.getCPtr(initialVelocities)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public bool Cancel() {
     bool ret = NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_Cancel(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private UIElement GetManipulationContainerHelper() {
     IntPtr cPtr = NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_GetManipulationContainerHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
-  }
-
-  private Point GetManipulationOriginHelper() {
-    IntPtr ret = NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_GetManipulationOriginHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    if (ret != IntPtr.Zero) {
-      return Marshal.PtrToStructure<Point>(ret);
-    }
-    else {
-      return new Point();
-    }
-  }
-
-  private void SetManipulationOriginHelper(Point origin) {
-    NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_SetManipulationOriginHelper(swigCPtr, ref origin);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private ManipulationVelocities GetInitialVelocitiesHelper() {
-    ManipulationVelocities ret = new ManipulationVelocities(NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_GetInitialVelocitiesHelper(swigCPtr), false);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private InertiaExpansionBehavior GetExpansionBehaviorHelper() {
-    InertiaExpansionBehavior ret = new InertiaExpansionBehavior(NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_GetExpansionBehaviorHelper(swigCPtr), false);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private void SetExpansionBehaviorHelper(InertiaExpansionBehavior exp) {
-    NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_SetExpansionBehaviorHelper(swigCPtr, InertiaExpansionBehavior.getCPtr(exp));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private InertiaTranslationBehavior GetTranslationBehaviorHelper() {
-    InertiaTranslationBehavior ret = new InertiaTranslationBehavior(NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_GetTranslationBehaviorHelper(swigCPtr), false);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private void SetTranslationBehaviorHelper(InertiaTranslationBehavior trans) {
-    NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_SetTranslationBehaviorHelper(swigCPtr, InertiaTranslationBehavior.getCPtr(trans));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private InertiaRotationBehavior GetRotationBehaviorHelper() {
-    InertiaRotationBehavior ret = new InertiaRotationBehavior(NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_GetRotationBehaviorHelper(swigCPtr), false);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private void SetRotationBehaviorHelper(InertiaRotationBehavior rot) {
-    NoesisGUI_PINVOKE.ManipulationInertiaStartingEventArgs_SetRotationBehaviorHelper(swigCPtr, InertiaRotationBehavior.getCPtr(rot));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

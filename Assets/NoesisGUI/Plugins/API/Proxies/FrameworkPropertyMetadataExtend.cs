@@ -3,56 +3,125 @@ using System.Runtime.InteropServices;
 
 namespace Noesis
 {
-
     public partial class FrameworkPropertyMetadata
     {
-        public FrameworkPropertyMetadata(object defaultValue)
-            : this(Create(defaultValue, FrameworkOptions.None, null), true)
+        public FrameworkPropertyMetadata() :
+            this(Noesis_FrameworkPropertyMetadata_Create(), true)
         {
         }
 
-        public FrameworkPropertyMetadata(object defaultValue,
-            PropertyChangedCallback propertyChangedCallback)
-            : this(Create(defaultValue, FrameworkOptions.None, propertyChangedCallback), true)
+        public FrameworkPropertyMetadata(PropertyChangedCallback propertyChangedCallback) :
+            this()
+        {
+            this.PropertyChangedCallback = propertyChangedCallback;
+        }
+
+        public FrameworkPropertyMetadata(PropertyChangedCallback propertyChangedCallback,
+            CoerceValueCallback coerceValueCallback) :
+            this(propertyChangedCallback)
+        {
+            this.CoerceValueCallback = coerceValueCallback;
+        }
+
+        public FrameworkPropertyMetadata(object defaultValue) :
+            this()
+        {
+            this.DefaultValue = defaultValue;
+        }
+
+        public FrameworkPropertyMetadata(object defaultValue, PropertyChangedCallback propertyChangedCallback) :
+            this(defaultValue)
+        {
+            this.PropertyChangedCallback = propertyChangedCallback;
+        }
+
+        public FrameworkPropertyMetadata(object defaultValue, PropertyChangedCallback propertyChangedCallback, CoerceValueCallback coerceValueCallback) :
+            this(defaultValue, propertyChangedCallback)
+        {
+            this.CoerceValueCallback = coerceValueCallback;
+        }
+
+        public FrameworkPropertyMetadata(object defaultValue, FrameworkPropertyMetadataOptions flags) :
+            this(defaultValue)
+        {
+            this.TranslateFlags(flags);
+        }
+
+        public FrameworkPropertyMetadata(object defaultValue, FrameworkPropertyMetadataOptions flags, PropertyChangedCallback propertyChangedCallback) :
+            this(defaultValue, flags)
+        {
+            this.PropertyChangedCallback = propertyChangedCallback;
+        }
+
+        public FrameworkPropertyMetadata(object defaultValue, FrameworkPropertyMetadataOptions flags, PropertyChangedCallback propertyChangedCallback, CoerceValueCallback coerceValueCallback) :
+            this(defaultValue, flags, propertyChangedCallback)
+        {
+            this.CoerceValueCallback = coerceValueCallback;
+        }
+
+        public FrameworkPropertyMetadata(object defaultValue, FrameworkPropertyMetadataOptions flags, PropertyChangedCallback propertyChangedCallback, CoerceValueCallback coerceValueCallback, bool isAnimationProhibited) :
+            this(defaultValue, flags, propertyChangedCallback, coerceValueCallback)
         {
         }
 
-        public FrameworkPropertyMetadata(object defaultValue, FrameworkOptions options)
-            : this(Create(defaultValue, options, null), true)
+        public FrameworkPropertyMetadata(object defaultValue, FrameworkPropertyMetadataOptions flags, PropertyChangedCallback propertyChangedCallback, CoerceValueCallback coerceValueCallback, bool isAnimationProhibited, UpdateSourceTrigger defaultUpdateSourceTrigger) :
+            this(defaultValue, flags, propertyChangedCallback, coerceValueCallback)
         {
+            this.DefaultUpdateSourceTrigger = defaultUpdateSourceTrigger;
         }
 
-        public FrameworkPropertyMetadata(object defaultValue, FrameworkOptions options,
-            PropertyChangedCallback propertyChangedCallback)
-            : this(Create(defaultValue, options, propertyChangedCallback), true)
+        private void TranslateFlags(FrameworkPropertyMetadataOptions flags)
         {
-        }
-
-        private static IntPtr Create(object defaultValue, FrameworkOptions options,
-            PropertyChangedCallback propertyChangedCallback)
-        {
-            return Create(defaultValue, propertyChangedCallback,
-                (def, invoke) => Noesis_CreateFrameworkPropertyMetadata_(def, (int)options, invoke));
+            if ((flags & FrameworkPropertyMetadataOptions.AffectsMeasure) != 0)
+            {
+                this.AffectsMeasure = true;
+            }
+            if ((flags & FrameworkPropertyMetadataOptions.AffectsArrange) != 0)
+            {
+                this.AffectsArrange = true;
+            }
+            if ((flags & FrameworkPropertyMetadataOptions.AffectsParentMeasure) != 0)
+            {
+                this.AffectsParentMeasure = true;
+            }
+            if ((flags & FrameworkPropertyMetadataOptions.AffectsParentArrange) != 0)
+            {
+                this.AffectsParentArrange = true;
+            }
+            if ((flags & FrameworkPropertyMetadataOptions.AffectsRender) != 0)
+            {
+                this.AffectsRender = true;
+            }
+            if ((flags & FrameworkPropertyMetadataOptions.Inherits) != 0)
+            {
+                this.Inherits = true;
+            }
+            if ((flags & FrameworkPropertyMetadataOptions.OverridesInheritanceBehavior) != 0)
+            {
+                this.OverridesInheritanceBehavior = true;
+            }
+            if ((flags & FrameworkPropertyMetadataOptions.NotDataBindable) != 0)
+            {
+                this.IsNotDataBindable = true;
+            }
+            if ((flags & FrameworkPropertyMetadataOptions.BindsTwoWayByDefault) != 0)
+            {
+                this.BindsTwoWayByDefault = true;
+            }
+            if ((flags & FrameworkPropertyMetadataOptions.Journal) != 0)
+            {
+                this.Journal = true;
+            }
+            if ((flags & FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender) != 0)
+            {
+                this.SubPropertiesDoNotAffectRender = true;
+            }
         }
 
         #region Imports
-        private static IntPtr Noesis_CreateFrameworkPropertyMetadata_(
-            HandleRef defaultValue,
-            int options, DelegateInvokePropertyChangedCallback invokePropertyChangedCallback)
-        {
-            IntPtr result = Noesis_CreateFrameworkPropertyMetadata(defaultValue,
-                options, invokePropertyChangedCallback);
-            Error.Check();
-            return result;
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
-        private static extern IntPtr Noesis_CreateFrameworkPropertyMetadata(
-            HandleRef defaultValue,
-            int options, DelegateInvokePropertyChangedCallback invokePropertyChangedCallback);
+        private static extern IntPtr Noesis_FrameworkPropertyMetadata_Create();
 
         #endregion
     }
-
 }

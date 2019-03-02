@@ -11,11 +11,12 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Collections;
 
 namespace Noesis
 {
 
-public class ResourceDictionary : BaseDictionary {
+public class ResourceDictionary : BaseDictionary, IDictionary {
   internal new static ResourceDictionary CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new ResourceDictionary(cPtr, cMemoryOwn);
   }
@@ -27,12 +28,12 @@ public class ResourceDictionary : BaseDictionary {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
-  public object this[string key] {
+  public object this[object key] {
     get {
       if (key == null) {
         throw new ArgumentNullException("key");
       }
-      return FindName(key);
+      return GetValueHelper(key);
     }
     set {
       if (key == null) {
@@ -41,7 +42,197 @@ public class ResourceDictionary : BaseDictionary {
       if (value == null) {
         throw new ArgumentNullException("value");
       }
-      UpdateName(key, value);
+      SetValueHelper(key, value);
+    }
+  }
+
+  public ICollection Keys {
+    get {
+      int count = Count;
+      IntPtr keysPtr = GetKeysHelper();
+      object[] keys = new object[count];
+      for (int i = 0; i < count; ++i) {
+        object key = GetKeyHelper(keysPtr, i);
+        keys[i] = key is string ? key : Noesis.Extend.GetNativeTypeInfo(new IntPtr((long)key)).Type;
+      }
+      BaseComponent.Release(keysPtr);
+      return keys;
+    }
+  }
+
+  public ICollection Values {
+    get {
+      return new ResourceValuesCollection(this);
+    }
+  }
+
+  #region Enumaration
+
+  private class ResourceDictionaryEnumerator : IDictionaryEnumerator {
+    internal ResourceDictionaryEnumerator(ResourceDictionary owner) {
+      _owner = owner;
+      _keysEnumerator = _owner.Keys.GetEnumerator();
+    }
+
+    #region IEnumerator
+    object IEnumerator.Current {
+      get {
+        return ((IDictionaryEnumerator)this).Entry;
+      }
+    }
+
+    bool IEnumerator.MoveNext() {
+      return _keysEnumerator.MoveNext();
+    }
+
+    void IEnumerator.Reset() {
+      _keysEnumerator.Reset();
+    }
+    #endregion
+
+    #region IDictionaryEnumerator
+    DictionaryEntry IDictionaryEnumerator.Entry {
+      get {
+        object key = _keysEnumerator.Current;
+        object value = _owner[key];
+        return new DictionaryEntry(key, value);
+      }
+    }
+
+    object IDictionaryEnumerator.Key {
+      get {
+        return _keysEnumerator.Current;
+      }
+    }
+
+    object IDictionaryEnumerator.Value {
+      get {
+        return _owner[_keysEnumerator.Current];
+      }
+    }
+    #endregion
+ 
+    #region Data
+    private ResourceDictionary _owner;
+    private IEnumerator _keysEnumerator;
+    #endregion
+  }
+
+  private class ResourceValuesEnumerator : IEnumerator {
+    internal ResourceValuesEnumerator(ResourceDictionary owner) {
+      _owner = owner;
+      _keysEnumerator = _owner.Keys.GetEnumerator();
+    }
+
+    #region IEnumerator
+    object IEnumerator.Current {
+      get {
+        return _owner[_keysEnumerator.Current];
+      }
+    }
+
+    bool IEnumerator.MoveNext() {
+      return _keysEnumerator.MoveNext();
+    }
+
+    void IEnumerator.Reset() {
+      _keysEnumerator.Reset();
+    }
+    #endregion
+
+    #region Data
+    private ResourceDictionary _owner;
+    private IEnumerator _keysEnumerator;
+    #endregion
+  }
+
+  private class ResourceValuesCollection : ICollection {
+    internal ResourceValuesCollection(ResourceDictionary owner) {
+      _owner = owner;
+    }
+
+    #region ICollection
+    int ICollection.Count {
+      get {
+        return _owner.Count;
+      }
+    }
+
+    bool ICollection.IsSynchronized {
+      get {
+        return false;
+      }
+    }
+
+    object ICollection.SyncRoot {
+      get {
+        return this;
+      }
+    }
+
+    void ICollection.CopyTo(Array array, int index) {
+      foreach (object key in _owner.Keys) {
+        array.SetValue(_owner[key], index++);
+      }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator() {
+      return new ResourceValuesEnumerator(_owner);
+    }
+    #endregion
+ 
+    #region Data
+    private ResourceDictionary _owner;
+    #endregion
+  }
+
+  #endregion
+
+  public bool Contains(object key) {
+    return ContainsHelper(key);
+  }
+
+  public void Add(object key, object value) {
+    AddHelper(key, value);
+  }
+
+  public void Remove(object key) {
+    RemoveHelper(key);
+  }
+
+  public IDictionaryEnumerator GetEnumerator() {
+    return new ResourceDictionaryEnumerator(this);
+  }
+
+  IEnumerator IEnumerable.GetEnumerator() {
+    return ((IDictionary)this).GetEnumerator();
+  }
+
+  public void CopyTo(DictionaryEntry[] array, int index) {
+    ICollection keys = Keys;
+    int i = index;
+    foreach (object key in keys) {
+      array[i++] = new DictionaryEntry(key, this[key]);
+    }
+  }
+
+  void ICollection.CopyTo(Array array, int index) {
+    CopyTo(array as DictionaryEntry[], index);
+  }
+
+  object ICollection.SyncRoot {
+    get {
+      return this;
+    }
+  }
+
+  public bool IsFixedSize {
+    get { return false; }
+  }
+
+  public bool IsSynchronized {
+    get {
+      return false;
     }
   }
 
@@ -58,52 +249,31 @@ public class ResourceDictionary : BaseDictionary {
     }
   }
 
-  public object FindName(string name) {
-    IntPtr cPtr = NoesisGUI_PINVOKE.ResourceDictionary_FindName(swigCPtr, name != null ? name : string.Empty);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return Noesis.Extend.GetProxy(cPtr, false);
-  }
-
-  public void RegisterName(string name, object arg1) {
-    NoesisGUI_PINVOKE.ResourceDictionary_RegisterName(swigCPtr, name != null ? name : string.Empty, Noesis.Extend.GetInstanceHandle(arg1));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  public void UnregisterName(string name) {
-    NoesisGUI_PINVOKE.ResourceDictionary_UnregisterName(swigCPtr, name != null ? name : string.Empty);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  public void UpdateName(string name, object arg1) {
-    NoesisGUI_PINVOKE.ResourceDictionary_UpdateName(swigCPtr, name != null ? name : string.Empty, Noesis.Extend.GetInstanceHandle(arg1));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  public void Clear() {
+    NoesisGUI_PINVOKE.ResourceDictionary_Clear(swigCPtr);
   }
 
   public ResourceDictionaryCollection MergedDictionaries {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ResourceDictionary_MergedDictionaries_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (ResourceDictionaryCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
-  public string Source {
+  public Uri Source {
     set {
-      NoesisGUI_PINVOKE.ResourceDictionary_Source_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      NoesisGUI_PINVOKE.ResourceDictionary_Source_set(swigCPtr, value != null ? value.OriginalString : string.Empty);
     }
     get {
-      IntPtr strPtr = NoesisGUI_PINVOKE.ResourceDictionary_Source_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
-      return str;
+      IntPtr uriPtr = NoesisGUI_PINVOKE.ResourceDictionary_Source_get(swigCPtr);
+      string uri = Noesis.Extend.StringFromNativeUtf8(uriPtr);
+      return new Uri(uri, UriKind.Relative);
     }
   }
 
-  public uint Count {
+  public int Count {
     get {
-      uint ret = NoesisGUI_PINVOKE.ResourceDictionary_Count_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      int ret = NoesisGUI_PINVOKE.ResourceDictionary_Count_get(swigCPtr);
       return ret;
     } 
   }
@@ -111,22 +281,49 @@ public class ResourceDictionary : BaseDictionary {
   public bool IsReadOnly {
     get {
       bool ret = NoesisGUI_PINVOKE.ResourceDictionary_IsReadOnly_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
-  new internal static IntPtr GetStaticType() {
-    IntPtr ret = NoesisGUI_PINVOKE.ResourceDictionary_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  private object GetValueHelper(object key) {
+    IntPtr cPtr = NoesisGUI_PINVOKE.ResourceDictionary_GetValueHelper(swigCPtr, Noesis.Extend.GetInstanceHandle(key));
+    return Noesis.Extend.GetProxy(cPtr, false);
+  }
+
+  private void SetValueHelper(object key, object value) {
+    NoesisGUI_PINVOKE.ResourceDictionary_SetValueHelper(swigCPtr, Noesis.Extend.GetInstanceHandle(key), Noesis.Extend.GetInstanceHandle(value));
+  }
+
+  private bool ContainsHelper(object key) {
+    bool ret = NoesisGUI_PINVOKE.ResourceDictionary_ContainsHelper(swigCPtr, Noesis.Extend.GetInstanceHandle(key));
     return ret;
   }
 
+  private void AddHelper(object key, object value) {
+    NoesisGUI_PINVOKE.ResourceDictionary_AddHelper(swigCPtr, Noesis.Extend.GetInstanceHandle(key), Noesis.Extend.GetInstanceHandle(value));
+  }
+
+  private void RemoveHelper(object key) {
+    NoesisGUI_PINVOKE.ResourceDictionary_RemoveHelper(swigCPtr, Noesis.Extend.GetInstanceHandle(key));
+  }
+
+  private IntPtr GetKeysHelper() {
+    IntPtr ret = NoesisGUI_PINVOKE.ResourceDictionary_GetKeysHelper(swigCPtr);
+    return ret;
+  }
+
+  private static object GetKeyHelper(IntPtr keysPtr, int index) {
+    IntPtr cPtr = NoesisGUI_PINVOKE.ResourceDictionary_GetKeyHelper(keysPtr, index);
+    return Noesis.Extend.GetProxy(cPtr, false);
+  }
+
+  new internal static IntPtr GetStaticType() {
+    IntPtr ret = NoesisGUI_PINVOKE.ResourceDictionary_GetStaticType();
+    return ret;
+  }
 
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_ResourceDictionary(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_ResourceDictionary(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

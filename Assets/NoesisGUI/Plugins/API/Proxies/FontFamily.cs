@@ -36,17 +36,31 @@ public class FontFamily : BaseComponent {
   }
 
   public FontFamily(string source) : this(NoesisGUI_PINVOKE.new_FontFamily__SWIG_1(source != null ? source : string.Empty), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public FontFamily(string baseUri, string source) : this(NoesisGUI_PINVOKE.new_FontFamily__SWIG_2(baseUri != null ? baseUri : string.Empty, source != null ? source : string.Empty), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public uint GetNumFonts() {
+    uint ret = NoesisGUI_PINVOKE.FontFamily_GetNumFonts(swigCPtr);
+    return ret;
+  }
+
+  public string GetFontPath(uint index) {
+    IntPtr strPtr = NoesisGUI_PINVOKE.FontFamily_GetFontPath(swigCPtr, index);
+    string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
+    return str;
+  }
+
+  public string GetFontName(uint index) {
+    IntPtr strPtr = NoesisGUI_PINVOKE.FontFamily_GetFontName(swigCPtr, index);
+    string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
+    return str;
   }
 
   public string BaseUri {
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.FontFamily_BaseUri_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -55,16 +69,6 @@ public class FontFamily : BaseComponent {
   public string Source {
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.FontFamily_Source_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
-      return str;
-    }
-  }
-
-  public string Name {
-    get {
-      IntPtr strPtr = NoesisGUI_PINVOKE.FontFamily_Name_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -72,7 +76,6 @@ public class FontFamily : BaseComponent {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.FontFamily_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

@@ -36,13 +36,11 @@ public class ImageBrush : TileBrush {
   }
 
   public ImageBrush(ImageSource imageSource) : this(NoesisGUI_PINVOKE.new_ImageBrush__SWIG_1(ImageSource.getCPtr(imageSource)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DependencyProperty ImageSourceProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ImageBrush_ImageSourceProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -50,18 +48,15 @@ public class ImageBrush : TileBrush {
   public ImageSource ImageSource {
     set {
       NoesisGUI_PINVOKE.ImageBrush_ImageSource_set(swigCPtr, ImageSource.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ImageBrush_ImageSource_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (ImageSource)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ImageBrush_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

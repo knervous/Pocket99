@@ -30,11 +30,8 @@ internal class ExtendDictionaryIndexer : BaseComponent {
   protected ExtendDictionaryIndexer() {
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_ExtendDictionaryIndexer(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_ExtendDictionaryIndexer(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

@@ -42,19 +42,16 @@ public class DockPanel : Panel {
 
   public static Dock GetDock(DependencyObject element) {
     Dock ret = (Dock)NoesisGUI_PINVOKE.DockPanel_GetDock(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetDock(DependencyObject element, Dock dock) {
     NoesisGUI_PINVOKE.DockPanel_SetDock(DependencyObject.getCPtr(element), (int)dock);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DependencyProperty DockProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.DockPanel_DockProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -62,7 +59,6 @@ public class DockPanel : Panel {
   public static DependencyProperty LastChildFillProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.DockPanel_LastChildFillProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -70,26 +66,20 @@ public class DockPanel : Panel {
   public bool LastChildFill {
     set {
       NoesisGUI_PINVOKE.DockPanel_LastChildFill_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.DockPanel_LastChildFill_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.DockPanel_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_DockPanel(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_DockPanel(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

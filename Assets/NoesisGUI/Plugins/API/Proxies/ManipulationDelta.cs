@@ -45,98 +45,61 @@ public class ManipulationDelta : IDisposable {
     }
   }
 
-  public Noesis.Point Expansion {
-    get {
-      return GetExpansionHelper();
-    }
+  public Point Expansion {
     set {
-      SetExpansionHelper(value);
+      NoesisGUI_PINVOKE.ManipulationDelta_Expansion_set(swigCPtr, ref value);
     }
+
+    get {
+      IntPtr ret = NoesisGUI_PINVOKE.ManipulationDelta_Expansion_get(swigCPtr);
+      if (ret != IntPtr.Zero) {
+        return Marshal.PtrToStructure<Point>(ret);
+      }
+      else {
+        return new Point();
+      }
+    }
+
   }
 
   public float Rotation {
-    get {
-      return GetRotationHelper();
-    }
     set {
-      SetRotationHelper(value);
-    }
+      NoesisGUI_PINVOKE.ManipulationDelta_Rotation_set(swigCPtr, value);
+    } 
+    get {
+      float ret = NoesisGUI_PINVOKE.ManipulationDelta_Rotation_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public float Scale {
-    get {
-      return GetScaleHelper();
-    }
     set {
-      SetScaleHelper(value);
-    }
-  }
-
-  public Noesis.Point Translation {
+      NoesisGUI_PINVOKE.ManipulationDelta_Scale_set(swigCPtr, value);
+    } 
     get {
-      return GetTranslationHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ManipulationDelta_Scale_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public Point Translation {
     set {
-      SetTranslationHelper(value);
+      NoesisGUI_PINVOKE.ManipulationDelta_Translation_set(swigCPtr, ref value);
     }
-  }
 
-  private Point GetExpansionHelper() {
-    IntPtr ret = NoesisGUI_PINVOKE.ManipulationDelta_GetExpansionHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    if (ret != IntPtr.Zero) {
-      return Marshal.PtrToStructure<Point>(ret);
+    get {
+      IntPtr ret = NoesisGUI_PINVOKE.ManipulationDelta_Translation_get(swigCPtr);
+      if (ret != IntPtr.Zero) {
+        return Marshal.PtrToStructure<Point>(ret);
+      }
+      else {
+        return new Point();
+      }
     }
-    else {
-      return new Point();
-    }
-  }
 
-  private void SetExpansionHelper(Point v) {
-    NoesisGUI_PINVOKE.ManipulationDelta_SetExpansionHelper(swigCPtr, ref v);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private float GetRotationHelper() {
-    float ret = NoesisGUI_PINVOKE.ManipulationDelta_GetRotationHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private void SetRotationHelper(float v) {
-    NoesisGUI_PINVOKE.ManipulationDelta_SetRotationHelper(swigCPtr, v);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private float GetScaleHelper() {
-    float ret = NoesisGUI_PINVOKE.ManipulationDelta_GetScaleHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private void SetScaleHelper(float v) {
-    NoesisGUI_PINVOKE.ManipulationDelta_SetScaleHelper(swigCPtr, v);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private Point GetTranslationHelper() {
-    IntPtr ret = NoesisGUI_PINVOKE.ManipulationDelta_GetTranslationHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    if (ret != IntPtr.Zero) {
-      return Marshal.PtrToStructure<Point>(ret);
-    }
-    else {
-      return new Point();
-    }
-  }
-
-  private void SetTranslationHelper(Point v) {
-    NoesisGUI_PINVOKE.ManipulationDelta_SetTranslationHelper(swigCPtr, ref v);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public ManipulationDelta() : this(NoesisGUI_PINVOKE.new_ManipulationDelta(), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

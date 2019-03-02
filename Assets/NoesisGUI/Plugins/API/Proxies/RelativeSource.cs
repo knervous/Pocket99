@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class RelativeSource : BaseComponent {
+public class RelativeSource : MarkupExtension {
   internal new static RelativeSource CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new RelativeSource(cPtr, cMemoryOwn);
   }
@@ -36,21 +36,17 @@ public class RelativeSource : BaseComponent {
   }
 
   public RelativeSource(RelativeSourceMode mode) : this(NoesisGUI_PINVOKE.new_RelativeSource__SWIG_1((int)mode), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public RelativeSource(RelativeSourceMode mode, Type type, int level) : this(NoesisGUI_PINVOKE.new_RelativeSource__SWIG_2((int)mode, new HandleRef(type, (type != null ? Noesis.Extend.GetNativeType(type) : IntPtr.Zero)), level), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public RelativeSource(RelativeSource other) : this(NoesisGUI_PINVOKE.new_RelativeSource__SWIG_3(RelativeSource.getCPtr(other)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static RelativeSource Self {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RelativeSource_Self_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RelativeSource)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -58,7 +54,6 @@ public class RelativeSource : BaseComponent {
   public static RelativeSource TemplatedParent {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RelativeSource_TemplatedParent_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RelativeSource)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -66,11 +61,9 @@ public class RelativeSource : BaseComponent {
   public RelativeSourceMode Mode {
     set {
       NoesisGUI_PINVOKE.RelativeSource_Mode_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       RelativeSourceMode ret = (RelativeSourceMode)NoesisGUI_PINVOKE.RelativeSource_Mode_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -78,11 +71,9 @@ public class RelativeSource : BaseComponent {
   public Type AncestorType {
     set {
       NoesisGUI_PINVOKE.RelativeSource_AncestorType_set(swigCPtr, new HandleRef(value, (value != null ? Noesis.Extend.GetNativeType(value) : IntPtr.Zero)));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RelativeSource_AncestorType_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (cPtr != IntPtr.Zero) {
         Noesis.Extend.NativeTypeInfo info = Noesis.Extend.GetNativeTypeInfo(cPtr);
         return info.Type;
@@ -94,18 +85,15 @@ public class RelativeSource : BaseComponent {
   public int AncestorLevel {
     set {
       NoesisGUI_PINVOKE.RelativeSource_AncestorLevel_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       int ret = NoesisGUI_PINVOKE.RelativeSource_AncestorLevel_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.RelativeSource_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

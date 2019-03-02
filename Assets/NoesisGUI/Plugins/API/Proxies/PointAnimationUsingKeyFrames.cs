@@ -38,14 +38,12 @@ public class PointAnimationUsingKeyFrames : AnimationTimeline {
   public PointKeyFrameCollection KeyFrames {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PointAnimationUsingKeyFrames_KeyFrames_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (PointKeyFrameCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.PointAnimationUsingKeyFrames_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

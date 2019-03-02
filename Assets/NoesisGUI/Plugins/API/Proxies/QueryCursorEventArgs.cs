@@ -44,20 +44,24 @@ public class QueryCursorEventArgs : MouseEventArgs {
     }
   }
 
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    QueryCursorEventHandler handler_ = (QueryCursorEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new QueryCursorEventArgs(args, false));
+    }
+  }
+
   public Cursor Cursor {
     set {
       NoesisGUI_PINVOKE.QueryCursorEventArgs_Cursor_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       Cursor ret = (Cursor)NoesisGUI_PINVOKE.QueryCursorEventArgs_Cursor_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
-  public QueryCursorEventArgs(object s, RoutedEvent e, MouseState state) : this(NoesisGUI_PINVOKE.new_QueryCursorEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), MouseState.getCPtr(state)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  public QueryCursorEventArgs(object s, RoutedEvent e) : this(NoesisGUI_PINVOKE.new_QueryCursorEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e)), true) {
   }
 
 }

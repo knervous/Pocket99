@@ -38,7 +38,6 @@ public class MultiTrigger : TriggerBase {
   public ConditionCollection Conditions {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.MultiTrigger_Conditions_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (ConditionCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,14 +45,12 @@ public class MultiTrigger : TriggerBase {
   public SetterBaseCollection Setters {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.MultiTrigger_Setters_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SetterBaseCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.MultiTrigger_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

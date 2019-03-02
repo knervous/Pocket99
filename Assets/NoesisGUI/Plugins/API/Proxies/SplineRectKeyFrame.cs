@@ -38,7 +38,6 @@ public class SplineRectKeyFrame : RectKeyFrame {
   public static DependencyProperty KeySplineProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.SplineRectKeyFrame_KeySplineProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,18 +45,15 @@ public class SplineRectKeyFrame : RectKeyFrame {
   public KeySpline KeySpline {
     set {
       NoesisGUI_PINVOKE.SplineRectKeyFrame_KeySpline_set(swigCPtr, KeySpline.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.SplineRectKeyFrame_KeySpline_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (KeySpline)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.SplineRectKeyFrame_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

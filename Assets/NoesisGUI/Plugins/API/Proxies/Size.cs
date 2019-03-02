@@ -19,103 +19,92 @@ namespace Noesis
 public struct Size {
 
   [MarshalAs(UnmanagedType.R4)]
-  private float _w;
+  private float _width;
 
   [MarshalAs(UnmanagedType.R4)]
-  private float _h;
+  private float _height;
+
+  public Size(float width, float height) {
+    if (width < 0 || height < 0) {
+      throw new ArgumentException("Width and Height cannot be negative");
+    }
+    _width = width;
+    _height = height;
+  }
 
   public float Width {
-    get { return this._w; }
+    get { return this._width; }
     set {
+      if (IsEmpty) {
+        throw new InvalidOperationException("Empty Size cannot be modified");
+      }
       if (value < 0.0f) {
         throw new ArgumentException("Width cannot be negative");
       }
-      this._w = value;
+      this._width = value;
     }
   }
 
   public float Height {
-    get { return this._h; }
+    get { return this._height; }
     set {
+      if (IsEmpty) {
+        throw new InvalidOperationException("Empty Size cannot be modified");
+      }
       if (value < 0.0f) {
         throw new ArgumentException("Height cannot be negative");
       }
-      this._h = value;
+      this._height = value;
     }
   }
 
-  public static Size Zero {
-    get { return new Size(0.0f, 0.0f); }
+  public static Size Empty {
+    get { return _empty; }
   }
 
-  public static Size Infinite {
-    get { return new Size((float)Double.PositiveInfinity, (float)Double.PositiveInfinity); }
+  public bool IsEmpty {
+    get { return _width < 0; }
   }
 
-  public Size(float w, float h) {
-    this._w = w;
-    this._h = h;
+  public static explicit operator Vector(Size size) {
+    return new Vector(size._width, size._height);
   }
 
-  public Size(Sizei size) : this((float)size.Width, (float)size.Height) {
+  public static explicit operator Point(Size size) {
+    return new Point(size._width, size._height);
   }
 
-  public Size(Point point) : this(point.X, point.Y) {
+  public static bool operator==(Size s0, Size s1) {
+    return s0._width == s1._width && s0._height == s1._height;
   }
 
-  public static Size operator+(Size v0, Size v1) {
-    return new Size(v0.Width + v1.Width, v0.Height + v1.Height);
+  public static bool operator!=(Size s0, Size s1) {
+    return !(s0 == s1);
   }
 
-  public static Size operator-(Size v0, Size v1) {
-    return new Size(v0.Width - v1.Width, v0.Height - v1.Height);
+  public static bool Equals(Size s0, Size s1) {
+    return s0 == s1;
   }
 
-  public static Size operator*(Size v, float f) {
-    return new Size(v.Width * f, v.Height * f);
+  public override bool Equals(Object o) {
+    return o is Size && this == (Size)o;
   }
 
-  public static Size operator*(float f, Size v) {
-    return v * f;
-  }
-
-  public static Size operator/(Size v, float f) {
-    if (f == 0.0f) { throw new DivideByZeroException(); }
-    return new Size(v.Width / f, v.Height / f);
-  }
-
-  public static bool operator==(Size v0, Size v1) {
-    return v0.Width == v1.Width && v0.Height == v1.Height;
-  }
-
-  public static bool operator!=(Size v0, Size v1) {
-    return !(v0 == v1);
-  }
-
-  public override bool Equals(Object obj) {
-    return obj is Size && this == (Size)obj;
-  }
-
-  public bool Equals(Size v) {
-    return this == v;
+  public bool Equals(Size value) {
+    return this == value;
   }
 
   public override int GetHashCode() {
-    return Width.GetHashCode() ^ Height.GetHashCode();
+    if (IsEmpty) {
+      return 0;
+    }
+    else {
+      return Width.GetHashCode() ^ Height.GetHashCode();
+    }
   }
 
   public override string ToString() {
     return String.Format("{0},{1}", Width, Height);
-  }
-
-  public void Expand(Size size) {
-    Width = Math.Max(Width, size.Width);
-    Height = Math.Max(Height, size.Height);
-  }
-
-  public void Scale(float scaleX, float scaleY) {
-    Width = Width * scaleX;
-    Height = Height * scaleY;
   }
 
   public static Size Parse(string str) {
@@ -126,9 +115,19 @@ public struct Size {
     throw new ArgumentException("Cannot create Size from '" + str + "'");
   }
 
+  #region Empty Size
+  private static Size CreateEmptySize() {
+    Size size = new Size();
+    size._width = Single.NegativeInfinity;
+    size._height = Single.NegativeInfinity;
+    return size;
+  }
+
+  private static readonly Size _empty = CreateEmptySize();
+  #endregion
+
   public static bool TryParse(string str, out Size result) {
     bool ret = NoesisGUI_PINVOKE.Size_TryParse(str != null ? str : string.Empty, out result);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

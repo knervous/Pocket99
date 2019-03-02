@@ -11,7 +11,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 
 namespace Noesis
 {
@@ -32,126 +31,77 @@ public class TextBoxBase : Control {
   }
 
   #region Events
-  #region SelectionChanged
-  public delegate void SelectionChangedHandler(object sender, RoutedEventArgs e);
-  public event SelectionChangedHandler SelectionChanged {
+  public event RoutedEventHandler SelectionChanged {
     add {
-      if (!_SelectionChanged.ContainsKey(swigCPtr.Handle)) {
-        _SelectionChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_TextBoxBase_SelectionChanged(_raiseSelectionChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _SelectionChanged[swigCPtr.Handle] += value;
+      AddHandler(SelectionChangedEvent, value);
     }
     remove {
-      if (_SelectionChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _SelectionChanged[swigCPtr.Handle] -= value;
-
-        if (_SelectionChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_TextBoxBase_SelectionChanged(_raiseSelectionChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _SelectionChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(SelectionChangedEvent, value);
     }
   }
 
-  internal delegate void RaiseSelectionChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseSelectionChangedCallback _raiseSelectionChanged = RaiseSelectionChanged;
-
-  [MonoPInvokeCallback(typeof(RaiseSelectionChangedCallback))]
-  private static void RaiseSelectionChanged(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_SelectionChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for SelectionChanged event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _SelectionChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        SelectionChangedHandler handler = _SelectionChanged[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new RoutedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, SelectionChangedHandler> _SelectionChanged =
-      new Dictionary<IntPtr, SelectionChangedHandler>();
-  #endregion
-
-  #region TextChanged
-  public delegate void TextChangedHandler(object sender, RoutedEventArgs e);
-  public event TextChangedHandler TextChanged {
+  public event RoutedEventHandler TextChanged {
     add {
-      if (!_TextChanged.ContainsKey(swigCPtr.Handle)) {
-        _TextChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_TextBoxBase_TextChanged(_raiseTextChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _TextChanged[swigCPtr.Handle] += value;
+      AddHandler(TextChangedEvent, value);
     }
     remove {
-      if (_TextChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _TextChanged[swigCPtr.Handle] -= value;
-
-        if (_TextChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_TextBoxBase_TextChanged(_raiseTextChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _TextChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(TextChangedEvent, value);
     }
   }
 
-  internal delegate void RaiseTextChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseTextChangedCallback _raiseTextChanged = RaiseTextChanged;
+  #endregion
 
-  [MonoPInvokeCallback(typeof(RaiseTextChangedCallback))]
-  private static void RaiseTextChanged(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_TextChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for TextChanged event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _TextChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        TextChangedHandler handler = _TextChanged[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new RoutedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
+  public void LineLeft() {
+    NoesisGUI_PINVOKE.TextBoxBase_LineLeft(swigCPtr);
   }
 
-  static Dictionary<IntPtr, TextChangedHandler> _TextChanged =
-      new Dictionary<IntPtr, TextChangedHandler>();
-  #endregion
+  public void LineRight() {
+    NoesisGUI_PINVOKE.TextBoxBase_LineRight(swigCPtr);
+  }
 
-  #endregion
+  public void PageLeft() {
+    NoesisGUI_PINVOKE.TextBoxBase_PageLeft(swigCPtr);
+  }
+
+  public void PageRight() {
+    NoesisGUI_PINVOKE.TextBoxBase_PageRight(swigCPtr);
+  }
+
+  public void LineUp() {
+    NoesisGUI_PINVOKE.TextBoxBase_LineUp(swigCPtr);
+  }
+
+  public void LineDown() {
+    NoesisGUI_PINVOKE.TextBoxBase_LineDown(swigCPtr);
+  }
+
+  public void PageUp() {
+    NoesisGUI_PINVOKE.TextBoxBase_PageUp(swigCPtr);
+  }
+
+  public void PageDown() {
+    NoesisGUI_PINVOKE.TextBoxBase_PageDown(swigCPtr);
+  }
+
+  public void ScrollToHome() {
+    NoesisGUI_PINVOKE.TextBoxBase_ScrollToHome(swigCPtr);
+  }
+
+  public void ScrollToEnd() {
+    NoesisGUI_PINVOKE.TextBoxBase_ScrollToEnd(swigCPtr);
+  }
+
+  public void ScrollToHorizontalOffset(float offset) {
+    NoesisGUI_PINVOKE.TextBoxBase_ScrollToHorizontalOffset(swigCPtr, offset);
+  }
+
+  public void ScrollToVerticalOffset(float offset) {
+    NoesisGUI_PINVOKE.TextBoxBase_ScrollToVerticalOffset(swigCPtr, offset);
+  }
 
   public static DependencyProperty AcceptsReturnProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBoxBase_AcceptsReturnProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -159,7 +109,6 @@ public class TextBoxBase : Control {
   public static DependencyProperty AcceptsTabProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBoxBase_AcceptsTabProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -167,7 +116,6 @@ public class TextBoxBase : Control {
   public static DependencyProperty CaretBrushProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBoxBase_CaretBrushProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -175,7 +123,6 @@ public class TextBoxBase : Control {
   public static DependencyProperty HorizontalScrollBarVisibilityProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBoxBase_HorizontalScrollBarVisibilityProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -183,7 +130,6 @@ public class TextBoxBase : Control {
   public static DependencyProperty IsReadOnlyProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBoxBase_IsReadOnlyProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -191,7 +137,6 @@ public class TextBoxBase : Control {
   public static DependencyProperty IsSelectionActiveProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBoxBase_IsSelectionActiveProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -199,7 +144,6 @@ public class TextBoxBase : Control {
   public static DependencyProperty SelectionBrushProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBoxBase_SelectionBrushProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -207,7 +151,6 @@ public class TextBoxBase : Control {
   public static DependencyProperty SelectionOpacityProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBoxBase_SelectionOpacityProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -215,19 +158,36 @@ public class TextBoxBase : Control {
   public static DependencyProperty VerticalScrollBarVisibilityProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBoxBase_VerticalScrollBarVisibilityProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent SelectionChangedEvent {
+    set {
+      NoesisGUI_PINVOKE.TextBoxBase_SelectionChangedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.TextBoxBase_SelectionChangedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent TextChangedEvent {
+    set {
+      NoesisGUI_PINVOKE.TextBoxBase_TextChangedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.TextBoxBase_TextChangedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public bool AcceptsReturn {
     set {
       NoesisGUI_PINVOKE.TextBoxBase_AcceptsReturn_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.TextBoxBase_AcceptsReturn_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -235,11 +195,9 @@ public class TextBoxBase : Control {
   public bool AcceptsTab {
     set {
       NoesisGUI_PINVOKE.TextBoxBase_AcceptsTab_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.TextBoxBase_AcceptsTab_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -247,11 +205,9 @@ public class TextBoxBase : Control {
   public Brush CaretBrush {
     set {
       NoesisGUI_PINVOKE.TextBoxBase_CaretBrush_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBoxBase_CaretBrush_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -259,11 +215,9 @@ public class TextBoxBase : Control {
   public ScrollBarVisibility HorizontalScrollBarVisibility {
     set {
       NoesisGUI_PINVOKE.TextBoxBase_HorizontalScrollBarVisibility_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       ScrollBarVisibility ret = (ScrollBarVisibility)NoesisGUI_PINVOKE.TextBoxBase_HorizontalScrollBarVisibility_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -271,11 +225,9 @@ public class TextBoxBase : Control {
   public bool IsReadOnly {
     set {
       NoesisGUI_PINVOKE.TextBoxBase_IsReadOnly_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.TextBoxBase_IsReadOnly_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -283,7 +235,6 @@ public class TextBoxBase : Control {
   public bool IsSelectionActive {
     get {
       bool ret = NoesisGUI_PINVOKE.TextBoxBase_IsSelectionActive_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -291,11 +242,9 @@ public class TextBoxBase : Control {
   public Brush SelectionBrush {
     set {
       NoesisGUI_PINVOKE.TextBoxBase_SelectionBrush_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBoxBase_SelectionBrush_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -303,11 +252,9 @@ public class TextBoxBase : Control {
   public float SelectionOpacity {
     set {
       NoesisGUI_PINVOKE.TextBoxBase_SelectionOpacity_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.TextBoxBase_SelectionOpacity_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -315,26 +262,62 @@ public class TextBoxBase : Control {
   public ScrollBarVisibility VerticalScrollBarVisibility {
     set {
       NoesisGUI_PINVOKE.TextBoxBase_VerticalScrollBarVisibility_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       ScrollBarVisibility ret = (ScrollBarVisibility)NoesisGUI_PINVOKE.TextBoxBase_VerticalScrollBarVisibility_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      return ret;
+    } 
+  }
+
+  public float ExtentWidth {
+    get {
+      float ret = NoesisGUI_PINVOKE.TextBoxBase_ExtentWidth_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public float ExtentHeight {
+    get {
+      float ret = NoesisGUI_PINVOKE.TextBoxBase_ExtentHeight_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public float ViewportWidth {
+    get {
+      float ret = NoesisGUI_PINVOKE.TextBoxBase_ViewportWidth_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public float ViewportHeight {
+    get {
+      float ret = NoesisGUI_PINVOKE.TextBoxBase_ViewportHeight_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public float HorizontalOffset {
+    get {
+      float ret = NoesisGUI_PINVOKE.TextBoxBase_HorizontalOffset_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public float VerticalOffset {
+    get {
+      float ret = NoesisGUI_PINVOKE.TextBoxBase_VerticalOffset_get(swigCPtr);
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TextBoxBase_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_TextBoxBase(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_TextBoxBase(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

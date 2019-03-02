@@ -33,7 +33,6 @@ public class StringKeyFrame : Freezable {
   public static DependencyProperty KeyTimeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.StringKeyFrame_KeyTimeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -41,7 +40,6 @@ public class StringKeyFrame : Freezable {
   public static DependencyProperty ValueProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.StringKeyFrame_ValueProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -49,12 +47,10 @@ public class StringKeyFrame : Freezable {
   public KeyTime KeyTime {
     set {
       NoesisGUI_PINVOKE.StringKeyFrame_KeyTime_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.StringKeyFrame_KeyTime_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<KeyTime>(ret);
       }
@@ -68,11 +64,9 @@ public class StringKeyFrame : Freezable {
   public string Value {
     set {
       NoesisGUI_PINVOKE.StringKeyFrame_Value_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.StringKeyFrame_Value_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -80,7 +74,6 @@ public class StringKeyFrame : Freezable {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.StringKeyFrame_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

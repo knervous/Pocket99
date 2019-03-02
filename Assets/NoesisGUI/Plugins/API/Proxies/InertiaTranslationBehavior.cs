@@ -46,27 +46,16 @@ public class InertiaTranslationBehavior : IDisposable {
   }
 
   public float DesiredDeceleration {
-    get {
-      return GetDesiredDecelerationHelper();
-    }
     set {
-      SetDesiredDecelerationHelper(value);
-    }
-  }
-
-  private float GetDesiredDecelerationHelper() {
-    float ret = NoesisGUI_PINVOKE.InertiaTranslationBehavior_GetDesiredDecelerationHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private void SetDesiredDecelerationHelper(float v) {
-    NoesisGUI_PINVOKE.InertiaTranslationBehavior_SetDesiredDecelerationHelper(swigCPtr, v);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      NoesisGUI_PINVOKE.InertiaTranslationBehavior_DesiredDeceleration_set(swigCPtr, value);
+    } 
+    get {
+      float ret = NoesisGUI_PINVOKE.InertiaTranslationBehavior_DesiredDeceleration_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public InertiaTranslationBehavior() : this(NoesisGUI_PINVOKE.new_InertiaTranslationBehavior(), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

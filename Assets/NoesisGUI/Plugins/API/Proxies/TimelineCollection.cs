@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class TimelineCollection : FreezableCollection {
+public class TimelineCollection : FreezableCollection<Timeline> {
   internal new static TimelineCollection CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new TimelineCollection(cPtr, cMemoryOwn);
   }
@@ -27,13 +27,17 @@ public class TimelineCollection : FreezableCollection {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
-  protected TimelineCollection() {
-  }
-
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TimelineCollection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
+  }
+
+  public TimelineCollection() {
+  }
+
+  protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
+    registerExtend = false;
+    return NoesisGUI_PINVOKE.new_TimelineCollection();
   }
 
 }

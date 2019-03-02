@@ -54,34 +54,48 @@ public class ItemsControl : Control {
     }
   }
 
+  public static int GetAlternationIndex(DependencyObject element) {
+    int ret = NoesisGUI_PINVOKE.ItemsControl_GetAlternationIndex(DependencyObject.getCPtr(element));
+    return ret;
+  }
+
   public static ItemsControl ItemsControlFromItemContainer(DependencyObject container) {
     IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_ItemsControlFromItemContainer(DependencyObject.getCPtr(container));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (ItemsControl)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public static DependencyObject ContainerFromElement(ItemsControl itemsControl, DependencyObject element) {
     IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_ContainerFromElement__SWIG_0(ItemsControl.getCPtr(itemsControl), DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public static ItemsControl GetItemsOwner(DependencyObject itemsHost) {
     IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_GetItemsOwner(DependencyObject.getCPtr(itemsHost));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (ItemsControl)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public bool IsItemItsOwnContainer(object item) {
     bool ret = NoesisGUI_PINVOKE.ItemsControl_IsItemItsOwnContainer(swigCPtr, Noesis.Extend.GetInstanceHandle(item));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
+  }
+
+  public static DependencyProperty AlternationCountProperty {
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_AlternationCountProperty_get();
+      return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static DependencyProperty AlternationIndexProperty {
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_AlternationIndexProperty_get();
+      return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
   }
 
   public static DependencyProperty DisplayMemberPathProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_DisplayMemberPathProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -89,7 +103,6 @@ public class ItemsControl : Control {
   public static DependencyProperty HasItemsProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_HasItemsProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -97,7 +110,6 @@ public class ItemsControl : Control {
   public static DependencyProperty ItemContainerStyleProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_ItemContainerStyleProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -105,7 +117,6 @@ public class ItemsControl : Control {
   public static DependencyProperty ItemsPanelProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_ItemsPanelProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -113,7 +124,6 @@ public class ItemsControl : Control {
   public static DependencyProperty ItemsSourceProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_ItemsSourceProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -121,7 +131,6 @@ public class ItemsControl : Control {
   public static DependencyProperty ItemTemplateProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_ItemTemplateProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -129,19 +138,26 @@ public class ItemsControl : Control {
   public static DependencyProperty ItemTemplateSelectorProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_ItemTemplateSelectorProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
+  }
+
+  public int AlternationCount {
+    set {
+      NoesisGUI_PINVOKE.ItemsControl_AlternationCount_set(swigCPtr, value);
+    } 
+    get {
+      int ret = NoesisGUI_PINVOKE.ItemsControl_AlternationCount_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public string DisplayMemberPath {
     set {
       NoesisGUI_PINVOKE.ItemsControl_DisplayMemberPath_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.ItemsControl_DisplayMemberPath_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -150,7 +166,6 @@ public class ItemsControl : Control {
   public bool HasItems {
     get {
       bool ret = NoesisGUI_PINVOKE.ItemsControl_HasItems_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -159,7 +174,6 @@ public class ItemsControl : Control {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_ItemContainerGenerator_get(swigCPtr);
       ItemContainerGenerator ret = (cPtr == IntPtr.Zero) ? null : new ItemContainerGenerator(cPtr, false);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -167,11 +181,9 @@ public class ItemsControl : Control {
   public Style ItemContainerStyle {
     set {
       NoesisGUI_PINVOKE.ItemsControl_ItemContainerStyle_set(swigCPtr, Style.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_ItemContainerStyle_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Style)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -179,11 +191,9 @@ public class ItemsControl : Control {
   public ItemsPanelTemplate ItemsPanel {
     set {
       NoesisGUI_PINVOKE.ItemsControl_ItemsPanel_set(swigCPtr, ItemsPanelTemplate.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_ItemsPanel_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (ItemsPanelTemplate)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -191,11 +201,9 @@ public class ItemsControl : Control {
   public DataTemplate ItemTemplate {
     set {
       NoesisGUI_PINVOKE.ItemsControl_ItemTemplate_set(swigCPtr, DataTemplate.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_ItemTemplate_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DataTemplate)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -203,11 +211,9 @@ public class ItemsControl : Control {
   public DataTemplateSelector ItemTemplateSelector {
     set {
       NoesisGUI_PINVOKE.ItemsControl_ItemTemplateSelector_set(swigCPtr, DataTemplateSelector.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_ItemTemplateSelector_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DataTemplateSelector)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -215,39 +221,31 @@ public class ItemsControl : Control {
   public ItemCollection Items {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_Items_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (ItemCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   private DependencyObject Get_ContainerFromElement(DependencyObject element) {
     IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_Get_ContainerFromElement(swigCPtr, DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   private object Get_ItemsSource() {
     IntPtr cPtr = NoesisGUI_PINVOKE.ItemsControl_Get_ItemsSource(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return Noesis.Extend.GetProxy(cPtr, false);
   }
 
   private void Set_ItemsSource(object items) {
     NoesisGUI_PINVOKE.ItemsControl_Set_ItemsSource(swigCPtr, Noesis.Extend.GetInstanceHandle(items));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ItemsControl_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_ItemsControl(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_ItemsControl(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

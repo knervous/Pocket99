@@ -44,20 +44,21 @@ public class MouseWheelEventArgs : MouseEventArgs {
     }
   }
 
-  public int Delta {
-    get {
-      return GetDeltaHelper();
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    MouseWheelEventHandler handler_ = (MouseWheelEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new MouseWheelEventArgs(args, false));
     }
   }
 
-  public MouseWheelEventArgs(object s, RoutedEvent e, MouseState mouseState, int delta) : this(NoesisGUI_PINVOKE.new_MouseWheelEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), MouseState.getCPtr(mouseState), delta), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  public int Delta {
+    get {
+      int ret = NoesisGUI_PINVOKE.MouseWheelEventArgs_Delta_get(swigCPtr);
+      return ret;
+    } 
   }
 
-  private int GetDeltaHelper() {
-    int ret = NoesisGUI_PINVOKE.MouseWheelEventArgs_GetDeltaHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
+  public MouseWheelEventArgs(object s, RoutedEvent e, int delta) : this(NoesisGUI_PINVOKE.new_MouseWheelEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), delta), true) {
   }
 
 }

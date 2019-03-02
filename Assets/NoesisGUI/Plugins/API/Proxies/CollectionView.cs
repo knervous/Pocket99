@@ -28,6 +28,9 @@ public class CollectionView : BaseComponent, System.Collections.IEnumerable {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
+  protected CollectionView() {
+  }
+
   public CollectionView(System.Collections.IEnumerable collection) :
     base(CreateCollectionView(collection), true) {
   }
@@ -38,12 +41,17 @@ public class CollectionView : BaseComponent, System.Collections.IEnumerable {
     }
   }
 
+  public object GetItemAt(int index) {
+    IntPtr cPtr = GetItemAtHelper(index);
+    return Noesis.Extend.GetProxy(cPtr, true);
+  }
+
   private struct CollectionViewEnumerator : System.Collections.IEnumerator {
     object System.Collections.IEnumerator.Current {
       get { return Current; }
     }
     public object Current {
-      get { return this._collectionView.GetItemAt((uint)this._index); }
+      get { return this._collectionView.GetItemAt(this._index); }
     }
     public bool MoveNext() {
       if (++this._index >= (int)this._collectionView.Count) {
@@ -66,77 +74,53 @@ public class CollectionView : BaseComponent, System.Collections.IEnumerable {
     return new CollectionViewEnumerator(this);
   }
 
-  internal CollectionView() {
-  }
-
-  protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
-    registerExtend = false;
-    return NoesisGUI_PINVOKE.new_CollectionView();
-  }
-
-  public object GetItemAt(uint index) {
-    IntPtr cPtr = NoesisGUI_PINVOKE.CollectionView_GetItemAt(swigCPtr, index);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return Noesis.Extend.GetProxy(cPtr, false);
-  }
-
   public int IndexOf(object item) {
     int ret = NoesisGUI_PINVOKE.CollectionView_IndexOf(swigCPtr, Noesis.Extend.GetInstanceHandle(item));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool Contains(object item) {
     bool ret = NoesisGUI_PINVOKE.CollectionView_Contains(swigCPtr, Noesis.Extend.GetInstanceHandle(item));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool MoveCurrentTo(object item) {
     bool ret = NoesisGUI_PINVOKE.CollectionView_MoveCurrentTo(swigCPtr, Noesis.Extend.GetInstanceHandle(item));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool MoveCurrentToFirst() {
     bool ret = NoesisGUI_PINVOKE.CollectionView_MoveCurrentToFirst(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool MoveCurrentToLast() {
     bool ret = NoesisGUI_PINVOKE.CollectionView_MoveCurrentToLast(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool MoveCurrentToNext() {
     bool ret = NoesisGUI_PINVOKE.CollectionView_MoveCurrentToNext(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool MoveCurrentToPosition(int position) {
     bool ret = NoesisGUI_PINVOKE.CollectionView_MoveCurrentToPosition(swigCPtr, position);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool MoveCurrentToPrevious() {
     bool ret = NoesisGUI_PINVOKE.CollectionView_MoveCurrentToPrevious(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void Refresh() {
     NoesisGUI_PINVOKE.CollectionView_Refresh(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public uint Count {
+  public int Count {
     get {
-      uint ret = NoesisGUI_PINVOKE.CollectionView_Count_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      int ret = NoesisGUI_PINVOKE.CollectionView_Count_get(swigCPtr);
       return ret;
     } 
   }
@@ -144,7 +128,6 @@ public class CollectionView : BaseComponent, System.Collections.IEnumerable {
   public bool CanFilter {
     get {
       bool ret = NoesisGUI_PINVOKE.CollectionView_CanFilter_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -152,7 +135,6 @@ public class CollectionView : BaseComponent, System.Collections.IEnumerable {
   public bool CanGroup {
     get {
       bool ret = NoesisGUI_PINVOKE.CollectionView_CanGroup_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -160,7 +142,6 @@ public class CollectionView : BaseComponent, System.Collections.IEnumerable {
   public bool CanSort {
     get {
       bool ret = NoesisGUI_PINVOKE.CollectionView_CanSort_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -168,7 +149,6 @@ public class CollectionView : BaseComponent, System.Collections.IEnumerable {
   public object CurrentItem {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CollectionView_CurrentItem_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -176,7 +156,6 @@ public class CollectionView : BaseComponent, System.Collections.IEnumerable {
   public int CurrentPosition {
     get {
       int ret = NoesisGUI_PINVOKE.CollectionView_CurrentPosition_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -184,7 +163,6 @@ public class CollectionView : BaseComponent, System.Collections.IEnumerable {
   public bool IsCurrentAfterLast {
     get {
       bool ret = NoesisGUI_PINVOKE.CollectionView_IsCurrentAfterLast_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -192,7 +170,6 @@ public class CollectionView : BaseComponent, System.Collections.IEnumerable {
   public bool IsCurrentBeforeFirst {
     get {
       bool ret = NoesisGUI_PINVOKE.CollectionView_IsCurrentBeforeFirst_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -200,26 +177,27 @@ public class CollectionView : BaseComponent, System.Collections.IEnumerable {
   public bool IsEmpty {
     get {
       bool ret = NoesisGUI_PINVOKE.CollectionView_IsEmpty_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
+  private IntPtr GetItemAtHelper(int index) {
+    IntPtr ret = NoesisGUI_PINVOKE.CollectionView_GetItemAtHelper(swigCPtr, index);
+    return ret;
+  }
+
   private static IntPtr CreateCollectionView(object collection) {
     IntPtr ret = NoesisGUI_PINVOKE.CollectionView_CreateCollectionView(Noesis.Extend.GetInstanceHandle(collection));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private object GetSourceCollectionHelper() {
     IntPtr cPtr = NoesisGUI_PINVOKE.CollectionView_GetSourceCollectionHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return Noesis.Extend.GetProxy(cPtr, false);
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.CollectionView_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

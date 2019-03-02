@@ -46,27 +46,16 @@ public class InertiaExpansionBehavior : IDisposable {
   }
 
   public float DesiredDeceleration {
-    get {
-      return GetDesiredDecelerationHelper();
-    }
     set {
-      SetDesiredDecelerationHelper(value);
-    }
-  }
-
-  private float GetDesiredDecelerationHelper() {
-    float ret = NoesisGUI_PINVOKE.InertiaExpansionBehavior_GetDesiredDecelerationHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private void SetDesiredDecelerationHelper(float v) {
-    NoesisGUI_PINVOKE.InertiaExpansionBehavior_SetDesiredDecelerationHelper(swigCPtr, v);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      NoesisGUI_PINVOKE.InertiaExpansionBehavior_DesiredDeceleration_set(swigCPtr, value);
+    } 
+    get {
+      float ret = NoesisGUI_PINVOKE.InertiaExpansionBehavior_DesiredDeceleration_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public InertiaExpansionBehavior() : this(NoesisGUI_PINVOKE.new_InertiaExpansionBehavior(), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

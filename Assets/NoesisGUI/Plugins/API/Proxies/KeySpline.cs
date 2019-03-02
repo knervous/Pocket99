@@ -36,28 +36,23 @@ public class KeySpline : Freezable {
   }
 
   public KeySpline(Point controlPoint1, Point controlPoint2) : this(NoesisGUI_PINVOKE.new_KeySpline__SWIG_1(ref controlPoint1, ref controlPoint2), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public KeySpline(float controlPoint1X, float controlPoint1Y, float controlPoint2X, float controlPoint2Y) : this(NoesisGUI_PINVOKE.new_KeySpline__SWIG_2(controlPoint1X, controlPoint1Y, controlPoint2X, controlPoint2Y), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public float GetSplineProgress(float linearProgress) {
     float ret = NoesisGUI_PINVOKE.KeySpline_GetSplineProgress(swigCPtr, linearProgress);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public Point ControlPoint1 {
     set {
       NoesisGUI_PINVOKE.KeySpline_ControlPoint1_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.KeySpline_ControlPoint1_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Point>(ret);
       }
@@ -71,12 +66,10 @@ public class KeySpline : Freezable {
   public Point ControlPoint2 {
     set {
       NoesisGUI_PINVOKE.KeySpline_ControlPoint2_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.KeySpline_ControlPoint2_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Point>(ret);
       }
@@ -89,7 +82,6 @@ public class KeySpline : Freezable {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.KeySpline_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

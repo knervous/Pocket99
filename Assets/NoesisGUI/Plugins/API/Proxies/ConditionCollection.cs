@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class ConditionCollection : Collection {
+public class ConditionCollection : UICollection<Condition> {
   internal new static ConditionCollection CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new ConditionCollection(cPtr, cMemoryOwn);
   }
@@ -27,18 +27,17 @@ public class ConditionCollection : Collection {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
+  new internal static IntPtr GetStaticType() {
+    IntPtr ret = NoesisGUI_PINVOKE.ConditionCollection_GetStaticType();
+    return ret;
+  }
+
   public ConditionCollection() {
   }
 
   protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
     registerExtend = false;
-    return NoesisGUI_PINVOKE.new_ConditionCollection__SWIG_0();
-  }
-
-  new internal static IntPtr GetStaticType() {
-    IntPtr ret = NoesisGUI_PINVOKE.ConditionCollection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
+    return NoesisGUI_PINVOKE.new_ConditionCollection();
   }
 
 }

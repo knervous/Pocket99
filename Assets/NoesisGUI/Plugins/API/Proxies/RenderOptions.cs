@@ -19,20 +19,17 @@ public static class RenderOptions {
   public static DependencyProperty BitmapScalingModeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RenderOptions_BitmapScalingModeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public static BitmapScalingMode GetBitmapScalingMode(DependencyObject obj) {
     BitmapScalingMode ret = (BitmapScalingMode)NoesisGUI_PINVOKE.RenderOptions_GetBitmapScalingMode(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetBitmapScalingMode(DependencyObject obj, BitmapScalingMode bitmapScalingMode) {
     NoesisGUI_PINVOKE.RenderOptions_SetBitmapScalingMode(DependencyObject.getCPtr(obj), (int)bitmapScalingMode);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

@@ -38,7 +38,6 @@ public class EventTrigger : TriggerBase {
   public TriggerActionCollection Actions {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.EventTrigger_Actions_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (TriggerActionCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,11 +45,9 @@ public class EventTrigger : TriggerBase {
   public RoutedEvent RoutedEvent {
     set {
       NoesisGUI_PINVOKE.EventTrigger_RoutedEvent_set(swigCPtr, RoutedEvent.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.EventTrigger_RoutedEvent_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -58,11 +55,9 @@ public class EventTrigger : TriggerBase {
   public string SourceName {
     set {
       NoesisGUI_PINVOKE.EventTrigger_SourceName_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.EventTrigger_SourceName_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -70,7 +65,6 @@ public class EventTrigger : TriggerBase {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.EventTrigger_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

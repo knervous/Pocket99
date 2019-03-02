@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class TemplateBindingExtension : BaseComponent {
+public class TemplateBindingExtension : MarkupExtension {
   internal new static TemplateBindingExtension CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new TemplateBindingExtension(cPtr, cMemoryOwn);
   }
@@ -27,6 +27,11 @@ public class TemplateBindingExtension : BaseComponent {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
+  public object ProvideValue(object targetObject, DependencyProperty targetProperty) {
+    IntPtr cPtr = ProvideValueHelper(targetObject, targetProperty);
+    return Noesis.Extend.GetProxy(cPtr, true);
+  }
+
   public TemplateBindingExtension() {
   }
 
@@ -36,30 +41,25 @@ public class TemplateBindingExtension : BaseComponent {
   }
 
   public TemplateBindingExtension(DependencyProperty dp) : this(NoesisGUI_PINVOKE.new_TemplateBindingExtension__SWIG_1(DependencyProperty.getCPtr(dp)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public DependencyProperty Property {
     set {
       NoesisGUI_PINVOKE.TemplateBindingExtension_Property_set(swigCPtr, DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TemplateBindingExtension_Property_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
-  public object ProvideValue(object targetObject, DependencyProperty targetProperty) {
-    IntPtr cPtr = NoesisGUI_PINVOKE.TemplateBindingExtension_ProvideValue(swigCPtr, Noesis.Extend.GetInstanceHandle(targetObject), DependencyProperty.getCPtr(targetProperty));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return Noesis.Extend.GetProxy(cPtr, false);
+  private IntPtr ProvideValueHelper(object targetObject, DependencyProperty targetProperty) {
+    IntPtr ret = NoesisGUI_PINVOKE.TemplateBindingExtension_ProvideValueHelper(swigCPtr, Noesis.Extend.GetInstanceHandle(targetObject), DependencyProperty.getCPtr(targetProperty));
+    return ret;
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TemplateBindingExtension_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

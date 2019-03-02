@@ -36,13 +36,11 @@ public partial class TextureSource : ImageSource {
   }
 
   public TextureSource(Texture texture) : this(NoesisGUI_PINVOKE.new_TextureSource__SWIG_1(Texture.getCPtr(texture)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public int PixelWidth {
     get {
       int ret = NoesisGUI_PINVOKE.TextureSource_PixelWidth_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -50,7 +48,6 @@ public partial class TextureSource : ImageSource {
   public int PixelHeight {
     get {
       int ret = NoesisGUI_PINVOKE.TextureSource_PixelHeight_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -58,19 +55,16 @@ public partial class TextureSource : ImageSource {
   public Texture Texture {
     set {
       NoesisGUI_PINVOKE.TextureSource_Texture_set(swigCPtr, Texture.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextureSource_Texture_get(swigCPtr);
       Texture ret = (cPtr == IntPtr.Zero) ? null : new Texture(cPtr, false);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TextureSource_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

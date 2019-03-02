@@ -33,7 +33,6 @@ public class GradientBrush : Brush {
   public static DependencyProperty ColorInterpolationModeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GradientBrush_ColorInterpolationModeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -41,7 +40,6 @@ public class GradientBrush : Brush {
   public static DependencyProperty GradientStopsProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GradientBrush_GradientStopsProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -49,7 +47,6 @@ public class GradientBrush : Brush {
   public static DependencyProperty MappingModeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GradientBrush_MappingModeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -57,7 +54,6 @@ public class GradientBrush : Brush {
   public static DependencyProperty SpreadMethodProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GradientBrush_SpreadMethodProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -65,11 +61,9 @@ public class GradientBrush : Brush {
   public ColorInterpolationMode ColorInterpolationMode {
     set {
       NoesisGUI_PINVOKE.GradientBrush_ColorInterpolationMode_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       ColorInterpolationMode ret = (ColorInterpolationMode)NoesisGUI_PINVOKE.GradientBrush_ColorInterpolationMode_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -77,11 +71,9 @@ public class GradientBrush : Brush {
   public GradientStopCollection GradientStops {
     set {
       NoesisGUI_PINVOKE.GradientBrush_GradientStops_set(swigCPtr, GradientStopCollection.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GradientBrush_GradientStops_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (GradientStopCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -89,11 +81,9 @@ public class GradientBrush : Brush {
   public BrushMappingMode MappingMode {
     set {
       NoesisGUI_PINVOKE.GradientBrush_MappingMode_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       BrushMappingMode ret = (BrushMappingMode)NoesisGUI_PINVOKE.GradientBrush_MappingMode_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -101,18 +91,15 @@ public class GradientBrush : Brush {
   public GradientSpreadMethod SpreadMethod {
     set {
       NoesisGUI_PINVOKE.GradientBrush_SpreadMethod_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       GradientSpreadMethod ret = (GradientSpreadMethod)NoesisGUI_PINVOKE.GradientBrush_SpreadMethod_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.GradientBrush_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

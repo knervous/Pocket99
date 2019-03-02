@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class KeyboardFocusChangedEventArgs : RoutedEventArgs {
+public class KeyboardFocusChangedEventArgs : KeyboardEventArgs {
   private HandleRef swigCPtr;
 
   internal KeyboardFocusChangedEventArgs(IntPtr cPtr, bool cMemoryOwn) : base(cPtr, cMemoryOwn) {
@@ -44,32 +44,28 @@ public class KeyboardFocusChangedEventArgs : RoutedEventArgs {
     }
   }
 
-  public Noesis.UIElement NewFocus {
-    get {
-      return GetNewFocusHelper();
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    KeyboardFocusChangedEventHandler handler_ = (KeyboardFocusChangedEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new KeyboardFocusChangedEventArgs(args, false));
     }
   }
 
-  public Noesis.UIElement OldFocus {
+  public UIElement OldFocus {
     get {
-      return GetOldFocusHelper();
+      IntPtr cPtr = NoesisGUI_PINVOKE.KeyboardFocusChangedEventArgs_OldFocus_get(swigCPtr);
+      return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public UIElement NewFocus {
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.KeyboardFocusChangedEventArgs_NewFocus_get(swigCPtr);
+      return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public KeyboardFocusChangedEventArgs(object s, RoutedEvent e, UIElement o, UIElement n) : this(NoesisGUI_PINVOKE.new_KeyboardFocusChangedEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), UIElement.getCPtr(o), UIElement.getCPtr(n)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private UIElement GetNewFocusHelper() {
-    IntPtr cPtr = NoesisGUI_PINVOKE.KeyboardFocusChangedEventArgs_GetNewFocusHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
-  }
-
-  private UIElement GetOldFocusHelper() {
-    IntPtr cPtr = NoesisGUI_PINVOKE.KeyboardFocusChangedEventArgs_GetOldFocusHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
   }
 
 }

@@ -157,7 +157,6 @@ public struct Duration {
 
   public static bool TryParse(string str, out Duration result) {
     bool ret = NoesisGUI_PINVOKE.Duration_TryParse(str != null ? str : string.Empty, out result);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

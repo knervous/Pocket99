@@ -55,47 +55,39 @@ public class NameScope : BaseComponent {
 
   public static NameScope GetNameScope(DependencyObject element) {
     IntPtr cPtr = NoesisGUI_PINVOKE.NameScope_GetNameScope(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (NameScope)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public static void SetNameScope(DependencyObject element, NameScope nameScope) {
     NoesisGUI_PINVOKE.NameScope_SetNameScope(DependencyObject.getCPtr(element), NameScope.getCPtr(nameScope));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public object FindName(string name) {
     IntPtr cPtr = NoesisGUI_PINVOKE.NameScope_FindName(swigCPtr, name != null ? name : string.Empty);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public void RegisterName(string name, object obj) {
     NoesisGUI_PINVOKE.NameScope_RegisterName(swigCPtr, name != null ? name : string.Empty, Noesis.Extend.GetInstanceHandle(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void UnregisterName(string name) {
     NoesisGUI_PINVOKE.NameScope_UnregisterName(swigCPtr, name != null ? name : string.Empty);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void UpdateName(string name, object obj) {
     NoesisGUI_PINVOKE.NameScope_UpdateName(swigCPtr, name != null ? name : string.Empty, Noesis.Extend.GetInstanceHandle(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DependencyProperty NameScopeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.NameScope_NameScopeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.NameScope_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

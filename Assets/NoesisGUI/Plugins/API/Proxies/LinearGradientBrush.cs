@@ -38,7 +38,6 @@ public class LinearGradientBrush : GradientBrush {
   public static DependencyProperty EndPointProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.LinearGradientBrush_EndPointProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,7 +45,6 @@ public class LinearGradientBrush : GradientBrush {
   public static DependencyProperty StartPointProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.LinearGradientBrush_StartPointProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -54,12 +52,10 @@ public class LinearGradientBrush : GradientBrush {
   public Point StartPoint {
     set {
       NoesisGUI_PINVOKE.LinearGradientBrush_StartPoint_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.LinearGradientBrush_StartPoint_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Point>(ret);
       }
@@ -73,12 +69,10 @@ public class LinearGradientBrush : GradientBrush {
   public Point EndPoint {
     set {
       NoesisGUI_PINVOKE.LinearGradientBrush_EndPoint_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.LinearGradientBrush_EndPoint_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Point>(ret);
       }
@@ -91,7 +85,6 @@ public class LinearGradientBrush : GradientBrush {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.LinearGradientBrush_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

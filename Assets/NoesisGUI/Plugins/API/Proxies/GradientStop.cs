@@ -35,10 +35,16 @@ public class GradientStop : Animatable {
     return NoesisGUI_PINVOKE.new_GradientStop();
   }
 
+  public override string ToString() {
+    IntPtr strPtr = NoesisGUI_PINVOKE.GradientStop_ToString(swigCPtr);
+    string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
+    NoesisGUI_PINVOKE.FreeString(strPtr);
+    return str;
+  }
+
   public static DependencyProperty ColorProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GradientStop_ColorProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,7 +52,6 @@ public class GradientStop : Animatable {
   public static DependencyProperty OffsetProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GradientStop_OffsetProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -54,12 +59,10 @@ public class GradientStop : Animatable {
   public Color Color {
     set {
       NoesisGUI_PINVOKE.GradientStop_Color_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.GradientStop_Color_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Color>(ret);
       }
@@ -73,18 +76,15 @@ public class GradientStop : Animatable {
   public float Offset {
     set {
       NoesisGUI_PINVOKE.GradientStop_Offset_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.GradientStop_Offset_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.GradientStop_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

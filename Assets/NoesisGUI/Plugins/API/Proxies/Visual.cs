@@ -30,27 +30,30 @@ public class Visual : DependencyObject {
   protected Visual() {
   }
 
+  public View View {
+    get {
+      IntPtr view = GetViewHelper();
+      return (View)Noesis.Extend.GetProxy(view, false);
+    }
+  }
+
   public bool IsAncestorOf(Visual visual) {
     bool ret = NoesisGUI_PINVOKE.Visual_IsAncestorOf(swigCPtr, Visual.getCPtr(visual));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool IsDescendantOf(Visual visual) {
     bool ret = NoesisGUI_PINVOKE.Visual_IsDescendantOf(swigCPtr, Visual.getCPtr(visual));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public Visual FindCommonVisualAncestor(Visual visual) {
     IntPtr cPtr = NoesisGUI_PINVOKE.Visual_FindCommonVisualAncestor(swigCPtr, Visual.getCPtr(visual));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (Visual)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public Point PointFromScreen(Point point) {
     IntPtr ret = NoesisGUI_PINVOKE.Visual_PointFromScreen(swigCPtr, ref point);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Point>(ret);
     }
@@ -61,7 +64,6 @@ public class Visual : DependencyObject {
 
   public Point PointToScreen(Point point) {
     IntPtr ret = NoesisGUI_PINVOKE.Visual_PointToScreen(swigCPtr, ref point);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Point>(ret);
     }
@@ -72,7 +74,6 @@ public class Visual : DependencyObject {
 
   public Matrix4 TransformToAncestor(Visual ancestor) {
     IntPtr ret = NoesisGUI_PINVOKE.Visual_TransformToAncestor(swigCPtr, Visual.getCPtr(ancestor));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Matrix4>(ret);
     }
@@ -83,7 +84,6 @@ public class Visual : DependencyObject {
 
   public Matrix4 TransformToDescendant(Visual descendant) {
     IntPtr ret = NoesisGUI_PINVOKE.Visual_TransformToDescendant(swigCPtr, Visual.getCPtr(descendant));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Matrix4>(ret);
     }
@@ -94,7 +94,6 @@ public class Visual : DependencyObject {
 
   public Matrix4 TransformToVisual(Visual visual) {
     IntPtr ret = NoesisGUI_PINVOKE.Visual_TransformToVisual(swigCPtr, Visual.getCPtr(visual));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Matrix4>(ret);
     }
@@ -105,49 +104,44 @@ public class Visual : DependencyObject {
 
   public bool IsInvalidated() {
     bool ret = NoesisGUI_PINVOKE.Visual_IsInvalidated(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool IsConnectedToView() {
     bool ret = NoesisGUI_PINVOKE.Visual_IsConnectedToView(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void DisconnectFromView() {
     NoesisGUI_PINVOKE.Visual_DisconnectFromView(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public bool IsInRenderTree() {
     bool ret = NoesisGUI_PINVOKE.Visual_IsInRenderTree(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public uint GetRenderTreeId() {
     uint ret = NoesisGUI_PINVOKE.Visual_GetRenderTreeId(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void SetVisualBrushFlag() {
     NoesisGUI_PINVOKE.Visual_SetVisualBrushFlag(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  private IntPtr GetViewHelper() {
+    IntPtr ret = NoesisGUI_PINVOKE.Visual_GetViewHelper(swigCPtr);
+    return ret;
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Visual_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_Visual(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_Visual(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

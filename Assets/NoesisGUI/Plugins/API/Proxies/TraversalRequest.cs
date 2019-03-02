@@ -47,38 +47,22 @@ public class TraversalRequest : IDisposable {
 
   public FocusNavigationDirection FocusNavigationDirection {
     get {
-      return GetFocusNavigationDirectionHelper();
-    }
+      FocusNavigationDirection ret = (FocusNavigationDirection)NoesisGUI_PINVOKE.TraversalRequest_FocusNavigationDirection_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public bool Wrapped {
-    get {
-      return GetWrappedHelper();
-    }
     set {
-      SetWrappedHelper(value);
-    }
+      NoesisGUI_PINVOKE.TraversalRequest_Wrapped_set(swigCPtr, value);
+    } 
+    get {
+      bool ret = NoesisGUI_PINVOKE.TraversalRequest_Wrapped_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public TraversalRequest(FocusNavigationDirection direction) : this(NoesisGUI_PINVOKE.new_TraversalRequest((int)direction), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private FocusNavigationDirection GetFocusNavigationDirectionHelper() {
-    FocusNavigationDirection ret = (FocusNavigationDirection)NoesisGUI_PINVOKE.TraversalRequest_GetFocusNavigationDirectionHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private bool GetWrappedHelper() {
-    bool ret = NoesisGUI_PINVOKE.TraversalRequest_GetWrappedHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private void SetWrappedHelper(bool w) {
-    NoesisGUI_PINVOKE.TraversalRequest_SetWrappedHelper(swigCPtr, w);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

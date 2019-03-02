@@ -37,7 +37,6 @@ public class Popup : FrameworkElement {
         _Closed.Add(swigCPtr.Handle, null);
 
         NoesisGUI_PINVOKE.BindEvent_Popup_Closed(_raiseClosed, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       }
 
       _Closed[swigCPtr.Handle] += value;
@@ -49,7 +48,6 @@ public class Popup : FrameworkElement {
 
         if (_Closed[swigCPtr.Handle] == null) {
           NoesisGUI_PINVOKE.UnbindEvent_Popup_Closed(_raiseClosed, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
 
           _Closed.Remove(swigCPtr.Handle);
         }
@@ -78,7 +76,7 @@ public class Popup : FrameworkElement {
       }
     }
     catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
+      Noesis.Error.UnhandledException(exception);
     }
   }
 
@@ -94,7 +92,6 @@ public class Popup : FrameworkElement {
         _Opened.Add(swigCPtr.Handle, null);
 
         NoesisGUI_PINVOKE.BindEvent_Popup_Opened(_raiseOpened, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       }
 
       _Opened[swigCPtr.Handle] += value;
@@ -106,7 +103,6 @@ public class Popup : FrameworkElement {
 
         if (_Opened[swigCPtr.Handle] == null) {
           NoesisGUI_PINVOKE.UnbindEvent_Popup_Opened(_raiseOpened, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
 
           _Opened.Remove(swigCPtr.Handle);
         }
@@ -135,7 +131,7 @@ public class Popup : FrameworkElement {
       }
     }
     catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
+      Noesis.Error.UnhandledException(exception);
     }
   }
 
@@ -161,7 +157,6 @@ public class Popup : FrameworkElement {
   public static DependencyProperty AllowsTransparencyProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Popup_AllowsTransparencyProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -169,7 +164,6 @@ public class Popup : FrameworkElement {
   public static DependencyProperty ChildProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Popup_ChildProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -177,7 +171,6 @@ public class Popup : FrameworkElement {
   public static DependencyProperty HasDropShadowProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Popup_HasDropShadowProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -185,7 +178,6 @@ public class Popup : FrameworkElement {
   public static DependencyProperty HorizontalOffsetProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Popup_HorizontalOffsetProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -193,7 +185,6 @@ public class Popup : FrameworkElement {
   public static DependencyProperty IsOpenProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Popup_IsOpenProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -201,7 +192,6 @@ public class Popup : FrameworkElement {
   public static DependencyProperty PlacementProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Popup_PlacementProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -209,7 +199,6 @@ public class Popup : FrameworkElement {
   public static DependencyProperty PlacementRectangleProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Popup_PlacementRectangleProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -217,7 +206,6 @@ public class Popup : FrameworkElement {
   public static DependencyProperty PlacementTargetProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Popup_PlacementTargetProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -225,7 +213,6 @@ public class Popup : FrameworkElement {
   public static DependencyProperty PopupAnimationProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Popup_PopupAnimationProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -233,7 +220,6 @@ public class Popup : FrameworkElement {
   public static DependencyProperty StaysOpenProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Popup_StaysOpenProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -241,7 +227,6 @@ public class Popup : FrameworkElement {
   public static DependencyProperty VerticalOffsetProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Popup_VerticalOffsetProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -249,11 +234,9 @@ public class Popup : FrameworkElement {
   public bool AllowsTransparency {
     set {
       NoesisGUI_PINVOKE.Popup_AllowsTransparency_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.Popup_AllowsTransparency_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -261,11 +244,9 @@ public class Popup : FrameworkElement {
   public UIElement Child {
     set {
       NoesisGUI_PINVOKE.Popup_Child_set(swigCPtr, UIElement.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Popup_Child_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -273,11 +254,9 @@ public class Popup : FrameworkElement {
   public bool HasDropShadow {
     set {
       NoesisGUI_PINVOKE.Popup_HasDropShadow_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.Popup_HasDropShadow_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -285,11 +264,9 @@ public class Popup : FrameworkElement {
   public float HorizontalOffset {
     set {
       NoesisGUI_PINVOKE.Popup_HorizontalOffset_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.Popup_HorizontalOffset_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -297,11 +274,9 @@ public class Popup : FrameworkElement {
   public bool IsOpen {
     set {
       NoesisGUI_PINVOKE.Popup_IsOpen_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.Popup_IsOpen_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -309,11 +284,9 @@ public class Popup : FrameworkElement {
   public PlacementMode Placement {
     set {
       NoesisGUI_PINVOKE.Popup_Placement_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       PlacementMode ret = (PlacementMode)NoesisGUI_PINVOKE.Popup_Placement_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -321,12 +294,10 @@ public class Popup : FrameworkElement {
   public Rect PlacementRectangle {
     set {
       NoesisGUI_PINVOKE.Popup_PlacementRectangle_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.Popup_PlacementRectangle_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Rect>(ret);
       }
@@ -340,11 +311,9 @@ public class Popup : FrameworkElement {
   public PopupAnimation PopupAnimation {
     set {
       NoesisGUI_PINVOKE.Popup_PopupAnimation_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       PopupAnimation ret = (PopupAnimation)NoesisGUI_PINVOKE.Popup_PopupAnimation_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -352,11 +321,9 @@ public class Popup : FrameworkElement {
   public bool StaysOpen {
     set {
       NoesisGUI_PINVOKE.Popup_StaysOpen_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.Popup_StaysOpen_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -364,26 +331,20 @@ public class Popup : FrameworkElement {
   public float VerticalOffset {
     set {
       NoesisGUI_PINVOKE.Popup_VerticalOffset_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.Popup_VerticalOffset_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Popup_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_Popup(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_Popup(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

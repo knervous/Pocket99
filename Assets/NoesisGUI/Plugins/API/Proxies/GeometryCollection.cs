@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class GeometryCollection : FreezableCollection {
+public class GeometryCollection : FreezableCollection<Geometry> {
   internal new static GeometryCollection CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new GeometryCollection(cPtr, cMemoryOwn);
   }
@@ -27,13 +27,17 @@ public class GeometryCollection : FreezableCollection {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
-  protected GeometryCollection() {
-  }
-
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.GeometryCollection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
+  }
+
+  public GeometryCollection() {
+  }
+
+  protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
+    registerExtend = false;
+    return NoesisGUI_PINVOKE.new_GeometryCollection();
   }
 
 }

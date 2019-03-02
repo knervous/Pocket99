@@ -38,7 +38,6 @@ public class GridViewRowPresenterBase : FrameworkElement {
   public static DependencyProperty ColumnsProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewRowPresenterBase_ColumnsProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,18 +45,15 @@ public class GridViewRowPresenterBase : FrameworkElement {
   public GridViewColumnCollection Columns {
     set {
       NoesisGUI_PINVOKE.GridViewRowPresenterBase_Columns_set(swigCPtr, GridViewColumnCollection.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewRowPresenterBase_Columns_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (GridViewColumnCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.GridViewRowPresenterBase_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

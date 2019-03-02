@@ -11,6 +11,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Windows.Input;
 
 namespace Noesis
 {
@@ -27,33 +28,63 @@ public class KeyBinding : InputBinding {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
+  public KeyBinding(ICommand command, KeyGesture gesture)
+    : this(CreateKeyBinding(command, gesture), true) {
+  }
+
+  public KeyBinding(ICommand command, Key key, ModifierKeys modifiers)
+    : this(CreateKeyBinding(command, new KeyGesture(key, modifiers)), true) {
+  }
+
   public KeyBinding() {
   }
 
   protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
     registerExtend = false;
-    return NoesisGUI_PINVOKE.new_KeyBinding__SWIG_0();
+    return NoesisGUI_PINVOKE.new_KeyBinding();
   }
 
-  public uint Key {
+  public static DependencyProperty KeyProperty {
     get {
-      uint ret = NoesisGUI_PINVOKE.KeyBinding_Key_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      IntPtr cPtr = NoesisGUI_PINVOKE.KeyBinding_KeyProperty_get();
+      return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static DependencyProperty ModifiersProperty {
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.KeyBinding_ModifiersProperty_get();
+      return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public Key Key {
+    set {
+      NoesisGUI_PINVOKE.KeyBinding_Key_set(swigCPtr, (int)value);
+    } 
+    get {
+      Key ret = (Key)NoesisGUI_PINVOKE.KeyBinding_Key_get(swigCPtr);
       return ret;
     } 
   }
 
-  public uint Modifiers {
+  public ModifierKeys Modifiers {
+    set {
+      NoesisGUI_PINVOKE.KeyBinding_Modifiers_set(swigCPtr, (int)value);
+    } 
     get {
-      uint ret = NoesisGUI_PINVOKE.KeyBinding_Modifiers_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      ModifierKeys ret = (ModifierKeys)NoesisGUI_PINVOKE.KeyBinding_Modifiers_get(swigCPtr);
       return ret;
     } 
+  }
+
+  private static IntPtr CreateKeyBinding(object command, KeyGesture gesture) {
+    IntPtr ret = NoesisGUI_PINVOKE.KeyBinding_CreateKeyBinding(Noesis.Extend.GetInstanceHandle(command), KeyGesture.getCPtr(gesture));
+    return ret;
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.KeyBinding_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

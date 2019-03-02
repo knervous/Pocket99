@@ -38,11 +38,9 @@ public class VisualTransition : DependencyObject {
   public string From {
     set {
       NoesisGUI_PINVOKE.VisualTransition_From_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.VisualTransition_From_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -51,11 +49,9 @@ public class VisualTransition : DependencyObject {
   public string To {
     set {
       NoesisGUI_PINVOKE.VisualTransition_To_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.VisualTransition_To_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -64,12 +60,10 @@ public class VisualTransition : DependencyObject {
   public Duration GeneratedDuration {
     set {
       NoesisGUI_PINVOKE.VisualTransition_GeneratedDuration_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.VisualTransition_GeneratedDuration_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Duration>(ret);
       }
@@ -83,11 +77,9 @@ public class VisualTransition : DependencyObject {
   public EasingFunctionBase GeneratedEasingFunction {
     set {
       NoesisGUI_PINVOKE.VisualTransition_GeneratedEasingFunction_set(swigCPtr, EasingFunctionBase.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.VisualTransition_GeneratedEasingFunction_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (EasingFunctionBase)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -95,18 +87,15 @@ public class VisualTransition : DependencyObject {
   public Storyboard Storyboard {
     set {
       NoesisGUI_PINVOKE.VisualTransition_Storyboard_set(swigCPtr, Storyboard.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.VisualTransition_Storyboard_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Storyboard)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.VisualTransition_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

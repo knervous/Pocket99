@@ -44,37 +44,34 @@ public class RequestBringIntoViewEventArgs : RoutedEventArgs {
     }
   }
 
-  public Noesis.DependencyObject TargetObject {
-    get {
-      return GetTargetObjectHelper();
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    RequestBringIntoViewEventHandler handler_ = (RequestBringIntoViewEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new RequestBringIntoViewEventArgs(args, false));
     }
   }
 
-  public Noesis.Rect TargetRect {
+  public DependencyObject TargetObject {
     get {
-      return GetTargetRectHelper();
+      IntPtr cPtr = NoesisGUI_PINVOKE.RequestBringIntoViewEventArgs_TargetObject_get(swigCPtr);
+      return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
     }
+  }
+
+  public Rect TargetRect {
+    get {
+      IntPtr ret = NoesisGUI_PINVOKE.RequestBringIntoViewEventArgs_TargetRect_get(swigCPtr);
+      if (ret != IntPtr.Zero) {
+        return Marshal.PtrToStructure<Rect>(ret);
+      }
+      else {
+        return new Rect();
+      }
+    }
+
   }
 
   public RequestBringIntoViewEventArgs(object s, DependencyObject arg1, Rect rect) : this(NoesisGUI_PINVOKE.new_RequestBringIntoViewEventArgs(Noesis.Extend.GetInstanceHandle(s), DependencyObject.getCPtr(arg1), ref rect), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private DependencyObject GetTargetObjectHelper() {
-    IntPtr cPtr = NoesisGUI_PINVOKE.RequestBringIntoViewEventArgs_GetTargetObjectHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
-  }
-
-  private Rect GetTargetRectHelper() {
-    IntPtr ret = NoesisGUI_PINVOKE.RequestBringIntoViewEventArgs_GetTargetRectHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    if (ret != IntPtr.Zero) {
-      return Marshal.PtrToStructure<Rect>(ret);
-    }
-    else {
-      return new Rect();
-    }
   }
 
 }

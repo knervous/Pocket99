@@ -11,7 +11,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 
 namespace Noesis
 {
@@ -29,62 +28,14 @@ public class ScrollViewer : ContentControl {
   }
 
   #region Events
-  #region ScrollChanged
-  public delegate void ScrollChangedHandler(object sender, ScrollChangedEventArgs e);
-  public event ScrollChangedHandler ScrollChanged {
+  public event ScrollChangedEventHandler ScrollChanged {
     add {
-      if (!_ScrollChanged.ContainsKey(swigCPtr.Handle)) {
-        _ScrollChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_ScrollViewer_ScrollChanged(_raiseScrollChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _ScrollChanged[swigCPtr.Handle] += value;
+      AddHandler(ScrollChangedEvent, value);
     }
     remove {
-      if (_ScrollChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _ScrollChanged[swigCPtr.Handle] -= value;
-
-        if (_ScrollChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_ScrollViewer_ScrollChanged(_raiseScrollChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _ScrollChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(ScrollChangedEvent, value);
     }
   }
-
-  internal delegate void RaiseScrollChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseScrollChangedCallback _raiseScrollChanged = RaiseScrollChanged;
-
-  [MonoPInvokeCallback(typeof(RaiseScrollChangedCallback))]
-  private static void RaiseScrollChanged(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_ScrollChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for ScrollChanged event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _ScrollChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        ScrollChangedHandler handler = _ScrollChanged[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new ScrollChangedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, ScrollChangedHandler> _ScrollChanged =
-      new Dictionary<IntPtr, ScrollChangedHandler>();
-  #endregion
 
   #endregion
 
@@ -103,170 +54,138 @@ public class ScrollViewer : ContentControl {
 
   public static bool GetCanContentScroll(DependencyObject element) {
     bool ret = NoesisGUI_PINVOKE.ScrollViewer_GetCanContentScroll(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetCanContentScroll(DependencyObject element, bool canScroll) {
     NoesisGUI_PINVOKE.ScrollViewer_SetCanContentScroll(DependencyObject.getCPtr(element), canScroll);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static ScrollBarVisibility GetHorizontalScrollBarVisibility(DependencyObject element) {
     ScrollBarVisibility ret = (ScrollBarVisibility)NoesisGUI_PINVOKE.ScrollViewer_GetHorizontalScrollBarVisibility(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetHorizontalScrollBarVisibility(DependencyObject element, ScrollBarVisibility visibility) {
     NoesisGUI_PINVOKE.ScrollViewer_SetHorizontalScrollBarVisibility(DependencyObject.getCPtr(element), (int)visibility);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static ScrollBarVisibility GetVerticalScrollBarVisibility(DependencyObject element) {
     ScrollBarVisibility ret = (ScrollBarVisibility)NoesisGUI_PINVOKE.ScrollViewer_GetVerticalScrollBarVisibility(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetVerticalScrollBarVisibility(DependencyObject element, ScrollBarVisibility visibility) {
     NoesisGUI_PINVOKE.ScrollViewer_SetVerticalScrollBarVisibility(DependencyObject.getCPtr(element), (int)visibility);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static bool GetIsDeferredScrollingEnabled(DependencyObject element) {
     bool ret = NoesisGUI_PINVOKE.ScrollViewer_GetIsDeferredScrollingEnabled(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetIsDeferredScrollingEnabled(DependencyObject element, bool value) {
     NoesisGUI_PINVOKE.ScrollViewer_SetIsDeferredScrollingEnabled(DependencyObject.getCPtr(element), value);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static PanningMode GetPanningMode(DependencyObject element) {
     PanningMode ret = (PanningMode)NoesisGUI_PINVOKE.ScrollViewer_GetPanningMode(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetPanningMode(DependencyObject element, PanningMode panningMode) {
     NoesisGUI_PINVOKE.ScrollViewer_SetPanningMode(DependencyObject.getCPtr(element), (int)panningMode);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static float GetPanningDeceleration(DependencyObject element) {
     float ret = NoesisGUI_PINVOKE.ScrollViewer_GetPanningDeceleration(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetPanningDeceleration(DependencyObject element, float deceleration) {
     NoesisGUI_PINVOKE.ScrollViewer_SetPanningDeceleration(DependencyObject.getCPtr(element), deceleration);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static float GetPanningRatio(DependencyObject element) {
     float ret = NoesisGUI_PINVOKE.ScrollViewer_GetPanningRatio(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetPanningRatio(DependencyObject element, float panningRatio) {
     NoesisGUI_PINVOKE.ScrollViewer_SetPanningRatio(DependencyObject.getCPtr(element), panningRatio);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void LineLeft() {
     NoesisGUI_PINVOKE.ScrollViewer_LineLeft(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void LineRight() {
     NoesisGUI_PINVOKE.ScrollViewer_LineRight(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void LineUp() {
     NoesisGUI_PINVOKE.ScrollViewer_LineUp(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void LineDown() {
     NoesisGUI_PINVOKE.ScrollViewer_LineDown(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void PageLeft() {
     NoesisGUI_PINVOKE.ScrollViewer_PageLeft(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void PageRight() {
     NoesisGUI_PINVOKE.ScrollViewer_PageRight(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void PageUp() {
     NoesisGUI_PINVOKE.ScrollViewer_PageUp(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void PageDown() {
     NoesisGUI_PINVOKE.ScrollViewer_PageDown(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void ScrollToLeftEnd() {
     NoesisGUI_PINVOKE.ScrollViewer_ScrollToLeftEnd(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void ScrollToRightEnd() {
     NoesisGUI_PINVOKE.ScrollViewer_ScrollToRightEnd(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void ScrollToTop() {
     NoesisGUI_PINVOKE.ScrollViewer_ScrollToTop(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void ScrollToBottom() {
     NoesisGUI_PINVOKE.ScrollViewer_ScrollToBottom(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void ScrollToHome() {
     NoesisGUI_PINVOKE.ScrollViewer_ScrollToHome(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void ScrollToEnd() {
     NoesisGUI_PINVOKE.ScrollViewer_ScrollToEnd(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void ScrollToHorizontalOffset(float offset) {
     NoesisGUI_PINVOKE.ScrollViewer_ScrollToHorizontalOffset(swigCPtr, offset);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void ScrollToVerticalOffset(float offset) {
     NoesisGUI_PINVOKE.ScrollViewer_ScrollToVerticalOffset(swigCPtr, offset);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void InvalidateScrollInfo() {
     NoesisGUI_PINVOKE.ScrollViewer_InvalidateScrollInfo(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DependencyProperty CanContentScrollProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_CanContentScrollProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -274,7 +193,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty ComputedHorizontalScrollBarVisibilityProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_ComputedHorizontalScrollBarVisibilityProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -282,7 +200,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty ComputedVerticalScrollBarVisibilityProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_ComputedVerticalScrollBarVisibilityProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -290,7 +207,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty ExtentHeightProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_ExtentHeightProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -298,7 +214,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty ExtentWidthProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_ExtentWidthProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -306,7 +221,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty HorizontalOffsetProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_HorizontalOffsetProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -314,7 +228,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty HorizontalScrollBarVisibilityProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_HorizontalScrollBarVisibilityProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -322,7 +235,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty IsDeferredScrollingEnabledProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_IsDeferredScrollingEnabledProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -330,7 +242,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty ScrollableHeightProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_ScrollableHeightProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -338,7 +249,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty ScrollableWidthProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_ScrollableWidthProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -346,7 +256,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty VerticalOffsetProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_VerticalOffsetProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -354,7 +263,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty VerticalScrollBarVisibilityProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_VerticalScrollBarVisibilityProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -362,7 +270,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty ViewportHeightProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_ViewportHeightProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -370,7 +277,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty ViewportWidthProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_ViewportWidthProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -378,7 +284,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty PanningModeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_PanningModeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -386,7 +291,6 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty PanningDecelerationProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_PanningDecelerationProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -394,19 +298,26 @@ public class ScrollViewer : ContentControl {
   public static DependencyProperty PanningRatioProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_PanningRatioProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent ScrollChangedEvent {
+    set {
+      NoesisGUI_PINVOKE.ScrollViewer_ScrollChangedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.ScrollViewer_ScrollChangedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public bool CanContentScroll {
     set {
       NoesisGUI_PINVOKE.ScrollViewer_CanContentScroll_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.ScrollViewer_CanContentScroll_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -414,11 +325,9 @@ public class ScrollViewer : ContentControl {
   public ScrollBarVisibility HorizontalScrollBarVisibility {
     set {
       NoesisGUI_PINVOKE.ScrollViewer_HorizontalScrollBarVisibility_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       ScrollBarVisibility ret = (ScrollBarVisibility)NoesisGUI_PINVOKE.ScrollViewer_HorizontalScrollBarVisibility_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -426,11 +335,9 @@ public class ScrollViewer : ContentControl {
   public ScrollBarVisibility VerticalScrollBarVisibility {
     set {
       NoesisGUI_PINVOKE.ScrollViewer_VerticalScrollBarVisibility_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       ScrollBarVisibility ret = (ScrollBarVisibility)NoesisGUI_PINVOKE.ScrollViewer_VerticalScrollBarVisibility_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -438,11 +345,9 @@ public class ScrollViewer : ContentControl {
   public bool IsDeferredScrollingEnabled {
     set {
       NoesisGUI_PINVOKE.ScrollViewer_IsDeferredScrollingEnabled_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.ScrollViewer_IsDeferredScrollingEnabled_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -450,11 +355,9 @@ public class ScrollViewer : ContentControl {
   public PanningMode PanningMode {
     set {
       NoesisGUI_PINVOKE.ScrollViewer_PanningMode_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       PanningMode ret = (PanningMode)NoesisGUI_PINVOKE.ScrollViewer_PanningMode_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -462,11 +365,9 @@ public class ScrollViewer : ContentControl {
   public float PanningDeceleration {
     set {
       NoesisGUI_PINVOKE.ScrollViewer_PanningDeceleration_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.ScrollViewer_PanningDeceleration_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -474,11 +375,9 @@ public class ScrollViewer : ContentControl {
   public float PanningRatio {
     set {
       NoesisGUI_PINVOKE.ScrollViewer_PanningRatio_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.ScrollViewer_PanningRatio_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -486,7 +385,6 @@ public class ScrollViewer : ContentControl {
   public Visibility ComputedHorizontalScrollBarVisibility {
     get {
       Visibility ret = (Visibility)NoesisGUI_PINVOKE.ScrollViewer_ComputedHorizontalScrollBarVisibility_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -494,7 +392,6 @@ public class ScrollViewer : ContentControl {
   public Visibility ComputedVerticalScrollBarVisibility {
     get {
       Visibility ret = (Visibility)NoesisGUI_PINVOKE.ScrollViewer_ComputedVerticalScrollBarVisibility_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -502,7 +399,6 @@ public class ScrollViewer : ContentControl {
   public float ExtentWidth {
     get {
       float ret = NoesisGUI_PINVOKE.ScrollViewer_ExtentWidth_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -510,7 +406,6 @@ public class ScrollViewer : ContentControl {
   public float ExtentHeight {
     get {
       float ret = NoesisGUI_PINVOKE.ScrollViewer_ExtentHeight_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -518,7 +413,6 @@ public class ScrollViewer : ContentControl {
   public float HorizontalOffset {
     get {
       float ret = NoesisGUI_PINVOKE.ScrollViewer_HorizontalOffset_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -526,7 +420,6 @@ public class ScrollViewer : ContentControl {
   public float VerticalOffset {
     get {
       float ret = NoesisGUI_PINVOKE.ScrollViewer_VerticalOffset_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -534,7 +427,6 @@ public class ScrollViewer : ContentControl {
   public float ScrollableWidth {
     get {
       float ret = NoesisGUI_PINVOKE.ScrollViewer_ScrollableWidth_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -542,7 +434,6 @@ public class ScrollViewer : ContentControl {
   public float ScrollableHeight {
     get {
       float ret = NoesisGUI_PINVOKE.ScrollViewer_ScrollableHeight_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -550,7 +441,6 @@ public class ScrollViewer : ContentControl {
   public float ViewportWidth {
     get {
       float ret = NoesisGUI_PINVOKE.ScrollViewer_ViewportWidth_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -558,22 +448,17 @@ public class ScrollViewer : ContentControl {
   public float ViewportHeight {
     get {
       float ret = NoesisGUI_PINVOKE.ScrollViewer_ViewportHeight_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ScrollViewer_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_ScrollViewer(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_ScrollViewer(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

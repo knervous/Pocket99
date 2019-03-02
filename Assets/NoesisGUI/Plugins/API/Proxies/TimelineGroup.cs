@@ -33,7 +33,6 @@ public class TimelineGroup : Timeline {
   public static DependencyProperty ChildrenProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TimelineGroup_ChildrenProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -41,18 +40,15 @@ public class TimelineGroup : Timeline {
   public TimelineCollection Children {
     set {
       NoesisGUI_PINVOKE.TimelineGroup_Children_set(swigCPtr, TimelineCollection.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TimelineGroup_Children_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (TimelineCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TimelineGroup_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

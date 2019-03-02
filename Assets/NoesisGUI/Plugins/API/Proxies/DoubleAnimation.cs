@@ -38,7 +38,6 @@ public class DoubleAnimation : BaseAnimation {
   public static DependencyProperty ByProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.DoubleAnimation_ByProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,7 +45,6 @@ public class DoubleAnimation : BaseAnimation {
   public static DependencyProperty FromProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.DoubleAnimation_FromProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -54,7 +52,6 @@ public class DoubleAnimation : BaseAnimation {
   public static DependencyProperty ToProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.DoubleAnimation_ToProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -63,12 +60,10 @@ public class DoubleAnimation : BaseAnimation {
     set {
       NullableFloat tempvalue = value;
       NoesisGUI_PINVOKE.DoubleAnimation_From_set(swigCPtr, ref tempvalue);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.DoubleAnimation_From_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<NullableFloat>(ret);
       }
@@ -83,12 +78,10 @@ public class DoubleAnimation : BaseAnimation {
     set {
       NullableFloat tempvalue = value;
       NoesisGUI_PINVOKE.DoubleAnimation_To_set(swigCPtr, ref tempvalue);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.DoubleAnimation_To_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<NullableFloat>(ret);
       }
@@ -103,12 +96,10 @@ public class DoubleAnimation : BaseAnimation {
     set {
       NullableFloat tempvalue = value;
       NoesisGUI_PINVOKE.DoubleAnimation_By_set(swigCPtr, ref tempvalue);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.DoubleAnimation_By_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<NullableFloat>(ret);
       }
@@ -121,7 +112,6 @@ public class DoubleAnimation : BaseAnimation {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.DoubleAnimation_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

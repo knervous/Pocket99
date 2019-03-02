@@ -31,37 +31,38 @@ public class ClockGroup : Clock {
   }
 
   public ClockGroup(TimelineGroup timelineGroup, bool controllable) : this(NoesisGUI_PINVOKE.new_ClockGroup(TimelineGroup.getCPtr(timelineGroup), controllable), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void Add(Clock clock) {
     NoesisGUI_PINVOKE.ClockGroup_Add(swigCPtr, Clock.getCPtr(clock));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public Clock GetChild(uint index) {
     IntPtr cPtr = NoesisGUI_PINVOKE.ClockGroup_GetChild(swigCPtr, index);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (Clock)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public bool Tick(double time, ClockState parentState) {
     bool ret = NoesisGUI_PINVOKE.ClockGroup_Tick(swigCPtr, time, (int)parentState);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public uint ChildrenCount {
+  public int ChildrenCount {
     get {
-      uint ret = NoesisGUI_PINVOKE.ClockGroup_ChildrenCount_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      int ret = NoesisGUI_PINVOKE.ClockGroup_ChildrenCount_get(swigCPtr);
       return ret;
     } 
   }
 
+  public new TimelineGroup Timeline {
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.ClockGroup_Timeline_get(swigCPtr);
+      return (TimelineGroup)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ClockGroup_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

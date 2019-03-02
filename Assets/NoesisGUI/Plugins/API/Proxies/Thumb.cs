@@ -11,7 +11,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 
 namespace Noesis
 {
@@ -29,176 +28,32 @@ public class Thumb : Control {
   }
 
   #region Events
-  #region DragCompleted
-  public delegate void DragCompletedHandler(object sender, DragCompletedEventArgs e);
-  public event DragCompletedHandler DragCompleted {
+  public event DragCompletedEventHandler DragCompleted {
     add {
-      if (!_DragCompleted.ContainsKey(swigCPtr.Handle)) {
-        _DragCompleted.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_Thumb_DragCompleted(_raiseDragCompleted, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _DragCompleted[swigCPtr.Handle] += value;
+      AddHandler(DragCompletedEvent, value);
     }
     remove {
-      if (_DragCompleted.ContainsKey(swigCPtr.Handle)) {
-
-        _DragCompleted[swigCPtr.Handle] -= value;
-
-        if (_DragCompleted[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_Thumb_DragCompleted(_raiseDragCompleted, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _DragCompleted.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(DragCompletedEvent, value);
     }
   }
 
-  internal delegate void RaiseDragCompletedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseDragCompletedCallback _raiseDragCompleted = RaiseDragCompleted;
-
-  [MonoPInvokeCallback(typeof(RaiseDragCompletedCallback))]
-  private static void RaiseDragCompleted(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_DragCompleted.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for DragCompleted event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _DragCompleted.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        DragCompletedHandler handler = _DragCompleted[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new DragCompletedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, DragCompletedHandler> _DragCompleted =
-      new Dictionary<IntPtr, DragCompletedHandler>();
-  #endregion
-
-  #region DragDelta
-  public delegate void DragDeltaHandler(object sender, DragDeltaEventArgs e);
-  public event DragDeltaHandler DragDelta {
+  public event DragDeltaEventHandler DragDelta {
     add {
-      if (!_DragDelta.ContainsKey(swigCPtr.Handle)) {
-        _DragDelta.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_Thumb_DragDelta(_raiseDragDelta, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _DragDelta[swigCPtr.Handle] += value;
+      AddHandler(DragDeltaEvent, value);
     }
     remove {
-      if (_DragDelta.ContainsKey(swigCPtr.Handle)) {
-
-        _DragDelta[swigCPtr.Handle] -= value;
-
-        if (_DragDelta[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_Thumb_DragDelta(_raiseDragDelta, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _DragDelta.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(DragDeltaEvent, value);
     }
   }
 
-  internal delegate void RaiseDragDeltaCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseDragDeltaCallback _raiseDragDelta = RaiseDragDelta;
-
-  [MonoPInvokeCallback(typeof(RaiseDragDeltaCallback))]
-  private static void RaiseDragDelta(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_DragDelta.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for DragDelta event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _DragDelta.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        DragDeltaHandler handler = _DragDelta[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new DragDeltaEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, DragDeltaHandler> _DragDelta =
-      new Dictionary<IntPtr, DragDeltaHandler>();
-  #endregion
-
-  #region DragStarted
-  public delegate void DragStartedHandler(object sender, DragStartedEventArgs e);
-  public event DragStartedHandler DragStarted {
+  public event DragStartedEventHandler DragStarted {
     add {
-      if (!_DragStarted.ContainsKey(swigCPtr.Handle)) {
-        _DragStarted.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_Thumb_DragStarted(_raiseDragStarted, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _DragStarted[swigCPtr.Handle] += value;
+      AddHandler(DragStartedEvent, value);
     }
     remove {
-      if (_DragStarted.ContainsKey(swigCPtr.Handle)) {
-
-        _DragStarted[swigCPtr.Handle] -= value;
-
-        if (_DragStarted[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_Thumb_DragStarted(_raiseDragStarted, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _DragStarted.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(DragStartedEvent, value);
     }
   }
-
-  internal delegate void RaiseDragStartedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseDragStartedCallback _raiseDragStarted = RaiseDragStarted;
-
-  [MonoPInvokeCallback(typeof(RaiseDragStartedCallback))]
-  private static void RaiseDragStarted(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_DragStarted.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for DragStarted event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _DragStarted.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        DragStartedHandler handler = _DragStarted[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new DragStartedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, DragStartedHandler> _DragStarted =
-      new Dictionary<IntPtr, DragStartedHandler>();
-  #endregion
 
   #endregion
 
@@ -217,36 +72,59 @@ public class Thumb : Control {
 
   public void CancelDrag() {
     NoesisGUI_PINVOKE.Thumb_CancelDrag(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DependencyProperty IsDraggingProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Thumb_IsDraggingProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent DragCompletedEvent {
+    set {
+      NoesisGUI_PINVOKE.Thumb_DragCompletedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Thumb_DragCompletedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent DragDeltaEvent {
+    set {
+      NoesisGUI_PINVOKE.Thumb_DragDeltaEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Thumb_DragDeltaEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent DragStartedEvent {
+    set {
+      NoesisGUI_PINVOKE.Thumb_DragStartedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Thumb_DragStartedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public bool IsDragging {
     get {
       bool ret = NoesisGUI_PINVOKE.Thumb_IsDragging_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Thumb_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_Thumb(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_Thumb(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

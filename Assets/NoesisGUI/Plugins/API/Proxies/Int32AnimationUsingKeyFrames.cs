@@ -38,14 +38,12 @@ public class Int32AnimationUsingKeyFrames : AnimationTimeline {
   public Int32KeyFrameCollection KeyFrames {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Int32AnimationUsingKeyFrames_KeyFrames_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Int32KeyFrameCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Int32AnimationUsingKeyFrames_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

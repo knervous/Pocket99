@@ -115,7 +115,6 @@ public struct GridLength {
 
   public static bool TryParse(string str, out GridLength result) {
     bool ret = NoesisGUI_PINVOKE.GridLength_TryParse(str != null ? str : string.Empty, out result);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

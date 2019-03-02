@@ -43,7 +43,6 @@ public class ComboBox : Selector {
   public static DependencyProperty IsDropDownOpenProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ComboBox_IsDropDownOpenProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -51,7 +50,6 @@ public class ComboBox : Selector {
   public static DependencyProperty IsEditableProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ComboBox_IsEditableProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -59,7 +57,6 @@ public class ComboBox : Selector {
   public static DependencyProperty IsReadOnlyProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ComboBox_IsReadOnlyProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -67,7 +64,6 @@ public class ComboBox : Selector {
   public static DependencyProperty MaxDropDownHeightProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ComboBox_MaxDropDownHeightProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -75,7 +71,6 @@ public class ComboBox : Selector {
   public static DependencyProperty SelectionBoxItemProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ComboBox_SelectionBoxItemProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -83,7 +78,6 @@ public class ComboBox : Selector {
   public static DependencyProperty SelectionBoxItemTemplateProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ComboBox_SelectionBoxItemTemplateProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -91,7 +85,6 @@ public class ComboBox : Selector {
   public static DependencyProperty StaysOpenOnEditProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ComboBox_StaysOpenOnEditProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -99,7 +92,6 @@ public class ComboBox : Selector {
   public static DependencyProperty TextProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ComboBox_TextProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -107,11 +99,9 @@ public class ComboBox : Selector {
   public bool IsDropDownOpen {
     set {
       NoesisGUI_PINVOKE.ComboBox_IsDropDownOpen_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.ComboBox_IsDropDownOpen_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -119,11 +109,9 @@ public class ComboBox : Selector {
   public bool IsEditable {
     set {
       NoesisGUI_PINVOKE.ComboBox_IsEditable_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.ComboBox_IsEditable_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -131,11 +119,9 @@ public class ComboBox : Selector {
   public bool IsReadOnly {
     set {
       NoesisGUI_PINVOKE.ComboBox_IsReadOnly_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.ComboBox_IsReadOnly_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -143,11 +129,9 @@ public class ComboBox : Selector {
   public float MaxDropDownHeight {
     set {
       NoesisGUI_PINVOKE.ComboBox_MaxDropDownHeight_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.ComboBox_MaxDropDownHeight_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -155,7 +139,6 @@ public class ComboBox : Selector {
   public object SelectionBoxItem {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ComboBox_SelectionBoxItem_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -163,7 +146,6 @@ public class ComboBox : Selector {
   public DataTemplate SelectionBoxItemTemplate {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ComboBox_SelectionBoxItemTemplate_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DataTemplate)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -171,11 +153,9 @@ public class ComboBox : Selector {
   public bool StaysOpenOnEdit {
     set {
       NoesisGUI_PINVOKE.ComboBox_StaysOpenOnEdit_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.ComboBox_StaysOpenOnEdit_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -183,11 +163,9 @@ public class ComboBox : Selector {
   public string Text {
     set {
       NoesisGUI_PINVOKE.ComboBox_Text_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.ComboBox_Text_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -195,15 +173,11 @@ public class ComboBox : Selector {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ComboBox_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_ComboBox(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_ComboBox(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

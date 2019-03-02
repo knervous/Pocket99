@@ -45,17 +45,22 @@ public class EventArgs : IDisposable {
     }
   }
 
+  internal static void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    EventHandler handler_ = (EventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new EventArgs(args, false));
+    }
+  }
+
   public static EventArgs Empty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.EventArgs_Empty_get();
       EventArgs ret = (cPtr == IntPtr.Zero) ? null : new EventArgs(cPtr, false);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   public EventArgs() : this(NoesisGUI_PINVOKE.new_EventArgs(), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

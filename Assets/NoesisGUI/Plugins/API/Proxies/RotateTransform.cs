@@ -36,13 +36,11 @@ public class RotateTransform : Transform {
   }
 
   public RotateTransform(float angle) : this(NoesisGUI_PINVOKE.new_RotateTransform__SWIG_1(angle), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DependencyProperty AngleProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RotateTransform_AngleProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -50,7 +48,6 @@ public class RotateTransform : Transform {
   public static DependencyProperty CenterXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RotateTransform_CenterXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -58,7 +55,6 @@ public class RotateTransform : Transform {
   public static DependencyProperty CenterYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RotateTransform_CenterYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -66,11 +62,9 @@ public class RotateTransform : Transform {
   public float Angle {
     set {
       NoesisGUI_PINVOKE.RotateTransform_Angle_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.RotateTransform_Angle_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -78,11 +72,9 @@ public class RotateTransform : Transform {
   public float CenterX {
     set {
       NoesisGUI_PINVOKE.RotateTransform_CenterX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.RotateTransform_CenterX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -90,18 +82,15 @@ public class RotateTransform : Transform {
   public float CenterY {
     set {
       NoesisGUI_PINVOKE.RotateTransform_CenterY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.RotateTransform_CenterY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.RotateTransform_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

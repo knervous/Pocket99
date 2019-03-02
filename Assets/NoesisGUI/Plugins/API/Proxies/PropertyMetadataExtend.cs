@@ -4,67 +4,111 @@ using System.Collections.Generic;
 
 namespace Noesis
 {
-    public delegate void PropertyChangedCallback(
-        DependencyObject d,
-        DependencyPropertyChangedEventArgs e
-    );
+    /// <summary>
+    /// Represents the callback that is invoked when the effective property value of a dependency
+    /// property changes.
+    /// </summary>
+    public delegate void PropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e);
+
+    /// <summary>
+    /// Provides a template for a method that is called whenever a dependency property value is
+    /// being re-evaluated, or coercion is specifically requested.
+    /// </summary>
+    public delegate object CoerceValueCallback(DependencyObject d, object baseValue);
 
     public partial class PropertyMetadata
     {
-        public PropertyMetadata(object defaultValue)
-            : this(Create(defaultValue, null), true)
+        public PropertyMetadata() :
+            this(Noesis_PropertyMetadata_Create(), true)
         {
         }
 
-        public PropertyMetadata(object defaultValue,
-            PropertyChangedCallback propertyChangedCallback)
-            : this(Create(defaultValue, propertyChangedCallback), true)
+        public PropertyMetadata(PropertyChangedCallback propertyChangedCallback) :
+            this()
         {
+            this.PropertyChangedCallback = propertyChangedCallback;
         }
 
-        private static IntPtr Create(object defaultValue,
-            PropertyChangedCallback propertyChangedCallback)
+        public PropertyMetadata(object defaultValue) :
+            this()
         {
-            return Create(defaultValue, propertyChangedCallback,
-                (def, invoke) => Noesis_CreatePropertyMetadata_(def, invoke));
+            this.DefaultValue = defaultValue;
         }
-        protected delegate IntPtr CreateMetadataCallback(HandleRef defaultValue,
-            DelegateInvokePropertyChangedCallback invokePropertyChanged);
 
-        protected static IntPtr Create(object defaultValue,
-            PropertyChangedCallback propertyChangedCallback,
-            CreateMetadataCallback createCallback)
+        public PropertyMetadata(object defaultValue, PropertyChangedCallback propertyChangedCallback) :
+            this(defaultValue)
         {
-            if (defaultValue is Type)
+            this.PropertyChangedCallback = propertyChangedCallback;
+        }
+
+        public PropertyMetadata(object defaultValue, PropertyChangedCallback propertyChangedCallback, CoerceValueCallback coerceValueCallback) :
+            this(defaultValue, propertyChangedCallback)
+        {
+            this.CoerceValueCallback = coerceValueCallback;
+        }
+
+        /// <summary>
+        /// Gets or sets a reference to a PropertyChangedCallback implementation specified
+        /// in this metadata.
+        /// </summary>
+        public PropertyChangedCallback PropertyChangedCallback
+        {
+            get
             {
-                defaultValue = Noesis.Extend.GetResourceKeyType((Type)defaultValue);
+                PropertyChangedCallback changed = null;
+                _PropertyChangedCallback.TryGetValue(swigCPtr.Handle, out changed);
+                return changed;
             }
-
-            DelegateInvokePropertyChangedCallback invokePropertyChanged =
-                propertyChangedCallback == null ? null : _invokePropertyChanged;
-
-            IntPtr propertyMetadataPtr = createCallback(
-                Noesis.Extend.GetInstanceHandle(defaultValue), invokePropertyChanged);
-
-            // Register property changed callback
-            if (propertyChangedCallback != null)
+            set
             {
-                _PropertyChangedCallback.Add(propertyMetadataPtr, propertyChangedCallback);
-            }
+                if (_PropertyChangedCallback.ContainsKey(swigCPtr.Handle))
+                {
+                    _PropertyChangedCallback.Remove(swigCPtr.Handle);
+                    Noesis_PropertyMetadata_UnbindPropertyChangedCallback(swigCPtr, _changed);
+                }
 
-            return propertyMetadataPtr;
+                if (value != null)
+                {
+                    Noesis_PropertyMetadata_BindPropertyChangedCallback(swigCPtr, _changed);
+                    _PropertyChangedCallback.Add(swigCPtr.Handle, value);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a reference to a CoerceValueCallback implementation specified in this
+        /// metadata.
+        /// </summary>
+        public CoerceValueCallback CoerceValueCallback
+        {
+            get
+            {
+                CoerceValueCallback coerce = null;
+                _CoerceValueCallback.TryGetValue(swigCPtr.Handle, out coerce);
+                return coerce;
+            }
+            set
+            {
+                if (_CoerceValueCallback.ContainsKey(swigCPtr.Handle))
+                {
+                    _CoerceValueCallback.Remove(swigCPtr.Handle);
+                    Noesis_PropertyMetadata_UnbindCoerceValueCallback(swigCPtr, _coerce);
+                }
+
+                if (value != null)
+                {
+                    Noesis_PropertyMetadata_BindCoerceValueCallback(swigCPtr, _coerce);
+                    _CoerceValueCallback.Add(swigCPtr.Handle, value);
+                }
+            }
         }
 
         #region PropertyChangedCallback management
+        protected delegate void ManagedPropertyChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
+        private static ManagedPropertyChangedCallback _changed = OnPropertyChanged;
 
-        protected delegate void DelegateInvokePropertyChangedCallback(IntPtr cPtr,
-            IntPtr sender, IntPtr e);
-        private static DelegateInvokePropertyChangedCallback _invokePropertyChanged =
-            InvokePropertyChangedCallback;
-
-        [MonoPInvokeCallback(typeof(DelegateInvokePropertyChangedCallback))]
-        protected static void InvokePropertyChangedCallback(IntPtr cPtr,
-            IntPtr sender, IntPtr e)
+        [MonoPInvokeCallback(typeof(ManagedPropertyChangedCallback))]
+        protected static void OnPropertyChanged(IntPtr cPtr, IntPtr d, IntPtr e)
         {
             try
             {
@@ -72,51 +116,104 @@ namespace Noesis
                 {
                     throw new Exception("PropertyChangedCallback not found");
                 }
-                if (sender == IntPtr.Zero && e == IntPtr.Zero)
+                if (d == IntPtr.Zero && e == IntPtr.Zero)
                 {
                     _PropertyChangedCallback.Remove(cPtr);
                     return;
                 }
                 if (Noesis.Extend.Initialized)
                 {
-                    PropertyChangedCallback handler = _PropertyChangedCallback[cPtr];
-                    if (handler != null)
+                    PropertyChangedCallback callback = _PropertyChangedCallback[cPtr];
+                    if (callback != null)
                     {
-                        handler((DependencyObject)Noesis.Extend.GetProxy(sender, false),
+                        callback((DependencyObject)Noesis.Extend.GetProxy(d, false),
                             new DependencyPropertyChangedEventArgs(e, false));
                     }
                 }
             }
             catch (Exception exception)
             {
-                Noesis.Error.SetNativePendingError(exception);
+                Error.UnhandledException(exception);
             }
         }
 
         static protected Dictionary<IntPtr, PropertyChangedCallback> _PropertyChangedCallback =
             new Dictionary<IntPtr, PropertyChangedCallback>();
 
-        internal static void ClearCallbacks()
+        #endregion
+
+        #region CoerceValueCallback management
+        protected delegate IntPtr ManagedCoerceValueCallback(IntPtr cPtr, IntPtr d, IntPtr baseValue);
+        private static ManagedCoerceValueCallback _coerce = OnCoerceValue;
+
+        [MonoPInvokeCallback(typeof(ManagedCoerceValueCallback))]
+        protected static IntPtr OnCoerceValue(IntPtr cPtr, IntPtr d, IntPtr baseValue)
         {
-            _PropertyChangedCallback.Clear();
+            try
+            {
+                if (!_CoerceValueCallback.ContainsKey(cPtr))
+                {
+                    throw new Exception("CoerceValueCallback not found");
+                }
+                if (d == IntPtr.Zero && baseValue == IntPtr.Zero)
+                {
+                    _CoerceValueCallback.Remove(cPtr);
+                    return IntPtr.Zero;
+                }
+                if (Noesis.Extend.Initialized)
+                {
+                    CoerceValueCallback callback = _CoerceValueCallback[cPtr];
+                    if (callback != null)
+                    {
+                        object coercedValue = callback(
+                            (DependencyObject)Noesis.Extend.GetProxy(d, false),
+                            Noesis.Extend.GetProxy(baseValue, false));
+
+                        HandleRef handle = Noesis.Extend.GetInstanceHandle(coercedValue);
+                        BaseComponent.AddReference(handle.Handle); // released by native bindings
+
+                        return handle.Handle;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Error.UnhandledException(exception);
+            }
+
+            return IntPtr.Zero;
         }
+
+        static protected Dictionary<IntPtr, CoerceValueCallback> _CoerceValueCallback =
+            new Dictionary<IntPtr, CoerceValueCallback>();
 
         #endregion
 
-        #region Imports
-
-        private static IntPtr Noesis_CreatePropertyMetadata_(HandleRef defaultValue,
-            DelegateInvokePropertyChangedCallback invokePropertyChangedCallback)
+        internal static void ClearCallbacks()
         {
-            IntPtr result = Noesis_CreatePropertyMetadata(defaultValue, invokePropertyChangedCallback);
-            Error.Check();
-            return result;
+            _PropertyChangedCallback.Clear();
+            _CoerceValueCallback.Clear();
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Imports
         [DllImport(Library.Name)]
-        private static extern IntPtr Noesis_CreatePropertyMetadata(HandleRef defaultValue,
-            DelegateInvokePropertyChangedCallback invokePropertyChangedCallback);
+        private static extern IntPtr Noesis_PropertyMetadata_Create();
+
+        [DllImport(Library.Name)]
+        private static extern void Noesis_PropertyMetadata_BindPropertyChangedCallback(
+            HandleRef cPtr, ManagedPropertyChangedCallback callback);
+
+        [DllImport(Library.Name)]
+        private static extern void Noesis_PropertyMetadata_UnbindPropertyChangedCallback(
+            HandleRef cPtr, ManagedPropertyChangedCallback callback);
+
+        [DllImport(Library.Name)]
+        private static extern void Noesis_PropertyMetadata_BindCoerceValueCallback(
+            HandleRef cPtr, ManagedCoerceValueCallback callback);
+
+        [DllImport(Library.Name)]
+        private static extern void Noesis_PropertyMetadata_UnbindCoerceValueCallback(
+            HandleRef cPtr, ManagedCoerceValueCallback callback);
 
         #endregion
     }

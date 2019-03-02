@@ -32,18 +32,15 @@ public class BindingExpressionBase : Expression {
 
   public virtual void UpdateTarget() {
     NoesisGUI_PINVOKE.BindingExpressionBase_UpdateTarget(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public virtual void UpdateSource() {
     NoesisGUI_PINVOKE.BindingExpressionBase_UpdateSource(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public DependencyObject Target {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.BindingExpressionBase_Target_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -51,7 +48,6 @@ public class BindingExpressionBase : Expression {
   public DependencyProperty TargetProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.BindingExpressionBase_TargetProperty_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -59,14 +55,12 @@ public class BindingExpressionBase : Expression {
   public BindingBase ParentBindingBase {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.BindingExpressionBase_ParentBindingBase_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (BindingBase)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.BindingExpressionBase_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

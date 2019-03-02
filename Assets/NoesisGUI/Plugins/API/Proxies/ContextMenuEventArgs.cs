@@ -44,40 +44,41 @@ public class ContextMenuEventArgs : RoutedEventArgs {
     }
   }
 
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    ContextMenuEventHandler handler_ = (ContextMenuEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new ContextMenuEventArgs(args, false));
+    }
+  }
+
+  public DependencyObject TargetElement {
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.ContextMenuEventArgs_TargetElement_get(swigCPtr);
+      return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
   public float CursorLeft {
     get {
-      return GetCursorLeftHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ContextMenuEventArgs_CursorLeft_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public float CursorTop {
     get {
-      return GetCursorTopHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ContextMenuEventArgs_CursorTop_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public ContextMenuEventArgs(object s, RoutedEvent e, float left, float top) : this(NoesisGUI_PINVOKE.new_ContextMenuEventArgs__SWIG_0(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), left, top), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public ContextMenuEventArgs(object s, RoutedEvent e, float left) : this(NoesisGUI_PINVOKE.new_ContextMenuEventArgs__SWIG_1(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), left), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public ContextMenuEventArgs(object s, RoutedEvent e) : this(NoesisGUI_PINVOKE.new_ContextMenuEventArgs__SWIG_2(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private float GetCursorLeftHelper() {
-    float ret = NoesisGUI_PINVOKE.ContextMenuEventArgs_GetCursorLeftHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private float GetCursorTopHelper() {
-    float ret = NoesisGUI_PINVOKE.ContextMenuEventArgs_GetCursorTopHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
   }
 
 }

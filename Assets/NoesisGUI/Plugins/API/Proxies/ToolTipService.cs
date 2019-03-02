@@ -19,11 +19,9 @@ public static class ToolTipService {
   public static DependencyProperty BetweenShowDelayProperty {
     set {
       NoesisGUI_PINVOKE.ToolTipService_BetweenShowDelayProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_BetweenShowDelayProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -31,11 +29,9 @@ public static class ToolTipService {
   public static DependencyProperty HasDropShadowProperty {
     set {
       NoesisGUI_PINVOKE.ToolTipService_HasDropShadowProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_HasDropShadowProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -43,11 +39,9 @@ public static class ToolTipService {
   public static DependencyProperty HorizontalOffsetProperty {
     set {
       NoesisGUI_PINVOKE.ToolTipService_HorizontalOffsetProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_HorizontalOffsetProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -55,11 +49,9 @@ public static class ToolTipService {
   public static DependencyProperty InitialShowDelayProperty {
     set {
       NoesisGUI_PINVOKE.ToolTipService_InitialShowDelayProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_InitialShowDelayProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -67,11 +59,9 @@ public static class ToolTipService {
   public static DependencyProperty IsEnabledProperty {
     set {
       NoesisGUI_PINVOKE.ToolTipService_IsEnabledProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_IsEnabledProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -79,11 +69,9 @@ public static class ToolTipService {
   public static DependencyProperty IsOpenProperty {
     set {
       NoesisGUI_PINVOKE.ToolTipService_IsOpenProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_IsOpenProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -91,11 +79,9 @@ public static class ToolTipService {
   public static DependencyProperty PlacementProperty {
     set {
       NoesisGUI_PINVOKE.ToolTipService_PlacementProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_PlacementProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -103,11 +89,9 @@ public static class ToolTipService {
   public static DependencyProperty PlacementRectangleProperty {
     set {
       NoesisGUI_PINVOKE.ToolTipService_PlacementRectangleProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_PlacementRectangleProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -115,11 +99,9 @@ public static class ToolTipService {
   public static DependencyProperty PlacementTargetProperty {
     set {
       NoesisGUI_PINVOKE.ToolTipService_PlacementTargetProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_PlacementTargetProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -127,11 +109,9 @@ public static class ToolTipService {
   public static DependencyProperty ShowDurationProperty {
     set {
       NoesisGUI_PINVOKE.ToolTipService_ShowDurationProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_ShowDurationProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -139,11 +119,9 @@ public static class ToolTipService {
   public static DependencyProperty ShowOnDisabledProperty {
     set {
       NoesisGUI_PINVOKE.ToolTipService_ShowOnDisabledProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_ShowOnDisabledProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -151,11 +129,9 @@ public static class ToolTipService {
   public static DependencyProperty ToolTipProperty {
     set {
       NoesisGUI_PINVOKE.ToolTipService_ToolTipProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_ToolTipProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -163,11 +139,9 @@ public static class ToolTipService {
   public static DependencyProperty VerticalOffsetProperty {
     set {
       NoesisGUI_PINVOKE.ToolTipService_VerticalOffsetProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_VerticalOffsetProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -175,11 +149,9 @@ public static class ToolTipService {
   public static RoutedEvent ToolTipClosingEvent {
     set {
       NoesisGUI_PINVOKE.ToolTipService_ToolTipClosingEvent_set(RoutedEvent.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_ToolTipClosingEvent_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -187,95 +159,78 @@ public static class ToolTipService {
   public static RoutedEvent ToolTipOpeningEvent {
     set {
       NoesisGUI_PINVOKE.ToolTipService_ToolTipOpeningEvent_set(RoutedEvent.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_ToolTipOpeningEvent_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public static int GetBetweenShowDelay(DependencyObject obj) {
     int ret = NoesisGUI_PINVOKE.ToolTipService_GetBetweenShowDelay(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetBetweenShowDelay(DependencyObject obj, int delay) {
     NoesisGUI_PINVOKE.ToolTipService_SetBetweenShowDelay(DependencyObject.getCPtr(obj), delay);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static bool GetHasDropShadow(DependencyObject obj) {
     bool ret = NoesisGUI_PINVOKE.ToolTipService_GetHasDropShadow(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetHasDropShadow(DependencyObject obj, bool shadow) {
     NoesisGUI_PINVOKE.ToolTipService_SetHasDropShadow(DependencyObject.getCPtr(obj), shadow);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static float GetHorizontalOffset(DependencyObject obj) {
     float ret = NoesisGUI_PINVOKE.ToolTipService_GetHorizontalOffset(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetHorizontalOffset(DependencyObject obj, float offset) {
     NoesisGUI_PINVOKE.ToolTipService_SetHorizontalOffset(DependencyObject.getCPtr(obj), offset);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static int GetInitialShowDelay(DependencyObject obj) {
     int ret = NoesisGUI_PINVOKE.ToolTipService_GetInitialShowDelay(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetInitialShowDelay(DependencyObject obj, int delay) {
     NoesisGUI_PINVOKE.ToolTipService_SetInitialShowDelay(DependencyObject.getCPtr(obj), delay);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static bool GetIsEnabled(DependencyObject obj) {
     bool ret = NoesisGUI_PINVOKE.ToolTipService_GetIsEnabled(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetIsEnabled(DependencyObject obj, bool isEnabled) {
     NoesisGUI_PINVOKE.ToolTipService_SetIsEnabled(DependencyObject.getCPtr(obj), isEnabled);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static bool GetIsOpen(DependencyObject obj) {
     bool ret = NoesisGUI_PINVOKE.ToolTipService_GetIsOpen(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetIsOpen(DependencyObject obj, bool isOpen) {
     NoesisGUI_PINVOKE.ToolTipService_SetIsOpen(DependencyObject.getCPtr(obj), isOpen);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static PlacementMode GetPlacement(DependencyObject obj) {
     PlacementMode ret = (PlacementMode)NoesisGUI_PINVOKE.ToolTipService_GetPlacement(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetPlacement(DependencyObject obj, PlacementMode placement) {
     NoesisGUI_PINVOKE.ToolTipService_SetPlacement(DependencyObject.getCPtr(obj), (int)placement);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static Rect GetPlacementRectangle(DependencyObject obj) {
     IntPtr ret = NoesisGUI_PINVOKE.ToolTipService_GetPlacementRectangle(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Rect>(ret);
     }
@@ -286,62 +241,51 @@ public static class ToolTipService {
 
   public static void SetPlacementRectangle(DependencyObject obj, Rect rect) {
     NoesisGUI_PINVOKE.ToolTipService_SetPlacementRectangle(DependencyObject.getCPtr(obj), ref rect);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static UIElement GetPlacementTarget(DependencyObject obj) {
     IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_GetPlacementTarget(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public static void SetPlacementTarget(DependencyObject obj, UIElement target) {
     NoesisGUI_PINVOKE.ToolTipService_SetPlacementTarget(DependencyObject.getCPtr(obj), UIElement.getCPtr(target));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static int GetShowDuration(DependencyObject obj) {
     int ret = NoesisGUI_PINVOKE.ToolTipService_GetShowDuration(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetShowDuration(DependencyObject obj, int duration) {
     NoesisGUI_PINVOKE.ToolTipService_SetShowDuration(DependencyObject.getCPtr(obj), duration);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static bool GetShowOnDisabled(DependencyObject obj) {
     bool ret = NoesisGUI_PINVOKE.ToolTipService_GetShowOnDisabled(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetShowOnDisabled(DependencyObject obj, bool showOnDisable) {
     NoesisGUI_PINVOKE.ToolTipService_SetShowOnDisabled(DependencyObject.getCPtr(obj), showOnDisable);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static object GetToolTip(DependencyObject obj) {
     IntPtr cPtr = NoesisGUI_PINVOKE.ToolTipService_GetToolTip(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public static void SetToolTip(DependencyObject obj, object toolTip) {
     NoesisGUI_PINVOKE.ToolTipService_SetToolTip(DependencyObject.getCPtr(obj), Noesis.Extend.GetInstanceHandle(toolTip));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static float GetVerticalOffset(DependencyObject obj) {
     float ret = NoesisGUI_PINVOKE.ToolTipService_GetVerticalOffset(DependencyObject.getCPtr(obj));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetVerticalOffset(DependencyObject obj, float offset) {
     NoesisGUI_PINVOKE.ToolTipService_SetVerticalOffset(DependencyObject.getCPtr(obj), offset);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

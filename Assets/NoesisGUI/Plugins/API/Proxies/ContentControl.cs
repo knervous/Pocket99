@@ -47,7 +47,6 @@ public class ContentControl : Control {
   public static DependencyProperty ContentProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContentControl_ContentProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -55,7 +54,6 @@ public class ContentControl : Control {
   public static DependencyProperty ContentTemplateProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContentControl_ContentTemplateProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -63,7 +61,6 @@ public class ContentControl : Control {
   public static DependencyProperty ContentTemplateSelectorProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContentControl_ContentTemplateSelectorProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -71,7 +68,6 @@ public class ContentControl : Control {
   public static DependencyProperty HasContentProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContentControl_HasContentProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -79,11 +75,9 @@ public class ContentControl : Control {
   public object Content {
     set {
       NoesisGUI_PINVOKE.ContentControl_Content_set(swigCPtr, Noesis.Extend.GetInstanceHandle(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContentControl_Content_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -91,11 +85,9 @@ public class ContentControl : Control {
   public DataTemplate ContentTemplate {
     set {
       NoesisGUI_PINVOKE.ContentControl_ContentTemplate_set(swigCPtr, DataTemplate.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContentControl_ContentTemplate_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DataTemplate)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -103,11 +95,9 @@ public class ContentControl : Control {
   public DataTemplateSelector ContentTemplateSelector {
     set {
       NoesisGUI_PINVOKE.ContentControl_ContentTemplateSelector_set(swigCPtr, DataTemplateSelector.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ContentControl_ContentTemplateSelector_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DataTemplateSelector)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -115,14 +105,12 @@ public class ContentControl : Control {
   public bool HasContent {
     get {
       bool ret = NoesisGUI_PINVOKE.ContentControl_HasContent_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   private string ToStringHelper() {
     IntPtr strPtr = NoesisGUI_PINVOKE.ContentControl_ToStringHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
     NoesisGUI_PINVOKE.FreeString(strPtr);
     return str;
@@ -130,15 +118,11 @@ public class ContentControl : Control {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ContentControl_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_ContentControl(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_ContentControl(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

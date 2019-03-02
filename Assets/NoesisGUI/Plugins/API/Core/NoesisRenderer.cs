@@ -3,46 +3,20 @@ using System.Runtime.InteropServices;
 
 namespace Noesis
 {
-    public class Renderer
+    public class Renderer : BaseComponent
     {
         /// <summary>
-        /// Initializes the Renderer with a GL render device and the provided options.
+        /// Initializes the Renderer with the specified render device.
         /// </summary>
         /// <param name="vgOptions">Vector graphics options.</param>
-        public void InitGL(VGOptions vgOptions)
+        public void Init(RenderDevice device)
         {
-            Noesis_Renderer_InitGL_(CPtr,
-                vgOptions.OffscreenWidth, vgOptions.OffscreenHeight, vgOptions.OffscreenSampleCount,
-                vgOptions.OffscreenDefaultNumSurfaces, vgOptions.OffscreenMaxNumSurfaces,
-                vgOptions.GlyphCacheTextureWidth, vgOptions.GlyphCacheTextureHeight,
-                vgOptions.GlyphCacheMeshTreshold);
-        }
+            if (device == null)
+            {
+                throw new ArgumentNullException("device");
+            }
 
-        /// <summary>
-        /// Initializes the Renderer with a D3D11 render device and the provided options.
-        /// </summary>
-        /// <param name="vgOptions">Vector graphics options.</param>
-        public void InitD3D11(IntPtr deviceContext, VGOptions vgOptions)
-        {
-            Noesis_Renderer_InitD3D11_(CPtr, deviceContext, false,
-                vgOptions.OffscreenWidth, vgOptions.OffscreenHeight, vgOptions.OffscreenSampleCount,
-                vgOptions.OffscreenDefaultNumSurfaces, vgOptions.OffscreenMaxNumSurfaces,
-                vgOptions.GlyphCacheTextureWidth, vgOptions.GlyphCacheTextureHeight,
-                vgOptions.GlyphCacheMeshTreshold);
-        }
-
-        /// <summary>
-        /// Initializes the Renderer with a D3D11 render device and the provided options.
-        /// </summary>
-        /// <param name="sRGB">Enables linear rendering.</param>
-        /// <param name="vgOptions">Vector graphics options.</param>
-        public void InitD3D11(IntPtr deviceContext, bool sRGB, VGOptions vgOptions)
-        {
-            Noesis_Renderer_InitD3D11_(CPtr, deviceContext, sRGB,
-                vgOptions.OffscreenWidth, vgOptions.OffscreenHeight, vgOptions.OffscreenSampleCount,
-                vgOptions.OffscreenDefaultNumSurfaces, vgOptions.OffscreenMaxNumSurfaces,
-                vgOptions.GlyphCacheTextureWidth, vgOptions.GlyphCacheTextureHeight,
-                vgOptions.GlyphCacheMeshTreshold);
+            Noesis_Renderer_Init(CPtr, device.CPtr);
         }
 
         /// <summary>
@@ -50,7 +24,7 @@ namespace Noesis
         /// </summary>
         public void Shutdown()
         {
-            Noesis_Renderer_Shutdown_(CPtr);
+            Noesis_Renderer_Shutdown(CPtr);
         }
 
         /// <summary>
@@ -62,7 +36,7 @@ namespace Noesis
         /// <param name="height">Vertical size of visible region.</param>
         public void SetRenderRegion(float x, float y, float width, float height)
         {
-            Noesis_Renderer_SetRenderRegion_(CPtr, x, y, width, height);
+            Noesis_Renderer_SetRenderRegion(CPtr, x, y, width, height);
         }
 
         /// <summary>
@@ -71,7 +45,7 @@ namespace Noesis
         /// </summary>
         public bool UpdateRenderTree()
         {
-            return Noesis_Renderer_UpdateRenderTree_(CPtr);
+            return Noesis_Renderer_UpdateRenderTree(CPtr);
         }
 
         /// <summary>
@@ -80,7 +54,7 @@ namespace Noesis
         /// </summary>
         public bool NeedsOffscreen()
         {
-            return Noesis_Renderer_NeedsOffscreen_(CPtr);
+            return Noesis_Renderer_NeedsOffscreen(CPtr);
         }
 
         /// <summary>
@@ -90,7 +64,7 @@ namespace Noesis
         /// </summary>
         public void RenderOffscreen()
         {
-            Noesis_Renderer_RenderOffscreen_(CPtr);
+            Noesis_Renderer_RenderOffscreen(CPtr);
         }
 
         /// <summary>
@@ -98,95 +72,33 @@ namespace Noesis
         /// </summary>
         public void Render()
         {
-            Noesis_Renderer_Render_(CPtr);
+            Noesis_Renderer_Render(CPtr);
         }
 
         #region Private members
-        internal Renderer(View view)
+        internal Renderer(IntPtr cPtr, bool ownMemory): base(cPtr, ownMemory)
         {
-            _view = view;
         }
 
-        private HandleRef CPtr { get { return _view.CPtr; } }
+        internal new static Renderer CreateProxy(IntPtr cPtr, bool cMemoryOwn)
+        {
+            return new Renderer(cPtr, cMemoryOwn);
+        }
 
-        View _view;
+        new internal static IntPtr GetStaticType()
+        {
+            return Noesis_Renderer_GetStaticType();
+        }
+
+        private HandleRef CPtr { get { return BaseComponent.getCPtr(this); } }
         #endregion
 
         #region Imports
-        static void Noesis_Renderer_InitGL_(HandleRef renderer,
-            uint offscreenWidth, uint offscreenHeight, uint offscreenSampleCount,
-            uint offscreenDefaultNumSurfaces, uint offscreenMaxNumSurfaces,
-            uint glyphCacheTextureWidth, uint glyphCacheTextureHeight, uint glyphCacheMeshTreshold)
-        {
-            Noesis_Renderer_InitGL(renderer,
-                offscreenWidth, offscreenHeight, offscreenSampleCount,
-                offscreenDefaultNumSurfaces, offscreenMaxNumSurfaces,
-                glyphCacheTextureWidth, glyphCacheTextureHeight, glyphCacheMeshTreshold);
-            Error.Check();
-        }
-
-        static void Noesis_Renderer_InitD3D11_(HandleRef renderer, IntPtr deviceContext, bool sRGB,
-            uint offscreenWidth, uint offscreenHeight, uint offscreenSampleCount,
-            uint offscreenDefaultNumSurfaces, uint offscreenMaxNumSurfaces,
-            uint glyphCacheTextureWidth, uint glyphCacheTextureHeight, uint glyphCacheMeshTreshold)
-        {
-            Noesis_Renderer_InitD3D11(renderer, deviceContext, sRGB,
-                offscreenWidth, offscreenHeight, offscreenSampleCount,
-                offscreenDefaultNumSurfaces, offscreenMaxNumSurfaces,
-                glyphCacheTextureWidth, glyphCacheTextureHeight, glyphCacheMeshTreshold);
-            Error.Check();
-        }
-
-        static void Noesis_Renderer_Shutdown_(HandleRef renderer)
-        {
-            Noesis_Renderer_Shutdown(renderer);
-            Error.Check();
-        }
-
-        static void Noesis_Renderer_SetRenderRegion_(HandleRef renderer,
-            float x, float y, float width, float height)
-        {
-            Noesis_Renderer_SetRenderRegion(renderer, x, y, width, height);
-            Error.Check();
-        }
-
-        static bool Noesis_Renderer_UpdateRenderTree_(HandleRef renderer)
-        {
-            bool ret = Noesis_Renderer_UpdateRenderTree(renderer);
-            Error.Check();
-            return ret;
-        }
-
-        static bool Noesis_Renderer_NeedsOffscreen_(HandleRef renderer)
-        {
-            bool ret = Noesis_Renderer_NeedsOffscreen(renderer);
-            Error.Check();
-            return ret;
-        }
-
-        static void Noesis_Renderer_RenderOffscreen_(HandleRef renderer)
-        {
-            Noesis_Renderer_RenderOffscreen(renderer);
-            Error.Check();
-        }
-
-        static void Noesis_Renderer_Render_(HandleRef renderer)
-        {
-            Noesis_Renderer_Render(renderer);
-            Error.Check();
-        }
+        [DllImport(Library.Name)]
+        static extern IntPtr Noesis_Renderer_GetStaticType();
 
         [DllImport(Library.Name)]
-        static extern void Noesis_Renderer_InitGL(HandleRef renderer,
-            uint offscreenWidth, uint offscreenHeight, uint offscreenSampleCount,
-            uint offscreenDefaultNumSurfaces, uint offscreenMaxNumSurfaces,
-            uint glyphCacheTextureWidth, uint glyphCacheTextureHeight, uint glyphCacheMeshTreshold);
-
-        [DllImport(Library.Name)]
-        static extern void Noesis_Renderer_InitD3D11(HandleRef renderer, IntPtr deviceContext,
-            bool sRGB, uint offscreenWidth, uint offscreenHeight, uint offscreenSampleCount,
-            uint offscreenDefaultNumSurfaces, uint offscreenMaxNumSurfaces,
-            uint glyphCacheTextureWidth, uint glyphCacheTextureHeight, uint glyphCacheMeshTreshold);
+        static extern void Noesis_Renderer_Init(HandleRef renderer, HandleRef device);
 
         [DllImport(Library.Name)]
         static extern void Noesis_Renderer_Shutdown(HandleRef renderer);
@@ -209,64 +121,5 @@ namespace Noesis
         [DllImport(Library.Name)]
         static extern void Noesis_Renderer_Render(HandleRef renderer);
         #endregion
-    }
-
-    /// <summary>
-    /// Vector graphics Renderer initialization options
-    /// </summary>
-    public class VGOptions
-    {
-        /// <summary>
-        /// Width dimension of offscreen textures (0 = automatic). Default = 0.
-        /// </summary>
-        public uint OffscreenWidth { get; set; }
-
-
-        /// <summary>
-        /// Height dimension of offscreen textures (0 = automatic). Default = 0.
-        /// </summary>
-        public uint OffscreenHeight { get; set; }
-
-        /// <summary>
-        /// Multisampling of offscreen textures. Default = 1.
-        /// </summary>
-        public uint OffscreenSampleCount { get; set; }
-
-        /// <summary>
-        /// Number of offscreen textures created at startup. Default = 0.
-        /// </summary>
-        public uint OffscreenDefaultNumSurfaces { get; set; }
-
-        /// <summary>
-        /// Maximum number of offscreen textures (0 = unlimited). Default = 0.
-        /// </summary>
-        public uint OffscreenMaxNumSurfaces { get; set; }
-
-        /// <summary>
-        /// Width dimension of texture used to cache glyphs. Default = 1024.
-        /// </summary>
-        public uint GlyphCacheTextureWidth { get; set; }
-
-        /// <summary>
-        /// Height dimension of texture used to cache glyphs. Default = 1024.
-        /// </summary>
-        public uint GlyphCacheTextureHeight { get; set; }
-
-        /// <summary>
-        /// Glyphs with size above this are rendered using triangles meshes. Default = 48.
-        /// </summary>
-        public uint GlyphCacheMeshTreshold { get; set; }
-
-        public VGOptions()
-        {
-            OffscreenWidth = 0;
-            OffscreenHeight = 0;
-            OffscreenSampleCount = 1;
-            OffscreenDefaultNumSurfaces = 0;
-            OffscreenMaxNumSurfaces = 0;
-            GlyphCacheTextureWidth = 1024;
-            GlyphCacheTextureHeight = 1024;
-            GlyphCacheMeshTreshold = 96;
-        }
     }
 }

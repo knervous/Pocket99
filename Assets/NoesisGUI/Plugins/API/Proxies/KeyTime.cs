@@ -137,7 +137,6 @@ public struct KeyTime {
 
   public static bool TryParse(string str, out KeyTime result) {
     bool ret = NoesisGUI_PINVOKE.KeyTime_TryParse(str != null ? str : string.Empty, out result);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

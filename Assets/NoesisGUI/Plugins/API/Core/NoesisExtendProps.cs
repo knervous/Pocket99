@@ -469,281 +469,279 @@ namespace Noesis
         #region Add property type table
 
         private delegate ExtendPropertyData AddPropertyDelegate(NativeTypePropsInfo info, PropertyInfo p, bool usePropertyInfo);
-        private static Dictionary<RuntimeTypeHandle, AddPropertyDelegate> _addPropertyFunctions =
-            AddPropertyFunctions();
+        private static Dictionary<Type, AddPropertyDelegate> _addPropertyFunctions = AddPropertyFunctions();
 
-        private static Dictionary<RuntimeTypeHandle, AddPropertyDelegate> AddPropertyFunctions()
+        private static Dictionary<Type, AddPropertyDelegate> AddPropertyFunctions()
         {
-            Dictionary<RuntimeTypeHandle, AddPropertyDelegate> addPropFunctions =
-                new Dictionary<RuntimeTypeHandle, AddPropertyDelegate>();
+            Dictionary<Type, AddPropertyDelegate> addPropFunctions = new Dictionary<Type, AddPropertyDelegate>();
 
-            addPropFunctions[typeof(bool).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(bool)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<bool>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.Bool);
             };
 
-            addPropFunctions[typeof(float).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(float)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<float>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.Float);
             };
 
-            addPropFunctions[typeof(double).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(double)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<double>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.Double);
             };
 
-            addPropFunctions[typeof(decimal).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(decimal)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<double, decimal>(info, p, (v) => (double)v, (v) => (decimal)v, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.Double);
             };
 
-            addPropFunctions[typeof(int).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(int)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<int>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.Int);
             };
 
-            addPropFunctions[typeof(long).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(long)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<int, long>(info, p, (v) => (int)v, (v) => (long)v, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.Int);
             };
 
-            addPropFunctions[typeof(uint).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(uint)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<uint>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.UInt);
             };
 
-            addPropFunctions[typeof(ulong).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(ulong)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<uint, ulong>(info, p, (v) => (uint)v, (v) => (ulong)v, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.UInt);
             };
 
-            addPropFunctions[typeof(char).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(char)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<uint, char>(info, p, (v) => (uint)v, (v) => (char)v, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.UInt);
             };
 
-            addPropFunctions[typeof(short).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(short)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<short>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.Short);
             };
 
-            addPropFunctions[typeof(sbyte).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(sbyte)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<short, sbyte>(info, p, (v) => (short)v, (v) => (sbyte)v, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.Short);
             };
 
-            addPropFunctions[typeof(ushort).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(ushort)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<ushort>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.UShort);
             };
 
-            addPropFunctions[typeof(byte).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(byte)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<ushort, byte>(info, p, (v) => (ushort)v, (v) => (byte)v, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.UShort);
             };
 
-            addPropFunctions[typeof(Noesis.Color).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.Color)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<Noesis.Color>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.Color);
             };
 
-            addPropFunctions[typeof(Noesis.Point).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.Point)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<Noesis.Point>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.Point);
             };
 
-            addPropFunctions[typeof(Noesis.Rect).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.Rect)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<Noesis.Rect>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.Rect);
             };
 
-            addPropFunctions[typeof(Noesis.Size).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.Size)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<Noesis.Size>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.Size);
             };
 
-            addPropFunctions[typeof(Noesis.Thickness).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.Thickness)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<Noesis.Thickness>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.Thickness);
             };
 
-            addPropFunctions[typeof(Noesis.CornerRadius).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.CornerRadius)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<Noesis.CornerRadius>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.CornerRadius);
             };
 
-            addPropFunctions[typeof(System.TimeSpan).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(System.TimeSpan)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<Noesis.TimeSpanStruct, System.TimeSpan>(info, p,
                     (v) => (Noesis.TimeSpanStruct)v, (v) => (System.TimeSpan)v, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.TimeSpan);
             };
 
-            addPropFunctions[typeof(Noesis.Duration).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.Duration)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<Noesis.Duration>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.Duration);
             };
 
-            addPropFunctions[typeof(Noesis.KeyTime).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.KeyTime)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<Noesis.KeyTime>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.KeyTime);
             };
 
-            addPropFunctions[typeof(bool?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(bool?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<bool?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableBool);
             };
 
-            addPropFunctions[typeof(float?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(float?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<float?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableFloat);
             };
 
-            addPropFunctions[typeof(double?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(double?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<double?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableDouble);
             };
 
-            addPropFunctions[typeof(decimal?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(decimal?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<double?, decimal?>(info, p, (v) => (double?)v, (v) => (decimal?)v, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableDouble);
             };
 
-            addPropFunctions[typeof(int?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(int?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<int?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableInt);
             };
 
-            addPropFunctions[typeof(long?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(long?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<int?, long?>(info, p, (v) => (int?)v, (v) => (long?)v, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableInt);
             };
 
-            addPropFunctions[typeof(uint?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(uint?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<uint?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableUInt);
             };
 
-            addPropFunctions[typeof(ulong?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(ulong?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<uint?, ulong?>(info, p, (v) => (uint?)v, (v) => (ulong?)v, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableUInt);
             };
 
-            addPropFunctions[typeof(char?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(char?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<uint?, char?>(info, p, (v) => (uint?)v, (v) => (char?)v, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableUInt);
             };
 
-            addPropFunctions[typeof(short?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(short?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<short?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableShort);
             };
 
-            addPropFunctions[typeof(sbyte?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(sbyte?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<short?, sbyte?>(info, p, (v) => (short?)v, (v) => (sbyte?)v, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableShort);
             };
 
-            addPropFunctions[typeof(ushort?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(ushort?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<ushort?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableUShort);
             };
 
-            addPropFunctions[typeof(byte?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(byte?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<ushort?, byte?>(info, p, (v) => (ushort?)v, (v) => (byte?)v, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableUShort);
             };
 
-            addPropFunctions[typeof(Noesis.Color?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.Color?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<Noesis.Color?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableColor);
             };
 
-            addPropFunctions[typeof(Noesis.Point?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.Point?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<Noesis.Point?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullablePoint);
             };
 
-            addPropFunctions[typeof(Noesis.Rect?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.Rect?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<Noesis.Rect?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableRect);
             };
 
-            addPropFunctions[typeof(Noesis.Size?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.Size?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<Noesis.Size?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableSize);
             };
 
-            addPropFunctions[typeof(Noesis.Thickness?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.Thickness?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<Noesis.Thickness?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableThickness);
             };
 
-            addPropFunctions[typeof(Noesis.CornerRadius?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.CornerRadius?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<Noesis.CornerRadius?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableCornerRadius);
             };
 
-            addPropFunctions[typeof(System.TimeSpan?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(System.TimeSpan?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<Noesis.TimeSpanStruct?, System.TimeSpan?>(info, p,
                     (v) => (Noesis.TimeSpanStruct?)v, (v) => (System.TimeSpan?)v, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableTimeSpan);
             };
 
-            addPropFunctions[typeof(Noesis.Duration?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.Duration?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<Noesis.Duration?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableDuration);
             };
 
-            addPropFunctions[typeof(Noesis.KeyTime?).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(Noesis.KeyTime?)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessorNullable<Noesis.KeyTime?>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.NullableKeyTime);
             };
 
-            addPropFunctions[typeof(string).TypeHandle] = (info, p, usePropertyInfo) =>
+            addPropFunctions[typeof(string)] = (info, p, usePropertyInfo) =>
             {
                 AddPropertyAccessor<string>(info, p, usePropertyInfo);
                 return CreatePropertyData(p, NativePropertyType.String);
@@ -757,7 +755,7 @@ namespace Noesis
         private static ExtendPropertyData AddProperty(NativeTypePropsInfo info, PropertyInfo p, bool usePropertyInfo)
         {
             AddPropertyDelegate addPropFunction;
-            if (_addPropertyFunctions.TryGetValue(p.PropertyType.TypeHandle, out addPropFunction))
+            if (_addPropertyFunctions.TryGetValue(p.PropertyType, out addPropFunction))
             {
                 return addPropFunction(info, p, usePropertyInfo);
             }
@@ -775,7 +773,7 @@ namespace Noesis
             }
             else
             {
-                if (p.PropertyType.TypeHandle == (object)typeof(System.Type).TypeHandle)
+                if (p.PropertyType == typeof(System.Type))
                 {
                     AddPropertyAccessor<object, object>(info, p,
                         (v) => Noesis.Extend.GetResourceKeyType((Type)v),

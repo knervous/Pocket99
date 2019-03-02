@@ -38,7 +38,6 @@ public class BounceEase : EasingFunctionBase {
   public static DependencyProperty BouncesProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.BounceEase_BouncesProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,7 +45,6 @@ public class BounceEase : EasingFunctionBase {
   public static DependencyProperty BouncinessProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.BounceEase_BouncinessProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -54,11 +52,9 @@ public class BounceEase : EasingFunctionBase {
   public int Bounces {
     set {
       NoesisGUI_PINVOKE.BounceEase_Bounces_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       int ret = NoesisGUI_PINVOKE.BounceEase_Bounces_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -66,18 +62,15 @@ public class BounceEase : EasingFunctionBase {
   public float Bounciness {
     set {
       NoesisGUI_PINVOKE.BounceEase_Bounciness_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.BounceEase_Bounciness_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.BounceEase_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

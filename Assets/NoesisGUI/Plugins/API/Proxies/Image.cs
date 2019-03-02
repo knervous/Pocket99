@@ -43,7 +43,6 @@ public class Image : FrameworkElement {
   public static DependencyProperty SourceProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Image_SourceProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -51,7 +50,6 @@ public class Image : FrameworkElement {
   public static DependencyProperty StretchProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Image_StretchProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -59,7 +57,6 @@ public class Image : FrameworkElement {
   public static DependencyProperty StretchDirectionProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Image_StretchDirectionProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -67,11 +64,9 @@ public class Image : FrameworkElement {
   public ImageSource Source {
     set {
       NoesisGUI_PINVOKE.Image_Source_set(swigCPtr, ImageSource.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Image_Source_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (ImageSource)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -79,11 +74,9 @@ public class Image : FrameworkElement {
   public Stretch Stretch {
     set {
       NoesisGUI_PINVOKE.Image_Stretch_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       Stretch ret = (Stretch)NoesisGUI_PINVOKE.Image_Stretch_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -91,26 +84,20 @@ public class Image : FrameworkElement {
   public StretchDirection StretchDirection {
     set {
       NoesisGUI_PINVOKE.Image_StretchDirection_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       StretchDirection ret = (StretchDirection)NoesisGUI_PINVOKE.Image_StretchDirection_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Image_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_Image(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_Image(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

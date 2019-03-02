@@ -30,10 +30,14 @@ public class AnimationTimeline : Timeline {
   protected AnimationTimeline() {
   }
 
+  public object GetCurrentValue(object defaultOriginValue, object defaultDestinationValue, AnimationClock animationClock) {
+    IntPtr cPtr = GetCurrentValueHelper(defaultOriginValue, defaultDestinationValue, animationClock);
+    return Noesis.Extend.GetProxy(cPtr, true);
+  }
+
   public static DependencyProperty IsAdditiveProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.AnimationTimeline_IsAdditiveProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -41,7 +45,6 @@ public class AnimationTimeline : Timeline {
   public static DependencyProperty IsCumulativeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.AnimationTimeline_IsCumulativeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -49,11 +52,9 @@ public class AnimationTimeline : Timeline {
   public bool IsAdditive {
     set {
       NoesisGUI_PINVOKE.AnimationTimeline_IsAdditive_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.AnimationTimeline_IsAdditive_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -61,24 +62,20 @@ public class AnimationTimeline : Timeline {
   public bool IsCumulative {
     set {
       NoesisGUI_PINVOKE.AnimationTimeline_IsCumulative_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.AnimationTimeline_IsCumulative_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
-  public object GetCurrentValue(object defValSrc, object defValDest, AnimationClock clock) {
-    IntPtr cPtr = NoesisGUI_PINVOKE.AnimationTimeline_GetCurrentValue(swigCPtr, Noesis.Extend.GetInstanceHandle(defValSrc), Noesis.Extend.GetInstanceHandle(defValDest), AnimationClock.getCPtr(clock));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return Noesis.Extend.GetProxy(cPtr, false);
+  private IntPtr GetCurrentValueHelper(object defValSrc, object defValDest, AnimationClock clock) {
+    IntPtr ret = NoesisGUI_PINVOKE.AnimationTimeline_GetCurrentValueHelper(swigCPtr, Noesis.Extend.GetInstanceHandle(defValSrc), Noesis.Extend.GetInstanceHandle(defValDest), AnimationClock.getCPtr(clock));
+    return ret;
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.AnimationTimeline_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

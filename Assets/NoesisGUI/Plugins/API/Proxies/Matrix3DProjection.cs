@@ -32,18 +32,19 @@ public class Matrix3DProjection : Projection {
 
   protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
     registerExtend = false;
-    return NoesisGUI_PINVOKE.new_Matrix3DProjection();
+    return NoesisGUI_PINVOKE.new_Matrix3DProjection__SWIG_0();
+  }
+
+  public Matrix3DProjection(Matrix4 matrix) : this(NoesisGUI_PINVOKE.new_Matrix3DProjection__SWIG_1(ref matrix), true) {
   }
 
   public override bool IsIdentity() {
     bool ret = NoesisGUI_PINVOKE.Matrix3DProjection_IsIdentity(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public override Matrix4 GetProjection(Size surface, Size size) {
     IntPtr ret = NoesisGUI_PINVOKE.Matrix3DProjection_GetProjection(swigCPtr, ref surface, ref size);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Matrix4>(ret);
     }
@@ -55,7 +56,6 @@ public class Matrix3DProjection : Projection {
   public static DependencyProperty ProjectionMatrixProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Matrix3DProjection_ProjectionMatrixProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -63,12 +63,10 @@ public class Matrix3DProjection : Projection {
   public Matrix4 ProjectionMatrix {
     set {
       NoesisGUI_PINVOKE.Matrix3DProjection_ProjectionMatrix_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.Matrix3DProjection_ProjectionMatrix_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Matrix4>(ret);
       }
@@ -81,7 +79,6 @@ public class Matrix3DProjection : Projection {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Matrix3DProjection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

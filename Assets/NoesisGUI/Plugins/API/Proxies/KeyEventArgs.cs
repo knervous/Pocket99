@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class KeyEventArgs : RoutedEventArgs {
+public class KeyEventArgs : KeyboardEventArgs {
   private HandleRef swigCPtr;
 
   internal KeyEventArgs(IntPtr cPtr, bool cMemoryOwn) : base(cPtr, cMemoryOwn) {
@@ -44,80 +44,63 @@ public class KeyEventArgs : RoutedEventArgs {
     }
   }
 
-  public Noesis.Key Key {
-    get {
-      return (Noesis.Key)GetKeyHelper();
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    KeyEventHandler handler_ = (KeyEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new KeyEventArgs(args, false));
     }
   }
 
-  public Noesis.KeyStates KeyStates {
+  public Key Key {
     get {
-      return (Noesis.KeyStates)GetKeyStatesHelper();
-    }
+      Key ret = (Key)NoesisGUI_PINVOKE.KeyEventArgs_Key_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public Key OriginalKey {
+    get {
+      Key ret = (Key)NoesisGUI_PINVOKE.KeyEventArgs_OriginalKey_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public KeyStates KeyStates {
+    get {
+      KeyStates ret = (KeyStates)NoesisGUI_PINVOKE.KeyEventArgs_KeyStates_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public KeyEventArgs(object s, RoutedEvent e, Key key, KeyStates keyStates) : this(NoesisGUI_PINVOKE.new_KeyEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), (int)key, (int)keyStates), true) {
   }
 
   public bool IsDown {
     get {
-      return GetIsDown();
-    }
+      bool ret = NoesisGUI_PINVOKE.KeyEventArgs_IsDown_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public bool IsUp {
     get {
-      return GetIsUp();
-    }
+      bool ret = NoesisGUI_PINVOKE.KeyEventArgs_IsUp_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public bool IsRepeat {
     get {
-      return GetIsRepeat();
-    }
+      bool ret = NoesisGUI_PINVOKE.KeyEventArgs_IsRepeat_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public bool IsToggled {
     get {
-      return GetIsToggled();
-    }
-  }
-
-  public KeyEventArgs(object s, RoutedEvent e, Key key, uint keyStates) : this(NoesisGUI_PINVOKE.new_KeyEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), (int)key, keyStates), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private bool GetIsDown() {
-    bool ret = NoesisGUI_PINVOKE.KeyEventArgs_GetIsDown(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private bool GetIsRepeat() {
-    bool ret = NoesisGUI_PINVOKE.KeyEventArgs_GetIsRepeat(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private bool GetIsToggled() {
-    bool ret = NoesisGUI_PINVOKE.KeyEventArgs_GetIsToggled(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private bool GetIsUp() {
-    bool ret = NoesisGUI_PINVOKE.KeyEventArgs_GetIsUp(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private Key GetKeyHelper() {
-    Key ret = (Key)NoesisGUI_PINVOKE.KeyEventArgs_GetKeyHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private uint GetKeyStatesHelper() {
-    uint ret = NoesisGUI_PINVOKE.KeyEventArgs_GetKeyStatesHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
+      bool ret = NoesisGUI_PINVOKE.KeyEventArgs_IsToggled_get(swigCPtr);
+      return ret;
+    } 
   }
 
 }

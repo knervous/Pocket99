@@ -36,12 +36,10 @@ public class SolidColorBrush : Brush {
   }
 
   public SolidColorBrush(Color color) : this(NoesisGUI_PINVOKE.new_SolidColorBrush__SWIG_1(ref color), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public override string ToString() {
     IntPtr strPtr = NoesisGUI_PINVOKE.SolidColorBrush_ToString(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
     NoesisGUI_PINVOKE.FreeString(strPtr);
     return str;
@@ -50,7 +48,6 @@ public class SolidColorBrush : Brush {
   public static DependencyProperty ColorProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.SolidColorBrush_ColorProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -58,12 +55,10 @@ public class SolidColorBrush : Brush {
   public Color Color {
     set {
       NoesisGUI_PINVOKE.SolidColorBrush_Color_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.SolidColorBrush_Color_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Color>(ret);
       }
@@ -76,7 +71,6 @@ public class SolidColorBrush : Brush {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.SolidColorBrush_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

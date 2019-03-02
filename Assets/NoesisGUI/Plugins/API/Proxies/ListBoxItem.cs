@@ -11,7 +11,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 
 namespace Noesis
 {
@@ -29,119 +28,23 @@ public class ListBoxItem : ContentControl {
   }
 
   #region Events
-  #region Selected
-  public delegate void SelectedHandler(object sender, RoutedEventArgs e);
-  public event SelectedHandler Selected {
+  public event RoutedEventHandler Selected {
     add {
-      if (!_Selected.ContainsKey(swigCPtr.Handle)) {
-        _Selected.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_ListBoxItem_Selected(_raiseSelected, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _Selected[swigCPtr.Handle] += value;
+      AddHandler(SelectedEvent, value);
     }
     remove {
-      if (_Selected.ContainsKey(swigCPtr.Handle)) {
-
-        _Selected[swigCPtr.Handle] -= value;
-
-        if (_Selected[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_ListBoxItem_Selected(_raiseSelected, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _Selected.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(SelectedEvent, value);
     }
   }
 
-  internal delegate void RaiseSelectedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseSelectedCallback _raiseSelected = RaiseSelected;
-
-  [MonoPInvokeCallback(typeof(RaiseSelectedCallback))]
-  private static void RaiseSelected(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_Selected.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for Selected event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _Selected.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        SelectedHandler handler = _Selected[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new RoutedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, SelectedHandler> _Selected =
-      new Dictionary<IntPtr, SelectedHandler>();
-  #endregion
-
-  #region Unselected
-  public delegate void UnselectedHandler(object sender, RoutedEventArgs e);
-  public event UnselectedHandler Unselected {
+  public event RoutedEventHandler Unselected {
     add {
-      if (!_Unselected.ContainsKey(swigCPtr.Handle)) {
-        _Unselected.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_ListBoxItem_Unselected(_raiseUnselected, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _Unselected[swigCPtr.Handle] += value;
+      AddHandler(UnselectedEvent, value);
     }
     remove {
-      if (_Unselected.ContainsKey(swigCPtr.Handle)) {
-
-        _Unselected[swigCPtr.Handle] -= value;
-
-        if (_Unselected[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_ListBoxItem_Unselected(_raiseUnselected, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _Unselected.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(UnselectedEvent, value);
     }
   }
-
-  internal delegate void RaiseUnselectedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseUnselectedCallback _raiseUnselected = RaiseUnselected;
-
-  [MonoPInvokeCallback(typeof(RaiseUnselectedCallback))]
-  private static void RaiseUnselected(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_Unselected.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for Unselected event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _Unselected.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        UnselectedHandler handler = _Unselected[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new RoutedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, UnselectedHandler> _Unselected =
-      new Dictionary<IntPtr, UnselectedHandler>();
-  #endregion
 
   #endregion
 
@@ -161,34 +64,47 @@ public class ListBoxItem : ContentControl {
   public static DependencyProperty IsSelectedProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ListBoxItem_IsSelectedProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent SelectedEvent {
+    set {
+      NoesisGUI_PINVOKE.ListBoxItem_SelectedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.ListBoxItem_SelectedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent UnselectedEvent {
+    set {
+      NoesisGUI_PINVOKE.ListBoxItem_UnselectedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.ListBoxItem_UnselectedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public bool IsSelected {
     set {
       NoesisGUI_PINVOKE.ListBoxItem_IsSelected_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.ListBoxItem_IsSelected_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ListBoxItem_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_ListBoxItem(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_ListBoxItem(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

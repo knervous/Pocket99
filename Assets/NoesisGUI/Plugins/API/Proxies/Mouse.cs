@@ -30,17 +30,16 @@ public class Mouse : BaseComponent {
   protected Mouse() {
   }
 
-  public Pointi Position {
+  public Point Position {
     get {
-      Pointi pos;
-      GetPositionValue(out pos);
+      Point pos;
+      GetPositionHelper(out pos);
       return pos;
     }
   }
 
   public static Point GetPosition(UIElement relativeTo) {
     IntPtr ret = NoesisGUI_PINVOKE.Mouse_GetPosition(UIElement.getCPtr(relativeTo));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Point>(ret);
     }
@@ -51,33 +50,158 @@ public class Mouse : BaseComponent {
 
   public MouseButtonState GetButtonState(MouseButton button) {
     MouseButtonState ret = (MouseButtonState)NoesisGUI_PINVOKE.Mouse_GetButtonState(swigCPtr, (int)button);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool Capture(UIElement element, CaptureMode mode) {
     bool ret = NoesisGUI_PINVOKE.Mouse_Capture__SWIG_0(swigCPtr, UIElement.getCPtr(element), (int)mode);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool Capture(UIElement element) {
     bool ret = NoesisGUI_PINVOKE.Mouse_Capture__SWIG_1(swigCPtr, UIElement.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
+  }
+
+  public static RoutedEvent GotMouseCaptureEvent {
+    set {
+      NoesisGUI_PINVOKE.Mouse_GotMouseCaptureEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Mouse_GotMouseCaptureEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent LostMouseCaptureEvent {
+    set {
+      NoesisGUI_PINVOKE.Mouse_LostMouseCaptureEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Mouse_LostMouseCaptureEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseDownEvent {
+    set {
+      NoesisGUI_PINVOKE.Mouse_MouseDownEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Mouse_MouseDownEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseEnterEvent {
+    set {
+      NoesisGUI_PINVOKE.Mouse_MouseEnterEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Mouse_MouseEnterEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseLeaveEvent {
+    set {
+      NoesisGUI_PINVOKE.Mouse_MouseLeaveEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Mouse_MouseLeaveEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseMoveEvent {
+    set {
+      NoesisGUI_PINVOKE.Mouse_MouseMoveEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Mouse_MouseMoveEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseUpEvent {
+    set {
+      NoesisGUI_PINVOKE.Mouse_MouseUpEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Mouse_MouseUpEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseWheelEvent {
+    set {
+      NoesisGUI_PINVOKE.Mouse_MouseWheelEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Mouse_MouseWheelEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewMouseDownEvent {
+    set {
+      NoesisGUI_PINVOKE.Mouse_PreviewMouseDownEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Mouse_PreviewMouseDownEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewMouseMoveEvent {
+    set {
+      NoesisGUI_PINVOKE.Mouse_PreviewMouseMoveEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Mouse_PreviewMouseMoveEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewMouseUpEvent {
+    set {
+      NoesisGUI_PINVOKE.Mouse_PreviewMouseUpEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Mouse_PreviewMouseUpEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewMouseWheelEvent {
+    set {
+      NoesisGUI_PINVOKE.Mouse_PreviewMouseWheelEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Mouse_PreviewMouseWheelEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent QueryCursorEvent {
+    set {
+      NoesisGUI_PINVOKE.Mouse_QueryCursorEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Mouse_QueryCursorEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
   }
 
   public UIElement Captured {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Mouse_Captured_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
-  private void GetPositionValue(out Pointi pos) {
-    NoesisGUI_PINVOKE.Mouse_GetPositionValue(swigCPtr, out pos);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  private void GetPositionHelper(out Point pos) {
+    NoesisGUI_PINVOKE.Mouse_GetPositionHelper(swigCPtr, out pos);
   }
 
 }

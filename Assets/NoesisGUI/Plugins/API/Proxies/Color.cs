@@ -27,166 +27,44 @@ public struct Color {
   [MarshalAs(UnmanagedType.R4)]
   private float _a;
 
-  public float this[uint i] {
-    get {
-      switch (i) {
-        case 0: return R;
-        case 1: return G;
-        case 2: return B;
-        case 3: return A;
-        default: throw new IndexOutOfRangeException();
-      }
-    }
-    set {
-      switch (i) {
-        case 0: R = value; break;
-        case 1: G = value; break;
-        case 2: B = value; break;
-        case 3: A = value; break;
-        default: throw new IndexOutOfRangeException();
-      }
-    }
+  public byte A {
+    get { return Color.ToByte(_a); }
+    set { _a = Color.FromByte(value); }
   }
 
-  public float R {
-    get { return this._r; }
-    set { this._r = value; }
+  public byte R {
+    get { return Color.ToByte(_r); }
+    set { _r = Color.FromByte(value); }
   }
 
-  public float G {
-    get { return this._g; }
-    set { this._g = value; }
+  public byte G {
+    get { return Color.ToByte(_g); }
+    set { _g = Color.FromByte(value); }
   }
 
-  public float B {
-    get { return this._b; }
-    set { this._b = value; }
+  public byte B {
+    get { return Color.ToByte(_b); }
+    set { _b = Color.FromByte(value); }
   }
 
-  public float A {
-    get { return this._a; }
-    set { this._a = value; }
+  public float ScA {
+    get { return _a; }
+    set { _a = value; }
   }
 
-  public byte Ri {
-    get { return ToByte(R); }
-    set { R = FromByte(value); }
+  public float ScR {
+    get { return Color.sRgbToScRgb(_r); }
+    set { _r = Color.ScRgbTosRgb(value); }
   }
 
-  public byte Gi {
-    get { return ToByte(G); }
-    set { G = FromByte(value); }
+  public float ScG {
+    get { return Color.sRgbToScRgb(_g); }
+    set { _g = Color.ScRgbTosRgb(value); }
   }
 
-  public byte Bi {
-    get { return ToByte(B); }
-    set { B = FromByte(value); }
-  }
-
-  public byte Ai {
-    get { return ToByte(A); }
-    set { A = FromByte(value); }
-  }
-
-  public uint PackedRGBA {
-    get {
-      return (uint)((uint)Ai << 24 | (uint)Bi << 16 | (uint)Gi << 8 | (uint)Ri);
-    }
-    set {
-      Ri = (byte)(value & 0XFF);
-      Gi = (byte)((value >> 8) & 0XFF);
-      Bi = (byte)((value >> 16) & 0XFF);
-      Ai = (byte)(value >> 24);
-    }
-  }
-
-  public uint PackedBGRA {
-    get {
-      return (uint)((uint)Ai << 24 | (uint)Ri << 16 | (uint)Gi << 8 | (uint)Bi);
-    }
-    set {
-      Bi = (byte)(value & 0XFF);
-      Gi = (byte)((value >> 8) & 0XFF);
-      Ri = (byte)((value >> 16) & 0XFF);
-      Ai = (byte)(value >> 24);
-    }
-  }
-
-  public Color(float r, float g, float b) : this(r, g, b, 1.0f) {
-  }
-
-  public Color(float r, float g, float b, float a) {
-    this._r = r;
-    this._g = g;
-    this._b = b;
-    this._a = a;
-  }
-
-  public Color(byte r, byte g, byte b) : this(r, g, b, 255) {
-  }
-
-  public Color(byte r, byte g, byte b, byte a) : this(FromByte(r), FromByte(g), FromByte(b), FromByte(a)) {
-  }
-
-  public static Color FromPackedRGBA(uint rgba) {
-    Color color = new Color();
-    color.PackedRGBA = rgba;
-    return color;
-  }
-
-  public static Color FromPackedBGRA(uint bgra) {
-    Color color = new Color();
-    color.PackedBGRA = bgra;
-    return color;
-  }
-
-  public static Color FromLinearRGB(float r, float g, float b) {
-    return FromLinearRGB(r, g, b, 1.0f);
-  }
-
-  public static Color FromLinearRGB(float r, float g, float b, float a) {
-    return new Color(Gamma(r), Gamma(g), Gamma(b), a);
-  }
-
-  public static Color FromLinearRGB(byte r, byte g, byte b) {
-    return FromLinearRGB(r, g, b, 255);
-  }
-
-  public static Color FromLinearRGB(byte r, byte g, byte b, byte a) {
-    return FromLinearRGB(FromByte(r), FromByte(g), FromByte(b), FromByte(a));
-  }
-
-  public void ToLinearRGB(out float r, out float g, out float b, out float a) {
-    r = DeGamma(R);
-    g = DeGamma(G);
-    b = DeGamma(B);
-    a = A;
-  }
-
-  public void ToLinearRGB(out byte r, out byte g, out byte b, out byte a) {
-    r = ToByte(DeGamma(R));
-    g = ToByte(DeGamma(G));
-    b = ToByte(DeGamma(B));
-    a = ToByte(A);
-  }
-
-  private static float Gamma(float v)
-  {
-    if (v <= 0.00304f) {
-      return v * 12.92f;
-    }
-    else {
-      return 1.055f * (float)Math.Pow((double)v, 1.0 / 2.4) - 0.055f;
-    }
-  }
-
-  private static float DeGamma(float v) {
-    if (v <= 0.03928f) {
-      return v / 12.92f;
-    }
-    else {
-      return (float)Math.Pow((v + 0.055) / 1.055, 2.4);
-    }
+  public float ScB {
+    get { return Color.sRgbToScRgb(_b); }
+    set { _b = Color.ScRgbTosRgb(value); }
   }
 
   private static float FromByte(byte v) {
@@ -194,93 +72,118 @@ public struct Color {
   }
 
   private static byte ToByte(float v) {
-    return (byte)Math.Round(System.Math.Max(0.0f, System.Math.Min(v * 255.0f, 255.0f)));
+    return (byte)Math.Round(Math.Max(0.0f, Math.Min(v * 255.0f, 255.0f)));
   }
 
-  public static bool operator==(Color c0, Color c1) {
-    return c0.R == c1.R && c0.G == c1.G && c0.B == c1.B && c0.A == c1.A;
+  private static float sRgbToScRgb(float v) {
+    if ((double)v <= 0.0) {
+      return 0f;
+    }
+    if ((double)v <= 0.04045) {
+      return v / 12.92f;
+    }
+    if (v < 1f) {
+      return (float)Math.Pow(((double)v + 0.055) / 1.055, 2.4);
+    }
+    return 1f;
   }
 
-  public static bool operator!=(Color c0, Color c1) {
-    return !(c0 == c1);
+  private static float ScRgbTosRgb(float v) {
+    if ((double)v <= 0.0) {
+      return 0f;
+    }
+    if ((double)v <= 0.0031308) {
+      return (255f * v * 12.92f + 0.5f) / 255f;
+    }
+    if ((double)v < 1.0) {
+      return (255f * (1.055f * (float)Math.Pow((double)v, 0.41666666666666669) - 0.055f) + 0.5f) / 255f;
+    }
+    return 1f;
+  }
+
+  public static Color FromRgb(byte r, byte g, byte b) {
+    return new Color { A = 255, R = r, G = g, B = b };
+  }
+
+  public static Color FromArgb(byte a, byte r, byte g, byte b) {
+    return new Color { A = a, R = r, G = g, B = b };
+  }
+
+  public static Color FromScRgb(float a, float r, float g, float b) {
+    return new Color { ScA = a, ScR = r, ScG = g, ScB = b };
+  }
+
+  public void Clamp() {
+    ScA = Color.Clamp(ScA);
+    ScR = Color.Clamp(ScR);
+    ScG = Color.Clamp(ScG);
+    ScB = Color.Clamp(ScB);
+  }
+
+  private static float Clamp(float v) {
+    return v < 0f ? 0f : (v > 1f ? 1f : v);
+  }
+
+  public static Color Add(Color l, Color r) {
+    return Color.FromScRgb(l.ScA + r.ScA, l.ScR + r.ScR, l.ScG + r.ScG, l.ScB + r.ScB);
+  }
+
+  public static Color Subtract(Color l, Color r) {
+    return Color.FromScRgb(l.ScA - r.ScA, l.ScR - r.ScR, l.ScG - r.ScG, l.ScB - r.ScB);
+  }
+
+  public static Color Multiply(Color c, float k) {
+    return Color.FromScRgb(c.ScA * k, c.ScR * k, c.ScG * k, c.ScB * k);
+  }
+
+  public static bool Equals(Color color1, Color color2) {
+    return color1 == color2;
+  }
+
+  public bool Equals(Color color) {
+    return this == color;
   }
 
   public override bool Equals(Object obj) {
     return obj is Color && this == (Color)obj;
   }
 
-  public bool Equals(Color v) {
-    return this == v;
-  }
-
   public override int GetHashCode() {
-    return ((R.GetHashCode() ^ G.GetHashCode()) ^ B.GetHashCode()) ^ A.GetHashCode();
+    return ((ScR.GetHashCode() ^ ScG.GetHashCode()) ^ ScB.GetHashCode()) ^ ScA.GetHashCode();
   }
 
   public override string ToString() {
-    return String.Format("#{0:X8}", PackedBGRA);
+    uint argb = ((uint)A << 24 | (uint)R << 16 | (uint)G << 8 | (uint)B);
+    return String.Format("#{0:X8}", argb);
   }
 
-  public static Color PreMultiplyAlpha(Color color) {
-    return new Color(color.R * color.A, color.G * color.A, color.B * color.A, color.A);
+  public static bool AreClose(Color l, Color r) {
+    return Color.AreClose(l.ScA, r.ScA) && Color.AreClose(l.ScR, r.ScR) &&
+      Color.AreClose(l.ScG, r.ScG) && Color.AreClose(l.ScB, r.ScB);
   }
 
-  public static Color Lerp(Color c0, Color c1, float t) {
-    return Lerp(c0, c1, t, true);
+  private static bool AreClose(float a, float b) {
+    return Math.Abs(a - b) < 0.000001f;
   }
 
-  public static Color Lerp(Color c0, Color c1, float t, bool sRGBSpace) {
-    if (sRGBSpace) {
-      return new Color(
-        Lerp(c0.R, c1.R, t), Lerp(c0.G, c1.G, t), Lerp(c0.B, c1.B, t), Lerp(c0.A, c1.A, t));
-    }
-    else {
-      float lr0, lg0, lb0, la0;
-      c0.ToLinearRGB(out lr0, out lg0, out lb0, out la0);
-      float lr1, lg1, lb1, la1;
-      c1.ToLinearRGB(out lr1, out lg1, out lb1, out la1);
-      return Color.FromLinearRGB(
-        Lerp(lr0, lr1, t), Lerp(lg0, lg1, t), Lerp(lb0, lb1, t), Lerp(la0, la1, t));
-    }
+  public static Color operator +(Color l, Color r) {
+    return Color.Add(l, r);
   }
 
-  private static float Lerp(float x, float y, float t) {
-    return x + t * (y - x);
+  public static Color operator -(Color l, Color r) {
+    return Color.Subtract(l, r);
   }
 
-  public static Color Add(Color c0, Color c1) {
-    return Add(c0, c1, true);
+  public static Color operator *(Color color, float coefficient) {
+    return Color.Multiply(color, coefficient);
   }
 
-  public static Color Add(Color c0, Color c1, bool sRGBSpace) {
-    if (sRGBSpace) {
-      return new Color(c0.R + c1.R, c0.G + c1.G, c0.B + c1.B, c0.A + c1.A);
-    }
-    else {
-        float lr0, lg0, lb0, la0;
-        c0.ToLinearRGB(out lr0, out lg0, out lb0, out la0);
-        float lr1, lg1, lb1, la1;
-        c1.ToLinearRGB(out lr1, out lg1, out lb1, out la1);
-        return Color.FromLinearRGB(lr0 + lr1, lg0 + lg1, lb0 + lb1, la0 + la1);
-    }
+  public static bool operator ==(Color l, Color r) {
+    return l.ScA == r.ScA && l.ScR == r.ScR && l.ScG == r.ScG && l.ScB == r.ScB;
   }
 
-  public static Color Modulate(Color c0, Color c1) {
-    return new Color(c0.R * c1.R, c0.G * c1.G, c0.B * c1.B, c0.A * c1.A);
-  }
-
-  public static Color Parse(string str) {
-    Color color;
-    if (Color.TryParse(str, out color)) {
-      return color;
-    }
-    throw new ArgumentException("Cannot create Color from '" + str + "'");
-  }
-
-  public static bool TryParse(string str, out Color result) {
-    bool ret = NoesisGUI_PINVOKE.Color_TryParse(str != null ? str : string.Empty, out result);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
+  public static bool operator !=(Color l, Color r) {
+    return !(l == r);
   }
 
 }

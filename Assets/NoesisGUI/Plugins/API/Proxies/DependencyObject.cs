@@ -30,57 +30,51 @@ public partial class DependencyObject : DispatcherObject {
   protected DependencyObject() {
   }
 
+  public object ReadLocalValue(DependencyProperty dp) {
+    IntPtr cPtr = ReadLocalValueHelper(dp);
+    return Noesis.Extend.GetProxy(cPtr, true);
+  }
+
   public void InvalidateProperty(DependencyProperty dp) {
     InvalidatePropertyHelper(dp);
   }
 
   public void ClearValue(DependencyProperty dp) {
     NoesisGUI_PINVOKE.DependencyObject_ClearValue(swigCPtr, DependencyProperty.getCPtr(dp));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void ClearAnimation(DependencyProperty dp) {
     NoesisGUI_PINVOKE.DependencyObject_ClearAnimation(swigCPtr, DependencyProperty.getCPtr(dp));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void CoerceValue(DependencyProperty dp) {
     NoesisGUI_PINVOKE.DependencyObject_CoerceValue(swigCPtr, DependencyProperty.getCPtr(dp));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.DependencyObject_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public object ReadLocalValue(DependencyProperty dp) {
-    IntPtr cPtr = NoesisGUI_PINVOKE.DependencyObject_ReadLocalValue(swigCPtr, DependencyProperty.getCPtr(dp));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return Noesis.Extend.GetProxy(cPtr, false);
+  private IntPtr ReadLocalValueHelper(DependencyProperty dp) {
+    IntPtr ret = NoesisGUI_PINVOKE.DependencyObject_ReadLocalValueHelper(swigCPtr, DependencyProperty.getCPtr(dp));
+    return ret;
   }
 
   public void SetCurrentValue(DependencyProperty dp, object value) {
     NoesisGUI_PINVOKE.DependencyObject_SetCurrentValue(swigCPtr, DependencyProperty.getCPtr(dp), Noesis.Extend.GetInstanceHandle(value));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   internal void InitObject() {
     NoesisGUI_PINVOKE.DependencyObject_InitObject(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   private void InvalidatePropertyHelper(DependencyProperty dp) {
     NoesisGUI_PINVOKE.DependencyObject_InvalidatePropertyHelper(swigCPtr, DependencyProperty.getCPtr(dp));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_DependencyObject(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_DependencyObject(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

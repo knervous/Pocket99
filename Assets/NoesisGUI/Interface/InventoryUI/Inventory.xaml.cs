@@ -165,7 +165,7 @@ namespace UserInterface
                 Text = item.Name,
                 FontSize = Constants.WinHyp * .02f,
                 FontWeight = FontWeight.Light,
-                Foreground = new SolidColorBrush(Color.FromLinearRGB(0, 0, 0, .8f)),
+                Foreground = new SolidColorBrush(Color.FromArgb(0, 0, 0, 200)),
                 FontFamily = (FontFamily)icon.FindResource("ArialFont"),
                 Width = inspectCanvas.Width - inspectCanvas.Width * .1f,
                 TextWrapping = TextWrapping.WrapWithOverflow

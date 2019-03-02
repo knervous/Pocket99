@@ -44,52 +44,38 @@ public class RoutedEventArgs : EventArgs {
     }
   }
 
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    RoutedEventHandler handler_ = (RoutedEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new RoutedEventArgs(args, false));
+    }
+  }
+
   public object Source {
     get {
-      return GetSourceHelper();
+      IntPtr cPtr = NoesisGUI_PINVOKE.RoutedEventArgs_Source_get(swigCPtr);
+      return Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public RoutedEvent RoutedEvent {
     get {
-      return GetRoutedEventHelper();
+      IntPtr cPtr = NoesisGUI_PINVOKE.RoutedEventArgs_RoutedEvent_get(swigCPtr);
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public bool Handled {
-    get {
-      return GetHandledHelper();
-    }
     set {
-      SetHandledHelper(value);
-    }
+      NoesisGUI_PINVOKE.RoutedEventArgs_Handled_set(swigCPtr, value);
+    } 
+    get {
+      bool ret = NoesisGUI_PINVOKE.RoutedEventArgs_Handled_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public RoutedEventArgs(object s, RoutedEvent e) : this(NoesisGUI_PINVOKE.new_RoutedEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private object GetSourceHelper() {
-    IntPtr cPtr = NoesisGUI_PINVOKE.RoutedEventArgs_GetSourceHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return Noesis.Extend.GetProxy(cPtr, false);
-  }
-
-  private RoutedEvent GetRoutedEventHelper() {
-    IntPtr cPtr = NoesisGUI_PINVOKE.RoutedEventArgs_GetRoutedEventHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
-  }
-
-  private bool GetHandledHelper() {
-    bool ret = NoesisGUI_PINVOKE.RoutedEventArgs_GetHandledHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private void SetHandledHelper(bool handled) {
-    NoesisGUI_PINVOKE.RoutedEventArgs_SetHandledHelper(swigCPtr, handled);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

@@ -38,7 +38,6 @@ public class DefinitionBase : FrameworkElement {
   public static DependencyProperty SharedSizeGroupProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.DefinitionBase_SharedSizeGroupProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,11 +45,9 @@ public class DefinitionBase : FrameworkElement {
   public string SharedSizeGroup {
     set {
       NoesisGUI_PINVOKE.DefinitionBase_SharedSizeGroup_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.DefinitionBase_SharedSizeGroup_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -58,7 +55,6 @@ public class DefinitionBase : FrameworkElement {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.DefinitionBase_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

@@ -19,13 +19,13 @@ public class NoesisMenu
     [UnityEditor.MenuItem("Tools/NoesisGUI/Welcome Screen...", false, 30100)]
     static void OpenWelcome()
     {
-        EditorWindow.GetWindow(typeof(NoesisWelcome), true, "Welcome to NoesisGUI!");
+        NoesisWelcome.Open();
     }
 
     [UnityEditor.MenuItem("Tools/NoesisGUI/Documentation", false, 30103)]
     static void OpenDocumentation()
     {
-        string docPath = Application.dataPath + "/../NoesisDoc/index.html";
+        string docPath = Application.dataPath + "/../NoesisDoc/Documentation.html";
 
         if (File.Exists(docPath))
         {

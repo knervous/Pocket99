@@ -22,17 +22,17 @@ public partial class BaseComponent {
     return new BaseComponent(cPtr, cMemoryOwn);
   }
 
-  internal BaseComponent(IntPtr cPtr, bool cMemoryOwn) {
+  public BaseComponent(IntPtr cPtr, bool cMemoryOwn) {
     Init(cPtr, cMemoryOwn, false);
   }
 
-  internal static HandleRef getCPtr(BaseComponent obj) {
+  public static HandleRef getCPtr(BaseComponent obj) {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
   ~BaseComponent() {
     lock (this) {
-      if (swigCPtr.Handle != IntPtr.Zero) {
+      if (!IsDisposed) {
         ReleaseProxy(swigCPtr.Handle);
         swigCPtr = new HandleRef(null, IntPtr.Zero);
       }
@@ -41,31 +41,29 @@ public partial class BaseComponent {
 
   internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.BaseComponent_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   internal static IntPtr GetDynamicType(IntPtr cPtr) {
     IntPtr ret = NoesisGUI_PINVOKE.BaseComponent_GetDynamicType(cPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public static IntPtr GetBaseType(IntPtr nativeType) {
+    IntPtr ret = NoesisGUI_PINVOKE.BaseComponent_GetBaseType(nativeType);
     return ret;
   }
 
   internal static void AddReference(IntPtr cPtr) {
     NoesisGUI_PINVOKE.BaseComponent_AddReference(cPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   internal static void Release(IntPtr cPtr) {
     NoesisGUI_PINVOKE.BaseComponent_Release(cPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
-
   internal static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_BaseComponent(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_BaseComponent(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

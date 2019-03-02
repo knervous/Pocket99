@@ -20,17 +20,17 @@ namespace Noesis
             GetDelegate getDelegate;
             if (dpType.GetTypeInfo().IsEnum)
             {
-                _getFunctions.TryGetValue(typeof(int).TypeHandle, out getDelegate);
+                _getFunctions.TryGetValue(typeof(int), out getDelegate);
                 int value = (int)getDelegate(swigCPtr.Handle, DependencyProperty.getCPtr(dp).Handle);
                 return Enum.ToObject(dpType, value);
             }
-            else if (_getFunctions.TryGetValue(dpType.TypeHandle, out getDelegate))
+            else if (_getFunctions.TryGetValue(dpType, out getDelegate))
             {
                 return getDelegate(swigCPtr.Handle, DependencyProperty.getCPtr(dp).Handle);
             }
             else
             {
-                IntPtr ptr = Noesis_DependencyGet_BaseComponent_(swigCPtr.Handle, DependencyProperty.getCPtr(dp).Handle);
+                IntPtr ptr = Noesis_DependencyGet_BaseComponent(swigCPtr.Handle, DependencyProperty.getCPtr(dp).Handle);
                 return Noesis.Extend.GetProxy(ptr, false);
             }
         }
@@ -48,16 +48,16 @@ namespace Noesis
             SetDelegate setDelegate;
             if (dpType.GetTypeInfo().IsEnum)
             {
-                _setFunctions.TryGetValue(typeof(int).TypeHandle, out setDelegate);
+                _setFunctions.TryGetValue(typeof(int), out setDelegate);
                 setDelegate(swigCPtr.Handle, DependencyProperty.getCPtr(dp).Handle, (int)Convert.ToInt64(value));
             }
-            else if (_setFunctions.TryGetValue(dpType.TypeHandle, out setDelegate))
+            else if (_setFunctions.TryGetValue(dpType, out setDelegate))
             {
                 setDelegate(swigCPtr.Handle, DependencyProperty.getCPtr(dp).Handle, value);
             }
             else
             {
-                Noesis_DependencySet_BaseComponent_(swigCPtr.Handle, DependencyProperty.getCPtr(dp).Handle,
+                Noesis_DependencySet_BaseComponent(swigCPtr.Handle, DependencyProperty.getCPtr(dp).Handle,
                     Noesis.Extend.GetInstanceHandle(value).Handle);
             }
         }
@@ -65,276 +65,328 @@ namespace Noesis
         #region Getter and Setter map
 
         private delegate object GetDelegate(IntPtr cPtr, IntPtr dp);
-        private static Dictionary<RuntimeTypeHandle, GetDelegate> _getFunctions = CreateGetFunctions();
+        private static Dictionary<Type, GetDelegate> _getFunctions = CreateGetFunctions();
 
         private delegate void SetDelegate(IntPtr cPtr, IntPtr dp, object value);
-        private static Dictionary<RuntimeTypeHandle, SetDelegate> _setFunctions = CreateSetFunctions();
+        private static Dictionary<Type, SetDelegate> _setFunctions = CreateSetFunctions();
 
-        private static Dictionary<RuntimeTypeHandle, GetDelegate> CreateGetFunctions()
+        private static Dictionary<Type, GetDelegate> CreateGetFunctions()
         {
-            Dictionary<RuntimeTypeHandle, GetDelegate> getFunctions =
-                new Dictionary<RuntimeTypeHandle, GetDelegate>(46);
+            Dictionary<Type, GetDelegate> getFunctions = new Dictionary<Type, GetDelegate>(50);
 
-            getFunctions[typeof(bool).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(bool)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                return Noesis_DependencyGet_Bool_(cPtr, dp, false, out isNull);
+                return Noesis_DependencyGet_Bool(cPtr, dp, false, out isNull);
             };
-            getFunctions[typeof(float).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(float)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                return Noesis_DependencyGet_Float_(cPtr, dp, false, out isNull);
+                return Noesis_DependencyGet_Float(cPtr, dp, false, out isNull);
             };
-            getFunctions[typeof(double).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(double)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                return Noesis_DependencyGet_Double_(cPtr, dp, false, out isNull);
+                return Noesis_DependencyGet_Double(cPtr, dp, false, out isNull);
             };
-            getFunctions[typeof(decimal).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(decimal)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                return (decimal)Noesis_DependencyGet_Double_(cPtr, dp, false, out isNull);
+                return (decimal)Noesis_DependencyGet_Double(cPtr, dp, false, out isNull);
             };
-            getFunctions[typeof(int).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(int)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                return Noesis_DependencyGet_Int_(cPtr, dp, false, out isNull);
+                return Noesis_DependencyGet_Int(cPtr, dp, false, out isNull);
             };
-            getFunctions[typeof(long).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(long)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                return (long)Noesis_DependencyGet_Int_(cPtr, dp, false, out isNull);
+                return (long)Noesis_DependencyGet_Int(cPtr, dp, false, out isNull);
             };
-            getFunctions[typeof(uint).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(uint)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                return Noesis_DependencyGet_UInt_(cPtr, dp, false, out isNull);
+                return Noesis_DependencyGet_UInt(cPtr, dp, false, out isNull);
             };
-            getFunctions[typeof(ulong).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(ulong)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                return (ulong)Noesis_DependencyGet_UInt_(cPtr, dp, false, out isNull);
+                return (ulong)Noesis_DependencyGet_UInt(cPtr, dp, false, out isNull);
             };
-            getFunctions[typeof(char).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(char)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                return (char)Noesis_DependencyGet_UInt_(cPtr, dp, false, out isNull);
+                return (char)Noesis_DependencyGet_UInt(cPtr, dp, false, out isNull);
             };
-            getFunctions[typeof(short).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(short)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                return Noesis_DependencyGet_Short_(cPtr, dp, false, out isNull);
+                return Noesis_DependencyGet_Short(cPtr, dp, false, out isNull);
             };
-            getFunctions[typeof(sbyte).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(sbyte)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                return (sbyte)Noesis_DependencyGet_Short_(cPtr, dp, false, out isNull);
+                return (sbyte)Noesis_DependencyGet_Short(cPtr, dp, false, out isNull);
             };
-            getFunctions[typeof(ushort).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(ushort)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                return Noesis_DependencyGet_UShort_(cPtr, dp, false, out isNull);
+                return Noesis_DependencyGet_UShort(cPtr, dp, false, out isNull);
             };
-            getFunctions[typeof(byte).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(byte)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                return (byte)Noesis_DependencyGet_UShort_(cPtr, dp, false, out isNull);
+                return (byte)Noesis_DependencyGet_UShort(cPtr, dp, false, out isNull);
             };
-            getFunctions[typeof(string).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(string)] = (cPtr, dp) =>
             {
-                IntPtr ptr = Noesis_DependencyGet_String_(cPtr, dp);
+                CheckProperty(cPtr, dp, "get");
+                IntPtr ptr = Noesis_DependencyGet_String(cPtr, dp);
                 return Noesis.Extend.StringFromNativeUtf8(ptr);
             };
-            getFunctions[typeof(Noesis.Color).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(System.Uri)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
+                IntPtr ptr = Noesis_DependencyGet_Uri(cPtr, dp);
+                string uri = Noesis.Extend.StringFromNativeUtf8(ptr);
+                return new Uri(uri, UriKind.Relative);
+            };
+            getFunctions[typeof(Noesis.Color)] = (cPtr, dp) =>
+            {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_Color_(cPtr, dp, false, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_Color(cPtr, dp, false, out isNull);
                 return Marshal.PtrToStructure<Noesis.Color>(ptr);
             };
-            getFunctions[typeof(Noesis.Point).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.Point)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_Point_(cPtr, dp, false, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_Point(cPtr, dp, false, out isNull);
                 return Marshal.PtrToStructure<Noesis.Point>(ptr);
             };
-            getFunctions[typeof(Noesis.Rect).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.Rect)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_Rect_(cPtr, dp, false, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_Rect(cPtr, dp, false, out isNull);
                 return Marshal.PtrToStructure<Noesis.Rect>(ptr);
             };
-            getFunctions[typeof(Noesis.Size).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.Size)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_Size_(cPtr, dp, false, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_Size(cPtr, dp, false, out isNull);
                 return Marshal.PtrToStructure<Noesis.Size>(ptr);
             };
-            getFunctions[typeof(Noesis.Thickness).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.Thickness)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_Thickness_(cPtr, dp, false, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_Thickness(cPtr, dp, false, out isNull);
                 return Marshal.PtrToStructure<Noesis.Thickness>(ptr);
             };
-            getFunctions[typeof(Noesis.CornerRadius).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.CornerRadius)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_CornerRadius_(cPtr, dp, false, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_CornerRadius(cPtr, dp, false, out isNull);
                 return Marshal.PtrToStructure<Noesis.CornerRadius>(ptr);
             };
-            getFunctions[typeof(TimeSpan).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(TimeSpan)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_TimeSpan_(cPtr, dp, false, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_TimeSpan(cPtr, dp, false, out isNull);
                 return (TimeSpan)Marshal.PtrToStructure<Noesis.TimeSpanStruct>(ptr);
             };
-            getFunctions[typeof(Noesis.Duration).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.Duration)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_Duration_(cPtr, dp, false, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_Duration(cPtr, dp, false, out isNull);
                 return Marshal.PtrToStructure<Noesis.Duration>(ptr);
             };
-            getFunctions[typeof(Noesis.KeyTime).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.KeyTime)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_KeyTime_(cPtr, dp, false, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_KeyTime(cPtr, dp, false, out isNull);
                 return Marshal.PtrToStructure<Noesis.KeyTime>(ptr);
             };
 
-            getFunctions[typeof(bool?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(bool?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                bool val = Noesis_DependencyGet_Bool_(cPtr, dp, true, out isNull);
+                bool val = Noesis_DependencyGet_Bool(cPtr, dp, true, out isNull);
                 return isNull ? null : (bool?)val;
             };
-            getFunctions[typeof(float?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(float?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                float val = Noesis_DependencyGet_Float_(cPtr, dp, true, out isNull);
+                float val = Noesis_DependencyGet_Float(cPtr, dp, true, out isNull);
                 return isNull ? null : (float?)val;
             };
-            getFunctions[typeof(double?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(double?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                double val = Noesis_DependencyGet_Double_(cPtr, dp, true, out isNull);
+                double val = Noesis_DependencyGet_Double(cPtr, dp, true, out isNull);
                 return isNull ? null : (double?)val;
             };
-            getFunctions[typeof(decimal?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(decimal?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                double val = Noesis_DependencyGet_Double_(cPtr, dp, true, out isNull);
+                double val = Noesis_DependencyGet_Double(cPtr, dp, true, out isNull);
                 return isNull ? null : (decimal?)(decimal)val;
             };
-            getFunctions[typeof(int?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(int?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                int val = Noesis_DependencyGet_Int_(cPtr, dp, true, out isNull);
+                int val = Noesis_DependencyGet_Int(cPtr, dp, true, out isNull);
                 return isNull ? null : (int?)val;
             };
-            getFunctions[typeof(long?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(long?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                int val = Noesis_DependencyGet_Int_(cPtr, dp, true, out isNull);
+                int val = Noesis_DependencyGet_Int(cPtr, dp, true, out isNull);
                 return isNull ? null : (long?)(long)val;
             };
-            getFunctions[typeof(uint?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(uint?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                uint val = Noesis_DependencyGet_UInt_(cPtr, dp, true, out isNull);
+                uint val = Noesis_DependencyGet_UInt(cPtr, dp, true, out isNull);
                 return isNull ? null : (uint?)val;
             };
-            getFunctions[typeof(ulong?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(ulong?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                uint val = Noesis_DependencyGet_UInt_(cPtr, dp, true, out isNull);
+                uint val = Noesis_DependencyGet_UInt(cPtr, dp, true, out isNull);
                 return isNull ? null : (ulong?)(ulong)val;
             };
-            getFunctions[typeof(char?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(char?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                uint val = Noesis_DependencyGet_UInt_(cPtr, dp, true, out isNull);
+                uint val = Noesis_DependencyGet_UInt(cPtr, dp, true, out isNull);
                 return isNull ? null : (char?)(char)val;
             };
-            getFunctions[typeof(short?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(short?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                short val = Noesis_DependencyGet_Short_(cPtr, dp, true, out isNull);
+                short val = Noesis_DependencyGet_Short(cPtr, dp, true, out isNull);
                 return isNull ? null : (short?)val;
             };
-            getFunctions[typeof(sbyte?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(sbyte?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                short val = Noesis_DependencyGet_Short_(cPtr, dp, true, out isNull);
+                short val = Noesis_DependencyGet_Short(cPtr, dp, true, out isNull);
                 return isNull ? null : (sbyte?)(sbyte)val;
             };
-            getFunctions[typeof(ushort?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(ushort?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                ushort val = Noesis_DependencyGet_UShort_(cPtr, dp, true, out isNull);
+                ushort val = Noesis_DependencyGet_UShort(cPtr, dp, true, out isNull);
                 return isNull ? null : (ushort?)val;
             };
-            getFunctions[typeof(byte?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(byte?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                ushort val = Noesis_DependencyGet_UShort_(cPtr, dp, true, out isNull);
+                ushort val = Noesis_DependencyGet_UShort(cPtr, dp, true, out isNull);
                 return isNull ? null : (byte?)(byte)val;
             };
-            getFunctions[typeof(Noesis.Color?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.Color?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_Color_(cPtr, dp, true, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_Color(cPtr, dp, true, out isNull);
                 return isNull ? null : (Noesis.Color?)Marshal.PtrToStructure<Noesis.Color>(ptr);
             };
-            getFunctions[typeof(Noesis.Point?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.Point?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_Point_(cPtr, dp, true, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_Point(cPtr, dp, true, out isNull);
                 return isNull ? null : (Noesis.Point?)Marshal.PtrToStructure<Noesis.Point>(ptr);
             };
-            getFunctions[typeof(Noesis.Rect?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.Rect?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_Rect_(cPtr, dp, true, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_Rect(cPtr, dp, true, out isNull);
                 return isNull ? null : (Noesis.Rect?)Marshal.PtrToStructure<Noesis.Rect>(ptr);
             };
-            getFunctions[typeof(Noesis.Size?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.Size?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_Size_(cPtr, dp, true, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_Size(cPtr, dp, true, out isNull);
                 return isNull ? null : (Noesis.Size?)Marshal.PtrToStructure<Noesis.Size>(ptr);
             };
-            getFunctions[typeof(Noesis.Thickness?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.Thickness?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_Thickness_(cPtr, dp, true, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_Thickness(cPtr, dp, true, out isNull);
                 return isNull ? null : (Noesis.Thickness?)Marshal.PtrToStructure<Noesis.Thickness>(ptr);
             };
-            getFunctions[typeof(Noesis.CornerRadius?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.CornerRadius?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_CornerRadius_(cPtr, dp, true, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_CornerRadius(cPtr, dp, true, out isNull);
                 return isNull ? null : (Noesis.CornerRadius?)Marshal.PtrToStructure<Noesis.CornerRadius>(ptr);
             };
-            getFunctions[typeof(TimeSpan?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(TimeSpan?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_TimeSpan_(cPtr, dp, true, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_TimeSpan(cPtr, dp, true, out isNull);
                 return isNull ? null : (TimeSpan?)(TimeSpan)Marshal.PtrToStructure<Noesis.TimeSpanStruct>(ptr);
             };
-            getFunctions[typeof(Noesis.Duration?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.Duration?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_Duration_(cPtr, dp, true, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_Duration(cPtr, dp, true, out isNull);
                 return isNull ? null : (Noesis.Duration?)Marshal.PtrToStructure<Noesis.Duration>(ptr);
             };
-            getFunctions[typeof(Noesis.KeyTime?).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Noesis.KeyTime?)] = (cPtr, dp) =>
             {
+                CheckProperty(cPtr, dp, "get");
                 bool isNull;
-                IntPtr ptr = Noesis_DependencyGet_KeyTime_(cPtr, dp, true, out isNull);
+                IntPtr ptr = Noesis_DependencyGet_KeyTime(cPtr, dp, true, out isNull);
                 return isNull ? null : (Noesis.KeyTime?)Marshal.PtrToStructure<Noesis.KeyTime>(ptr);
             };
-            getFunctions[typeof(Type).TypeHandle] = (cPtr, dp) =>
+            getFunctions[typeof(Type)] = (cPtr, dp) =>
             {
-                IntPtr ptr = Noesis_DependencyGet_BaseComponent_(cPtr, dp);
+                CheckProperty(cPtr, dp, "get");
+                IntPtr ptr = Noesis_DependencyGet_BaseComponent(cPtr, dp);
                 if (ptr != IntPtr.Zero)
                 {
                     ResourceKeyType key = new ResourceKeyType(ptr, false);
@@ -349,349 +401,426 @@ namespace Noesis
             return getFunctions;
         }
 
-        private static Dictionary<RuntimeTypeHandle, SetDelegate> CreateSetFunctions()
+        private static Dictionary<Type, SetDelegate> CreateSetFunctions()
         {
-            Dictionary<RuntimeTypeHandle, SetDelegate> setFunctions =
-                new Dictionary<RuntimeTypeHandle, SetDelegate>(46);
+            Dictionary<Type, SetDelegate> setFunctions = new Dictionary<Type, SetDelegate>(50);
 
-            setFunctions[typeof(bool).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(bool)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_Bool_(cPtr, dp, (bool)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_Bool(cPtr, dp, (bool)value, false, false);
             };
-            setFunctions[typeof(float).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(float)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_Float_(cPtr, dp, (float)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_Float(cPtr, dp, (float)value, false, false);
             };
-            setFunctions[typeof(double).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(double)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_Double_(cPtr, dp, (double)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_Double(cPtr, dp, (double)value, false, false);
             };
-            setFunctions[typeof(decimal).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(decimal)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_Double_(cPtr, dp, (double)(decimal)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_Double(cPtr, dp, (double)(decimal)value, false, false);
             };
-            setFunctions[typeof(int).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(int)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_Int_(cPtr, dp, (int)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_Int(cPtr, dp, (int)value, false, false);
             };
-            setFunctions[typeof(long).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(long)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_Int_(cPtr, dp, (int)(long)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_Int(cPtr, dp, (int)(long)value, false, false);
             };
-            setFunctions[typeof(uint).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(uint)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_UInt_(cPtr, dp, (uint)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_UInt(cPtr, dp, (uint)value, false, false);
             };
-            setFunctions[typeof(ulong).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(ulong)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_UInt_(cPtr, dp, (uint)(ulong)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_UInt(cPtr, dp, (uint)(ulong)value, false, false);
             };
-            setFunctions[typeof(char).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(char)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_UInt_(cPtr, dp, (uint)(char)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_UInt(cPtr, dp, (uint)(char)value, false, false);
             };
-            setFunctions[typeof(short).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(short)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_Short_(cPtr, dp, (short)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_Short(cPtr, dp, (short)value, false, false);
             };
-            setFunctions[typeof(sbyte).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(sbyte)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_Short_(cPtr, dp, (short)(sbyte)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_Short(cPtr, dp, (short)(sbyte)value, false, false);
             };
-            setFunctions[typeof(ushort).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(ushort)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_UShort_(cPtr, dp, (ushort)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_UShort(cPtr, dp, (ushort)value, false, false);
             };
-            setFunctions[typeof(byte).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(byte)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_UShort_(cPtr, dp, (ushort)(byte)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_UShort(cPtr, dp, (ushort)(byte)value, false, false);
             };
-            setFunctions[typeof(string).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(string)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_String_(cPtr, dp, value == null ? string.Empty : value.ToString());
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_String(cPtr, dp, value == null ? string.Empty : value.ToString());
             };
-            setFunctions[typeof(Noesis.Color).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(System.Uri)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_Color_(cPtr, dp, (Noesis.Color)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis_DependencySet_Uri(cPtr, dp, value == null ? string.Empty : ((Uri)value).OriginalString);
             };
-            setFunctions[typeof(Noesis.Point).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.Color)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_Point_(cPtr, dp, (Noesis.Point)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis.Color value_ = (Noesis.Color)value;
+                Noesis_DependencySet_Color(cPtr, dp, ref value_, false, false);
             };
-            setFunctions[typeof(Noesis.Rect).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.Point)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_Rect_(cPtr, dp, (Noesis.Rect)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis.Point value_ = (Noesis.Point)value;
+                Noesis_DependencySet_Point(cPtr, dp, ref value_, false, false);
             };
-            setFunctions[typeof(Noesis.Size).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.Rect)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_Size_(cPtr, dp, (Noesis.Size)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis.Rect value_ = (Noesis.Rect)value;
+                Noesis_DependencySet_Rect(cPtr, dp, ref value_, false, false);
             };
-            setFunctions[typeof(Noesis.Thickness).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.Size)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_Thickness_(cPtr, dp, (Noesis.Thickness)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis.Size value_ = (Noesis.Size)value;
+                Noesis_DependencySet_Size(cPtr, dp, ref value_, false, false);
             };
-            setFunctions[typeof(Noesis.CornerRadius).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.Thickness)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_CornerRadius_(cPtr, dp, (Noesis.CornerRadius)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis.Thickness value_ = (Noesis.Thickness)value;
+                Noesis_DependencySet_Thickness(cPtr, dp, ref value_, false, false);
             };
-            setFunctions[typeof(TimeSpan).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.CornerRadius)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_TimeSpan_(cPtr, dp, (Noesis.TimeSpanStruct)((TimeSpan)value), false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis.CornerRadius value_ = (Noesis.CornerRadius)value;
+                Noesis_DependencySet_CornerRadius(cPtr, dp, ref value_, false, false);
             };
-            setFunctions[typeof(Noesis.Duration).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(TimeSpan)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_Duration_(cPtr, dp, (Noesis.Duration)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis.TimeSpanStruct value_ = (Noesis.TimeSpanStruct)((TimeSpan)value);
+                Noesis_DependencySet_TimeSpan(cPtr, dp, ref value_, false, false);
             };
-            setFunctions[typeof(Noesis.KeyTime).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.Duration)] = (cPtr, dp, value) =>
             {
-                Noesis_DependencySet_KeyTime_(cPtr, dp, (Noesis.KeyTime)value, false, false);
+                CheckProperty(cPtr, dp, "set");
+                Noesis.Duration value_ = (Noesis.Duration)value;
+                Noesis_DependencySet_Duration(cPtr, dp, ref value_, false, false);
             };
-            setFunctions[typeof(bool?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.KeyTime)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
+                Noesis.KeyTime value_ = (Noesis.KeyTime)value;
+                Noesis_DependencySet_KeyTime(cPtr, dp, ref value_, false, false);
+            };
+            setFunctions[typeof(bool?)] = (cPtr, dp, value) =>
+            {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_Bool_(cPtr, dp, default(bool), true, true);
+                    Noesis_DependencySet_Bool(cPtr, dp, default(bool), true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_Bool_(cPtr, dp, (bool)value, true, false);
+                    Noesis_DependencySet_Bool(cPtr, dp, (bool)value, true, false);
                 }
             };
-            setFunctions[typeof(float?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(float?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_Float_(cPtr, dp, default(float), true, true);
+                    Noesis_DependencySet_Float(cPtr, dp, default(float), true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_Float_(cPtr, dp, (float)value, true, false);
+                    Noesis_DependencySet_Float(cPtr, dp, (float)value, true, false);
                 }
             };
-            setFunctions[typeof(double?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(double?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_Double_(cPtr, dp, default(double), true, true);
+                    Noesis_DependencySet_Double(cPtr, dp, default(double), true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_Double_(cPtr, dp, (double)value, true, false);
+                    Noesis_DependencySet_Double(cPtr, dp, (double)value, true, false);
                 }
             };
-            setFunctions[typeof(decimal?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(decimal?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_Double_(cPtr, dp, default(double), true, true);
+                    Noesis_DependencySet_Double(cPtr, dp, default(double), true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_Double_(cPtr, dp, (double)(decimal)value, true, false);
+                    Noesis_DependencySet_Double(cPtr, dp, (double)(decimal)value, true, false);
                 }
             };
-            setFunctions[typeof(int?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(int?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_Int_(cPtr, dp, default(int), true, true);
+                    Noesis_DependencySet_Int(cPtr, dp, default(int), true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_Int_(cPtr, dp, (int)value, true, false);
+                    Noesis_DependencySet_Int(cPtr, dp, (int)value, true, false);
                 }
             };
-            setFunctions[typeof(long?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(long?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_Int_(cPtr, dp, default(int), true, true);
+                    Noesis_DependencySet_Int(cPtr, dp, default(int), true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_Int_(cPtr, dp, (int)(long)value, true, false);
+                    Noesis_DependencySet_Int(cPtr, dp, (int)(long)value, true, false);
                 }
             };
-            setFunctions[typeof(uint?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(uint?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_UInt_(cPtr, dp, default(uint), true, true);
+                    Noesis_DependencySet_UInt(cPtr, dp, default(uint), true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_UInt_(cPtr, dp, (uint)value, true, false);
+                    Noesis_DependencySet_UInt(cPtr, dp, (uint)value, true, false);
                 }
             };
-            setFunctions[typeof(ulong?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(ulong?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_UInt_(cPtr, dp, default(uint), true, true);
+                    Noesis_DependencySet_UInt(cPtr, dp, default(uint), true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_UInt_(cPtr, dp, (uint)(ulong)value, true, false);
+                    Noesis_DependencySet_UInt(cPtr, dp, (uint)(ulong)value, true, false);
                 }
             };
-            setFunctions[typeof(char?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(char?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_UInt_(cPtr, dp, default(uint), true, true);
+                    Noesis_DependencySet_UInt(cPtr, dp, default(uint), true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_UInt_(cPtr, dp, (uint)(char)value, true, false);
+                    Noesis_DependencySet_UInt(cPtr, dp, (uint)(char)value, true, false);
                 }
             };
-            setFunctions[typeof(short?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(short?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_Short_(cPtr, dp, default(short), true, true);
+                    Noesis_DependencySet_Short(cPtr, dp, default(short), true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_Short_(cPtr, dp, (short)value, true, false);
+                    Noesis_DependencySet_Short(cPtr, dp, (short)value, true, false);
                 }
             };
-            setFunctions[typeof(sbyte?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(sbyte?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_Short_(cPtr, dp, default(short), true, true);
+                    Noesis_DependencySet_Short(cPtr, dp, default(short), true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_Short_(cPtr, dp, (short)(sbyte)value, true, false);
+                    Noesis_DependencySet_Short(cPtr, dp, (short)(sbyte)value, true, false);
                 }
             };
-            setFunctions[typeof(ushort?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(ushort?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_UShort_(cPtr, dp, default(ushort), true, true);
+                    Noesis_DependencySet_UShort(cPtr, dp, default(ushort), true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_UShort_(cPtr, dp, (ushort)value, true, false);
+                    Noesis_DependencySet_UShort(cPtr, dp, (ushort)value, true, false);
                 }
             };
-            setFunctions[typeof(byte?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(byte?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_UShort_(cPtr, dp, default(ushort), true, true);
+                    Noesis_DependencySet_UShort(cPtr, dp, default(ushort), true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_UShort_(cPtr, dp, (ushort)(byte)value, true, false);
+                    Noesis_DependencySet_UShort(cPtr, dp, (ushort)(byte)value, true, false);
                 }
             };
-            setFunctions[typeof(Noesis.Color?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.Color?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_Color_(cPtr, dp, default(Noesis.Color), true, true);
+                    Noesis.Color value_ = default(Noesis.Color);
+                    Noesis_DependencySet_Color(cPtr, dp, ref value_, true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_Color_(cPtr, dp, (Noesis.Color)value, true, false);
+                    Noesis.Color value_ = (Noesis.Color)value;
+                    Noesis_DependencySet_Color(cPtr, dp, ref value_, true, false);
                 }
             };
-            setFunctions[typeof(Noesis.Point?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.Point?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_Point_(cPtr, dp, default(Noesis.Point), true, true);
+                    Noesis.Point value_ = default(Noesis.Point);
+                    Noesis_DependencySet_Point(cPtr, dp, ref value_, true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_Point_(cPtr, dp, (Noesis.Point)value, true, false);
+                    Noesis.Point value_ = (Noesis.Point)value;
+                    Noesis_DependencySet_Point(cPtr, dp, ref value_, true, false);
                 }
             };
-            setFunctions[typeof(Noesis.Rect?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.Rect?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_Rect_(cPtr, dp, default(Noesis.Rect), true, true);
+                    Noesis.Rect value_ = default(Noesis.Rect);
+                    Noesis_DependencySet_Rect(cPtr, dp, ref value_, true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_Rect_(cPtr, dp, (Noesis.Rect)value, true, false);
+                    Noesis.Rect value_ = (Noesis.Rect)value;
+                    Noesis_DependencySet_Rect(cPtr, dp, ref value_, true, false);
                 }
             };
-            setFunctions[typeof(Noesis.Size?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.Size?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_Size_(cPtr, dp, default(Noesis.Size), true, true);
+                    Noesis.Size value_ = default(Noesis.Size);
+                    Noesis_DependencySet_Size(cPtr, dp, ref value_, true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_Size_(cPtr, dp, (Noesis.Size)value, true, false);
+                    Noesis.Size value_ = (Noesis.Size)value;
+                    Noesis_DependencySet_Size(cPtr, dp, ref value_, true, false);
                 }
             };
-            setFunctions[typeof(Noesis.Thickness?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.Thickness?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_Thickness_(cPtr, dp, default(Noesis.Thickness), true, true);
+                    Noesis.Thickness value_ = default(Noesis.Thickness);
+                    Noesis_DependencySet_Thickness(cPtr, dp, ref value_, true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_Thickness_(cPtr, dp, (Noesis.Thickness)value, true, false);
+                    Noesis.Thickness value_ = (Noesis.Thickness)value;
+                    Noesis_DependencySet_Thickness(cPtr, dp, ref value_, true, false);
                 }
             };
-            setFunctions[typeof(Noesis.CornerRadius?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.CornerRadius?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_CornerRadius_(cPtr, dp, default(Noesis.CornerRadius), true, true);
+                    Noesis.CornerRadius value_ = default(Noesis.CornerRadius);
+                    Noesis_DependencySet_CornerRadius(cPtr, dp, ref value_, true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_CornerRadius_(cPtr, dp, (Noesis.CornerRadius)value, true, false);
+                    Noesis.CornerRadius value_ = (Noesis.CornerRadius)value;
+                    Noesis_DependencySet_CornerRadius(cPtr, dp, ref value_, true, false);
                 }
             };
-            setFunctions[typeof(TimeSpan?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(TimeSpan?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_TimeSpan_(cPtr, dp, default(Noesis.TimeSpanStruct), true, true);
+                    Noesis.TimeSpanStruct value_ = default(Noesis.TimeSpanStruct);
+                    Noesis_DependencySet_TimeSpan(cPtr, dp, ref value_, true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_TimeSpan_(cPtr, dp, (Noesis.TimeSpanStruct)((TimeSpan)value), true, false);
+                    Noesis.TimeSpanStruct value_ = (Noesis.TimeSpanStruct)((TimeSpan)value);
+                    Noesis_DependencySet_TimeSpan(cPtr, dp, ref value_, true, false);
                 }
             };
-            setFunctions[typeof(Noesis.Duration?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.Duration?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_Duration_(cPtr, dp, default(Noesis.Duration), true, true);
+                    Noesis.Duration value_ = default(Noesis.Duration);
+                    Noesis_DependencySet_Duration(cPtr, dp, ref value_, true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_Duration_(cPtr, dp, (Noesis.Duration)value, true, false);
+                    Noesis.Duration value_ = (Noesis.Duration)value;
+                    Noesis_DependencySet_Duration(cPtr, dp, ref value_, true, false);
                 }
             };
-            setFunctions[typeof(Noesis.KeyTime?).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Noesis.KeyTime?)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 if (value == null)
                 {
-                    Noesis_DependencySet_KeyTime_(cPtr, dp, default(Noesis.KeyTime), true, true);
+                    Noesis.KeyTime value_ = default(Noesis.KeyTime);
+                    Noesis_DependencySet_KeyTime(cPtr, dp, ref value_, true, true);
                 }
                 else
                 {
-                    Noesis_DependencySet_KeyTime_(cPtr, dp, (Noesis.KeyTime)value, true, false);
+                    Noesis.KeyTime value_ = (Noesis.KeyTime)value;
+                    Noesis_DependencySet_KeyTime(cPtr, dp, ref value_, true, false);
                 }
             };
-            setFunctions[typeof(Type).TypeHandle] = (cPtr, dp, value) =>
+            setFunctions[typeof(Type)] = (cPtr, dp, value) =>
             {
+                CheckProperty(cPtr, dp, "set");
                 ResourceKeyType key = Noesis.Extend.GetResourceKeyType((Type)value);
-                Noesis_DependencySet_BaseComponent_(cPtr, dp, Noesis.Extend.GetInstanceHandle(key).Handle);
+                Noesis_DependencySet_BaseComponent(cPtr, dp, Noesis.Extend.GetInstanceHandle(key).Handle);
             };
 
             return setFunctions;
@@ -701,8 +830,7 @@ namespace Noesis
 
         #region Imports
 
-        private static void CheckProperty(IntPtr dependencyObject, IntPtr dependencyProperty,
-            string msg)
+        private static void CheckProperty(IntPtr dependencyObject, IntPtr dependencyProperty, string msg)
         {
             if (dependencyObject == IntPtr.Zero)
             {
@@ -715,396 +843,78 @@ namespace Noesis
             }
         }
 
-        private static bool Noesis_DependencyGet_Bool_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            bool result = Noesis_DependencyGet_Bool(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static float Noesis_DependencyGet_Float_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            float result = Noesis_DependencyGet_Float(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static double Noesis_DependencyGet_Double_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            double result = Noesis_DependencyGet_Double(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static int Noesis_DependencyGet_Int_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            int result = Noesis_DependencyGet_Int(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static uint Noesis_DependencyGet_UInt_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            uint result = Noesis_DependencyGet_UInt(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static short Noesis_DependencyGet_Short_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            short result = Noesis_DependencyGet_Short(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static ushort Noesis_DependencyGet_UShort_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            ushort result = Noesis_DependencyGet_UShort(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static IntPtr Noesis_DependencyGet_String_(IntPtr dependencyObject, IntPtr dependencyProperty)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            IntPtr result = Noesis_DependencyGet_String(dependencyObject, dependencyProperty);
-            Error.Check();
-            return result;
-        }
-
-        private static IntPtr Noesis_DependencyGet_Color_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            IntPtr result = Noesis_DependencyGet_Color(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static IntPtr Noesis_DependencyGet_Point_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            IntPtr result = Noesis_DependencyGet_Point(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static IntPtr Noesis_DependencyGet_Rect_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            IntPtr result = Noesis_DependencyGet_Rect(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static IntPtr Noesis_DependencyGet_Size_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            IntPtr result = Noesis_DependencyGet_Size(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static IntPtr Noesis_DependencyGet_Thickness_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            IntPtr result = Noesis_DependencyGet_Thickness(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static IntPtr Noesis_DependencyGet_CornerRadius_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            IntPtr result = Noesis_DependencyGet_CornerRadius(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static IntPtr Noesis_DependencyGet_TimeSpan_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            IntPtr result = Noesis_DependencyGet_TimeSpan(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static IntPtr Noesis_DependencyGet_Duration_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            IntPtr result = Noesis_DependencyGet_Duration(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static IntPtr Noesis_DependencyGet_KeyTime_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            IntPtr result = Noesis_DependencyGet_KeyTime(dependencyObject, dependencyProperty, isNullable, out isNull);
-            Error.Check();
-            return result;
-        }
-
-        private static IntPtr Noesis_DependencyGet_BaseComponent_(IntPtr dependencyObject, IntPtr dependencyProperty)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "get");
-            IntPtr result = Noesis_DependencyGet_BaseComponent(dependencyObject, dependencyProperty);
-            Error.Check();
-            return result;
-        }
-
-        private static void Noesis_DependencySet_Bool_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            bool val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_Bool(dependencyObject, dependencyProperty, val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_Float_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            float val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_Float(dependencyObject, dependencyProperty, val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_Double_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            double val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_Double(dependencyObject, dependencyProperty, val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_Int_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            int val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_Int(dependencyObject, dependencyProperty, val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_UInt_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            uint val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_UInt(dependencyObject, dependencyProperty, val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_Short_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            short val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_Short(dependencyObject, dependencyProperty, val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_UShort_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            ushort val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_UShort(dependencyObject, dependencyProperty, val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_String_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            string val)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_String(dependencyObject, dependencyProperty, val);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_Color_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            Noesis.Color val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_Color(dependencyObject, dependencyProperty, ref val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_Point_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            Noesis.Point val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_Point(dependencyObject, dependencyProperty, ref val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_Rect_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            Noesis.Rect val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_Rect(dependencyObject, dependencyProperty, ref val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_Size_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            Noesis.Size val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_Size(dependencyObject, dependencyProperty, ref val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_Thickness_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            Noesis.Thickness val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_Thickness(dependencyObject, dependencyProperty, ref val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_CornerRadius_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            Noesis.CornerRadius val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_CornerRadius(dependencyObject, dependencyProperty, ref val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_TimeSpan_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            Noesis.TimeSpanStruct val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_TimeSpan(dependencyObject, dependencyProperty, ref val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_Duration_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            Noesis.Duration val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_Duration(dependencyObject, dependencyProperty, ref val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_KeyTime_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            Noesis.KeyTime val, bool isNullable, bool isNull)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_KeyTime(dependencyObject, dependencyProperty, ref val, isNullable, isNull);
-            Error.Check();
-        }
-
-        private static void Noesis_DependencySet_BaseComponent_(IntPtr dependencyObject, IntPtr dependencyProperty,
-            IntPtr val)
-        {
-            CheckProperty(dependencyObject, dependencyProperty, "set");
-            Noesis_DependencySet_BaseComponent(dependencyObject, dependencyProperty, val);
-            Error.Check();
-        }
-
         ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         [return: MarshalAs(UnmanagedType.U1)]
         private static extern bool Noesis_DependencyGet_Bool(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern float Noesis_DependencyGet_Float(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern double Noesis_DependencyGet_Double(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern int Noesis_DependencyGet_Int(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern uint Noesis_DependencyGet_UInt(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern short Noesis_DependencyGet_Short(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern ushort Noesis_DependencyGet_UShort(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern IntPtr Noesis_DependencyGet_String(IntPtr dependencyObject, IntPtr dependencyProperty);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
+        [DllImport(Library.Name)]
+        private static extern IntPtr Noesis_DependencyGet_Uri(IntPtr dependencyObject, IntPtr dependencyProperty);
+
         [DllImport(Library.Name)]
         private static extern IntPtr Noesis_DependencyGet_Color(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern IntPtr Noesis_DependencyGet_Point(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern IntPtr Noesis_DependencyGet_Rect(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern IntPtr Noesis_DependencyGet_Size(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern IntPtr Noesis_DependencyGet_Thickness(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern IntPtr Noesis_DependencyGet_CornerRadius(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern IntPtr Noesis_DependencyGet_TimeSpan(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern IntPtr Noesis_DependencyGet_Duration(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern IntPtr Noesis_DependencyGet_KeyTime(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool isNullable, [MarshalAs(UnmanagedType.U1)]out bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern IntPtr Noesis_DependencyGet_BaseComponent(IntPtr dependencyObject, IntPtr dependencyProperty);
 
@@ -1113,87 +923,74 @@ namespace Noesis
         private static extern void Noesis_DependencySet_Bool(IntPtr dependencyObject, IntPtr dependencyProperty,
             bool val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_Float(IntPtr dependencyObject, IntPtr dependencyProperty,
             float val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_Double(IntPtr dependencyObject, IntPtr dependencyProperty,
             double val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_Int(IntPtr dependencyObject, IntPtr dependencyProperty,
             int val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_UInt(IntPtr dependencyObject, IntPtr dependencyProperty,
             uint val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_Short(IntPtr dependencyObject, IntPtr dependencyProperty,
             short val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_UShort(IntPtr dependencyObject, IntPtr dependencyProperty,
             ushort val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_String(IntPtr dependencyObject, IntPtr dependencyProperty,
             [MarshalAs(UnmanagedType.LPWStr)]string val);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
+        [DllImport(Library.Name)]
+        private static extern void Noesis_DependencySet_Uri(IntPtr dependencyObject, IntPtr dependencyProperty,
+            [MarshalAs(UnmanagedType.LPWStr)]string val);
+
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_Color(IntPtr dependencyObject, IntPtr dependencyProperty,
             ref Noesis.Color val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_Point(IntPtr dependencyObject, IntPtr dependencyProperty,
             ref Noesis.Point val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_Rect(IntPtr dependencyObject, IntPtr dependencyProperty,
             ref Noesis.Rect val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_Size(IntPtr dependencyObject, IntPtr dependencyProperty,
             ref Noesis.Size val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_Thickness(IntPtr dependencyObject, IntPtr dependencyProperty,
             ref Noesis.Thickness val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_CornerRadius(IntPtr dependencyObject, IntPtr dependencyProperty,
             ref Noesis.CornerRadius val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_TimeSpan(IntPtr dependencyObject, IntPtr dependencyProperty,
             ref Noesis.TimeSpanStruct val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_Duration(IntPtr dependencyObject, IntPtr dependencyProperty,
             ref Noesis.Duration val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_KeyTime(IntPtr dependencyObject, IntPtr dependencyProperty,
             ref Noesis.KeyTime val, bool isNullable, bool isNull);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]
         private static extern void Noesis_DependencySet_BaseComponent(IntPtr dependencyObject, IntPtr dependencyProperty,
             IntPtr val);

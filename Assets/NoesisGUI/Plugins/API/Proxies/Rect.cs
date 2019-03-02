@@ -25,49 +25,129 @@ public struct Rect {
   private float _y;
 
   [MarshalAs(UnmanagedType.R4)]
-  private float _w;
+  private float _width;
 
   [MarshalAs(UnmanagedType.R4)]
-  private float _h;
+  private float _height;
+
+  public Rect(float x, float y, float width, float height) {
+    if (width < 0.0f || height < 0.0f) {
+      throw new ArgumentException("Width and Height cannot be negative");
+    }
+    _x = x;
+    _y = y;
+    _width = width;
+    _height = height;
+  }
+
+  public Rect(Point p0, Point p1) {
+    _x = Math.Min(p0.X, p1.X);
+    _y = Math.Min(p0.Y, p1.Y);
+
+    _width = Math.Max(Math.Max(p0.X, p1.X) - _x, 0.0f);
+    _height = Math.Max(Math.Max(p0.Y, p1.Y) - _y, 0.0f);
+  }
+
+  public Rect(Point p, Vector v) : this(p, p + v) {
+  }
+
+  public Rect(Size size) {
+    if (size.IsEmpty) {
+      this = _empty;
+    }
+    else {
+      _x = _y = 0.0f;
+      _width = size.Width;
+      _height = size.Height;
+    }
+  }
+
+  public Rect(Point location, Size size) {
+    if (size.IsEmpty) {
+      this = _empty;
+    }
+    else {
+      _x = location.X;
+      _y = location.Y;
+      _width = size.Width;
+      _height = size.Height;
+    }
+  }
+
+  public static Rect Empty {
+    get { return _empty; }
+  }
+
+  public bool IsEmpty {
+    get { return _width < 0.0f; }
+  }
+
+  public Point Location {
+    get { return new Point(_x, _y); }
+    set {
+      if (IsEmpty) {
+        throw new InvalidOperationException("Empty Rect cannot be modified");
+      }
+      _x = value.X;
+      _y = value.Y;
+    }
+  }
+
+  public Size Size {
+    get { return new Size(_width, _height); }
+    set {
+      if (IsEmpty) {
+        throw new InvalidOperationException("Empty Rect cannot be modified");
+      }
+      _width = value.Width;
+      _height = value.Height;
+    }
+  }
 
   public float X {
-    get { return this._x; }
-    set { this._x = value; }
+    get { return _x; }
+    set {
+      if (IsEmpty) {
+        throw new InvalidOperationException("Empty Rect cannot be modified");
+      }
+      _x = value;
+    }
   }
 
   public float Y {
-    get { return this._y; }
-    set { this._y = value; }
+    get { return _y; }
+    set {
+      if (IsEmpty) {
+        throw new InvalidOperationException("Empty Rect cannot be modified");
+      }
+      _y = value;
+    }
   }
 
   public float Width {
-    get { return this._w; }
+    get { return _width; }
     set {
+      if (IsEmpty) {
+        throw new InvalidOperationException("Empty Rect cannot be modified");
+      }
       if (value < 0.0f) {
         throw new ArgumentException("Width cannot be negative");
       }
-      this._w = value;
+      _width = value;
     }
   }
 
   public float Height {
-    get { return this._h; }
+    get { return _height; }
     set {
+      if (IsEmpty) {
+        throw new InvalidOperationException("Empty Rect cannot be modified");
+      }
       if (value < 0.0f) {
         throw new ArgumentException("Height cannot be negative");
       }
-      this._h = value;
+      _height = value;
     }
-  }
-
-  public Point Location {
-    get { return new Point(X, Y); }
-    set { X = value.X; Y = value.Y; }
-  }
-
-  public Size Size {
-    get { return new Size(Width, Height); }
-    set { Width = value.Width; Height = value.Height; }
   }
 
   public float Left {
@@ -75,7 +155,7 @@ public struct Rect {
   }
 
   public float Right {
-    get { return X + Width; }
+    get { return IsEmpty ? Single.NegativeInfinity : X + Width; }
   }
   
   public float Top {
@@ -83,7 +163,7 @@ public struct Rect {
   }
 
   public float Bottom {
-    get { return Y + Height; }
+    get { return IsEmpty ? Single.NegativeInfinity : Y + Height; }
   }
 
   public Point TopLeft {
@@ -102,70 +182,11 @@ public struct Rect {
     get { return new Point(Right, Bottom); }
   }
 
-  public bool IsEmpty {
-    get { return Width == 0.0f || Height == 0.0f; }
-  }
-
-  public static Rect Empty {
-    get { return new Rect(); }
-  }
-
-  public static Rect Infinite {
-    get {
-      return new Rect(
-        (float)Double.NegativeInfinity, (float)Double.NegativeInfinity,
-        (float)Double.PositiveInfinity, (float)Double.PositiveInfinity);
-    }
-  }
-
-  public Rect(float x, float y, float width, float height) {
-    if (width < 0.0f || height < 0.0f) {
-      throw new ArgumentException("Width and Height cannot be negative");
-    }
-    this._x = x;
-    this._y = y;
-    this._w = width;
-    this._h = height;
-  }
-
-  public Rect(Size size) : this(0.0f, 0.0f, size.Width, size.Height)
-  {
-  }
-
-  public Rect(Point p, Size size) : this(p.X, p.Y, size.Width, size.Height)
-  {
-  }
-
-  public Rect(Recti rect) : this((float)rect.X, (float)rect.Y, (float)rect.Width, (float)rect.Height)
-  {
-  }
-
-  public static bool operator==(Rect r0, Rect r1) {
-    return r0.X == r1.X && r0.Y == r1.Y && r0.Width == r1.Width && r0.Height == r1.Height;
-  }
-
-  public static bool operator!=(Rect r0, Rect r1) {
-    return !(r0 == r1);
-  }
-
-  public override bool Equals(Object obj) {
-    return obj is Rect && this == (Rect)obj;
-  }
-
-  public bool Equals(Rect r) {
-    return this == r;
-  }
-
-  public override int GetHashCode() {
-    return ((X.GetHashCode() ^ Y.GetHashCode()) ^ Width.GetHashCode()) ^ Height.GetHashCode();
-  }
-
-  public override string ToString() {
-    return String.Format("{0},{1},{2},{3}", X, Y, Width, Height);
-  }
-
   public bool Contains(float x, float y) {
-    return x >= Left && x <= Right && y >= Top && y <= Bottom;
+    if (IsEmpty) {
+      return false;
+    }
+    return x >= _x && x <= _x + _width && y >= _y && y <= _y + _height;
   }
 
   public bool Contains(Point point) {
@@ -173,20 +194,115 @@ public struct Rect {
   }
 
   public bool Contains(Rect rect) {
-    return rect.Left >= Left && rect.Right <= Right && rect.Top >= Top && rect.Bottom <= Bottom;
+    if (IsEmpty || rect.IsEmpty) {
+      return false;
+    }
+    return rect._x >= _x && rect._x + rect._width <= _x + _width &&
+           rect._y >= _y && rect._y + rect._height <= _y + _height;
   }
 
-  public void Inflate(float width, float height) {
-    float w2 = width * 2.0f;
-    float h2 = height * 2.0f;
-    if ((w2 < 0.0f && -w2 >= Width) || (h2 < 0.0f && -h2 >= Height)) {
+  public bool IntersectsWith(Rect rect) {
+    if (IsEmpty || rect.IsEmpty) {
+      return false;
+    }
+    return rect._x <= _x + _width && rect._x + rect._width >= _x &&
+           rect._y <= _y + _height && rect._y + rect._height >= _y;
+  }
+
+  public void Intersect(Rect rect) {
+    if (!IntersectsWith(rect)) {
       this = Empty;
     }
     else {
-      X -= width;
-      Y -= height;
-      Width += w2;
-      Height += h2;
+      float left = Math.Max(Left, rect.Left);
+      float top = Math.Max(Top, rect.Top);
+      _width = Math.Max(Math.Min(_x + _width, rect._x + rect._width) - left, 0.0f);
+      _height = Math.Max(Math.Min(_y + _height, rect._y + rect._height) - top, 0.0f);
+      _x = left;
+      _y = top;
+    }
+  }
+
+  public static Rect Intersect(Rect r0, Rect r1) {
+    r0.Intersect(r1);
+    return r0;
+  }
+
+  public void Union(Rect rect) {
+    if (IsEmpty) {
+      this = rect;
+    }
+    else if (!rect.IsEmpty)
+    {
+      float left = Math.Min(Left, rect.Left);
+      float top = Math.Min(Top, rect.Top);
+      if (Single.IsPositiveInfinity(_width) ||
+          Single.IsPositiveInfinity(rect._width)) {
+          _width = Single.PositiveInfinity;
+      }
+      else {
+          float right = Math.Max(_x + _width, rect._x + rect._width);
+          _width = Math.Max(right - left, 0.0f);
+      }
+      if (Single.IsPositiveInfinity(_height) ||
+          Single.IsPositiveInfinity(rect._height)) {
+          _height = Single.PositiveInfinity;
+      }
+      else {
+          float bottom = Math.Max(_y + _height, rect._y + rect._height);
+          _height = Math.Max(bottom - top, 0.0f);
+      }
+      _x = left;
+      _y = top;
+    }
+  }
+
+  public static Rect Union(Rect r0, Rect r1) {
+    r0.Union(r1);
+    return r0;
+  }
+
+  public void Union(Point point) {
+    Union(new Rect(point, point));
+  }
+
+  public static Rect Union(Rect rect, Point point) {
+    rect.Union(new Rect(point, point));
+    return rect;
+  }
+
+  public void Offset(float x, float y) {
+    if (IsEmpty) {
+      throw new InvalidOperationException("Empty Rect cannot be modified");
+    }
+    _x += x;
+    _y += y;
+  }
+
+  public void Offset(Vector offset) {
+    Offset(offset.X, offset.Y);
+  }
+
+  public static Rect Offset(Rect rect, float x, float y) {
+    rect.Offset(x, y);
+    return rect;
+  }
+
+  public static Rect Offset(Rect rect, Vector offset) {
+    rect.Offset(offset.X, offset.Y);
+    return rect;
+  }
+
+  public void Inflate(float width, float height) {
+    if (IsEmpty) {
+      throw new InvalidOperationException("Empty Rect cannot be modified");
+    }
+    _x -= width;
+    _y -= height;
+    _width += width; _width += width;
+    _height += height; _height += height;
+    if (_width < 0.0f || _height < 0.0f) {
+      this = _empty;
     }
   }
 
@@ -194,30 +310,56 @@ public struct Rect {
     Inflate(size.Width, size.Height);
   }
 
-  public Rect Intersect(Rect rect) {
-    float x = rect.Left < Left ? (rect.Right > Left ? Left : 0.0f) : (rect.Left < Right ? rect.Left : 0.0f);
-    float y = rect.Top < Top ? (rect.Bottom > Top ? Top : 0.0f) : (rect.Top < Bottom ? rect.Top : 0.0f);
-    float w = Math.Max(0.0f, (rect.Right > Right ? (rect.Left < Right ? Right : 0.0f) : (rect.Right > Left ? rect.Right : 0.0f)) - x);
-    float h = Math.Max(0.0f, (rect.Bottom > Bottom ? (rect.Top < Bottom ? Bottom : 0.0f) : (rect.Bottom > Top ? rect.Bottom : 0.0f)) - y);
-    if (w == 0.0f || h == 0.0f) {
-      return Rect.Empty;
+  public static Rect Inflate(Rect rect, float width, float height) {
+    rect.Inflate(width, height);
+    return rect;
+  }
+
+  public static Rect Inflate(Rect rect, Size size) {
+    rect.Inflate(size.Width, size.Height);
+    return rect;
+  }
+
+  public static Rect Transform(Rect rect, Matrix matrix) {
+    rect.Transform(matrix);
+    return rect;
+  }
+
+  public void Transform(Matrix matrix) {
+    Point p0 = matrix.Transform(TopLeft);
+    Point p1 = matrix.Transform(TopRight);
+    Point p2 = matrix.Transform(BottomRight);
+    Point p3 = matrix.Transform(BottomLeft);
+
+    _x = Math.Min(Math.Min(p0.X, p1.X), Math.Min(p2.X, p3.X));
+    _y = Math.Min(Math.Min(p0.Y, p1.Y), Math.Min(p2.Y, p3.Y));
+    _width = Math.Max(Math.Max(p0.X, p1.X), Math.Max(p2.X, p3.X)) - _x;
+    _height = Math.Max(Math.Max(p0.Y, p1.Y), Math.Max(p2.Y, p3.Y)) - _y;
+  }
+
+  public void Transform(Matrix4 matrix) {
+    if (Matrix4.IsAffine(matrix) && matrix[0][2] == 0.0f && matrix[1][2] == 0.0f && matrix[2][2] == 1.0f) {
+      Vector v0 = matrix[0].XY;
+      Vector v1 = matrix[1].XY;
+      Vector v2 = matrix[3].XY;
+      Transform(new Matrix(v0.X, v0.Y, v1.X, v1.Y, v2.X, v2.Y));
     }
     else {
-      return new Rect(x, y, w, h);
+      Vector4 tlp = new Vector4(Left, Top, 0.0f, 1.0f) * matrix;
+      Vector4 trp = new Vector4(Right, Top, 0.0f, 1.0f) * matrix;
+      Vector4 blp = new Vector4(Right, Bottom, 0.0f, 1.0f) * matrix;
+      Vector4 brp = new Vector4(Left, Bottom, 0.0f, 1.0f) * matrix;
+
+      Point p0 = new Point(tlp.X / tlp.W, tlp.Y / tlp.W);
+      Point p1 = new Point(trp.X / trp.W, trp.Y / trp.W);
+      Point p2 = new Point(blp.X / blp.W, blp.Y / blp.W);
+      Point p3 = new Point(brp.X / brp.W, brp.Y / brp.W);
+
+      _x = Math.Min(Math.Min(p0.X, p1.X), Math.Min(p2.X, p3.X));
+      _y = Math.Min(Math.Min(p0.Y, p1.Y), Math.Min(p2.Y, p3.Y));
+      _width = Math.Max(Math.Max(p0.X, p1.X), Math.Max(p2.X, p3.X)) - _x;
+      _height = Math.Max(Math.Max(p0.Y, p1.Y), Math.Max(p2.Y, p3.Y)) - _y;
     }
-  }
-
-  public bool IntersectsWith(Rect rect) {
-    return !Intersect(rect).IsEmpty;
-  }
-
-  public void Offset(float x, float y) {
-    X += x;
-    Y += y;
-  }
-
-  public void Offset(Point offset) {
-    Offset(offset.X, offset.Y);
   }
 
   public void Scale(float scaleX, float scaleY) {
@@ -239,50 +381,37 @@ public struct Rect {
     }
   }
 
-  public void Expand(Point point) {
-    float right = Right;
-    float bottom = Bottom;
-    X = Math.Min(X, point.X);
-    Y = Math.Min(Y, point.Y);
-    Width = Math.Max(right, point.X) - X;
-    Height = Math.Max(bottom, point.Y) - Y;
+  public static bool operator==(Rect r0, Rect r1) {
+    return r0.X == r1.X && r0.Y == r1.Y && r0.Width == r1.Width && r0.Height == r1.Height;
   }
 
-  public void Expand(Rect rect) {
-    float right = Right;
-    float bottom = Bottom;
-    X = Math.Min(X, rect.X);
-    Y = Math.Min(Y, rect.Y);
-    Width = Math.Max(right, rect.Right) - X;
-    Height = Math.Max(bottom, rect.Bottom) - Y;
+  public static bool operator!=(Rect r0, Rect r1) {
+    return !(r0 == r1);
   }
 
-  public void Transform(Transform2 m) {
-    if (!Double.IsInfinity(Width) && !Double.IsInfinity(Height)) {
-      Point tl = TopLeft * m;
-      Point tr = TopRight * m;
-      Point bl = BottomLeft * m;
-      Point br = BottomRight * m;
-      Size = Size.Zero;
-      Location = tl;
-      Expand(tr);
-      Expand(bl);
-      Expand(br);
+  public bool Equals(Rect r0, Rect r1) {
+    return r0 == r1;
+  }
+
+  public override bool Equals(Object obj) {
+    return obj is Rect && this == (Rect)obj;
+  }
+
+  public bool Equals(Rect r) {
+    return this == r;
+  }
+
+  public override int GetHashCode() {
+    if (IsEmpty) {
+      return 0;
+    }
+    else {
+      return X.GetHashCode() ^ Y.GetHashCode() ^ Width.GetHashCode() ^ Height.GetHashCode();
     }
   }
 
-  public void Transform(Matrix4 m) {
-    if (!Double.IsInfinity(Width) && !Double.IsInfinity(Height)) {
-      Vector4 tl = new Vector4(TopLeft, 0.0f, 1.0f) * m;
-      Vector4 tr = new Vector4(TopRight, 0.0f, 1.0f) * m;
-      Vector4 bl = new Vector4(BottomLeft, 0.0f, 1.0f) * m;
-      Vector4 br = new Vector4(BottomRight, 0.0f, 1.0f) * m;
-      Size = Size.Zero;
-      Location = tl.XY / tl.W;
-      Expand(tr.XY / tr.W);
-      Expand(bl.XY / bl.W);
-      Expand(br.XY / br.W);
-    }
+  public override string ToString() {
+    return String.Format("{0},{1},{2},{3}", X, Y, Width, Height);
   }
 
   public static Rect Parse(string str) {
@@ -293,9 +422,21 @@ public struct Rect {
     throw new ArgumentException("Cannot create Rect from '" + str + "'");
   }
 
+  #region Empty rect
+  private static Rect CreateEmptyRect() {
+    Rect empty = new Rect();
+    empty._x = Single.PositiveInfinity;
+    empty._y = Single.PositiveInfinity;
+    empty._width = Single.NegativeInfinity;
+    empty._height = Single.NegativeInfinity;
+    return empty;
+  }
+
+  private static readonly Rect _empty = CreateEmptyRect();
+  #endregion
+
   public static bool TryParse(string str, out Rect result) {
     bool ret = NoesisGUI_PINVOKE.Rect_TryParse(str != null ? str : string.Empty, out result);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

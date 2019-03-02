@@ -36,19 +36,16 @@ public class EllipseGeometry : Geometry {
   }
 
   public EllipseGeometry(Point center, float rX, float rY) : this(NoesisGUI_PINVOKE.new_EllipseGeometry__SWIG_1(ref center, rX, rY), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public override bool IsEmpty() {
     bool ret = NoesisGUI_PINVOKE.EllipseGeometry_IsEmpty(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static DependencyProperty CenterProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.EllipseGeometry_CenterProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -56,7 +53,6 @@ public class EllipseGeometry : Geometry {
   public static DependencyProperty RadiusXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.EllipseGeometry_RadiusXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -64,7 +60,6 @@ public class EllipseGeometry : Geometry {
   public static DependencyProperty RadiusYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.EllipseGeometry_RadiusYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -72,12 +67,10 @@ public class EllipseGeometry : Geometry {
   public Point Center {
     set {
       NoesisGUI_PINVOKE.EllipseGeometry_Center_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.EllipseGeometry_Center_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Point>(ret);
       }
@@ -91,11 +84,9 @@ public class EllipseGeometry : Geometry {
   public float RadiusX {
     set {
       NoesisGUI_PINVOKE.EllipseGeometry_RadiusX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.EllipseGeometry_RadiusX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -103,18 +94,15 @@ public class EllipseGeometry : Geometry {
   public float RadiusY {
     set {
       NoesisGUI_PINVOKE.EllipseGeometry_RadiusY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.EllipseGeometry_RadiusY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.EllipseGeometry_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

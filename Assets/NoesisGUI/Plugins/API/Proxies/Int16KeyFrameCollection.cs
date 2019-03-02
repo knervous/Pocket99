@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class Int16KeyFrameCollection : FreezableCollection {
+public class Int16KeyFrameCollection : FreezableCollection<Int16KeyFrame> {
   internal new static Int16KeyFrameCollection CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new Int16KeyFrameCollection(cPtr, cMemoryOwn);
   }
@@ -27,13 +27,17 @@ public class Int16KeyFrameCollection : FreezableCollection {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
-  protected Int16KeyFrameCollection() {
-  }
-
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Int16KeyFrameCollection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
+  }
+
+  public Int16KeyFrameCollection() {
+  }
+
+  protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
+    registerExtend = false;
+    return NoesisGUI_PINVOKE.new_Int16KeyFrameCollection();
   }
 
 }

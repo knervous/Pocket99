@@ -35,32 +35,22 @@ public class KeyGesture : InputGesture {
     return NoesisGUI_PINVOKE.new_KeyGesture__SWIG_0();
   }
 
-  public KeyGesture(uint key, uint modifiers) : this(NoesisGUI_PINVOKE.new_KeyGesture__SWIG_1(key, modifiers), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  public KeyGesture(Key key, ModifierKeys modifiers) : this(NoesisGUI_PINVOKE.new_KeyGesture__SWIG_1((int)key, (int)modifiers), true) {
   }
 
-  public KeyGesture(uint key) : this(NoesisGUI_PINVOKE.new_KeyGesture__SWIG_2(key), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  public KeyGesture(Key key) : this(NoesisGUI_PINVOKE.new_KeyGesture__SWIG_2((int)key), true) {
   }
 
-  public override bool Matches(object target, RoutedEventArgs args) {
-    bool ret = NoesisGUI_PINVOKE.KeyGesture_Matches(swigCPtr, Noesis.Extend.GetInstanceHandle(target), RoutedEventArgs.getCPtr(args));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public uint Key {
+  public Key Key {
     get {
-      uint ret = NoesisGUI_PINVOKE.KeyGesture_Key_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      Key ret = (Key)NoesisGUI_PINVOKE.KeyGesture_Key_get(swigCPtr);
       return ret;
     } 
   }
 
-  public uint Modifiers {
+  public ModifierKeys Modifiers {
     get {
-      uint ret = NoesisGUI_PINVOKE.KeyGesture_Modifiers_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      ModifierKeys ret = (ModifierKeys)NoesisGUI_PINVOKE.KeyGesture_Modifiers_get(swigCPtr);
       return ret;
     } 
   }
@@ -68,7 +58,6 @@ public class KeyGesture : InputGesture {
   public string DisplayString {
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.KeyGesture_DisplayString_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       NoesisGUI_PINVOKE.FreeString(strPtr);
       return str;
@@ -77,7 +66,6 @@ public class KeyGesture : InputGesture {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.KeyGesture_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

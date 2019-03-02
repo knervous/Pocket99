@@ -36,21 +36,17 @@ public class PropertyPath : BaseComponent {
   }
 
   public PropertyPath(string str) : this(NoesisGUI_PINVOKE.new_PropertyPath__SWIG_1(str != null ? str : string.Empty), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public PropertyPath(DependencyProperty dp) : this(NoesisGUI_PINVOKE.new_PropertyPath__SWIG_2(DependencyProperty.getCPtr(dp)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public string Path {
     set {
       NoesisGUI_PINVOKE.PropertyPath_Path_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.PropertyPath_Path_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -58,7 +54,6 @@ public class PropertyPath : BaseComponent {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.PropertyPath_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

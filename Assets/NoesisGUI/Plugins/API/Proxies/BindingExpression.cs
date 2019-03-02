@@ -32,25 +32,21 @@ public class BindingExpression : BindingExpressionBase {
 
   public override void UpdateTarget() {
     NoesisGUI_PINVOKE.BindingExpression_UpdateTarget(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public override void UpdateSource() {
     NoesisGUI_PINVOKE.BindingExpression_UpdateSource(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public Binding ParentBinding {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.BindingExpression_ParentBinding_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Binding)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.BindingExpression_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

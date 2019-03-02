@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class ManipulationCompletedEventArgs : RoutedEventArgs {
+public class ManipulationCompletedEventArgs : InputEventArgs {
   private HandleRef swigCPtr;
 
   internal ManipulationCompletedEventArgs(IntPtr cPtr, bool cMemoryOwn) : base(cPtr, cMemoryOwn) {
@@ -44,79 +44,66 @@ public class ManipulationCompletedEventArgs : RoutedEventArgs {
     }
   }
 
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    ManipulationCompletedEventHandler handler_ = (ManipulationCompletedEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new ManipulationCompletedEventArgs(args, false));
+    }
+  }
+
   public Noesis.UIElement ManipulationContainer {
     get {
       return GetManipulationContainerHelper();
     }
   }
 
-  public Noesis.Point ManipulationOrigin {
+  public Point ManipulationOrigin {
     get {
-      return GetManipulationOriginHelper();
+      IntPtr ret = NoesisGUI_PINVOKE.ManipulationCompletedEventArgs_ManipulationOrigin_get(swigCPtr);
+      if (ret != IntPtr.Zero) {
+        return Marshal.PtrToStructure<Point>(ret);
+      }
+      else {
+        return new Point();
+      }
     }
+
   }
 
-  public Noesis.ManipulationVelocities FinalVelocities {
+  public ManipulationVelocities FinalVelocities {
     get {
-      return GetFinalVelocitiesHelper();
-    }
+      IntPtr cPtr = NoesisGUI_PINVOKE.ManipulationCompletedEventArgs_FinalVelocities_get(swigCPtr);
+      ManipulationVelocities ret = (cPtr == IntPtr.Zero) ? null : new ManipulationVelocities(cPtr, false);
+      return ret;
+    } 
   }
 
-  public Noesis.ManipulationDelta TotalManipulation {
+  public ManipulationDelta TotalManipulation {
     get {
-      return GetTotalManipulationHelper();
-    }
+      IntPtr cPtr = NoesisGUI_PINVOKE.ManipulationCompletedEventArgs_TotalManipulation_get(swigCPtr);
+      ManipulationDelta ret = (cPtr == IntPtr.Zero) ? null : new ManipulationDelta(cPtr, false);
+      return ret;
+    } 
   }
 
   public bool IsInertial {
     get {
-      return GetIsInertialHelper();
-    }
+      bool ret = NoesisGUI_PINVOKE.ManipulationCompletedEventArgs_IsInertial_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public ManipulationCompletedEventArgs(object s, RoutedEvent e, Visual manipulationContainer, Point manipulationOrigin, ManipulationVelocities finalVelocities, ManipulationDelta totalManipulation, bool isInertial) : this(NoesisGUI_PINVOKE.new_ManipulationCompletedEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), Visual.getCPtr(manipulationContainer), ref manipulationOrigin, ManipulationVelocities.getCPtr(finalVelocities), ManipulationDelta.getCPtr(totalManipulation), isInertial), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public bool Cancel() {
     bool ret = NoesisGUI_PINVOKE.ManipulationCompletedEventArgs_Cancel(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private UIElement GetManipulationContainerHelper() {
     IntPtr cPtr = NoesisGUI_PINVOKE.ManipulationCompletedEventArgs_GetManipulationContainerHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
-  }
-
-  private Point GetManipulationOriginHelper() {
-    IntPtr ret = NoesisGUI_PINVOKE.ManipulationCompletedEventArgs_GetManipulationOriginHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    if (ret != IntPtr.Zero) {
-      return Marshal.PtrToStructure<Point>(ret);
-    }
-    else {
-      return new Point();
-    }
-  }
-
-  private ManipulationVelocities GetFinalVelocitiesHelper() {
-    ManipulationVelocities ret = new ManipulationVelocities(NoesisGUI_PINVOKE.ManipulationCompletedEventArgs_GetFinalVelocitiesHelper(swigCPtr), false);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private ManipulationDelta GetTotalManipulationHelper() {
-    ManipulationDelta ret = new ManipulationDelta(NoesisGUI_PINVOKE.ManipulationCompletedEventArgs_GetTotalManipulationHelper(swigCPtr), false);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private bool GetIsInertialHelper() {
-    bool ret = NoesisGUI_PINVOKE.ManipulationCompletedEventArgs_GetIsInertialHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
   }
 
 }

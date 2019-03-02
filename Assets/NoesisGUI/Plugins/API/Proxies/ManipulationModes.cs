@@ -18,12 +18,12 @@ namespace Noesis
 [System.FlagsAttribute]
 public enum ManipulationModes {
   None = 0,
-  Rotate = 1,
-  Scale = 2,
-  TranslateX = 4,
-  TranslateY = 8,
+  TranslateX = 1,
+  TranslateY = 2,
   Translate = TranslateX|TranslateY,
-  All = Rotate|Scale|Translate
+  Rotate = 4,
+  Scale = 8,
+  All = Translate|Rotate|Scale
 }
 
 }

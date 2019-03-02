@@ -11,7 +11,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 
 namespace Noesis
 {
@@ -32,86 +31,34 @@ public class Selector : ItemsControl {
   }
 
   #region Events
-  #region SelectionChanged
-  public delegate void SelectionChangedHandler(object sender, SelectionChangedEventArgs e);
-  public event SelectionChangedHandler SelectionChanged {
+  public event SelectionChangedEventHandler SelectionChanged {
     add {
-      if (!_SelectionChanged.ContainsKey(swigCPtr.Handle)) {
-        _SelectionChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_Selector_SelectionChanged(_raiseSelectionChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _SelectionChanged[swigCPtr.Handle] += value;
+      AddHandler(SelectionChangedEvent, value);
     }
     remove {
-      if (_SelectionChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _SelectionChanged[swigCPtr.Handle] -= value;
-
-        if (_SelectionChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_Selector_SelectionChanged(_raiseSelectionChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _SelectionChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(SelectionChangedEvent, value);
     }
   }
-
-  internal delegate void RaiseSelectionChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseSelectionChangedCallback _raiseSelectionChanged = RaiseSelectionChanged;
-
-  [MonoPInvokeCallback(typeof(RaiseSelectionChangedCallback))]
-  private static void RaiseSelectionChanged(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_SelectionChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for SelectionChanged event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _SelectionChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        SelectionChangedHandler handler = _SelectionChanged[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new SelectionChangedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, SelectionChangedHandler> _SelectionChanged =
-      new Dictionary<IntPtr, SelectionChangedHandler>();
-  #endregion
 
   #endregion
 
   public static bool GetIsSelected(DependencyObject element) {
     bool ret = NoesisGUI_PINVOKE.Selector_GetIsSelected(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetIsSelected(DependencyObject element, bool value) {
     NoesisGUI_PINVOKE.Selector_SetIsSelected(DependencyObject.getCPtr(element), value);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static bool GetIsSelectionActive(UIElement element) {
     bool ret = NoesisGUI_PINVOKE.Selector_GetIsSelectionActive(UIElement.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static DependencyProperty IsSelectedProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Selector_IsSelectedProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -119,7 +66,6 @@ public class Selector : ItemsControl {
   public static DependencyProperty IsSelectionActiveProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Selector_IsSelectionActiveProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -127,7 +73,6 @@ public class Selector : ItemsControl {
   public static DependencyProperty IsSynchronizedWithCurrentItemProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Selector_IsSynchronizedWithCurrentItemProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -135,7 +80,6 @@ public class Selector : ItemsControl {
   public static DependencyProperty SelectedIndexProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Selector_SelectedIndexProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -143,7 +87,6 @@ public class Selector : ItemsControl {
   public static DependencyProperty SelectedItemProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Selector_SelectedItemProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -151,7 +94,6 @@ public class Selector : ItemsControl {
   public static DependencyProperty SelectedValueProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Selector_SelectedValueProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -159,8 +101,37 @@ public class Selector : ItemsControl {
   public static DependencyProperty SelectedValuePathProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Selector_SelectedValuePathProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent SelectedEvent {
+    set {
+      NoesisGUI_PINVOKE.Selector_SelectedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Selector_SelectedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent SelectionChangedEvent {
+    set {
+      NoesisGUI_PINVOKE.Selector_SelectionChangedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Selector_SelectionChangedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent UnselectedEvent {
+    set {
+      NoesisGUI_PINVOKE.Selector_UnselectedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Selector_UnselectedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
@@ -168,12 +139,10 @@ public class Selector : ItemsControl {
     set {
       NullableBool tempvalue = value;
       NoesisGUI_PINVOKE.Selector_IsSynchronizedWithCurrentItem_set(swigCPtr, ref tempvalue);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.Selector_IsSynchronizedWithCurrentItem_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<NullableBool>(ret);
       }
@@ -187,11 +156,9 @@ public class Selector : ItemsControl {
   public int SelectedIndex {
     set {
       NoesisGUI_PINVOKE.Selector_SelectedIndex_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       int ret = NoesisGUI_PINVOKE.Selector_SelectedIndex_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -199,11 +166,9 @@ public class Selector : ItemsControl {
   public object SelectedItem {
     set {
       NoesisGUI_PINVOKE.Selector_SelectedItem_set(swigCPtr, Noesis.Extend.GetInstanceHandle(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Selector_SelectedItem_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -211,11 +176,9 @@ public class Selector : ItemsControl {
   public object SelectedValue {
     set {
       NoesisGUI_PINVOKE.Selector_SelectedValue_set(swigCPtr, Noesis.Extend.GetInstanceHandle(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Selector_SelectedValue_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -223,11 +186,9 @@ public class Selector : ItemsControl {
   public string SelectedValuePath {
     set {
       NoesisGUI_PINVOKE.Selector_SelectedValuePath_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.Selector_SelectedValuePath_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -235,15 +196,11 @@ public class Selector : ItemsControl {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Selector_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_Selector(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_Selector(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

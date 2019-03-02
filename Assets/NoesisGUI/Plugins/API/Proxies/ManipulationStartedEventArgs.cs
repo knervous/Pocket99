@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class ManipulationStartedEventArgs : RoutedEventArgs {
+public class ManipulationStartedEventArgs : InputEventArgs {
   private HandleRef swigCPtr;
 
   internal ManipulationStartedEventArgs(IntPtr cPtr, bool cMemoryOwn) : base(cPtr, cMemoryOwn) {
@@ -44,48 +44,47 @@ public class ManipulationStartedEventArgs : RoutedEventArgs {
     }
   }
 
-  public Noesis.UIElement ManipulationContainer {
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    ManipulationStartedEventHandler handler_ = (ManipulationStartedEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new ManipulationStartedEventArgs(args, false));
+    }
+  }
+
+  public UIElement ManipulationContainer {
     get {
       return GetManipulationContainerHelper();
     }
   }
 
-  public Noesis.Point ManipulationOrigin {
+  public Point ManipulationOrigin {
     get {
-      return GetManipulationOriginHelper();
+      IntPtr ret = NoesisGUI_PINVOKE.ManipulationStartedEventArgs_ManipulationOrigin_get(swigCPtr);
+      if (ret != IntPtr.Zero) {
+        return Marshal.PtrToStructure<Point>(ret);
+      }
+      else {
+        return new Point();
+      }
     }
+
   }
 
   public ManipulationStartedEventArgs(object s, RoutedEvent e, Visual manipulationContainer, Point manipulationOrigin) : this(NoesisGUI_PINVOKE.new_ManipulationStartedEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), Visual.getCPtr(manipulationContainer), ref manipulationOrigin), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public bool Cancel() {
     bool ret = NoesisGUI_PINVOKE.ManipulationStartedEventArgs_Cancel(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void Complete() {
     NoesisGUI_PINVOKE.ManipulationStartedEventArgs_Complete(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   private UIElement GetManipulationContainerHelper() {
     IntPtr cPtr = NoesisGUI_PINVOKE.ManipulationStartedEventArgs_GetManipulationContainerHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
-  }
-
-  private Point GetManipulationOriginHelper() {
-    IntPtr ret = NoesisGUI_PINVOKE.ManipulationStartedEventArgs_GetManipulationOriginHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    if (ret != IntPtr.Zero) {
-      return Marshal.PtrToStructure<Point>(ret);
-    }
-    else {
-      return new Point();
-    }
   }
 
 }

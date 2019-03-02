@@ -43,7 +43,8 @@ public enum Cursor {
   ScrollNE = 24,
   ScrollSW = 25,
   ScrollSE = 26,
-  ArrowCD = 27
+  ArrowCD = 27,
+  Count
 }
 
 }

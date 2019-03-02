@@ -33,7 +33,6 @@ public class TileBrush : Brush {
   public static DependencyProperty AlignmentXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TileBrush_AlignmentXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -41,7 +40,6 @@ public class TileBrush : Brush {
   public static DependencyProperty AlignmentYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TileBrush_AlignmentYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -49,7 +47,6 @@ public class TileBrush : Brush {
   public static DependencyProperty StretchProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TileBrush_StretchProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -57,7 +54,6 @@ public class TileBrush : Brush {
   public static DependencyProperty TileModeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TileBrush_TileModeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -65,7 +61,6 @@ public class TileBrush : Brush {
   public static DependencyProperty ViewboxProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TileBrush_ViewboxProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -73,7 +68,6 @@ public class TileBrush : Brush {
   public static DependencyProperty ViewboxUnitsProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TileBrush_ViewboxUnitsProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -81,7 +75,6 @@ public class TileBrush : Brush {
   public static DependencyProperty ViewportProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TileBrush_ViewportProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -89,7 +82,6 @@ public class TileBrush : Brush {
   public static DependencyProperty ViewportUnitsProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TileBrush_ViewportUnitsProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -97,11 +89,9 @@ public class TileBrush : Brush {
   public AlignmentX AlignmentX {
     set {
       NoesisGUI_PINVOKE.TileBrush_AlignmentX_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       AlignmentX ret = (AlignmentX)NoesisGUI_PINVOKE.TileBrush_AlignmentX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -109,11 +99,9 @@ public class TileBrush : Brush {
   public AlignmentY AlignmentY {
     set {
       NoesisGUI_PINVOKE.TileBrush_AlignmentY_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       AlignmentY ret = (AlignmentY)NoesisGUI_PINVOKE.TileBrush_AlignmentY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -121,11 +109,9 @@ public class TileBrush : Brush {
   public Stretch Stretch {
     set {
       NoesisGUI_PINVOKE.TileBrush_Stretch_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       Stretch ret = (Stretch)NoesisGUI_PINVOKE.TileBrush_Stretch_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -133,11 +119,9 @@ public class TileBrush : Brush {
   public TileMode TileMode {
     set {
       NoesisGUI_PINVOKE.TileBrush_TileMode_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       TileMode ret = (TileMode)NoesisGUI_PINVOKE.TileBrush_TileMode_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -145,12 +129,10 @@ public class TileBrush : Brush {
   public Rect Viewbox {
     set {
       NoesisGUI_PINVOKE.TileBrush_Viewbox_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.TileBrush_Viewbox_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Rect>(ret);
       }
@@ -164,11 +146,9 @@ public class TileBrush : Brush {
   public BrushMappingMode ViewboxUnits {
     set {
       NoesisGUI_PINVOKE.TileBrush_ViewboxUnits_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       BrushMappingMode ret = (BrushMappingMode)NoesisGUI_PINVOKE.TileBrush_ViewboxUnits_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -176,12 +156,10 @@ public class TileBrush : Brush {
   public Rect Viewport {
     set {
       NoesisGUI_PINVOKE.TileBrush_Viewport_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.TileBrush_Viewport_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Rect>(ret);
       }
@@ -195,18 +173,15 @@ public class TileBrush : Brush {
   public BrushMappingMode ViewportUnits {
     set {
       NoesisGUI_PINVOKE.TileBrush_ViewportUnits_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       BrushMappingMode ret = (BrushMappingMode)NoesisGUI_PINVOKE.TileBrush_ViewportUnits_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TileBrush_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

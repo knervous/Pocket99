@@ -36,19 +36,16 @@ public class LineGeometry : Geometry {
   }
 
   public LineGeometry(Point p1, Point p2) : this(NoesisGUI_PINVOKE.new_LineGeometry__SWIG_1(ref p1, ref p2), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public override bool IsEmpty() {
     bool ret = NoesisGUI_PINVOKE.LineGeometry_IsEmpty(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static DependencyProperty EndPointProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.LineGeometry_EndPointProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -56,7 +53,6 @@ public class LineGeometry : Geometry {
   public static DependencyProperty StartPointProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.LineGeometry_StartPointProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -64,12 +60,10 @@ public class LineGeometry : Geometry {
   public Point StartPoint {
     set {
       NoesisGUI_PINVOKE.LineGeometry_StartPoint_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.LineGeometry_StartPoint_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Point>(ret);
       }
@@ -83,12 +77,10 @@ public class LineGeometry : Geometry {
   public Point EndPoint {
     set {
       NoesisGUI_PINVOKE.LineGeometry_EndPoint_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.LineGeometry_EndPoint_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Point>(ret);
       }
@@ -101,7 +93,6 @@ public class LineGeometry : Geometry {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.LineGeometry_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

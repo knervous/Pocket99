@@ -44,8 +44,14 @@ public class ToolTipEventArgs : RoutedEventArgs {
     }
   }
 
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    ToolTipEventHandler handler_ = (ToolTipEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new ToolTipEventArgs(args, false));
+    }
+  }
+
   public ToolTipEventArgs(object s, RoutedEvent e) : this(NoesisGUI_PINVOKE.new_ToolTipEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

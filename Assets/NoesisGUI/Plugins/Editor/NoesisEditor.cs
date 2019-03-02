@@ -15,7 +15,10 @@ public class NoesisEditor
     /// </summary>
     private static void OnSceneGUI(SceneView sceneView)
     {
-        OnDraggedObject(Camera.main.gameObject);
+        if (Camera.main != null)
+        {
+            OnDraggedObject(Camera.main.gameObject);
+        }
     }
 
     /// <summary>

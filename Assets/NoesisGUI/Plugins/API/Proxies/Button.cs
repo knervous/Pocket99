@@ -43,7 +43,6 @@ public class Button : ButtonBase {
   public static DependencyProperty IsCancelProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Button_IsCancelProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -51,7 +50,6 @@ public class Button : ButtonBase {
   public static DependencyProperty IsDefaultProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Button_IsDefaultProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -59,7 +57,6 @@ public class Button : ButtonBase {
   public static DependencyProperty IsDefaultedProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Button_IsDefaultedProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -67,11 +64,9 @@ public class Button : ButtonBase {
   public bool IsCancel {
     set {
       NoesisGUI_PINVOKE.Button_IsCancel_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.Button_IsCancel_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -79,11 +74,9 @@ public class Button : ButtonBase {
   public bool IsDefault {
     set {
       NoesisGUI_PINVOKE.Button_IsDefault_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.Button_IsDefault_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -91,22 +84,17 @@ public class Button : ButtonBase {
   public bool IsDefaulted {
     get {
       bool ret = NoesisGUI_PINVOKE.Button_IsDefaulted_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Button_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_Button(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_Button(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

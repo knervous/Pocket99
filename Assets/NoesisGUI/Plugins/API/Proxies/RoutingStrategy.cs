@@ -16,8 +16,8 @@ namespace Noesis
 {
 
 public enum RoutingStrategy {
-  Bubbling,
-  Tunneling,
+  Tunnel,
+  Bubble,
   Direct
 }
 

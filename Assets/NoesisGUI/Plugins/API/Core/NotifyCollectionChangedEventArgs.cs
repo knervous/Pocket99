@@ -10,9 +10,7 @@
 //
 //---------------------------------------------------------------------------
 
-// Adapted for Unity
-
-#if __MonoCS__ || ENABLE_MONO || ENABLE_IL2CPP
+#if (UNITY_5_5 && (ENABLE_MONO || ENABLE_IL2CPP)) || NET_2_0 || NET_2_0_SUBSET || (UNITY_EDITOR && ENABLE_DOTNET)
 
 namespace System.Collections.Specialized
 {

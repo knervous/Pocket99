@@ -32,14 +32,12 @@ public class EasingFunctionBase : Freezable {
 
   public float Ease(float normalizedTime) {
     float ret = NoesisGUI_PINVOKE.EasingFunctionBase_Ease(swigCPtr, normalizedTime);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static DependencyProperty EasingModeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.EasingFunctionBase_EasingModeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -47,18 +45,15 @@ public class EasingFunctionBase : Freezable {
   public EasingMode EasingMode {
     set {
       NoesisGUI_PINVOKE.EasingFunctionBase_EasingMode_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       EasingMode ret = (EasingMode)NoesisGUI_PINVOKE.EasingFunctionBase_EasingMode_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.EasingFunctionBase_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

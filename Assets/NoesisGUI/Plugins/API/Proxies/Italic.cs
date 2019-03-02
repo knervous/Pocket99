@@ -36,12 +36,10 @@ public class Italic : Span {
   }
 
   public Italic(Inline childInline) : this(NoesisGUI_PINVOKE.new_Italic__SWIG_1(Inline.getCPtr(childInline)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Italic_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

@@ -34,14 +34,12 @@ public class TemplateBindingExpression : Expression {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TemplateBindingExpression_TemplateBindingExtension_get(swigCPtr);
       TemplateBindingExtension ret = (cPtr == IntPtr.Zero) ? null : new TemplateBindingExtension(cPtr, false);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TemplateBindingExpression_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

@@ -42,20 +42,17 @@ public class Track : FrameworkElement {
 
   public float ValueFromDistance(float horizontal, float vertical) {
     float ret = NoesisGUI_PINVOKE.Track_ValueFromDistance(swigCPtr, horizontal, vertical);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public float ValueFromPoint(Point point) {
     float ret = NoesisGUI_PINVOKE.Track_ValueFromPoint(swigCPtr, ref point);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static DependencyProperty IsDirectionReversedProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Track_IsDirectionReversedProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -63,7 +60,6 @@ public class Track : FrameworkElement {
   public static DependencyProperty MaximumProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Track_MaximumProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -71,7 +67,6 @@ public class Track : FrameworkElement {
   public static DependencyProperty MinimumProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Track_MinimumProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -79,7 +74,6 @@ public class Track : FrameworkElement {
   public static DependencyProperty OrientationProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Track_OrientationProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -87,7 +81,6 @@ public class Track : FrameworkElement {
   public static DependencyProperty ValueProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Track_ValueProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -95,7 +88,6 @@ public class Track : FrameworkElement {
   public static DependencyProperty ViewportSizeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Track_ViewportSizeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -103,11 +95,9 @@ public class Track : FrameworkElement {
   public RepeatButton DecreaseRepeatButton {
     set {
       NoesisGUI_PINVOKE.Track_DecreaseRepeatButton_set(swigCPtr, RepeatButton.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Track_DecreaseRepeatButton_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RepeatButton)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -115,11 +105,9 @@ public class Track : FrameworkElement {
   public RepeatButton IncreaseRepeatButton {
     set {
       NoesisGUI_PINVOKE.Track_IncreaseRepeatButton_set(swigCPtr, RepeatButton.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Track_IncreaseRepeatButton_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RepeatButton)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -127,11 +115,9 @@ public class Track : FrameworkElement {
   public bool IsDirectionReversed {
     set {
       NoesisGUI_PINVOKE.Track_IsDirectionReversed_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.Track_IsDirectionReversed_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -139,11 +125,9 @@ public class Track : FrameworkElement {
   public float Maximum {
     set {
       NoesisGUI_PINVOKE.Track_Maximum_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.Track_Maximum_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -151,11 +135,9 @@ public class Track : FrameworkElement {
   public float Minimum {
     set {
       NoesisGUI_PINVOKE.Track_Minimum_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.Track_Minimum_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -163,11 +145,9 @@ public class Track : FrameworkElement {
   public Orientation Orientation {
     set {
       NoesisGUI_PINVOKE.Track_Orientation_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       Orientation ret = (Orientation)NoesisGUI_PINVOKE.Track_Orientation_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -175,11 +155,9 @@ public class Track : FrameworkElement {
   public Thumb Thumb {
     set {
       NoesisGUI_PINVOKE.Track_Thumb_set(swigCPtr, Thumb.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Track_Thumb_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Thumb)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -187,11 +165,9 @@ public class Track : FrameworkElement {
   public float Value {
     set {
       NoesisGUI_PINVOKE.Track_Value_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.Track_Value_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -199,26 +175,20 @@ public class Track : FrameworkElement {
   public float ViewportSize {
     set {
       NoesisGUI_PINVOKE.Track_ViewportSize_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.Track_ViewportSize_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Track_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_Track(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_Track(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

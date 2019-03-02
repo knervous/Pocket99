@@ -27,6 +27,11 @@ public class Binding : BindingBase {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
+  public object ProvideValue(object targetObject, DependencyProperty targetProperty) {
+    IntPtr cPtr = ProvideValueHelper(targetObject, targetProperty);
+    return Noesis.Extend.GetProxy(cPtr, true);
+  }
+
   public static object DoNothing {
     get {
       return GetDoNothing();
@@ -51,51 +56,40 @@ public class Binding : BindingBase {
   }
 
   public Binding(string path) : this(NoesisGUI_PINVOKE.new_Binding__SWIG_1(path != null ? path : string.Empty), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public Binding(DependencyProperty path) : this(NoesisGUI_PINVOKE.new_Binding__SWIG_2(DependencyProperty.getCPtr(path)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public Binding(string path, object source) : this(NoesisGUI_PINVOKE.new_Binding__SWIG_3(path != null ? path : string.Empty, Noesis.Extend.GetInstanceHandle(source)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public Binding(DependencyProperty path, object source) : this(NoesisGUI_PINVOKE.new_Binding__SWIG_4(DependencyProperty.getCPtr(path), Noesis.Extend.GetInstanceHandle(source)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public Binding(string path, string elementName) : this(NoesisGUI_PINVOKE.new_Binding__SWIG_5(path != null ? path : string.Empty, elementName != null ? elementName : string.Empty), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public Binding(DependencyProperty path, string elementName) : this(NoesisGUI_PINVOKE.new_Binding__SWIG_6(DependencyProperty.getCPtr(path), elementName != null ? elementName : string.Empty), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public Binding(string path, RelativeSource relativeSource) : this(NoesisGUI_PINVOKE.new_Binding__SWIG_7(path != null ? path : string.Empty, RelativeSource.getCPtr(relativeSource)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public Binding(DependencyProperty path, RelativeSource relativeSource) : this(NoesisGUI_PINVOKE.new_Binding__SWIG_8(DependencyProperty.getCPtr(path), RelativeSource.getCPtr(relativeSource)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   private static object GetDoNothing() {
     IntPtr cPtr = NoesisGUI_PINVOKE.Binding_GetDoNothing();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public string ElementName {
     set {
       NoesisGUI_PINVOKE.Binding_ElementName_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.Binding_ElementName_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -104,11 +98,9 @@ public class Binding : BindingBase {
   public object Source {
     set {
       NoesisGUI_PINVOKE.Binding_Source_set(swigCPtr, Noesis.Extend.GetInstanceHandle(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Binding_Source_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -116,11 +108,9 @@ public class Binding : BindingBase {
   public RelativeSource RelativeSource {
     set {
       NoesisGUI_PINVOKE.Binding_RelativeSource_set(swigCPtr, RelativeSource.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Binding_RelativeSource_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RelativeSource)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -128,11 +118,9 @@ public class Binding : BindingBase {
   public PropertyPath Path {
     set {
       NoesisGUI_PINVOKE.Binding_Path_set(swigCPtr, PropertyPath.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Binding_Path_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (PropertyPath)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -140,11 +128,9 @@ public class Binding : BindingBase {
   public BindingMode Mode {
     set {
       NoesisGUI_PINVOKE.Binding_Mode_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       BindingMode ret = (BindingMode)NoesisGUI_PINVOKE.Binding_Mode_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -152,11 +138,9 @@ public class Binding : BindingBase {
   public object ConverterParameter {
     set {
       NoesisGUI_PINVOKE.Binding_ConverterParameter_set(swigCPtr, Noesis.Extend.GetInstanceHandle(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Binding_ConverterParameter_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -164,35 +148,29 @@ public class Binding : BindingBase {
   public UpdateSourceTrigger UpdateSourceTrigger {
     set {
       NoesisGUI_PINVOKE.Binding_UpdateSourceTrigger_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       UpdateSourceTrigger ret = (UpdateSourceTrigger)NoesisGUI_PINVOKE.Binding_UpdateSourceTrigger_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
-  public object ProvideValue(object targetObject, DependencyProperty targetProperty) {
-    IntPtr cPtr = NoesisGUI_PINVOKE.Binding_ProvideValue(swigCPtr, Noesis.Extend.GetInstanceHandle(targetObject), DependencyProperty.getCPtr(targetProperty));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return Noesis.Extend.GetProxy(cPtr, false);
+  private IntPtr ProvideValueHelper(object targetObject, DependencyProperty targetProperty) {
+    IntPtr ret = NoesisGUI_PINVOKE.Binding_ProvideValueHelper(swigCPtr, Noesis.Extend.GetInstanceHandle(targetObject), DependencyProperty.getCPtr(targetProperty));
+    return ret;
   }
 
   private object GetConverterHelper() {
     IntPtr cPtr = NoesisGUI_PINVOKE.Binding_GetConverterHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return Noesis.Extend.GetProxy(cPtr, false);
   }
 
   private void SetConverterHelper(object converter) {
     NoesisGUI_PINVOKE.Binding_SetConverterHelper(swigCPtr, Noesis.Extend.GetInstanceHandle(converter));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Binding_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

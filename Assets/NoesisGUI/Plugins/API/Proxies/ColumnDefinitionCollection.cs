@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class ColumnDefinitionCollection : Collection {
+public class ColumnDefinitionCollection : UICollection<ColumnDefinition> {
   internal new static ColumnDefinitionCollection CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new ColumnDefinitionCollection(cPtr, cMemoryOwn);
   }
@@ -27,18 +27,17 @@ public class ColumnDefinitionCollection : Collection {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
+  new internal static IntPtr GetStaticType() {
+    IntPtr ret = NoesisGUI_PINVOKE.ColumnDefinitionCollection_GetStaticType();
+    return ret;
+  }
+
   public ColumnDefinitionCollection() {
   }
 
   protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
     registerExtend = false;
-    return NoesisGUI_PINVOKE.new_ColumnDefinitionCollection__SWIG_0();
-  }
-
-  new internal static IntPtr GetStaticType() {
-    IntPtr ret = NoesisGUI_PINVOKE.ColumnDefinitionCollection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
+    return NoesisGUI_PINVOKE.new_ColumnDefinitionCollection();
   }
 
 }

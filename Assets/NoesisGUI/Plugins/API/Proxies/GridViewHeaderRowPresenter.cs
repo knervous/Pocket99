@@ -38,7 +38,6 @@ public class GridViewHeaderRowPresenter : GridViewRowPresenterBase {
   public static DependencyProperty AllowsColumnReorderProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_AllowsColumnReorderProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,7 +45,6 @@ public class GridViewHeaderRowPresenter : GridViewRowPresenterBase {
   public static DependencyProperty ColumnHeaderContainerStyleProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderContainerStyleProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -54,7 +52,6 @@ public class GridViewHeaderRowPresenter : GridViewRowPresenterBase {
   public static DependencyProperty ColumnHeaderContextMenuProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderContextMenuProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -62,7 +59,6 @@ public class GridViewHeaderRowPresenter : GridViewRowPresenterBase {
   public static DependencyProperty ColumnHeaderStringFormatProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderStringFormatProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -70,7 +66,6 @@ public class GridViewHeaderRowPresenter : GridViewRowPresenterBase {
   public static DependencyProperty ColumnHeaderTemplateProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderTemplateProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -78,7 +73,6 @@ public class GridViewHeaderRowPresenter : GridViewRowPresenterBase {
   public static DependencyProperty ColumnHeaderTemplateSelectorProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderTemplateSelectorProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -86,7 +80,6 @@ public class GridViewHeaderRowPresenter : GridViewRowPresenterBase {
   public static DependencyProperty ColumnHeaderToolTipProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderToolTipProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -94,11 +87,9 @@ public class GridViewHeaderRowPresenter : GridViewRowPresenterBase {
   public bool AllowsColumnReorder {
     set {
       NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_AllowsColumnReorder_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_AllowsColumnReorder_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -106,11 +97,9 @@ public class GridViewHeaderRowPresenter : GridViewRowPresenterBase {
   public Style ColumnHeaderContainerStyle {
     set {
       NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderContainerStyle_set(swigCPtr, Style.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderContainerStyle_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Style)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -118,11 +107,9 @@ public class GridViewHeaderRowPresenter : GridViewRowPresenterBase {
   public ContextMenu ColumnHeaderContextMenu {
     set {
       NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderContextMenu_set(swigCPtr, ContextMenu.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderContextMenu_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (ContextMenu)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -130,11 +117,9 @@ public class GridViewHeaderRowPresenter : GridViewRowPresenterBase {
   public string ColumnHeaderStringFormat {
     set {
       NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderStringFormat_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderStringFormat_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -143,11 +128,9 @@ public class GridViewHeaderRowPresenter : GridViewRowPresenterBase {
   public DataTemplate ColumnHeaderTemplate {
     set {
       NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderTemplate_set(swigCPtr, DataTemplate.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderTemplate_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DataTemplate)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -155,11 +138,9 @@ public class GridViewHeaderRowPresenter : GridViewRowPresenterBase {
   public DataTemplateSelector ColumnHeaderTemplateSelector {
     set {
       NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderTemplateSelector_set(swigCPtr, DataTemplateSelector.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderTemplateSelector_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DataTemplateSelector)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -167,18 +148,15 @@ public class GridViewHeaderRowPresenter : GridViewRowPresenterBase {
   public object ColumnHeaderToolTip {
     set {
       NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderToolTip_set(swigCPtr, Noesis.Extend.GetInstanceHandle(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_ColumnHeaderToolTip_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.GridViewHeaderRowPresenter_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

@@ -37,14 +37,12 @@ public class GeometryGroup : Geometry {
 
   public override bool IsEmpty() {
     bool ret = NoesisGUI_PINVOKE.GeometryGroup_IsEmpty(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static DependencyProperty ChildrenProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GeometryGroup_ChildrenProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -52,7 +50,6 @@ public class GeometryGroup : Geometry {
   public static DependencyProperty FillRuleProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GeometryGroup_FillRuleProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -60,11 +57,9 @@ public class GeometryGroup : Geometry {
   public GeometryCollection Children {
     set {
       NoesisGUI_PINVOKE.GeometryGroup_Children_set(swigCPtr, GeometryCollection.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GeometryGroup_Children_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (GeometryCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -72,18 +67,15 @@ public class GeometryGroup : Geometry {
   public FillRule FillRule {
     set {
       NoesisGUI_PINVOKE.GeometryGroup_FillRule_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       FillRule ret = (FillRule)NoesisGUI_PINVOKE.GeometryGroup_FillRule_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.GeometryGroup_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

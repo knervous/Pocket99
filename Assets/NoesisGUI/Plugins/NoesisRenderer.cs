@@ -9,9 +9,9 @@ public class NoesisRenderer
     /// <summary>
     /// Registers a view in the render thread
     /// </summary>
-    public static void RegisterView(Noesis.View view)
+    public static void RegisterView(Noesis.View view, UnityEngine.Rendering.CommandBuffer commands)
     {
-        Noesis_RegisterView(view.CPtr, view.GetHashCode());
+        commands.IssuePluginEventAndData(_renderRegisterCallback, 0, view.CPtr.Handle);
     }
 
     /// <summary>
@@ -19,15 +19,7 @@ public class NoesisRenderer
     /// </summary>
     public static void RenderOffscreen(Noesis.View view, UnityEngine.Rendering.CommandBuffer commands)
     {
-        commands.IssuePluginEvent(_renderOffscreenCallback, view.GetHashCode());
-    }
-
-    /// <summary>
-    /// Sends offscreen render commands to native code
-    /// </summary>
-    public static void RenderOffscreen(Noesis.View view)
-    {
-        UnityEngine.GL.IssuePluginEvent(_renderOffscreenCallback, view.GetHashCode());
+        commands.IssuePluginEventAndData(_renderOffscreenCallback, 0, view.CPtr.Handle);
     }
 
     /// <summary>
@@ -35,36 +27,20 @@ public class NoesisRenderer
     /// </summary>
     public static void RenderOnscreen(Noesis.View view, bool flipY, UnityEngine.Rendering.CommandBuffer commands)
     {
-        commands.IssuePluginEvent(flipY ? _renderOnscreenFlipYCallback : _renderOnscreenCallback, view.GetHashCode());
-    }
-
-    /// <summary>
-    /// Sends render commands to native code
-    /// </summary>
-    public static void RenderOnscreen(Noesis.View view, bool flipY)
-    {
-        UnityEngine.GL.IssuePluginEvent(flipY ? _renderOnscreenFlipYCallback : _renderOnscreenCallback, view.GetHashCode());
+        commands.IssuePluginEventAndData(_renderOnscreenCallback, flipY ? 1 : 0, view.CPtr.Handle);
     }
 
     /// <summary>
     /// Unregister given renderer
     /// </summary>
-    public static void Shutdown(Noesis.View view, UnityEngine.Rendering.CommandBuffer commands)
+    public static void UnregisterView(Noesis.View view, UnityEngine.Rendering.CommandBuffer commands)
     {
-        commands.IssuePluginEvent(_renderShutdownCallback, view.GetHashCode());
-    }
-
-    /// <summary>
-    /// Unregister given renderer
-    /// </summary>
-    public static void Shutdown(Noesis.View view)
-    {
-        UnityEngine.GL.IssuePluginEvent(_renderShutdownCallback, view.GetHashCode());
+        commands.IssuePluginEventAndData(_renderUnregisterCallback, 0, view.CPtr.Handle);
     }
 
     #region Private
     [DllImport(Noesis.Library.Name)]
-    private static extern void Noesis_RegisterView(HandleRef renderer, int id);
+    private static extern System.IntPtr Noesis_GetRenderRegisterCallback();
 
     [DllImport(Noesis.Library.Name)]
     private static extern System.IntPtr Noesis_GetRenderOffscreenCallback();
@@ -73,14 +49,11 @@ public class NoesisRenderer
     private static extern System.IntPtr Noesis_GetRenderOnscreenCallback();
 
     [DllImport(Noesis.Library.Name)]
-    private static extern System.IntPtr Noesis_GetRenderOnscreenFlipYCallback();
+    private static extern System.IntPtr Noesis_GetRenderUnregisterCallback();
 
-    [DllImport(Noesis.Library.Name)]
-    private static extern System.IntPtr Noesis_GetRenderShutdownCallback();
-
+    private static System.IntPtr _renderRegisterCallback = Noesis_GetRenderRegisterCallback();
     private static System.IntPtr _renderOffscreenCallback = Noesis_GetRenderOffscreenCallback();
     private static System.IntPtr _renderOnscreenCallback = Noesis_GetRenderOnscreenCallback();
-    private static System.IntPtr _renderOnscreenFlipYCallback = Noesis_GetRenderOnscreenFlipYCallback();
-    private static System.IntPtr _renderShutdownCallback = Noesis_GetRenderShutdownCallback();
+    private static System.IntPtr _renderUnregisterCallback = Noesis_GetRenderUnregisterCallback();
     #endregion
 }

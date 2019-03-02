@@ -43,7 +43,6 @@ public class TabControl : Selector {
   public static DependencyProperty ContentTemplateProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TabControl_ContentTemplateProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -51,7 +50,6 @@ public class TabControl : Selector {
   public static DependencyProperty ContentTemplateSelectorProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TabControl_ContentTemplateSelectorProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -59,7 +57,6 @@ public class TabControl : Selector {
   public static DependencyProperty SelectedContentProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TabControl_SelectedContentProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -67,7 +64,6 @@ public class TabControl : Selector {
   public static DependencyProperty SelectedContentTemplateProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TabControl_SelectedContentTemplateProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -75,7 +71,6 @@ public class TabControl : Selector {
   public static DependencyProperty SelectedContentTemplateSelectorProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TabControl_SelectedContentTemplateSelectorProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -83,7 +78,6 @@ public class TabControl : Selector {
   public static DependencyProperty TabStripPlacementProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TabControl_TabStripPlacementProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -91,11 +85,9 @@ public class TabControl : Selector {
   public DataTemplate ContentTemplate {
     set {
       NoesisGUI_PINVOKE.TabControl_ContentTemplate_set(swigCPtr, DataTemplate.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TabControl_ContentTemplate_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DataTemplate)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -103,11 +95,9 @@ public class TabControl : Selector {
   public DataTemplateSelector ContentTemplateSelector {
     set {
       NoesisGUI_PINVOKE.TabControl_ContentTemplateSelector_set(swigCPtr, DataTemplateSelector.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TabControl_ContentTemplateSelector_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DataTemplateSelector)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -115,7 +105,6 @@ public class TabControl : Selector {
   public object SelectedContent {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TabControl_SelectedContent_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -123,7 +112,6 @@ public class TabControl : Selector {
   public DataTemplate SelectedContentTemplate {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TabControl_SelectedContentTemplate_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DataTemplate)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -131,7 +119,6 @@ public class TabControl : Selector {
   public DataTemplateSelector SelectedContentTemplateSelector {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TabControl_SelectedContentTemplateSelector_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DataTemplateSelector)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -139,26 +126,20 @@ public class TabControl : Selector {
   public Dock TabStripPlacement {
     set {
       NoesisGUI_PINVOKE.TabControl_TabStripPlacement_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       Dock ret = (Dock)NoesisGUI_PINVOKE.TabControl_TabStripPlacement_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TabControl_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_TabControl(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_TabControl(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

@@ -36,13 +36,11 @@ public class SkewTransform : Transform {
   }
 
   public SkewTransform(float angleX, float angleY) : this(NoesisGUI_PINVOKE.new_SkewTransform__SWIG_1(angleX, angleY), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DependencyProperty AngleXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.SkewTransform_AngleXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -50,7 +48,6 @@ public class SkewTransform : Transform {
   public static DependencyProperty AngleYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.SkewTransform_AngleYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -58,7 +55,6 @@ public class SkewTransform : Transform {
   public static DependencyProperty CenterXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.SkewTransform_CenterXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -66,7 +62,6 @@ public class SkewTransform : Transform {
   public static DependencyProperty CenterYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.SkewTransform_CenterYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -74,11 +69,9 @@ public class SkewTransform : Transform {
   public float AngleX {
     set {
       NoesisGUI_PINVOKE.SkewTransform_AngleX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.SkewTransform_AngleX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -86,11 +79,9 @@ public class SkewTransform : Transform {
   public float AngleY {
     set {
       NoesisGUI_PINVOKE.SkewTransform_AngleY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.SkewTransform_AngleY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -98,11 +89,9 @@ public class SkewTransform : Transform {
   public float CenterX {
     set {
       NoesisGUI_PINVOKE.SkewTransform_CenterX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.SkewTransform_CenterX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -110,18 +99,15 @@ public class SkewTransform : Transform {
   public float CenterY {
     set {
       NoesisGUI_PINVOKE.SkewTransform_CenterY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.SkewTransform_CenterY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.SkewTransform_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

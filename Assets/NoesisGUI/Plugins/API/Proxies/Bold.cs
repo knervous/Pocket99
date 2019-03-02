@@ -36,12 +36,10 @@ public class Bold : Span {
   }
 
   public Bold(Inline childInline) : this(NoesisGUI_PINVOKE.new_Bold__SWIG_1(Inline.getCPtr(childInline)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Bold_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

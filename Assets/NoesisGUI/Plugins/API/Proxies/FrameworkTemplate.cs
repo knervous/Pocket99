@@ -32,44 +32,36 @@ public class FrameworkTemplate : BaseComponent {
 
   public object FindName(string name, FrameworkElement templatedParent) {
     IntPtr cPtr = NoesisGUI_PINVOKE.FrameworkTemplate_FindName__SWIG_0(swigCPtr, name != null ? name : string.Empty, FrameworkElement.getCPtr(templatedParent));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public object FindName(string name) {
     IntPtr cPtr = NoesisGUI_PINVOKE.FrameworkTemplate_FindName__SWIG_1(swigCPtr, name != null ? name : string.Empty);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public void RegisterName(string name, object arg1) {
     NoesisGUI_PINVOKE.FrameworkTemplate_RegisterName(swigCPtr, name != null ? name : string.Empty, Noesis.Extend.GetInstanceHandle(arg1));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void UnregisterName(string name) {
     NoesisGUI_PINVOKE.FrameworkTemplate_UnregisterName(swigCPtr, name != null ? name : string.Empty);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void UpdateName(string name, object arg1) {
     NoesisGUI_PINVOKE.FrameworkTemplate_UpdateName(swigCPtr, name != null ? name : string.Empty, Noesis.Extend.GetInstanceHandle(arg1));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void Seal() {
     NoesisGUI_PINVOKE.FrameworkTemplate_Seal(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public ResourceDictionary Resources {
     set {
       NoesisGUI_PINVOKE.FrameworkTemplate_Resources_set(swigCPtr, ResourceDictionary.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.FrameworkTemplate_Resources_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (ResourceDictionary)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -77,11 +69,9 @@ public class FrameworkTemplate : BaseComponent {
   public Visual VisualTree {
     set {
       NoesisGUI_PINVOKE.FrameworkTemplate_VisualTree_set(swigCPtr, Visual.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.FrameworkTemplate_VisualTree_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Visual)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -89,7 +79,6 @@ public class FrameworkTemplate : BaseComponent {
   public bool CanSeal {
     get {
       bool ret = NoesisGUI_PINVOKE.FrameworkTemplate_CanSeal_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -97,14 +86,12 @@ public class FrameworkTemplate : BaseComponent {
   public bool IsSealed {
     get {
       bool ret = NoesisGUI_PINVOKE.FrameworkTemplate_IsSealed_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.FrameworkTemplate_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

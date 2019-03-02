@@ -11,7 +11,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 
 namespace Noesis
 {
@@ -29,119 +28,23 @@ public class Control : FrameworkElement {
   }
 
   #region Events
-  #region MouseDoubleClick
-  public delegate void MouseDoubleClickHandler(object sender, MouseButtonEventArgs e);
-  public event MouseDoubleClickHandler MouseDoubleClick {
+  public event MouseButtonEventHandler MouseDoubleClick {
     add {
-      if (!_MouseDoubleClick.ContainsKey(swigCPtr.Handle)) {
-        _MouseDoubleClick.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_Control_MouseDoubleClick(_raiseMouseDoubleClick, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _MouseDoubleClick[swigCPtr.Handle] += value;
+      AddHandler(MouseDoubleClickEvent, value);
     }
     remove {
-      if (_MouseDoubleClick.ContainsKey(swigCPtr.Handle)) {
-
-        _MouseDoubleClick[swigCPtr.Handle] -= value;
-
-        if (_MouseDoubleClick[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_Control_MouseDoubleClick(_raiseMouseDoubleClick, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _MouseDoubleClick.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(MouseDoubleClickEvent, value);
     }
   }
 
-  internal delegate void RaiseMouseDoubleClickCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseMouseDoubleClickCallback _raiseMouseDoubleClick = RaiseMouseDoubleClick;
-
-  [MonoPInvokeCallback(typeof(RaiseMouseDoubleClickCallback))]
-  private static void RaiseMouseDoubleClick(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_MouseDoubleClick.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for MouseDoubleClick event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _MouseDoubleClick.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        MouseDoubleClickHandler handler = _MouseDoubleClick[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseButtonEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, MouseDoubleClickHandler> _MouseDoubleClick =
-      new Dictionary<IntPtr, MouseDoubleClickHandler>();
-  #endregion
-
-  #region PreviewMouseDoubleClick
-  public delegate void PreviewMouseDoubleClickHandler(object sender, MouseButtonEventArgs e);
-  public event PreviewMouseDoubleClickHandler PreviewMouseDoubleClick {
+  public event MouseButtonEventHandler PreviewMouseDoubleClick {
     add {
-      if (!_PreviewMouseDoubleClick.ContainsKey(swigCPtr.Handle)) {
-        _PreviewMouseDoubleClick.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_Control_PreviewMouseDoubleClick(_raisePreviewMouseDoubleClick, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewMouseDoubleClick[swigCPtr.Handle] += value;
+      AddHandler(PreviewMouseDoubleClickEvent, value);
     }
     remove {
-      if (_PreviewMouseDoubleClick.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewMouseDoubleClick[swigCPtr.Handle] -= value;
-
-        if (_PreviewMouseDoubleClick[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_Control_PreviewMouseDoubleClick(_raisePreviewMouseDoubleClick, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewMouseDoubleClick.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewMouseDoubleClickEvent, value);
     }
   }
-
-  internal delegate void RaisePreviewMouseDoubleClickCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewMouseDoubleClickCallback _raisePreviewMouseDoubleClick = RaisePreviewMouseDoubleClick;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewMouseDoubleClickCallback))]
-  private static void RaisePreviewMouseDoubleClick(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewMouseDoubleClick.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewMouseDoubleClick event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewMouseDoubleClick.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewMouseDoubleClickHandler handler = _PreviewMouseDoubleClick[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseButtonEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewMouseDoubleClickHandler> _PreviewMouseDoubleClick =
-      new Dictionary<IntPtr, PreviewMouseDoubleClickHandler>();
-  #endregion
 
   #endregion
 
@@ -161,7 +64,6 @@ public class Control : FrameworkElement {
   public static DependencyProperty BackgroundProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_BackgroundProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -169,7 +71,6 @@ public class Control : FrameworkElement {
   public static DependencyProperty BorderBrushProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_BorderBrushProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -177,7 +78,6 @@ public class Control : FrameworkElement {
   public static DependencyProperty BorderThicknessProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_BorderThicknessProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -185,7 +85,6 @@ public class Control : FrameworkElement {
   public static DependencyProperty FontFamilyProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_FontFamilyProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -193,7 +92,6 @@ public class Control : FrameworkElement {
   public static DependencyProperty FontSizeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_FontSizeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -201,7 +99,6 @@ public class Control : FrameworkElement {
   public static DependencyProperty FontStretchProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_FontStretchProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -209,7 +106,6 @@ public class Control : FrameworkElement {
   public static DependencyProperty FontStyleProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_FontStyleProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -217,7 +113,6 @@ public class Control : FrameworkElement {
   public static DependencyProperty FontWeightProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_FontWeightProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -225,7 +120,6 @@ public class Control : FrameworkElement {
   public static DependencyProperty ForegroundProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_ForegroundProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -233,7 +127,6 @@ public class Control : FrameworkElement {
   public static DependencyProperty HorizontalContentAlignmentProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_HorizontalContentAlignmentProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -241,7 +134,6 @@ public class Control : FrameworkElement {
   public static DependencyProperty IsTabStopProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_IsTabStopProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -249,7 +141,6 @@ public class Control : FrameworkElement {
   public static DependencyProperty PaddingProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_PaddingProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -257,7 +148,6 @@ public class Control : FrameworkElement {
   public static DependencyProperty TabIndexProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_TabIndexProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -265,7 +155,6 @@ public class Control : FrameworkElement {
   public static DependencyProperty TemplateProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_TemplateProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -273,19 +162,57 @@ public class Control : FrameworkElement {
   public static DependencyProperty VerticalContentAlignmentProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_VerticalContentAlignmentProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static DependencyProperty IsFocusEngagedProperty {
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Control_IsFocusEngagedProperty_get();
+      return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static DependencyProperty IsFocusEngagementEnabledProperty {
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Control_IsFocusEngagementEnabledProperty_get();
+      return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static DependencyProperty SupportsFocusEngagementProperty {
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Control_SupportsFocusEngagementProperty_get();
+      return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseDoubleClickEvent {
+    set {
+      NoesisGUI_PINVOKE.Control_MouseDoubleClickEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Control_MouseDoubleClickEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewMouseDoubleClickEvent {
+    set {
+      NoesisGUI_PINVOKE.Control_PreviewMouseDoubleClickEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Control_PreviewMouseDoubleClickEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public Brush Background {
     set {
       NoesisGUI_PINVOKE.Control_Background_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_Background_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -293,11 +220,9 @@ public class Control : FrameworkElement {
   public Brush BorderBrush {
     set {
       NoesisGUI_PINVOKE.Control_BorderBrush_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_BorderBrush_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -305,12 +230,10 @@ public class Control : FrameworkElement {
   public Thickness BorderThickness {
     set {
       NoesisGUI_PINVOKE.Control_BorderThickness_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.Control_BorderThickness_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Thickness>(ret);
       }
@@ -324,11 +247,9 @@ public class Control : FrameworkElement {
   public FontFamily FontFamily {
     set {
       NoesisGUI_PINVOKE.Control_FontFamily_set(swigCPtr, FontFamily.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_FontFamily_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (FontFamily)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -336,11 +257,9 @@ public class Control : FrameworkElement {
   public float FontSize {
     set {
       NoesisGUI_PINVOKE.Control_FontSize_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.Control_FontSize_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -348,11 +267,9 @@ public class Control : FrameworkElement {
   public FontStretch FontStretch {
     set {
       NoesisGUI_PINVOKE.Control_FontStretch_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       FontStretch ret = (FontStretch)NoesisGUI_PINVOKE.Control_FontStretch_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -360,11 +277,9 @@ public class Control : FrameworkElement {
   public FontStyle FontStyle {
     set {
       NoesisGUI_PINVOKE.Control_FontStyle_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       FontStyle ret = (FontStyle)NoesisGUI_PINVOKE.Control_FontStyle_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -372,11 +287,9 @@ public class Control : FrameworkElement {
   public FontWeight FontWeight {
     set {
       NoesisGUI_PINVOKE.Control_FontWeight_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       FontWeight ret = (FontWeight)NoesisGUI_PINVOKE.Control_FontWeight_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -384,11 +297,9 @@ public class Control : FrameworkElement {
   public Brush Foreground {
     set {
       NoesisGUI_PINVOKE.Control_Foreground_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_Foreground_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -396,11 +307,9 @@ public class Control : FrameworkElement {
   public HorizontalAlignment HorizontalContentAlignment {
     set {
       NoesisGUI_PINVOKE.Control_HorizontalContentAlignment_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       HorizontalAlignment ret = (HorizontalAlignment)NoesisGUI_PINVOKE.Control_HorizontalContentAlignment_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -408,11 +317,9 @@ public class Control : FrameworkElement {
   public bool IsTabStop {
     set {
       NoesisGUI_PINVOKE.Control_IsTabStop_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.Control_IsTabStop_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -420,12 +327,10 @@ public class Control : FrameworkElement {
   public Thickness Padding {
     set {
       NoesisGUI_PINVOKE.Control_Padding_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.Control_Padding_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Thickness>(ret);
       }
@@ -439,11 +344,9 @@ public class Control : FrameworkElement {
   public int TabIndex {
     set {
       NoesisGUI_PINVOKE.Control_TabIndex_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       int ret = NoesisGUI_PINVOKE.Control_TabIndex_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -451,11 +354,9 @@ public class Control : FrameworkElement {
   public ControlTemplate Template {
     set {
       NoesisGUI_PINVOKE.Control_Template_set(swigCPtr, ControlTemplate.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Control_Template_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (ControlTemplate)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -463,26 +364,50 @@ public class Control : FrameworkElement {
   public VerticalAlignment VerticalContentAlignment {
     set {
       NoesisGUI_PINVOKE.Control_VerticalContentAlignment_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       VerticalAlignment ret = (VerticalAlignment)NoesisGUI_PINVOKE.Control_VerticalContentAlignment_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      return ret;
+    } 
+  }
+
+  public bool IsFocusEngaged {
+    set {
+      NoesisGUI_PINVOKE.Control_IsFocusEngaged_set(swigCPtr, value);
+    } 
+    get {
+      bool ret = NoesisGUI_PINVOKE.Control_IsFocusEngaged_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public bool IsFocusEngagementEnabled {
+    set {
+      NoesisGUI_PINVOKE.Control_IsFocusEngagementEnabled_set(swigCPtr, value);
+    } 
+    get {
+      bool ret = NoesisGUI_PINVOKE.Control_IsFocusEngagementEnabled_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public bool SupportsFocusEngagement {
+    set {
+      NoesisGUI_PINVOKE.Control_SupportsFocusEngagement_set(swigCPtr, value);
+    } 
+    get {
+      bool ret = NoesisGUI_PINVOKE.Control_SupportsFocusEngagement_get(swigCPtr);
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Control_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_Control(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_Control(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

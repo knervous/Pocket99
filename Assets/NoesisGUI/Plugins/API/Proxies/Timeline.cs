@@ -33,14 +33,13 @@ public class Timeline : Animatable {
 
   #region Events
   #region Completed
-  public delegate void CompletedHandler(object sender, TimelineEventArgs e);
+  public delegate void CompletedHandler(object sender, EventArgs e);
   public event CompletedHandler Completed {
     add {
       if (!_Completed.ContainsKey(swigCPtr.Handle)) {
         _Completed.Add(swigCPtr.Handle, null);
 
         NoesisGUI_PINVOKE.BindEvent_Timeline_Completed(_raiseCompleted, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       }
 
       _Completed[swigCPtr.Handle] += value;
@@ -52,7 +51,6 @@ public class Timeline : Animatable {
 
         if (_Completed[swigCPtr.Handle] == null) {
           NoesisGUI_PINVOKE.UnbindEvent_Timeline_Completed(_raiseCompleted, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
 
           _Completed.Remove(swigCPtr.Handle);
         }
@@ -76,12 +74,12 @@ public class Timeline : Animatable {
       if (Noesis.Extend.Initialized) {
         CompletedHandler handler = _Completed[cPtr];
         if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new TimelineEventArgs(e, false));
+          handler(Noesis.Extend.GetProxy(sender, false), new EventArgs(e, false));
         }
       }
     }
     catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
+      Noesis.Error.UnhandledException(exception);
     }
   }
 
@@ -93,19 +91,16 @@ public class Timeline : Animatable {
 
   public static int GetDesiredFrameRate(DependencyObject timeline) {
     int ret = NoesisGUI_PINVOKE.Timeline_GetDesiredFrameRate(DependencyObject.getCPtr(timeline));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetDesiredFrameRate(DependencyObject timeline, int rate) {
     NoesisGUI_PINVOKE.Timeline_SetDesiredFrameRate(DependencyObject.getCPtr(timeline), rate);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DependencyProperty AccelerationRatioProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Timeline_AccelerationRatioProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -113,7 +108,6 @@ public class Timeline : Animatable {
   public static DependencyProperty AutoReverseProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Timeline_AutoReverseProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -121,7 +115,6 @@ public class Timeline : Animatable {
   public static DependencyProperty BeginTimeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Timeline_BeginTimeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -129,7 +122,6 @@ public class Timeline : Animatable {
   public static DependencyProperty DecelerationRatioProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Timeline_DecelerationRatioProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -137,7 +129,6 @@ public class Timeline : Animatable {
   public static DependencyProperty DesiredFrameRateProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Timeline_DesiredFrameRateProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -145,7 +136,6 @@ public class Timeline : Animatable {
   public static DependencyProperty DurationProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Timeline_DurationProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -153,7 +143,6 @@ public class Timeline : Animatable {
   public static DependencyProperty FillBehaviorProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Timeline_FillBehaviorProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -161,7 +150,6 @@ public class Timeline : Animatable {
   public static DependencyProperty NameProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Timeline_NameProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -169,7 +157,6 @@ public class Timeline : Animatable {
   public static DependencyProperty RepeatBehaviorProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Timeline_RepeatBehaviorProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -177,7 +164,6 @@ public class Timeline : Animatable {
   public static DependencyProperty SpeedRatioProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Timeline_SpeedRatioProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -185,11 +171,9 @@ public class Timeline : Animatable {
   public float AccelerationRatio {
     set {
       NoesisGUI_PINVOKE.Timeline_AccelerationRatio_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.Timeline_AccelerationRatio_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -197,11 +181,9 @@ public class Timeline : Animatable {
   public bool AutoReverse {
     set {
       NoesisGUI_PINVOKE.Timeline_AutoReverse_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.Timeline_AutoReverse_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -210,12 +192,10 @@ public class Timeline : Animatable {
     set {
       NullableTimeSpan tempvalue = value;
       NoesisGUI_PINVOKE.Timeline_BeginTime_set(swigCPtr, ref tempvalue);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.Timeline_BeginTime_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<NullableTimeSpan>(ret);
       }
@@ -229,11 +209,9 @@ public class Timeline : Animatable {
   public float DecelerationRatio {
     set {
       NoesisGUI_PINVOKE.Timeline_DecelerationRatio_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.Timeline_DecelerationRatio_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -241,12 +219,10 @@ public class Timeline : Animatable {
   public Duration Duration {
     set {
       NoesisGUI_PINVOKE.Timeline_Duration_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.Timeline_Duration_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Duration>(ret);
       }
@@ -260,11 +236,9 @@ public class Timeline : Animatable {
   public FillBehavior FillBehavior {
     set {
       NoesisGUI_PINVOKE.Timeline_FillBehavior_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       FillBehavior ret = (FillBehavior)NoesisGUI_PINVOKE.Timeline_FillBehavior_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -272,11 +246,9 @@ public class Timeline : Animatable {
   public string Name {
     set {
       NoesisGUI_PINVOKE.Timeline_Name_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.Timeline_Name_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -285,12 +257,10 @@ public class Timeline : Animatable {
   public RepeatBehavior RepeatBehavior {
     set {
       NoesisGUI_PINVOKE.Timeline_RepeatBehavior_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.Timeline_RepeatBehavior_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<RepeatBehavior>(ret);
       }
@@ -304,18 +274,15 @@ public class Timeline : Animatable {
   public float SpeedRatio {
     set {
       NoesisGUI_PINVOKE.Timeline_SpeedRatio_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.Timeline_SpeedRatio_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Timeline_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class BindingBase : BaseComponent {
+public class BindingBase : MarkupExtension {
   internal new static BindingBase CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new BindingBase(cPtr, cMemoryOwn);
   }
@@ -30,14 +30,32 @@ public class BindingBase : BaseComponent {
   protected BindingBase() {
   }
 
+  public int Delay {
+    set {
+      NoesisGUI_PINVOKE.BindingBase_Delay_set(swigCPtr, value);
+    } 
+    get {
+      int ret = NoesisGUI_PINVOKE.BindingBase_Delay_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public object TargetNullValue {
+    set {
+      NoesisGUI_PINVOKE.BindingBase_TargetNullValue_set(swigCPtr, Noesis.Extend.GetInstanceHandle(value));
+    }
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.BindingBase_TargetNullValue_get(swigCPtr);
+      return Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
   public object FallbackValue {
     set {
       NoesisGUI_PINVOKE.BindingBase_FallbackValue_set(swigCPtr, Noesis.Extend.GetInstanceHandle(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.BindingBase_FallbackValue_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -45,11 +63,9 @@ public class BindingBase : BaseComponent {
   public string StringFormat {
     set {
       NoesisGUI_PINVOKE.BindingBase_StringFormat_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.BindingBase_StringFormat_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -57,7 +73,6 @@ public class BindingBase : BaseComponent {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.BindingBase_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

@@ -38,7 +38,6 @@ public class ElasticEase : EasingFunctionBase {
   public static DependencyProperty OscillationsProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ElasticEase_OscillationsProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,7 +45,6 @@ public class ElasticEase : EasingFunctionBase {
   public static DependencyProperty SpringinessProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ElasticEase_SpringinessProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -54,11 +52,9 @@ public class ElasticEase : EasingFunctionBase {
   public int Oscillations {
     set {
       NoesisGUI_PINVOKE.ElasticEase_Oscillations_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       int ret = NoesisGUI_PINVOKE.ElasticEase_Oscillations_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -66,18 +62,15 @@ public class ElasticEase : EasingFunctionBase {
   public float Springiness {
     set {
       NoesisGUI_PINVOKE.ElasticEase_Springiness_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.ElasticEase_Springiness_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ElasticEase_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

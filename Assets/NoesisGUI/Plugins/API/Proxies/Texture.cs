@@ -27,14 +27,12 @@ public partial class Texture : BaseComponent {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
-  public void SetContext(object context) {
-    NoesisGUI_PINVOKE.Texture_SetContext(swigCPtr, Noesis.Extend.GetInstanceHandle(context));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  public void SetPrivateData(object context) {
+    NoesisGUI_PINVOKE.Texture_SetPrivateData(swigCPtr, Noesis.Extend.GetInstanceHandle(context));
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Texture_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

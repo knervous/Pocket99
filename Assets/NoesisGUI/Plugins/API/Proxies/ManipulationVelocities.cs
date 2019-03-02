@@ -46,77 +46,50 @@ public class ManipulationVelocities : IDisposable {
   }
 
   public float AngularVelocity {
-    get {
-      return GetAngularVelocityHelper();
-    }
     set {
-      SetAngularVelocityHelper(value);
-    }
-  }
-
-  public Noesis.Point ExpansionVelocity {
+      NoesisGUI_PINVOKE.ManipulationVelocities_AngularVelocity_set(swigCPtr, value);
+    } 
     get {
-      return GetExpansionVelocityHelper();
-    }
-    set {
-      SetExpansionVelocityHelper(value);
-    }
+      float ret = NoesisGUI_PINVOKE.ManipulationVelocities_AngularVelocity_get(swigCPtr);
+      return ret;
+    } 
   }
 
-  public Noesis.Point LinearVelocity {
+  public Point ExpansionVelocity {
+    set {
+      NoesisGUI_PINVOKE.ManipulationVelocities_ExpansionVelocity_set(swigCPtr, ref value);
+    }
+
     get {
-      return GetLinearVelocityHelper();
+      IntPtr ret = NoesisGUI_PINVOKE.ManipulationVelocities_ExpansionVelocity_get(swigCPtr);
+      if (ret != IntPtr.Zero) {
+        return Marshal.PtrToStructure<Point>(ret);
+      }
+      else {
+        return new Point();
+      }
     }
+
+  }
+
+  public Point LinearVelocity {
     set {
-      SetLinearVelocityHelper(value);
+      NoesisGUI_PINVOKE.ManipulationVelocities_LinearVelocity_set(swigCPtr, ref value);
     }
-  }
 
-  private float GetAngularVelocityHelper() {
-    float ret = NoesisGUI_PINVOKE.ManipulationVelocities_GetAngularVelocityHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private void SetAngularVelocityHelper(float v) {
-    NoesisGUI_PINVOKE.ManipulationVelocities_SetAngularVelocityHelper(swigCPtr, v);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private Point GetExpansionVelocityHelper() {
-    IntPtr ret = NoesisGUI_PINVOKE.ManipulationVelocities_GetExpansionVelocityHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    if (ret != IntPtr.Zero) {
-      return Marshal.PtrToStructure<Point>(ret);
+    get {
+      IntPtr ret = NoesisGUI_PINVOKE.ManipulationVelocities_LinearVelocity_get(swigCPtr);
+      if (ret != IntPtr.Zero) {
+        return Marshal.PtrToStructure<Point>(ret);
+      }
+      else {
+        return new Point();
+      }
     }
-    else {
-      return new Point();
-    }
-  }
 
-  private void SetExpansionVelocityHelper(Point v) {
-    NoesisGUI_PINVOKE.ManipulationVelocities_SetExpansionVelocityHelper(swigCPtr, ref v);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private Point GetLinearVelocityHelper() {
-    IntPtr ret = NoesisGUI_PINVOKE.ManipulationVelocities_GetLinearVelocityHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    if (ret != IntPtr.Zero) {
-      return Marshal.PtrToStructure<Point>(ret);
-    }
-    else {
-      return new Point();
-    }
-  }
-
-  private void SetLinearVelocityHelper(Point v) {
-    NoesisGUI_PINVOKE.ManipulationVelocities_SetLinearVelocityHelper(swigCPtr, ref v);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public ManipulationVelocities() : this(NoesisGUI_PINVOKE.new_ManipulationVelocities(), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

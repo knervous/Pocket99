@@ -38,11 +38,9 @@ public class ColumnDefinition : DefinitionBase {
   public new static DependencyProperty WidthProperty {
     set {
       NoesisGUI_PINVOKE.ColumnDefinition_WidthProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ColumnDefinition_WidthProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -50,11 +48,9 @@ public class ColumnDefinition : DefinitionBase {
   public new static DependencyProperty MinWidthProperty {
     set {
       NoesisGUI_PINVOKE.ColumnDefinition_MinWidthProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ColumnDefinition_MinWidthProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -62,11 +58,9 @@ public class ColumnDefinition : DefinitionBase {
   public new static DependencyProperty MaxWidthProperty {
     set {
       NoesisGUI_PINVOKE.ColumnDefinition_MaxWidthProperty_set(DependencyProperty.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ColumnDefinition_MaxWidthProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -74,12 +68,10 @@ public class ColumnDefinition : DefinitionBase {
   public new GridLength Width {
     set {
       NoesisGUI_PINVOKE.ColumnDefinition_Width_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.ColumnDefinition_Width_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<GridLength>(ret);
       }
@@ -93,11 +85,9 @@ public class ColumnDefinition : DefinitionBase {
   public new float MinWidth {
     set {
       NoesisGUI_PINVOKE.ColumnDefinition_MinWidth_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.ColumnDefinition_MinWidth_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -105,18 +95,15 @@ public class ColumnDefinition : DefinitionBase {
   public new float MaxWidth {
     set {
       NoesisGUI_PINVOKE.ColumnDefinition_MaxWidth_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.ColumnDefinition_MaxWidth_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ColumnDefinition_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

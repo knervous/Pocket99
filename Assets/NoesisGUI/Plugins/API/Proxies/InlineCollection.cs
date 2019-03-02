@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class InlineCollection : Collection {
+public class InlineCollection : UICollection<Inline> {
   internal new static InlineCollection CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new InlineCollection(cPtr, cMemoryOwn);
   }
@@ -27,18 +27,17 @@ public class InlineCollection : Collection {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
+  new internal static IntPtr GetStaticType() {
+    IntPtr ret = NoesisGUI_PINVOKE.InlineCollection_GetStaticType();
+    return ret;
+  }
+
   public InlineCollection() {
   }
 
   protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
     registerExtend = false;
-    return NoesisGUI_PINVOKE.new_InlineCollection__SWIG_0();
-  }
-
-  new internal static IntPtr GetStaticType() {
-    IntPtr ret = NoesisGUI_PINVOKE.InlineCollection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
+    return NoesisGUI_PINVOKE.new_InlineCollection();
   }
 
 }

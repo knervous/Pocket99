@@ -106,7 +106,6 @@ public struct Thickness {
 
   public static bool TryParse(string str, out Thickness result) {
     bool ret = NoesisGUI_PINVOKE.Thickness_TryParse(str != null ? str : string.Empty, out result);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

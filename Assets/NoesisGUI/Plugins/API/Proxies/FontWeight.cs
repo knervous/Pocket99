@@ -20,6 +20,7 @@ public enum FontWeight {
   ExtraLight = 200,
   UltraLight = 200,
   Light = 300,
+  SemiLight = 350,
   Normal = 400,
   Regular = 400,
   Medium = 500,

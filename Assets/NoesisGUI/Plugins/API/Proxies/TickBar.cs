@@ -43,7 +43,6 @@ public class TickBar : FrameworkElement {
   public static DependencyProperty FillProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TickBar_FillProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -51,7 +50,6 @@ public class TickBar : FrameworkElement {
   public static DependencyProperty IsDirectionReversedProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TickBar_IsDirectionReversedProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -59,7 +57,6 @@ public class TickBar : FrameworkElement {
   public static DependencyProperty IsSelectionRangeEnabledProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TickBar_IsSelectionRangeEnabledProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -67,7 +64,6 @@ public class TickBar : FrameworkElement {
   public static DependencyProperty MaximumProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TickBar_MaximumProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -75,7 +71,6 @@ public class TickBar : FrameworkElement {
   public static DependencyProperty MinimumProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TickBar_MinimumProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -83,7 +78,6 @@ public class TickBar : FrameworkElement {
   public static DependencyProperty PlacementProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TickBar_PlacementProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -91,7 +85,6 @@ public class TickBar : FrameworkElement {
   public static DependencyProperty ReservedSpaceProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TickBar_ReservedSpaceProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -99,7 +92,6 @@ public class TickBar : FrameworkElement {
   public static DependencyProperty SelectionEndProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TickBar_SelectionEndProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -107,7 +99,6 @@ public class TickBar : FrameworkElement {
   public static DependencyProperty SelectionStartProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TickBar_SelectionStartProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -115,7 +106,6 @@ public class TickBar : FrameworkElement {
   public static DependencyProperty TickFrequencyProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TickBar_TickFrequencyProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -123,7 +113,6 @@ public class TickBar : FrameworkElement {
   public static DependencyProperty TicksProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TickBar_TicksProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -131,11 +120,9 @@ public class TickBar : FrameworkElement {
   public Brush Fill {
     set {
       NoesisGUI_PINVOKE.TickBar_Fill_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TickBar_Fill_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -143,11 +130,9 @@ public class TickBar : FrameworkElement {
   public bool IsDirectionReversed {
     set {
       NoesisGUI_PINVOKE.TickBar_IsDirectionReversed_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.TickBar_IsDirectionReversed_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -155,11 +140,9 @@ public class TickBar : FrameworkElement {
   public bool IsSelectionRangeEnabled {
     set {
       NoesisGUI_PINVOKE.TickBar_IsSelectionRangeEnabled_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.TickBar_IsSelectionRangeEnabled_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -167,11 +150,9 @@ public class TickBar : FrameworkElement {
   public float Maximum {
     set {
       NoesisGUI_PINVOKE.TickBar_Maximum_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.TickBar_Maximum_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -179,11 +160,9 @@ public class TickBar : FrameworkElement {
   public float Minimum {
     set {
       NoesisGUI_PINVOKE.TickBar_Minimum_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.TickBar_Minimum_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -191,11 +170,9 @@ public class TickBar : FrameworkElement {
   public TickBarPlacement Placement {
     set {
       NoesisGUI_PINVOKE.TickBar_Placement_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       TickBarPlacement ret = (TickBarPlacement)NoesisGUI_PINVOKE.TickBar_Placement_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -203,11 +180,9 @@ public class TickBar : FrameworkElement {
   public float ReservedSpace {
     set {
       NoesisGUI_PINVOKE.TickBar_ReservedSpace_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.TickBar_ReservedSpace_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -215,11 +190,9 @@ public class TickBar : FrameworkElement {
   public float SelectionEnd {
     set {
       NoesisGUI_PINVOKE.TickBar_SelectionEnd_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.TickBar_SelectionEnd_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -227,11 +200,9 @@ public class TickBar : FrameworkElement {
   public float SelectionStart {
     set {
       NoesisGUI_PINVOKE.TickBar_SelectionStart_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.TickBar_SelectionStart_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -239,11 +210,9 @@ public class TickBar : FrameworkElement {
   public float TickFrequency {
     set {
       NoesisGUI_PINVOKE.TickBar_TickFrequency_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.TickBar_TickFrequency_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -251,11 +220,9 @@ public class TickBar : FrameworkElement {
   public string Ticks {
     set {
       NoesisGUI_PINVOKE.TickBar_Ticks_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.TickBar_Ticks_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -263,15 +230,11 @@ public class TickBar : FrameworkElement {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TickBar_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_TickBar(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_TickBar(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class ResourceDictionaryCollection : Collection {
+public class ResourceDictionaryCollection : UICollection<ResourceDictionary> {
   internal new static ResourceDictionaryCollection CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new ResourceDictionaryCollection(cPtr, cMemoryOwn);
   }
@@ -27,18 +27,17 @@ public class ResourceDictionaryCollection : Collection {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
+  new internal static IntPtr GetStaticType() {
+    IntPtr ret = NoesisGUI_PINVOKE.ResourceDictionaryCollection_GetStaticType();
+    return ret;
+  }
+
   public ResourceDictionaryCollection() {
   }
 
   protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
     registerExtend = false;
-    return NoesisGUI_PINVOKE.new_ResourceDictionaryCollection__SWIG_0();
-  }
-
-  new internal static IntPtr GetStaticType() {
-    IntPtr ret = NoesisGUI_PINVOKE.ResourceDictionaryCollection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
+    return NoesisGUI_PINVOKE.new_ResourceDictionaryCollection();
   }
 
 }

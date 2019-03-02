@@ -38,7 +38,6 @@ public class ParallelTimeline : TimelineGroup {
   public static DependencyProperty SlipBehaviorProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ParallelTimeline_SlipBehaviorProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,18 +45,15 @@ public class ParallelTimeline : TimelineGroup {
   public SlipBehavior SlipBehavior {
     set {
       NoesisGUI_PINVOKE.ParallelTimeline_SlipBehavior_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       SlipBehavior ret = (SlipBehavior)NoesisGUI_PINVOKE.ParallelTimeline_SlipBehavior_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ParallelTimeline_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

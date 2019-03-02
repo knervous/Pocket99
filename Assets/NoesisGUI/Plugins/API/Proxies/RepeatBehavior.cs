@@ -141,7 +141,6 @@ public struct RepeatBehavior {
 
   public static bool TryParse(string str, out RepeatBehavior result) {
     bool ret = NoesisGUI_PINVOKE.RepeatBehavior_TryParse(str != null ? str : string.Empty, out result);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

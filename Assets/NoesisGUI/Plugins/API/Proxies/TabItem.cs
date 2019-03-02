@@ -43,7 +43,6 @@ public class TabItem : HeaderedContentControl {
   public static DependencyProperty IsSelectedProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TabItem_IsSelectedProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -51,7 +50,6 @@ public class TabItem : HeaderedContentControl {
   public static DependencyProperty TabStripPlacementProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TabItem_TabStripPlacementProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -59,11 +57,9 @@ public class TabItem : HeaderedContentControl {
   public bool IsSelected {
     set {
       NoesisGUI_PINVOKE.TabItem_IsSelected_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.TabItem_IsSelected_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -71,22 +67,17 @@ public class TabItem : HeaderedContentControl {
   public Dock TabStripPlacement {
     get {
       Dock ret = (Dock)NoesisGUI_PINVOKE.TabItem_TabStripPlacement_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TabItem_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_TabItem(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_TabItem(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

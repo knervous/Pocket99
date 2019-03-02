@@ -44,32 +44,28 @@ public class ScrollEventArgs : RoutedEventArgs {
     }
   }
 
-  public float NewValue {
-    get {
-      return GetNewValueHelper();
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    ScrollEventHandler handler_ = (ScrollEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new ScrollEventArgs(args, false));
     }
   }
 
-  public Noesis.ScrollEventType ScrollEventType {
+  public float NewValue {
     get {
-      return GetScrollEventTypeHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ScrollEventArgs_NewValue_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public ScrollEventType ScrollEventType {
+    get {
+      ScrollEventType ret = (ScrollEventType)NoesisGUI_PINVOKE.ScrollEventArgs_ScrollEventType_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public ScrollEventArgs(object s, float value, ScrollEventType type) : this(NoesisGUI_PINVOKE.new_ScrollEventArgs(Noesis.Extend.GetInstanceHandle(s), value, (int)type), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private float GetNewValueHelper() {
-    float ret = NoesisGUI_PINVOKE.ScrollEventArgs_GetNewValueHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private ScrollEventType GetScrollEventTypeHelper() {
-    ScrollEventType ret = (ScrollEventType)NoesisGUI_PINVOKE.ScrollEventArgs_GetScrollEventTypeHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
   }
 
 }

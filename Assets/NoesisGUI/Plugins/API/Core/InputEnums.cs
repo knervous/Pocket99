@@ -245,23 +245,45 @@ public enum Key
     Pa1,
     DbeEnterDialogConversionMode = Pa1,
     OemClear,
-    DeadCharProcessed
+    DeadCharProcessed,
+
+    PageLeft,
+    PageRight,
+
+    GamepadLeft,
+    GamepadUp,
+    GamepadRight,
+    GamepadDown,
+    GamepadAccept,
+    GamepadCancel,
+    GamepadMenu,
+    GamepadView,
+    GamepadPageUp,
+    GamepadPageDown,
+    GamepadPageLeft,
+    GamepadPageRight,
+    GamepadContext1,
+    GamepadContext2,
+    GamepadContext3,
+    GamepadContext4
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-public enum KeyStateFlags
+[FlagsAttribute]
+public enum KeyStates
 {
-    /// The key is not pressed.
-    None = 0x00,
+    /// The key is not pressed (same as up).
+    None = 0,
 
     /// The key is pressed.
-    Down = 0x01,
+    Down = 1,
 
-    /// The key is toggled.
-    Toggled = 0x02
+    /// The key is toggled on.
+    Toggled = 2
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+[FlagsAttribute]
 public enum ModifierKeys
 {
     None = 0,

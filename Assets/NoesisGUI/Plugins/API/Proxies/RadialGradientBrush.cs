@@ -38,7 +38,6 @@ public class RadialGradientBrush : GradientBrush {
   public static DependencyProperty CenterProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RadialGradientBrush_CenterProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,7 +45,6 @@ public class RadialGradientBrush : GradientBrush {
   public static DependencyProperty GradientOriginProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RadialGradientBrush_GradientOriginProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -54,7 +52,6 @@ public class RadialGradientBrush : GradientBrush {
   public static DependencyProperty RadiusXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RadialGradientBrush_RadiusXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -62,7 +59,6 @@ public class RadialGradientBrush : GradientBrush {
   public static DependencyProperty RadiusYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RadialGradientBrush_RadiusYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -70,12 +66,10 @@ public class RadialGradientBrush : GradientBrush {
   public Point Center {
     set {
       NoesisGUI_PINVOKE.RadialGradientBrush_Center_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.RadialGradientBrush_Center_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Point>(ret);
       }
@@ -89,12 +83,10 @@ public class RadialGradientBrush : GradientBrush {
   public Point GradientOrigin {
     set {
       NoesisGUI_PINVOKE.RadialGradientBrush_GradientOrigin_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.RadialGradientBrush_GradientOrigin_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Point>(ret);
       }
@@ -108,11 +100,9 @@ public class RadialGradientBrush : GradientBrush {
   public float RadiusX {
     set {
       NoesisGUI_PINVOKE.RadialGradientBrush_RadiusX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.RadialGradientBrush_RadiusX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -120,18 +110,15 @@ public class RadialGradientBrush : GradientBrush {
   public float RadiusY {
     set {
       NoesisGUI_PINVOKE.RadialGradientBrush_RadiusY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.RadialGradientBrush_RadiusY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.RadialGradientBrush_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

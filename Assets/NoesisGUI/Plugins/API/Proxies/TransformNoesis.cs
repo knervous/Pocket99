@@ -30,10 +30,10 @@ public class Transform : Animatable {
   protected Transform() {
   }
 
-  public Transform2 Value {
+  public Matrix Value {
     get {
-      Transform2 value;
-      GetTransformValue(out value);
+      Matrix value;
+      GetTransformHelper(out value);
       return value;
     }
   }
@@ -41,19 +41,16 @@ public class Transform : Animatable {
   public static Transform Identity {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Transform_Identity_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Transform)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
-  private void GetTransformValue(out Transform2 transform) {
-    NoesisGUI_PINVOKE.Transform_GetTransformValue(swigCPtr, out transform);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  private void GetTransformHelper(out Matrix transform) {
+    NoesisGUI_PINVOKE.Transform_GetTransformHelper(swigCPtr, out transform);
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Transform_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

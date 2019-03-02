@@ -29,36 +29,37 @@ public partial class PropertyMetadata : BaseComponent {
 
   public object DefaultValue {
     get {
-      return GetDefaultValueHelper();
+      IntPtr cPtr = GetDefaultValueHelper();
+      return Noesis.Extend.GetProxy(cPtr, true);
     }
-  }
-
-  public PropertyMetadata() {
-  }
-
-  protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
-    registerExtend = false;
-    return NoesisGUI_PINVOKE.new_PropertyMetadata__SWIG_0();
+    set {
+      object def = value;
+      if (def is Type) {
+        def = Noesis.Extend.GetResourceKeyType((Type)def);
+      }
+      SetDefaultValueHelper(def);
+    }
   }
 
   public bool HasDefaultValue {
     get {
       bool ret = NoesisGUI_PINVOKE.PropertyMetadata_HasDefaultValue_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.PropertyMetadata_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  private object GetDefaultValueHelper() {
-    IntPtr cPtr = NoesisGUI_PINVOKE.PropertyMetadata_GetDefaultValueHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return Noesis.Extend.GetProxy(cPtr, false);
+  private IntPtr GetDefaultValueHelper() {
+    IntPtr ret = NoesisGUI_PINVOKE.PropertyMetadata_GetDefaultValueHelper(swigCPtr);
+    return ret;
+  }
+
+  private void SetDefaultValueHelper(object value) {
+    NoesisGUI_PINVOKE.PropertyMetadata_SetDefaultValueHelper(swigCPtr, Noesis.Extend.GetInstanceHandle(value));
   }
 
 }

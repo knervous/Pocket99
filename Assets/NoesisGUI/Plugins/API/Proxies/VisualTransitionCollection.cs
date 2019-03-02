@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class VisualTransitionCollection : Collection {
+public class VisualTransitionCollection : UICollection<VisualTransition> {
   internal new static VisualTransitionCollection CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new VisualTransitionCollection(cPtr, cMemoryOwn);
   }
@@ -27,18 +27,17 @@ public class VisualTransitionCollection : Collection {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
+  new internal static IntPtr GetStaticType() {
+    IntPtr ret = NoesisGUI_PINVOKE.VisualTransitionCollection_GetStaticType();
+    return ret;
+  }
+
   public VisualTransitionCollection() {
   }
 
   protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
     registerExtend = false;
-    return NoesisGUI_PINVOKE.new_VisualTransitionCollection__SWIG_0();
-  }
-
-  new internal static IntPtr GetStaticType() {
-    IntPtr ret = NoesisGUI_PINVOKE.VisualTransitionCollection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
+    return NoesisGUI_PINVOKE.new_VisualTransitionCollection();
   }
 
 }

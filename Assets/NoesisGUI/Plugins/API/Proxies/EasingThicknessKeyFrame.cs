@@ -38,7 +38,6 @@ public class EasingThicknessKeyFrame : ThicknessKeyFrame {
   public static DependencyProperty EasingFunctionProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.EasingThicknessKeyFrame_EasingFunctionProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,18 +45,15 @@ public class EasingThicknessKeyFrame : ThicknessKeyFrame {
   public EasingFunctionBase EasingFunction {
     set {
       NoesisGUI_PINVOKE.EasingThicknessKeyFrame_EasingFunction_set(swigCPtr, EasingFunctionBase.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.EasingThicknessKeyFrame_EasingFunction_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (EasingFunctionBase)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.EasingThicknessKeyFrame_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

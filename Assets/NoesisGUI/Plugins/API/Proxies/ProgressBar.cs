@@ -43,7 +43,6 @@ public class ProgressBar : RangeBase {
   public static DependencyProperty IsIndeterminateProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ProgressBar_IsIndeterminateProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -51,7 +50,6 @@ public class ProgressBar : RangeBase {
   public static DependencyProperty OrientationProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ProgressBar_OrientationProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -59,11 +57,9 @@ public class ProgressBar : RangeBase {
   public bool IsIndeterminate {
     set {
       NoesisGUI_PINVOKE.ProgressBar_IsIndeterminate_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.ProgressBar_IsIndeterminate_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -71,26 +67,20 @@ public class ProgressBar : RangeBase {
   public Orientation Orientation {
     set {
       NoesisGUI_PINVOKE.ProgressBar_Orientation_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       Orientation ret = (Orientation)NoesisGUI_PINVOKE.ProgressBar_Orientation_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ProgressBar_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_ProgressBar(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_ProgressBar(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

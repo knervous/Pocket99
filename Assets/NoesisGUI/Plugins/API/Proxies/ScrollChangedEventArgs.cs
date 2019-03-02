@@ -44,152 +44,98 @@ public class ScrollChangedEventArgs : RoutedEventArgs {
     }
   }
 
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    ScrollChangedEventHandler handler_ = (ScrollChangedEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new ScrollChangedEventArgs(args, false));
+    }
+  }
+
   public float ExtentHeight {
     get {
-      return GetExtentHeightHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_ExtentHeight_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public float ExtentHeightChange {
     get {
-      return GetExtentHeightChangeHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_ExtentHeightChange_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public float ExtentWidth {
     get {
-      return GetExtentWidthHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_ExtentWidth_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public float ExtentWidthChange {
     get {
-      return GetExtentWidthChangeHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_ExtentWidthChange_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public float HorizontalChange {
     get {
-      return GetHorizontalChangeHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_HorizontalChange_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public float HorizontalOffset {
     get {
-      return GetHorizontalOffsetHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_HorizontalOffset_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public float VerticalChange {
     get {
-      return GetVerticalChangeHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_VerticalChange_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public float VerticalOffset {
     get {
-      return GetVerticalOffsetHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_VerticalOffset_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public float ViewportHeight {
     get {
-      return GetViewportHeightHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_ViewportHeight_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public float ViewportHeightChange {
     get {
-      return GetViewportHeightChangeHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_ViewportHeightChange_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public float ViewportWidth {
     get {
-      return GetViewportWidthHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_ViewportWidth_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public float ViewportWidthChange {
     get {
-      return GetViewportWidthChangeHelper();
-    }
+      float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_ViewportWidthChange_get(swigCPtr);
+      return ret;
+    } 
   }
 
   public ScrollChangedEventArgs(object s) : this(NoesisGUI_PINVOKE.new_ScrollChangedEventArgs(Noesis.Extend.GetInstanceHandle(s)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  private float GetExtentHeightHelper() {
-    float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_GetExtentHeightHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private float GetExtentHeightChangeHelper() {
-    float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_GetExtentHeightChangeHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private float GetExtentWidthHelper() {
-    float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_GetExtentWidthHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private float GetExtentWidthChangeHelper() {
-    float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_GetExtentWidthChangeHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private float GetHorizontalChangeHelper() {
-    float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_GetHorizontalChangeHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private float GetHorizontalOffsetHelper() {
-    float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_GetHorizontalOffsetHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private float GetVerticalChangeHelper() {
-    float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_GetVerticalChangeHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private float GetVerticalOffsetHelper() {
-    float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_GetVerticalOffsetHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private float GetViewportHeightHelper() {
-    float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_GetViewportHeightHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private float GetViewportHeightChangeHelper() {
-    float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_GetViewportHeightChangeHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private float GetViewportWidthHelper() {
-    float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_GetViewportWidthHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private float GetViewportWidthChangeHelper() {
-    float ret = NoesisGUI_PINVOKE.ScrollChangedEventArgs_GetViewportWidthChangeHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
   }
 
 }

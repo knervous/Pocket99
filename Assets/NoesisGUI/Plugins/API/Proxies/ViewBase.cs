@@ -37,17 +37,14 @@ public class ViewBase : DependencyObject {
 
   public virtual void ClearItem(ListViewItem item) {
     NoesisGUI_PINVOKE.ViewBase_ClearItem(swigCPtr, ListViewItem.getCPtr(item));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public virtual void PrepareItem(ListViewItem item) {
     NoesisGUI_PINVOKE.ViewBase_PrepareItem(swigCPtr, ListViewItem.getCPtr(item));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ViewBase_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

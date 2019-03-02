@@ -36,91 +36,75 @@ public class KeyboardNavigation : BaseComponent {
   }
 
   public KeyboardNavigation(Keyboard keyboard, Visual root) : this(NoesisGUI_PINVOKE.new_KeyboardNavigation__SWIG_1(Keyboard.getCPtr(keyboard), Visual.getCPtr(root)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static KeyboardNavigationMode GetTabNavigation(DependencyObject element) {
     KeyboardNavigationMode ret = (KeyboardNavigationMode)NoesisGUI_PINVOKE.KeyboardNavigation_GetTabNavigation(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetTabNavigation(DependencyObject element, KeyboardNavigationMode mode) {
     NoesisGUI_PINVOKE.KeyboardNavigation_SetTabNavigation(DependencyObject.getCPtr(element), (int)mode);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static KeyboardNavigationMode GetControlTabNavigation(DependencyObject element) {
     KeyboardNavigationMode ret = (KeyboardNavigationMode)NoesisGUI_PINVOKE.KeyboardNavigation_GetControlTabNavigation(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetControlTabNavigation(DependencyObject element, KeyboardNavigationMode mode) {
     NoesisGUI_PINVOKE.KeyboardNavigation_SetControlTabNavigation(DependencyObject.getCPtr(element), (int)mode);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static KeyboardNavigationMode GetDirectionalNavigation(DependencyObject element) {
     KeyboardNavigationMode ret = (KeyboardNavigationMode)NoesisGUI_PINVOKE.KeyboardNavigation_GetDirectionalNavigation(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetDirectionalNavigation(DependencyObject element, KeyboardNavigationMode mode) {
     NoesisGUI_PINVOKE.KeyboardNavigation_SetDirectionalNavigation(DependencyObject.getCPtr(element), (int)mode);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static bool GetAcceptsReturn(DependencyObject element) {
     bool ret = NoesisGUI_PINVOKE.KeyboardNavigation_GetAcceptsReturn(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetAcceptsReturn(DependencyObject element, bool value) {
     NoesisGUI_PINVOKE.KeyboardNavigation_SetAcceptsReturn(DependencyObject.getCPtr(element), value);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static bool GetIsTabStop(DependencyObject element) {
     bool ret = NoesisGUI_PINVOKE.KeyboardNavigation_GetIsTabStop(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetIsTabStop(DependencyObject element, bool value) {
     NoesisGUI_PINVOKE.KeyboardNavigation_SetIsTabStop(DependencyObject.getCPtr(element), value);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static int GetTabIndex(DependencyObject element) {
     int ret = NoesisGUI_PINVOKE.KeyboardNavigation_GetTabIndex(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetTabIndex(DependencyObject element, int value) {
     NoesisGUI_PINVOKE.KeyboardNavigation_SetTabIndex(DependencyObject.getCPtr(element), value);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public bool MoveFocus(FrameworkElement source, TraversalRequest request) {
     bool ret = NoesisGUI_PINVOKE.KeyboardNavigation_MoveFocus(swigCPtr, FrameworkElement.getCPtr(source), TraversalRequest.getCPtr(request));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public FrameworkElement PredictFocus(FrameworkElement source, FocusNavigationDirection direction) {
     IntPtr cPtr = NoesisGUI_PINVOKE.KeyboardNavigation_PredictFocus(swigCPtr, FrameworkElement.getCPtr(source), (int)direction);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (FrameworkElement)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public static DependencyProperty AcceptsReturnProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.KeyboardNavigation_AcceptsReturnProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -128,7 +112,6 @@ public class KeyboardNavigation : BaseComponent {
   public static DependencyProperty ControlTabNavigationProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.KeyboardNavigation_ControlTabNavigationProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -136,7 +119,6 @@ public class KeyboardNavigation : BaseComponent {
   public static DependencyProperty DirectionalNavigationProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.KeyboardNavigation_DirectionalNavigationProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -144,7 +126,6 @@ public class KeyboardNavigation : BaseComponent {
   public static DependencyProperty IsTabStopProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.KeyboardNavigation_IsTabStopProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -152,7 +133,6 @@ public class KeyboardNavigation : BaseComponent {
   public static DependencyProperty TabIndexProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.KeyboardNavigation_TabIndexProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -160,14 +140,12 @@ public class KeyboardNavigation : BaseComponent {
   public static DependencyProperty TabNavigationProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.KeyboardNavigation_TabNavigationProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.KeyboardNavigation_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

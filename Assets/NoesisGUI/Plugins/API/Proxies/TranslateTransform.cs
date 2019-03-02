@@ -36,13 +36,11 @@ public class TranslateTransform : Transform {
   }
 
   public TranslateTransform(float x, float y) : this(NoesisGUI_PINVOKE.new_TranslateTransform__SWIG_1(x, y), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DependencyProperty XProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TranslateTransform_XProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -50,7 +48,6 @@ public class TranslateTransform : Transform {
   public static DependencyProperty YProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TranslateTransform_YProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -58,11 +55,9 @@ public class TranslateTransform : Transform {
   public float X {
     set {
       NoesisGUI_PINVOKE.TranslateTransform_X_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.TranslateTransform_X_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -70,18 +65,15 @@ public class TranslateTransform : Transform {
   public float Y {
     set {
       NoesisGUI_PINVOKE.TranslateTransform_Y_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.TranslateTransform_Y_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TranslateTransform_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

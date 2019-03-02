@@ -33,20 +33,23 @@ public class Geometry : Animatable {
   public Rect Bounds {
     get {
       Rect bounds;
-      GetGeometryBounds(out bounds);
+      GetBoundsHelper(out bounds);
       return bounds;
     }
   }
 
+  public static Geometry Parse(string source) {
+    IntPtr cPtr = Geometry.ParseHelper(source);
+    return (Geometry)Noesis.Extend.GetProxy(cPtr, true);
+  }
+
   public virtual bool IsEmpty() {
     bool ret = NoesisGUI_PINVOKE.Geometry_IsEmpty(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public Rect GetRenderBounds(Pen pen) {
     IntPtr ret = NoesisGUI_PINVOKE.Geometry_GetRenderBounds(swigCPtr, Pen.getCPtr(pen));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Rect>(ret);
     }
@@ -57,20 +60,17 @@ public class Geometry : Animatable {
 
   public bool FillContains(Point point) {
     bool ret = NoesisGUI_PINVOKE.Geometry_FillContains(swigCPtr, ref point);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool StrokeContains(Pen pen, Point point) {
     bool ret = NoesisGUI_PINVOKE.Geometry_StrokeContains(swigCPtr, Pen.getCPtr(pen), ref point);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static DependencyProperty TransformProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Geometry_TransformProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -78,23 +78,24 @@ public class Geometry : Animatable {
   public Transform Transform {
     set {
       NoesisGUI_PINVOKE.Geometry_Transform_set(swigCPtr, Transform.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Geometry_Transform_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Transform)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
-  private void GetGeometryBounds(out Rect bounds) {
-    NoesisGUI_PINVOKE.Geometry_GetGeometryBounds(swigCPtr, out bounds);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  private void GetBoundsHelper(out Rect bounds) {
+    NoesisGUI_PINVOKE.Geometry_GetBoundsHelper(swigCPtr, out bounds);
+  }
+
+  private static IntPtr ParseHelper(string str) {
+    IntPtr ret = NoesisGUI_PINVOKE.Geometry_ParseHelper(str != null ? str : string.Empty);
+    return ret;
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Geometry_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

@@ -33,7 +33,6 @@ public class Brush : Animatable {
   public static DependencyProperty OpacityProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brush_OpacityProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -41,7 +40,6 @@ public class Brush : Animatable {
   public static DependencyProperty RelativeTransformProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brush_RelativeTransformProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -49,7 +47,6 @@ public class Brush : Animatable {
   public static DependencyProperty TransformProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brush_TransformProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -57,11 +54,9 @@ public class Brush : Animatable {
   public float Opacity {
     set {
       NoesisGUI_PINVOKE.Brush_Opacity_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.Brush_Opacity_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -69,11 +64,9 @@ public class Brush : Animatable {
   public Transform RelativeTransform {
     set {
       NoesisGUI_PINVOKE.Brush_RelativeTransform_set(swigCPtr, Transform.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brush_RelativeTransform_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Transform)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -81,18 +74,15 @@ public class Brush : Animatable {
   public Transform Transform {
     set {
       NoesisGUI_PINVOKE.Brush_Transform_set(swigCPtr, Transform.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Brush_Transform_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Transform)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Brush_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

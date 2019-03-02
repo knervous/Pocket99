@@ -11,7 +11,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 
 namespace Noesis
 {
@@ -29,62 +28,14 @@ public class ScrollBar : RangeBase {
   }
 
   #region Events
-  #region Scroll
-  public delegate void ScrollHandler(object sender, ScrollEventArgs e);
-  public event ScrollHandler Scroll {
+  public event ScrollEventHandler Scroll {
     add {
-      if (!_Scroll.ContainsKey(swigCPtr.Handle)) {
-        _Scroll.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_ScrollBar_Scroll(_raiseScroll, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _Scroll[swigCPtr.Handle] += value;
+      AddHandler(ScrollEvent, value);
     }
     remove {
-      if (_Scroll.ContainsKey(swigCPtr.Handle)) {
-
-        _Scroll[swigCPtr.Handle] -= value;
-
-        if (_Scroll[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_ScrollBar_Scroll(_raiseScroll, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _Scroll.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(ScrollEvent, value);
     }
   }
-
-  internal delegate void RaiseScrollCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseScrollCallback _raiseScroll = RaiseScroll;
-
-  [MonoPInvokeCallback(typeof(RaiseScrollCallback))]
-  private static void RaiseScroll(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_Scroll.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for Scroll event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _Scroll.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        ScrollHandler handler = _Scroll[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new ScrollEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, ScrollHandler> _Scroll =
-      new Dictionary<IntPtr, ScrollHandler>();
-  #endregion
 
   #endregion
 
@@ -104,7 +55,6 @@ public class ScrollBar : RangeBase {
   public static DependencyProperty OrientationProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_OrientationProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -112,19 +62,26 @@ public class ScrollBar : RangeBase {
   public static DependencyProperty ViewportSizeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_ViewportSizeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent ScrollEvent {
+    set {
+      NoesisGUI_PINVOKE.ScrollBar_ScrollEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_ScrollEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public static RoutedCommand DeferScrollToHorizontalOffsetCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_DeferScrollToHorizontalOffsetCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_DeferScrollToHorizontalOffsetCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -132,11 +89,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand DeferScrollToVerticalOffsetCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_DeferScrollToVerticalOffsetCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_DeferScrollToVerticalOffsetCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -144,11 +99,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand LineDownCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_LineDownCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_LineDownCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -156,11 +109,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand LineLeftCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_LineLeftCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_LineLeftCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -168,11 +119,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand LineRightCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_LineRightCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_LineRightCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -180,11 +129,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand LineUpCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_LineUpCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_LineUpCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -192,11 +139,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand PageDownCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_PageDownCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_PageDownCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -204,11 +149,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand PageLeftCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_PageLeftCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_PageLeftCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -216,11 +159,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand PageRightCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_PageRightCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_PageRightCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -228,11 +169,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand PageUpCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_PageUpCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_PageUpCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -240,11 +179,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand ScrollHereCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_ScrollHereCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_ScrollHereCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -252,11 +189,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand ScrollToBottomCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_ScrollToBottomCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_ScrollToBottomCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -264,11 +199,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand ScrollToEndCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_ScrollToEndCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_ScrollToEndCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -276,11 +209,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand ScrollToHomeCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_ScrollToHomeCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_ScrollToHomeCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -288,11 +219,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand ScrollToHorizontalOffsetCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_ScrollToHorizontalOffsetCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_ScrollToHorizontalOffsetCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -300,11 +229,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand ScrollToLeftEndCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_ScrollToLeftEndCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_ScrollToLeftEndCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -312,11 +239,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand ScrollToRightEndCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_ScrollToRightEndCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_ScrollToRightEndCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -324,11 +249,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand ScrollToTopCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_ScrollToTopCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_ScrollToTopCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -336,11 +259,9 @@ public class ScrollBar : RangeBase {
   public static RoutedCommand ScrollToVerticalOffsetCommand {
     set {
       NoesisGUI_PINVOKE.ScrollBar_ScrollToVerticalOffsetCommand_set(RoutedCommand.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_ScrollToVerticalOffsetCommand_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (RoutedCommand)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -348,11 +269,9 @@ public class ScrollBar : RangeBase {
   public Orientation Orientation {
     set {
       NoesisGUI_PINVOKE.ScrollBar_Orientation_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       Orientation ret = (Orientation)NoesisGUI_PINVOKE.ScrollBar_Orientation_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -360,11 +279,9 @@ public class ScrollBar : RangeBase {
   public float ViewportSize {
     set {
       NoesisGUI_PINVOKE.ScrollBar_ViewportSize_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.ScrollBar_ViewportSize_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -372,22 +289,17 @@ public class ScrollBar : RangeBase {
   public Track Track {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ScrollBar_Track_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Track)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ScrollBar_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_ScrollBar(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_ScrollBar(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

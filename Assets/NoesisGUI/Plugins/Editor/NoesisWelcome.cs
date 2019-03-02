@@ -6,6 +6,12 @@ using System.IO;
 
 public class NoesisWelcome : EditorWindow
 {
+    public static void Open()
+    {
+        Rect r = new Rect((Screen.currentResolution.width - Width) / 2, (Screen.currentResolution.height - Height) / 2, Width, Height);
+        EditorWindow.GetWindowWithRect(typeof(NoesisWelcome), r, true, "Welcome to NoesisGUI!");
+    }
+
     private Texture2D _banner;
     private Texture2D _icon0;
     private Texture2D _icon1;
@@ -40,7 +46,7 @@ public class NoesisWelcome : EditorWindow
         GUILayout.EndHorizontal();
         GUILayout.Space(18.0f);
 
-        string docPath = Application.dataPath + "/../NoesisDoc/index.html";
+        string docPath = Application.dataPath + "/../NoesisDoc/Documentation.html";
         string docURL;
 
         if (File.Exists(docPath))
@@ -88,10 +94,13 @@ public class NoesisWelcome : EditorWindow
     {
         GUILayout.BeginHorizontal(GUILayout.MaxHeight(48));
         GUILayout.Space(38.0f);
+
         if (GUILayout.Button(texture, _buttonStyle))
         {
             UnityEngine.Application.OpenURL(url);
         }
+        EditorGUIUtility.AddCursorRect(GUILayoutUtility.GetLastRect(), MouseCursor.Link);
+
         GUILayout.Space(20.0f);
         GUILayout.BeginVertical();
         GUILayout.FlexibleSpace();
@@ -104,17 +113,12 @@ public class NoesisWelcome : EditorWindow
 
     void OnEnable()
     {
-        position = new Rect((Screen.currentResolution.width - Width) / 2, (Screen.currentResolution.height - Height) / 2, Width, Height);
-        minSize = new Vector2(Width, Height);
-        maxSize = new Vector2(Width, Height);
-
         _version = NoesisVersion.Get();
 
+        _bannerStyle = new GUIStyle();
         _buttonStyle = new GUIStyle();
         _buttonStyle.fixedWidth = 48;
         _buttonStyle.fixedHeight = 48;
-
-        _bannerStyle = new GUIStyle();
     }
 
     void OnInspectorUpdate()

@@ -31,47 +31,53 @@ public class Freezable : DependencyObject {
   }
 
   public Freezable Clone() {
-    return CloneHelper();
+    IntPtr cPtr = CloneHelper();
+    return (Freezable)Noesis.Extend.GetProxy(cPtr, true);
   }
 
   public Freezable CloneCurrentValue() {
-    return CloneCurrentValueHelper();
+    IntPtr cPtr = CloneCurrentValueHelper();
+    return (Freezable)Noesis.Extend.GetProxy(cPtr, true);
   }
 
   public Freezable GetAsFrozen() {
-    return GetAsFrozenHelper();
+    IntPtr cPtr = GetAsFrozenHelper();
+    return (Freezable)Noesis.Extend.GetProxy(cPtr, true);
   }
 
   public Freezable GetCurrentValueAsFrozen() {
-    return GetCurrentValueAsFrozenHelper();
+    IntPtr cPtr = GetCurrentValueAsFrozenHelper();
+    return (Freezable)Noesis.Extend.GetProxy(cPtr, true);
+  }
+
+  protected virtual void CloneCommonCore(Freezable source) {
+  }
+
+  internal void CallCloneCommonCore(Freezable source) {
+    CloneCommonCore(source);
   }
 
   public void Freeze() {
     NoesisGUI_PINVOKE.Freezable_Freeze(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public bool CanSeal() {
     bool ret = NoesisGUI_PINVOKE.Freezable_CanSeal(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool IsSealed() {
     bool ret = NoesisGUI_PINVOKE.Freezable_IsSealed(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void Seal() {
     NoesisGUI_PINVOKE.Freezable_Seal(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public bool CanFreeze {
     get {
       bool ret = NoesisGUI_PINVOKE.Freezable_CanFreeze_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -79,41 +85,38 @@ public class Freezable : DependencyObject {
   public bool IsFrozen {
     get {
       bool ret = NoesisGUI_PINVOKE.Freezable_IsFrozen_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Freezable_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  private Freezable CloneHelper() {
-    IntPtr cPtr = NoesisGUI_PINVOKE.Freezable_CloneHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return (Freezable)Noesis.Extend.GetProxy(cPtr, false);
+  private IntPtr CloneHelper() {
+    IntPtr ret = NoesisGUI_PINVOKE.Freezable_CloneHelper(swigCPtr);
+    return ret;
   }
 
-  private Freezable CloneCurrentValueHelper() {
-    IntPtr cPtr = NoesisGUI_PINVOKE.Freezable_CloneCurrentValueHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return (Freezable)Noesis.Extend.GetProxy(cPtr, false);
+  private IntPtr CloneCurrentValueHelper() {
+    IntPtr ret = NoesisGUI_PINVOKE.Freezable_CloneCurrentValueHelper(swigCPtr);
+    return ret;
   }
 
-  private Freezable GetAsFrozenHelper() {
-    IntPtr cPtr = NoesisGUI_PINVOKE.Freezable_GetAsFrozenHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return (Freezable)Noesis.Extend.GetProxy(cPtr, false);
+  private IntPtr GetAsFrozenHelper() {
+    IntPtr ret = NoesisGUI_PINVOKE.Freezable_GetAsFrozenHelper(swigCPtr);
+    return ret;
   }
 
-  private Freezable GetCurrentValueAsFrozenHelper() {
-    IntPtr cPtr = NoesisGUI_PINVOKE.Freezable_GetCurrentValueAsFrozenHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return (Freezable)Noesis.Extend.GetProxy(cPtr, false);
+  private IntPtr GetCurrentValueAsFrozenHelper() {
+    IntPtr ret = NoesisGUI_PINVOKE.Freezable_GetCurrentValueAsFrozenHelper(swigCPtr);
+    return ret;
   }
 
+  internal new static IntPtr Extend(string typeName) {
+    return NoesisGUI_PINVOKE.Extend_Freezable(Marshal.StringToHGlobalAnsi(typeName));
+  }
 }
 
 }

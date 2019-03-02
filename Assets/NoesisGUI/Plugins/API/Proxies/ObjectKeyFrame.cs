@@ -33,7 +33,6 @@ public class ObjectKeyFrame : Freezable {
   public static DependencyProperty KeyTimeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ObjectKeyFrame_KeyTimeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -41,7 +40,6 @@ public class ObjectKeyFrame : Freezable {
   public static DependencyProperty ValueProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ObjectKeyFrame_ValueProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -49,12 +47,10 @@ public class ObjectKeyFrame : Freezable {
   public KeyTime KeyTime {
     set {
       NoesisGUI_PINVOKE.ObjectKeyFrame_KeyTime_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.ObjectKeyFrame_KeyTime_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<KeyTime>(ret);
       }
@@ -68,18 +64,15 @@ public class ObjectKeyFrame : Freezable {
   public object Value {
     set {
       NoesisGUI_PINVOKE.ObjectKeyFrame_Value_set(swigCPtr, Noesis.Extend.GetInstanceHandle(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ObjectKeyFrame_Value_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ObjectKeyFrame_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

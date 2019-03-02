@@ -17,8 +17,8 @@ namespace Noesis
 
 public enum FontStyle {
   Normal,
-  Italic,
-  Oblique
+  Oblique,
+  Italic
 }
 
 }

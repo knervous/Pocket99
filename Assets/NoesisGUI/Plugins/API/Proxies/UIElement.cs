@@ -11,7 +11,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 
 namespace Noesis
 {
@@ -28,3199 +27,645 @@ public class UIElement : Visual {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
-  #region Events
-  #region GotFocus
-  public delegate void GotFocusHandler(object sender, RoutedEventArgs e);
-  public event GotFocusHandler GotFocus {
+  #region Routed Events
+  public void AddHandler(RoutedEvent routedEvent, Delegate handler) {
+    EventHandlerStore.AddHandler(this, routedEvent, handler);
+  }
+
+  public void RemoveHandler(RoutedEvent routedEvent, Delegate handler) {
+    EventHandlerStore.RemoveHandler(this, routedEvent, handler);
+  }
+
+  public event RoutedEventHandler GotFocus {
     add {
-      if (!_GotFocus.ContainsKey(swigCPtr.Handle)) {
-        _GotFocus.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_GotFocus(_raiseGotFocus, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _GotFocus[swigCPtr.Handle] += value;
+      AddHandler(GotFocusEvent, value);
     }
     remove {
-      if (_GotFocus.ContainsKey(swigCPtr.Handle)) {
-
-        _GotFocus[swigCPtr.Handle] -= value;
-
-        if (_GotFocus[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_GotFocus(_raiseGotFocus, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _GotFocus.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(GotFocusEvent, value);
     }
   }
 
-  internal delegate void RaiseGotFocusCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseGotFocusCallback _raiseGotFocus = RaiseGotFocus;
-
-  [MonoPInvokeCallback(typeof(RaiseGotFocusCallback))]
-  private static void RaiseGotFocus(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_GotFocus.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for GotFocus event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _GotFocus.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        GotFocusHandler handler = _GotFocus[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new RoutedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, GotFocusHandler> _GotFocus =
-      new Dictionary<IntPtr, GotFocusHandler>();
-  #endregion
-
-  #region GotKeyboardFocus
-  public delegate void GotKeyboardFocusHandler(object sender, KeyboardFocusChangedEventArgs e);
-  public event GotKeyboardFocusHandler GotKeyboardFocus {
+  public event RoutedEventHandler LostFocus {
     add {
-      if (!_GotKeyboardFocus.ContainsKey(swigCPtr.Handle)) {
-        _GotKeyboardFocus.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_GotKeyboardFocus(_raiseGotKeyboardFocus, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _GotKeyboardFocus[swigCPtr.Handle] += value;
+      AddHandler(LostFocusEvent, value);
     }
     remove {
-      if (_GotKeyboardFocus.ContainsKey(swigCPtr.Handle)) {
-
-        _GotKeyboardFocus[swigCPtr.Handle] -= value;
-
-        if (_GotKeyboardFocus[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_GotKeyboardFocus(_raiseGotKeyboardFocus, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _GotKeyboardFocus.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(LostFocusEvent, value);
     }
   }
 
-  internal delegate void RaiseGotKeyboardFocusCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseGotKeyboardFocusCallback _raiseGotKeyboardFocus = RaiseGotKeyboardFocus;
-
-  [MonoPInvokeCallback(typeof(RaiseGotKeyboardFocusCallback))]
-  private static void RaiseGotKeyboardFocus(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_GotKeyboardFocus.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for GotKeyboardFocus event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _GotKeyboardFocus.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        GotKeyboardFocusHandler handler = _GotKeyboardFocus[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new KeyboardFocusChangedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, GotKeyboardFocusHandler> _GotKeyboardFocus =
-      new Dictionary<IntPtr, GotKeyboardFocusHandler>();
-  #endregion
-
-  #region GotMouseCapture
-  public delegate void GotMouseCaptureHandler(object sender, MouseEventArgs e);
-  public event GotMouseCaptureHandler GotMouseCapture {
+  public event MouseEventHandler GotMouseCapture {
     add {
-      if (!_GotMouseCapture.ContainsKey(swigCPtr.Handle)) {
-        _GotMouseCapture.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_GotMouseCapture(_raiseGotMouseCapture, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _GotMouseCapture[swigCPtr.Handle] += value;
+      AddHandler(GotMouseCaptureEvent, value);
     }
     remove {
-      if (_GotMouseCapture.ContainsKey(swigCPtr.Handle)) {
-
-        _GotMouseCapture[swigCPtr.Handle] -= value;
-
-        if (_GotMouseCapture[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_GotMouseCapture(_raiseGotMouseCapture, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _GotMouseCapture.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(GotMouseCaptureEvent, value);
     }
   }
 
-  internal delegate void RaiseGotMouseCaptureCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseGotMouseCaptureCallback _raiseGotMouseCapture = RaiseGotMouseCapture;
-
-  [MonoPInvokeCallback(typeof(RaiseGotMouseCaptureCallback))]
-  private static void RaiseGotMouseCapture(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_GotMouseCapture.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for GotMouseCapture event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _GotMouseCapture.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        GotMouseCaptureHandler handler = _GotMouseCapture[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, GotMouseCaptureHandler> _GotMouseCapture =
-      new Dictionary<IntPtr, GotMouseCaptureHandler>();
-  #endregion
-
-  #region KeyDown
-  public delegate void KeyDownHandler(object sender, KeyEventArgs e);
-  public event KeyDownHandler KeyDown {
+  public event MouseEventHandler LostMouseCapture {
     add {
-      if (!_KeyDown.ContainsKey(swigCPtr.Handle)) {
-        _KeyDown.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_KeyDown(_raiseKeyDown, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _KeyDown[swigCPtr.Handle] += value;
+      AddHandler(LostMouseCaptureEvent, value);
     }
     remove {
-      if (_KeyDown.ContainsKey(swigCPtr.Handle)) {
-
-        _KeyDown[swigCPtr.Handle] -= value;
-
-        if (_KeyDown[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_KeyDown(_raiseKeyDown, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _KeyDown.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(LostMouseCaptureEvent, value);
     }
   }
 
-  internal delegate void RaiseKeyDownCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseKeyDownCallback _raiseKeyDown = RaiseKeyDown;
-
-  [MonoPInvokeCallback(typeof(RaiseKeyDownCallback))]
-  private static void RaiseKeyDown(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_KeyDown.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for KeyDown event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _KeyDown.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        KeyDownHandler handler = _KeyDown[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new KeyEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, KeyDownHandler> _KeyDown =
-      new Dictionary<IntPtr, KeyDownHandler>();
-  #endregion
-
-  #region KeyUp
-  public delegate void KeyUpHandler(object sender, KeyEventArgs e);
-  public event KeyUpHandler KeyUp {
+  public event MouseEventHandler MouseEnter {
     add {
-      if (!_KeyUp.ContainsKey(swigCPtr.Handle)) {
-        _KeyUp.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_KeyUp(_raiseKeyUp, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _KeyUp[swigCPtr.Handle] += value;
+      AddHandler(MouseEnterEvent, value);
     }
     remove {
-      if (_KeyUp.ContainsKey(swigCPtr.Handle)) {
-
-        _KeyUp[swigCPtr.Handle] -= value;
-
-        if (_KeyUp[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_KeyUp(_raiseKeyUp, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _KeyUp.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(MouseEnterEvent, value);
     }
   }
 
-  internal delegate void RaiseKeyUpCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseKeyUpCallback _raiseKeyUp = RaiseKeyUp;
-
-  [MonoPInvokeCallback(typeof(RaiseKeyUpCallback))]
-  private static void RaiseKeyUp(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_KeyUp.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for KeyUp event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _KeyUp.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        KeyUpHandler handler = _KeyUp[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new KeyEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, KeyUpHandler> _KeyUp =
-      new Dictionary<IntPtr, KeyUpHandler>();
-  #endregion
-
-  #region LostFocus
-  public delegate void LostFocusHandler(object sender, RoutedEventArgs e);
-  public event LostFocusHandler LostFocus {
+  public event MouseEventHandler MouseLeave {
     add {
-      if (!_LostFocus.ContainsKey(swigCPtr.Handle)) {
-        _LostFocus.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_LostFocus(_raiseLostFocus, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _LostFocus[swigCPtr.Handle] += value;
+      AddHandler(MouseLeaveEvent, value);
     }
     remove {
-      if (_LostFocus.ContainsKey(swigCPtr.Handle)) {
-
-        _LostFocus[swigCPtr.Handle] -= value;
-
-        if (_LostFocus[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_LostFocus(_raiseLostFocus, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _LostFocus.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(MouseLeaveEvent, value);
     }
   }
 
-  internal delegate void RaiseLostFocusCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseLostFocusCallback _raiseLostFocus = RaiseLostFocus;
-
-  [MonoPInvokeCallback(typeof(RaiseLostFocusCallback))]
-  private static void RaiseLostFocus(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_LostFocus.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for LostFocus event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _LostFocus.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        LostFocusHandler handler = _LostFocus[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new RoutedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, LostFocusHandler> _LostFocus =
-      new Dictionary<IntPtr, LostFocusHandler>();
-  #endregion
-
-  #region LostKeyboardFocus
-  public delegate void LostKeyboardFocusHandler(object sender, KeyboardFocusChangedEventArgs e);
-  public event LostKeyboardFocusHandler LostKeyboardFocus {
+  public event MouseEventHandler PreviewMouseMove {
     add {
-      if (!_LostKeyboardFocus.ContainsKey(swigCPtr.Handle)) {
-        _LostKeyboardFocus.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_LostKeyboardFocus(_raiseLostKeyboardFocus, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _LostKeyboardFocus[swigCPtr.Handle] += value;
+      AddHandler(PreviewMouseMoveEvent, value);
     }
     remove {
-      if (_LostKeyboardFocus.ContainsKey(swigCPtr.Handle)) {
-
-        _LostKeyboardFocus[swigCPtr.Handle] -= value;
-
-        if (_LostKeyboardFocus[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_LostKeyboardFocus(_raiseLostKeyboardFocus, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _LostKeyboardFocus.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewMouseMoveEvent, value);
     }
   }
 
-  internal delegate void RaiseLostKeyboardFocusCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseLostKeyboardFocusCallback _raiseLostKeyboardFocus = RaiseLostKeyboardFocus;
-
-  [MonoPInvokeCallback(typeof(RaiseLostKeyboardFocusCallback))]
-  private static void RaiseLostKeyboardFocus(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_LostKeyboardFocus.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for LostKeyboardFocus event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _LostKeyboardFocus.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        LostKeyboardFocusHandler handler = _LostKeyboardFocus[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new KeyboardFocusChangedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, LostKeyboardFocusHandler> _LostKeyboardFocus =
-      new Dictionary<IntPtr, LostKeyboardFocusHandler>();
-  #endregion
-
-  #region LostMouseCapture
-  public delegate void LostMouseCaptureHandler(object sender, MouseEventArgs e);
-  public event LostMouseCaptureHandler LostMouseCapture {
+  public event MouseEventHandler MouseMove {
     add {
-      if (!_LostMouseCapture.ContainsKey(swigCPtr.Handle)) {
-        _LostMouseCapture.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_LostMouseCapture(_raiseLostMouseCapture, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _LostMouseCapture[swigCPtr.Handle] += value;
+      AddHandler(MouseMoveEvent, value);
     }
     remove {
-      if (_LostMouseCapture.ContainsKey(swigCPtr.Handle)) {
-
-        _LostMouseCapture[swigCPtr.Handle] -= value;
-
-        if (_LostMouseCapture[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_LostMouseCapture(_raiseLostMouseCapture, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _LostMouseCapture.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(MouseMoveEvent, value);
     }
   }
 
-  internal delegate void RaiseLostMouseCaptureCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseLostMouseCaptureCallback _raiseLostMouseCapture = RaiseLostMouseCapture;
-
-  [MonoPInvokeCallback(typeof(RaiseLostMouseCaptureCallback))]
-  private static void RaiseLostMouseCapture(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_LostMouseCapture.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for LostMouseCapture event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _LostMouseCapture.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        LostMouseCaptureHandler handler = _LostMouseCapture[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, LostMouseCaptureHandler> _LostMouseCapture =
-      new Dictionary<IntPtr, LostMouseCaptureHandler>();
-  #endregion
-
-  #region MouseDown
-  public delegate void MouseDownHandler(object sender, MouseButtonEventArgs e);
-  public event MouseDownHandler MouseDown {
+  public event MouseButtonEventHandler PreviewMouseDown {
     add {
-      if (!_MouseDown.ContainsKey(swigCPtr.Handle)) {
-        _MouseDown.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_MouseDown(_raiseMouseDown, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _MouseDown[swigCPtr.Handle] += value;
+      AddHandler(PreviewMouseDownEvent, value);
     }
     remove {
-      if (_MouseDown.ContainsKey(swigCPtr.Handle)) {
-
-        _MouseDown[swigCPtr.Handle] -= value;
-
-        if (_MouseDown[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_MouseDown(_raiseMouseDown, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _MouseDown.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewMouseDownEvent, value);
     }
   }
 
-  internal delegate void RaiseMouseDownCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseMouseDownCallback _raiseMouseDown = RaiseMouseDown;
-
-  [MonoPInvokeCallback(typeof(RaiseMouseDownCallback))]
-  private static void RaiseMouseDown(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_MouseDown.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for MouseDown event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _MouseDown.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        MouseDownHandler handler = _MouseDown[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseButtonEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, MouseDownHandler> _MouseDown =
-      new Dictionary<IntPtr, MouseDownHandler>();
-  #endregion
-
-  #region MouseEnter
-  public delegate void MouseEnterHandler(object sender, MouseEventArgs e);
-  public event MouseEnterHandler MouseEnter {
+  public event MouseButtonEventHandler MouseDown {
     add {
-      if (!_MouseEnter.ContainsKey(swigCPtr.Handle)) {
-        _MouseEnter.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_MouseEnter(_raiseMouseEnter, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _MouseEnter[swigCPtr.Handle] += value;
+      AddHandler(MouseDownEvent, value);
     }
     remove {
-      if (_MouseEnter.ContainsKey(swigCPtr.Handle)) {
-
-        _MouseEnter[swigCPtr.Handle] -= value;
-
-        if (_MouseEnter[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_MouseEnter(_raiseMouseEnter, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _MouseEnter.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(MouseDownEvent, value);
     }
   }
 
-  internal delegate void RaiseMouseEnterCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseMouseEnterCallback _raiseMouseEnter = RaiseMouseEnter;
-
-  [MonoPInvokeCallback(typeof(RaiseMouseEnterCallback))]
-  private static void RaiseMouseEnter(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_MouseEnter.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for MouseEnter event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _MouseEnter.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        MouseEnterHandler handler = _MouseEnter[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, MouseEnterHandler> _MouseEnter =
-      new Dictionary<IntPtr, MouseEnterHandler>();
-  #endregion
-
-  #region MouseLeave
-  public delegate void MouseLeaveHandler(object sender, MouseEventArgs e);
-  public event MouseLeaveHandler MouseLeave {
+  public event MouseButtonEventHandler PreviewMouseUp {
     add {
-      if (!_MouseLeave.ContainsKey(swigCPtr.Handle)) {
-        _MouseLeave.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_MouseLeave(_raiseMouseLeave, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _MouseLeave[swigCPtr.Handle] += value;
+      AddHandler(PreviewMouseUpEvent, value);
     }
     remove {
-      if (_MouseLeave.ContainsKey(swigCPtr.Handle)) {
-
-        _MouseLeave[swigCPtr.Handle] -= value;
-
-        if (_MouseLeave[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_MouseLeave(_raiseMouseLeave, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _MouseLeave.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewMouseUpEvent, value);
     }
   }
 
-  internal delegate void RaiseMouseLeaveCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseMouseLeaveCallback _raiseMouseLeave = RaiseMouseLeave;
-
-  [MonoPInvokeCallback(typeof(RaiseMouseLeaveCallback))]
-  private static void RaiseMouseLeave(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_MouseLeave.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for MouseLeave event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _MouseLeave.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        MouseLeaveHandler handler = _MouseLeave[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, MouseLeaveHandler> _MouseLeave =
-      new Dictionary<IntPtr, MouseLeaveHandler>();
-  #endregion
-
-  #region MouseLeftButtonDown
-  public delegate void MouseLeftButtonDownHandler(object sender, MouseButtonEventArgs e);
-  public event MouseLeftButtonDownHandler MouseLeftButtonDown {
+  public event MouseButtonEventHandler MouseUp {
     add {
-      if (!_MouseLeftButtonDown.ContainsKey(swigCPtr.Handle)) {
-        _MouseLeftButtonDown.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_MouseLeftButtonDown(_raiseMouseLeftButtonDown, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _MouseLeftButtonDown[swigCPtr.Handle] += value;
+      AddHandler(MouseUpEvent, value);
     }
     remove {
-      if (_MouseLeftButtonDown.ContainsKey(swigCPtr.Handle)) {
-
-        _MouseLeftButtonDown[swigCPtr.Handle] -= value;
-
-        if (_MouseLeftButtonDown[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_MouseLeftButtonDown(_raiseMouseLeftButtonDown, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _MouseLeftButtonDown.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(MouseUpEvent, value);
     }
   }
 
-  internal delegate void RaiseMouseLeftButtonDownCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseMouseLeftButtonDownCallback _raiseMouseLeftButtonDown = RaiseMouseLeftButtonDown;
-
-  [MonoPInvokeCallback(typeof(RaiseMouseLeftButtonDownCallback))]
-  private static void RaiseMouseLeftButtonDown(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_MouseLeftButtonDown.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for MouseLeftButtonDown event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _MouseLeftButtonDown.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        MouseLeftButtonDownHandler handler = _MouseLeftButtonDown[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseButtonEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, MouseLeftButtonDownHandler> _MouseLeftButtonDown =
-      new Dictionary<IntPtr, MouseLeftButtonDownHandler>();
-  #endregion
-
-  #region MouseLeftButtonUp
-  public delegate void MouseLeftButtonUpHandler(object sender, MouseButtonEventArgs e);
-  public event MouseLeftButtonUpHandler MouseLeftButtonUp {
+  public event MouseButtonEventHandler PreviewMouseLeftButtonDown {
     add {
-      if (!_MouseLeftButtonUp.ContainsKey(swigCPtr.Handle)) {
-        _MouseLeftButtonUp.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_MouseLeftButtonUp(_raiseMouseLeftButtonUp, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _MouseLeftButtonUp[swigCPtr.Handle] += value;
+      AddHandler(PreviewMouseLeftButtonDownEvent, value);
     }
     remove {
-      if (_MouseLeftButtonUp.ContainsKey(swigCPtr.Handle)) {
-
-        _MouseLeftButtonUp[swigCPtr.Handle] -= value;
-
-        if (_MouseLeftButtonUp[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_MouseLeftButtonUp(_raiseMouseLeftButtonUp, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _MouseLeftButtonUp.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewMouseLeftButtonDownEvent, value);
     }
   }
 
-  internal delegate void RaiseMouseLeftButtonUpCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseMouseLeftButtonUpCallback _raiseMouseLeftButtonUp = RaiseMouseLeftButtonUp;
-
-  [MonoPInvokeCallback(typeof(RaiseMouseLeftButtonUpCallback))]
-  private static void RaiseMouseLeftButtonUp(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_MouseLeftButtonUp.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for MouseLeftButtonUp event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _MouseLeftButtonUp.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        MouseLeftButtonUpHandler handler = _MouseLeftButtonUp[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseButtonEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, MouseLeftButtonUpHandler> _MouseLeftButtonUp =
-      new Dictionary<IntPtr, MouseLeftButtonUpHandler>();
-  #endregion
-
-  #region MouseMove
-  public delegate void MouseMoveHandler(object sender, MouseEventArgs e);
-  public event MouseMoveHandler MouseMove {
+  public event MouseButtonEventHandler MouseLeftButtonDown {
     add {
-      if (!_MouseMove.ContainsKey(swigCPtr.Handle)) {
-        _MouseMove.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_MouseMove(_raiseMouseMove, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _MouseMove[swigCPtr.Handle] += value;
+      AddHandler(MouseLeftButtonDownEvent, value);
     }
     remove {
-      if (_MouseMove.ContainsKey(swigCPtr.Handle)) {
-
-        _MouseMove[swigCPtr.Handle] -= value;
-
-        if (_MouseMove[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_MouseMove(_raiseMouseMove, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _MouseMove.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(MouseLeftButtonDownEvent, value);
     }
   }
 
-  internal delegate void RaiseMouseMoveCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseMouseMoveCallback _raiseMouseMove = RaiseMouseMove;
-
-  [MonoPInvokeCallback(typeof(RaiseMouseMoveCallback))]
-  private static void RaiseMouseMove(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_MouseMove.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for MouseMove event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _MouseMove.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        MouseMoveHandler handler = _MouseMove[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, MouseMoveHandler> _MouseMove =
-      new Dictionary<IntPtr, MouseMoveHandler>();
-  #endregion
-
-  #region MouseRightButtonDown
-  public delegate void MouseRightButtonDownHandler(object sender, MouseButtonEventArgs e);
-  public event MouseRightButtonDownHandler MouseRightButtonDown {
+  public event MouseButtonEventHandler PreviewMouseLeftButtonUp {
     add {
-      if (!_MouseRightButtonDown.ContainsKey(swigCPtr.Handle)) {
-        _MouseRightButtonDown.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_MouseRightButtonDown(_raiseMouseRightButtonDown, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _MouseRightButtonDown[swigCPtr.Handle] += value;
+      AddHandler(PreviewMouseLeftButtonUpEvent, value);
     }
     remove {
-      if (_MouseRightButtonDown.ContainsKey(swigCPtr.Handle)) {
-
-        _MouseRightButtonDown[swigCPtr.Handle] -= value;
-
-        if (_MouseRightButtonDown[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_MouseRightButtonDown(_raiseMouseRightButtonDown, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _MouseRightButtonDown.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewMouseLeftButtonUpEvent, value);
     }
   }
 
-  internal delegate void RaiseMouseRightButtonDownCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseMouseRightButtonDownCallback _raiseMouseRightButtonDown = RaiseMouseRightButtonDown;
-
-  [MonoPInvokeCallback(typeof(RaiseMouseRightButtonDownCallback))]
-  private static void RaiseMouseRightButtonDown(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_MouseRightButtonDown.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for MouseRightButtonDown event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _MouseRightButtonDown.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        MouseRightButtonDownHandler handler = _MouseRightButtonDown[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseButtonEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, MouseRightButtonDownHandler> _MouseRightButtonDown =
-      new Dictionary<IntPtr, MouseRightButtonDownHandler>();
-  #endregion
-
-  #region MouseRightButtonUp
-  public delegate void MouseRightButtonUpHandler(object sender, MouseButtonEventArgs e);
-  public event MouseRightButtonUpHandler MouseRightButtonUp {
+  public event MouseButtonEventHandler MouseLeftButtonUp {
     add {
-      if (!_MouseRightButtonUp.ContainsKey(swigCPtr.Handle)) {
-        _MouseRightButtonUp.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_MouseRightButtonUp(_raiseMouseRightButtonUp, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _MouseRightButtonUp[swigCPtr.Handle] += value;
+      AddHandler(MouseLeftButtonUpEvent, value);
     }
     remove {
-      if (_MouseRightButtonUp.ContainsKey(swigCPtr.Handle)) {
-
-        _MouseRightButtonUp[swigCPtr.Handle] -= value;
-
-        if (_MouseRightButtonUp[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_MouseRightButtonUp(_raiseMouseRightButtonUp, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _MouseRightButtonUp.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(MouseLeftButtonUpEvent, value);
     }
   }
 
-  internal delegate void RaiseMouseRightButtonUpCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseMouseRightButtonUpCallback _raiseMouseRightButtonUp = RaiseMouseRightButtonUp;
-
-  [MonoPInvokeCallback(typeof(RaiseMouseRightButtonUpCallback))]
-  private static void RaiseMouseRightButtonUp(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_MouseRightButtonUp.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for MouseRightButtonUp event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _MouseRightButtonUp.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        MouseRightButtonUpHandler handler = _MouseRightButtonUp[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseButtonEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, MouseRightButtonUpHandler> _MouseRightButtonUp =
-      new Dictionary<IntPtr, MouseRightButtonUpHandler>();
-  #endregion
-
-  #region MouseUp
-  public delegate void MouseUpHandler(object sender, MouseButtonEventArgs e);
-  public event MouseUpHandler MouseUp {
+  public event MouseButtonEventHandler PreviewMouseRightButtonDown {
     add {
-      if (!_MouseUp.ContainsKey(swigCPtr.Handle)) {
-        _MouseUp.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_MouseUp(_raiseMouseUp, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _MouseUp[swigCPtr.Handle] += value;
+      AddHandler(PreviewMouseRightButtonDownEvent, value);
     }
     remove {
-      if (_MouseUp.ContainsKey(swigCPtr.Handle)) {
-
-        _MouseUp[swigCPtr.Handle] -= value;
-
-        if (_MouseUp[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_MouseUp(_raiseMouseUp, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _MouseUp.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewMouseRightButtonDownEvent, value);
     }
   }
 
-  internal delegate void RaiseMouseUpCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseMouseUpCallback _raiseMouseUp = RaiseMouseUp;
-
-  [MonoPInvokeCallback(typeof(RaiseMouseUpCallback))]
-  private static void RaiseMouseUp(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_MouseUp.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for MouseUp event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _MouseUp.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        MouseUpHandler handler = _MouseUp[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseButtonEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, MouseUpHandler> _MouseUp =
-      new Dictionary<IntPtr, MouseUpHandler>();
-  #endregion
-
-  #region MouseWheel
-  public delegate void MouseWheelHandler(object sender, MouseWheelEventArgs e);
-  public event MouseWheelHandler MouseWheel {
+  public event MouseButtonEventHandler MouseRightButtonDown {
     add {
-      if (!_MouseWheel.ContainsKey(swigCPtr.Handle)) {
-        _MouseWheel.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_MouseWheel(_raiseMouseWheel, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _MouseWheel[swigCPtr.Handle] += value;
+      AddHandler(MouseRightButtonDownEvent, value);
     }
     remove {
-      if (_MouseWheel.ContainsKey(swigCPtr.Handle)) {
-
-        _MouseWheel[swigCPtr.Handle] -= value;
-
-        if (_MouseWheel[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_MouseWheel(_raiseMouseWheel, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _MouseWheel.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(MouseRightButtonDownEvent, value);
     }
   }
 
-  internal delegate void RaiseMouseWheelCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseMouseWheelCallback _raiseMouseWheel = RaiseMouseWheel;
-
-  [MonoPInvokeCallback(typeof(RaiseMouseWheelCallback))]
-  private static void RaiseMouseWheel(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_MouseWheel.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for MouseWheel event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _MouseWheel.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        MouseWheelHandler handler = _MouseWheel[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseWheelEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, MouseWheelHandler> _MouseWheel =
-      new Dictionary<IntPtr, MouseWheelHandler>();
-  #endregion
-
-  #region TouchDown
-  public delegate void TouchDownHandler(object sender, TouchEventArgs e);
-  public event TouchDownHandler TouchDown {
+  public event MouseButtonEventHandler PreviewMouseRightButtonUp {
     add {
-      if (!_TouchDown.ContainsKey(swigCPtr.Handle)) {
-        _TouchDown.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_TouchDown(_raiseTouchDown, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _TouchDown[swigCPtr.Handle] += value;
+      AddHandler(PreviewMouseRightButtonUpEvent, value);
     }
     remove {
-      if (_TouchDown.ContainsKey(swigCPtr.Handle)) {
-
-        _TouchDown[swigCPtr.Handle] -= value;
-
-        if (_TouchDown[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_TouchDown(_raiseTouchDown, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _TouchDown.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewMouseRightButtonUpEvent, value);
     }
   }
 
-  internal delegate void RaiseTouchDownCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseTouchDownCallback _raiseTouchDown = RaiseTouchDown;
-
-  [MonoPInvokeCallback(typeof(RaiseTouchDownCallback))]
-  private static void RaiseTouchDown(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_TouchDown.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for TouchDown event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _TouchDown.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        TouchDownHandler handler = _TouchDown[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new TouchEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, TouchDownHandler> _TouchDown =
-      new Dictionary<IntPtr, TouchDownHandler>();
-  #endregion
-
-  #region TouchMove
-  public delegate void TouchMoveHandler(object sender, TouchEventArgs e);
-  public event TouchMoveHandler TouchMove {
+  public event MouseButtonEventHandler MouseRightButtonUp {
     add {
-      if (!_TouchMove.ContainsKey(swigCPtr.Handle)) {
-        _TouchMove.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_TouchMove(_raiseTouchMove, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _TouchMove[swigCPtr.Handle] += value;
+      AddHandler(MouseRightButtonUpEvent, value);
     }
     remove {
-      if (_TouchMove.ContainsKey(swigCPtr.Handle)) {
-
-        _TouchMove[swigCPtr.Handle] -= value;
-
-        if (_TouchMove[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_TouchMove(_raiseTouchMove, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _TouchMove.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(MouseRightButtonUpEvent, value);
     }
   }
 
-  internal delegate void RaiseTouchMoveCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseTouchMoveCallback _raiseTouchMove = RaiseTouchMove;
-
-  [MonoPInvokeCallback(typeof(RaiseTouchMoveCallback))]
-  private static void RaiseTouchMove(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_TouchMove.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for TouchMove event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _TouchMove.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        TouchMoveHandler handler = _TouchMove[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new TouchEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, TouchMoveHandler> _TouchMove =
-      new Dictionary<IntPtr, TouchMoveHandler>();
-  #endregion
-
-  #region TouchUp
-  public delegate void TouchUpHandler(object sender, TouchEventArgs e);
-  public event TouchUpHandler TouchUp {
+  public event MouseWheelEventHandler PreviewMouseWheel {
     add {
-      if (!_TouchUp.ContainsKey(swigCPtr.Handle)) {
-        _TouchUp.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_TouchUp(_raiseTouchUp, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _TouchUp[swigCPtr.Handle] += value;
+      AddHandler(PreviewMouseWheelEvent, value);
     }
     remove {
-      if (_TouchUp.ContainsKey(swigCPtr.Handle)) {
-
-        _TouchUp[swigCPtr.Handle] -= value;
-
-        if (_TouchUp[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_TouchUp(_raiseTouchUp, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _TouchUp.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewMouseWheelEvent, value);
     }
   }
 
-  internal delegate void RaiseTouchUpCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseTouchUpCallback _raiseTouchUp = RaiseTouchUp;
-
-  [MonoPInvokeCallback(typeof(RaiseTouchUpCallback))]
-  private static void RaiseTouchUp(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_TouchUp.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for TouchUp event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _TouchUp.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        TouchUpHandler handler = _TouchUp[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new TouchEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, TouchUpHandler> _TouchUp =
-      new Dictionary<IntPtr, TouchUpHandler>();
-  #endregion
-
-  #region TouchEnter
-  public delegate void TouchEnterHandler(object sender, TouchEventArgs e);
-  public event TouchEnterHandler TouchEnter {
+  public event MouseWheelEventHandler MouseWheel {
     add {
-      if (!_TouchEnter.ContainsKey(swigCPtr.Handle)) {
-        _TouchEnter.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_TouchEnter(_raiseTouchEnter, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _TouchEnter[swigCPtr.Handle] += value;
+      AddHandler(MouseWheelEvent, value);
     }
     remove {
-      if (_TouchEnter.ContainsKey(swigCPtr.Handle)) {
-
-        _TouchEnter[swigCPtr.Handle] -= value;
-
-        if (_TouchEnter[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_TouchEnter(_raiseTouchEnter, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _TouchEnter.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(MouseWheelEvent, value);
     }
   }
 
-  internal delegate void RaiseTouchEnterCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseTouchEnterCallback _raiseTouchEnter = RaiseTouchEnter;
-
-  [MonoPInvokeCallback(typeof(RaiseTouchEnterCallback))]
-  private static void RaiseTouchEnter(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_TouchEnter.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for TouchEnter event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _TouchEnter.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        TouchEnterHandler handler = _TouchEnter[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new TouchEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, TouchEnterHandler> _TouchEnter =
-      new Dictionary<IntPtr, TouchEnterHandler>();
-  #endregion
-
-  #region TouchLeave
-  public delegate void TouchLeaveHandler(object sender, TouchEventArgs e);
-  public event TouchLeaveHandler TouchLeave {
+  public event QueryCursorEventHandler QueryCursor {
     add {
-      if (!_TouchLeave.ContainsKey(swigCPtr.Handle)) {
-        _TouchLeave.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_TouchLeave(_raiseTouchLeave, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _TouchLeave[swigCPtr.Handle] += value;
+      AddHandler(QueryCursorEvent, value);
     }
     remove {
-      if (_TouchLeave.ContainsKey(swigCPtr.Handle)) {
-
-        _TouchLeave[swigCPtr.Handle] -= value;
-
-        if (_TouchLeave[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_TouchLeave(_raiseTouchLeave, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _TouchLeave.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(QueryCursorEvent, value);
     }
   }
 
-  internal delegate void RaiseTouchLeaveCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseTouchLeaveCallback _raiseTouchLeave = RaiseTouchLeave;
-
-  [MonoPInvokeCallback(typeof(RaiseTouchLeaveCallback))]
-  private static void RaiseTouchLeave(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_TouchLeave.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for TouchLeave event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _TouchLeave.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        TouchLeaveHandler handler = _TouchLeave[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new TouchEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, TouchLeaveHandler> _TouchLeave =
-      new Dictionary<IntPtr, TouchLeaveHandler>();
-  #endregion
-
-  #region GotTouchCapture
-  public delegate void GotTouchCaptureHandler(object sender, TouchEventArgs e);
-  public event GotTouchCaptureHandler GotTouchCapture {
+  public event KeyboardFocusChangedEventHandler PreviewGotKeyboardFocus {
     add {
-      if (!_GotTouchCapture.ContainsKey(swigCPtr.Handle)) {
-        _GotTouchCapture.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_GotTouchCapture(_raiseGotTouchCapture, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _GotTouchCapture[swigCPtr.Handle] += value;
+      AddHandler(PreviewGotKeyboardFocusEvent, value);
     }
     remove {
-      if (_GotTouchCapture.ContainsKey(swigCPtr.Handle)) {
-
-        _GotTouchCapture[swigCPtr.Handle] -= value;
-
-        if (_GotTouchCapture[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_GotTouchCapture(_raiseGotTouchCapture, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _GotTouchCapture.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewGotKeyboardFocusEvent, value);
     }
   }
 
-  internal delegate void RaiseGotTouchCaptureCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseGotTouchCaptureCallback _raiseGotTouchCapture = RaiseGotTouchCapture;
-
-  [MonoPInvokeCallback(typeof(RaiseGotTouchCaptureCallback))]
-  private static void RaiseGotTouchCapture(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_GotTouchCapture.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for GotTouchCapture event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _GotTouchCapture.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        GotTouchCaptureHandler handler = _GotTouchCapture[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new TouchEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, GotTouchCaptureHandler> _GotTouchCapture =
-      new Dictionary<IntPtr, GotTouchCaptureHandler>();
-  #endregion
-
-  #region LostTouchCapture
-  public delegate void LostTouchCaptureHandler(object sender, TouchEventArgs e);
-  public event LostTouchCaptureHandler LostTouchCapture {
+  public event KeyboardFocusChangedEventHandler GotKeyboardFocus {
     add {
-      if (!_LostTouchCapture.ContainsKey(swigCPtr.Handle)) {
-        _LostTouchCapture.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_LostTouchCapture(_raiseLostTouchCapture, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _LostTouchCapture[swigCPtr.Handle] += value;
+      AddHandler(GotKeyboardFocusEvent, value);
     }
     remove {
-      if (_LostTouchCapture.ContainsKey(swigCPtr.Handle)) {
-
-        _LostTouchCapture[swigCPtr.Handle] -= value;
-
-        if (_LostTouchCapture[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_LostTouchCapture(_raiseLostTouchCapture, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _LostTouchCapture.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(GotKeyboardFocusEvent, value);
     }
   }
 
-  internal delegate void RaiseLostTouchCaptureCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseLostTouchCaptureCallback _raiseLostTouchCapture = RaiseLostTouchCapture;
-
-  [MonoPInvokeCallback(typeof(RaiseLostTouchCaptureCallback))]
-  private static void RaiseLostTouchCapture(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_LostTouchCapture.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for LostTouchCapture event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _LostTouchCapture.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        LostTouchCaptureHandler handler = _LostTouchCapture[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new TouchEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, LostTouchCaptureHandler> _LostTouchCapture =
-      new Dictionary<IntPtr, LostTouchCaptureHandler>();
-  #endregion
-
-  #region PreviewTouchDown
-  public delegate void PreviewTouchDownHandler(object sender, TouchEventArgs e);
-  public event PreviewTouchDownHandler PreviewTouchDown {
+  public event KeyboardFocusChangedEventHandler PreviewLostKeyboardFocus {
     add {
-      if (!_PreviewTouchDown.ContainsKey(swigCPtr.Handle)) {
-        _PreviewTouchDown.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewTouchDown(_raisePreviewTouchDown, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewTouchDown[swigCPtr.Handle] += value;
+      AddHandler(PreviewLostKeyboardFocusEvent, value);
     }
     remove {
-      if (_PreviewTouchDown.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewTouchDown[swigCPtr.Handle] -= value;
-
-        if (_PreviewTouchDown[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewTouchDown(_raisePreviewTouchDown, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewTouchDown.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewLostKeyboardFocusEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewTouchDownCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewTouchDownCallback _raisePreviewTouchDown = RaisePreviewTouchDown;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewTouchDownCallback))]
-  private static void RaisePreviewTouchDown(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewTouchDown.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewTouchDown event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewTouchDown.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewTouchDownHandler handler = _PreviewTouchDown[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new TouchEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewTouchDownHandler> _PreviewTouchDown =
-      new Dictionary<IntPtr, PreviewTouchDownHandler>();
-  #endregion
-
-  #region PreviewTouchMove
-  public delegate void PreviewTouchMoveHandler(object sender, TouchEventArgs e);
-  public event PreviewTouchMoveHandler PreviewTouchMove {
+  public event KeyboardFocusChangedEventHandler LostKeyboardFocus {
     add {
-      if (!_PreviewTouchMove.ContainsKey(swigCPtr.Handle)) {
-        _PreviewTouchMove.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewTouchMove(_raisePreviewTouchMove, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewTouchMove[swigCPtr.Handle] += value;
+      AddHandler(LostKeyboardFocusEvent, value);
     }
     remove {
-      if (_PreviewTouchMove.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewTouchMove[swigCPtr.Handle] -= value;
-
-        if (_PreviewTouchMove[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewTouchMove(_raisePreviewTouchMove, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewTouchMove.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(LostKeyboardFocusEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewTouchMoveCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewTouchMoveCallback _raisePreviewTouchMove = RaisePreviewTouchMove;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewTouchMoveCallback))]
-  private static void RaisePreviewTouchMove(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewTouchMove.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewTouchMove event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewTouchMove.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewTouchMoveHandler handler = _PreviewTouchMove[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new TouchEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewTouchMoveHandler> _PreviewTouchMove =
-      new Dictionary<IntPtr, PreviewTouchMoveHandler>();
-  #endregion
-
-  #region PreviewTouchUp
-  public delegate void PreviewTouchUpHandler(object sender, TouchEventArgs e);
-  public event PreviewTouchUpHandler PreviewTouchUp {
+  public event KeyEventHandler PreviewKeyDown {
     add {
-      if (!_PreviewTouchUp.ContainsKey(swigCPtr.Handle)) {
-        _PreviewTouchUp.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewTouchUp(_raisePreviewTouchUp, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewTouchUp[swigCPtr.Handle] += value;
+      AddHandler(PreviewKeyDownEvent, value);
     }
     remove {
-      if (_PreviewTouchUp.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewTouchUp[swigCPtr.Handle] -= value;
-
-        if (_PreviewTouchUp[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewTouchUp(_raisePreviewTouchUp, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewTouchUp.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewKeyDownEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewTouchUpCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewTouchUpCallback _raisePreviewTouchUp = RaisePreviewTouchUp;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewTouchUpCallback))]
-  private static void RaisePreviewTouchUp(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewTouchUp.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewTouchUp event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewTouchUp.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewTouchUpHandler handler = _PreviewTouchUp[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new TouchEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewTouchUpHandler> _PreviewTouchUp =
-      new Dictionary<IntPtr, PreviewTouchUpHandler>();
-  #endregion
-
-  #region ManipulationStarting
-  public delegate void ManipulationStartingHandler(object sender, ManipulationStartingEventArgs e);
-  public event ManipulationStartingHandler ManipulationStarting {
+  public event KeyEventHandler KeyDown {
     add {
-      if (!_ManipulationStarting.ContainsKey(swigCPtr.Handle)) {
-        _ManipulationStarting.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_ManipulationStarting(_raiseManipulationStarting, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _ManipulationStarting[swigCPtr.Handle] += value;
+      AddHandler(KeyDownEvent, value);
     }
     remove {
-      if (_ManipulationStarting.ContainsKey(swigCPtr.Handle)) {
-
-        _ManipulationStarting[swigCPtr.Handle] -= value;
-
-        if (_ManipulationStarting[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_ManipulationStarting(_raiseManipulationStarting, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _ManipulationStarting.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(KeyDownEvent, value);
     }
   }
 
-  internal delegate void RaiseManipulationStartingCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseManipulationStartingCallback _raiseManipulationStarting = RaiseManipulationStarting;
-
-  [MonoPInvokeCallback(typeof(RaiseManipulationStartingCallback))]
-  private static void RaiseManipulationStarting(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_ManipulationStarting.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for ManipulationStarting event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _ManipulationStarting.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        ManipulationStartingHandler handler = _ManipulationStarting[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new ManipulationStartingEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, ManipulationStartingHandler> _ManipulationStarting =
-      new Dictionary<IntPtr, ManipulationStartingHandler>();
-  #endregion
-
-  #region ManipulationStarted
-  public delegate void ManipulationStartedHandler(object sender, ManipulationStartedEventArgs e);
-  public event ManipulationStartedHandler ManipulationStarted {
+  public event KeyEventHandler PreviewKeyUp {
     add {
-      if (!_ManipulationStarted.ContainsKey(swigCPtr.Handle)) {
-        _ManipulationStarted.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_ManipulationStarted(_raiseManipulationStarted, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _ManipulationStarted[swigCPtr.Handle] += value;
+      AddHandler(PreviewKeyUpEvent, value);
     }
     remove {
-      if (_ManipulationStarted.ContainsKey(swigCPtr.Handle)) {
-
-        _ManipulationStarted[swigCPtr.Handle] -= value;
-
-        if (_ManipulationStarted[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_ManipulationStarted(_raiseManipulationStarted, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _ManipulationStarted.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewKeyUpEvent, value);
     }
   }
 
-  internal delegate void RaiseManipulationStartedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseManipulationStartedCallback _raiseManipulationStarted = RaiseManipulationStarted;
-
-  [MonoPInvokeCallback(typeof(RaiseManipulationStartedCallback))]
-  private static void RaiseManipulationStarted(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_ManipulationStarted.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for ManipulationStarted event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _ManipulationStarted.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        ManipulationStartedHandler handler = _ManipulationStarted[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new ManipulationStartedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, ManipulationStartedHandler> _ManipulationStarted =
-      new Dictionary<IntPtr, ManipulationStartedHandler>();
-  #endregion
-
-  #region ManipulationDelta
-  public delegate void ManipulationDeltaHandler(object sender, ManipulationDeltaEventArgs e);
-  public event ManipulationDeltaHandler ManipulationDelta {
+  public event KeyEventHandler KeyUp {
     add {
-      if (!_ManipulationDelta.ContainsKey(swigCPtr.Handle)) {
-        _ManipulationDelta.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_ManipulationDelta(_raiseManipulationDelta, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _ManipulationDelta[swigCPtr.Handle] += value;
+      AddHandler(KeyUpEvent, value);
     }
     remove {
-      if (_ManipulationDelta.ContainsKey(swigCPtr.Handle)) {
-
-        _ManipulationDelta[swigCPtr.Handle] -= value;
-
-        if (_ManipulationDelta[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_ManipulationDelta(_raiseManipulationDelta, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _ManipulationDelta.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(KeyUpEvent, value);
     }
   }
 
-  internal delegate void RaiseManipulationDeltaCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseManipulationDeltaCallback _raiseManipulationDelta = RaiseManipulationDelta;
-
-  [MonoPInvokeCallback(typeof(RaiseManipulationDeltaCallback))]
-  private static void RaiseManipulationDelta(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_ManipulationDelta.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for ManipulationDelta event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _ManipulationDelta.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        ManipulationDeltaHandler handler = _ManipulationDelta[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new ManipulationDeltaEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, ManipulationDeltaHandler> _ManipulationDelta =
-      new Dictionary<IntPtr, ManipulationDeltaHandler>();
-  #endregion
-
-  #region ManipulationInertiaStarting
-  public delegate void ManipulationInertiaStartingHandler(object sender, ManipulationInertiaStartingEventArgs e);
-  public event ManipulationInertiaStartingHandler ManipulationInertiaStarting {
+  public event TextCompositionEventHandler PreviewTextInput {
     add {
-      if (!_ManipulationInertiaStarting.ContainsKey(swigCPtr.Handle)) {
-        _ManipulationInertiaStarting.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_ManipulationInertiaStarting(_raiseManipulationInertiaStarting, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _ManipulationInertiaStarting[swigCPtr.Handle] += value;
+      AddHandler(PreviewTextInputEvent, value);
     }
     remove {
-      if (_ManipulationInertiaStarting.ContainsKey(swigCPtr.Handle)) {
-
-        _ManipulationInertiaStarting[swigCPtr.Handle] -= value;
-
-        if (_ManipulationInertiaStarting[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_ManipulationInertiaStarting(_raiseManipulationInertiaStarting, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _ManipulationInertiaStarting.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewTextInputEvent, value);
     }
   }
 
-  internal delegate void RaiseManipulationInertiaStartingCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseManipulationInertiaStartingCallback _raiseManipulationInertiaStarting = RaiseManipulationInertiaStarting;
-
-  [MonoPInvokeCallback(typeof(RaiseManipulationInertiaStartingCallback))]
-  private static void RaiseManipulationInertiaStarting(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_ManipulationInertiaStarting.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for ManipulationInertiaStarting event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _ManipulationInertiaStarting.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        ManipulationInertiaStartingHandler handler = _ManipulationInertiaStarting[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new ManipulationInertiaStartingEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, ManipulationInertiaStartingHandler> _ManipulationInertiaStarting =
-      new Dictionary<IntPtr, ManipulationInertiaStartingHandler>();
-  #endregion
-
-  #region ManipulationCompleted
-  public delegate void ManipulationCompletedHandler(object sender, ManipulationCompletedEventArgs e);
-  public event ManipulationCompletedHandler ManipulationCompleted {
+  public event TextCompositionEventHandler TextInput {
     add {
-      if (!_ManipulationCompleted.ContainsKey(swigCPtr.Handle)) {
-        _ManipulationCompleted.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_ManipulationCompleted(_raiseManipulationCompleted, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _ManipulationCompleted[swigCPtr.Handle] += value;
+      AddHandler(TextInputEvent, value);
     }
     remove {
-      if (_ManipulationCompleted.ContainsKey(swigCPtr.Handle)) {
-
-        _ManipulationCompleted[swigCPtr.Handle] -= value;
-
-        if (_ManipulationCompleted[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_ManipulationCompleted(_raiseManipulationCompleted, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _ManipulationCompleted.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(TextInputEvent, value);
     }
   }
 
-  internal delegate void RaiseManipulationCompletedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseManipulationCompletedCallback _raiseManipulationCompleted = RaiseManipulationCompleted;
-
-  [MonoPInvokeCallback(typeof(RaiseManipulationCompletedCallback))]
-  private static void RaiseManipulationCompleted(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_ManipulationCompleted.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for ManipulationCompleted event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _ManipulationCompleted.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        ManipulationCompletedHandler handler = _ManipulationCompleted[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new ManipulationCompletedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, ManipulationCompletedHandler> _ManipulationCompleted =
-      new Dictionary<IntPtr, ManipulationCompletedHandler>();
-  #endregion
-
-  #region PreviewGotKeyboardFocus
-  public delegate void PreviewGotKeyboardFocusHandler(object sender, KeyboardFocusChangedEventArgs e);
-  public event PreviewGotKeyboardFocusHandler PreviewGotKeyboardFocus {
+  public event TouchEventHandler GotTouchCapture {
     add {
-      if (!_PreviewGotKeyboardFocus.ContainsKey(swigCPtr.Handle)) {
-        _PreviewGotKeyboardFocus.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewGotKeyboardFocus(_raisePreviewGotKeyboardFocus, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewGotKeyboardFocus[swigCPtr.Handle] += value;
+      AddHandler(GotTouchCaptureEvent, value);
     }
     remove {
-      if (_PreviewGotKeyboardFocus.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewGotKeyboardFocus[swigCPtr.Handle] -= value;
-
-        if (_PreviewGotKeyboardFocus[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewGotKeyboardFocus(_raisePreviewGotKeyboardFocus, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewGotKeyboardFocus.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(GotTouchCaptureEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewGotKeyboardFocusCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewGotKeyboardFocusCallback _raisePreviewGotKeyboardFocus = RaisePreviewGotKeyboardFocus;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewGotKeyboardFocusCallback))]
-  private static void RaisePreviewGotKeyboardFocus(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewGotKeyboardFocus.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewGotKeyboardFocus event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewGotKeyboardFocus.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewGotKeyboardFocusHandler handler = _PreviewGotKeyboardFocus[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new KeyboardFocusChangedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewGotKeyboardFocusHandler> _PreviewGotKeyboardFocus =
-      new Dictionary<IntPtr, PreviewGotKeyboardFocusHandler>();
-  #endregion
-
-  #region PreviewKeyDown
-  public delegate void PreviewKeyDownHandler(object sender, KeyEventArgs e);
-  public event PreviewKeyDownHandler PreviewKeyDown {
+  public event TouchEventHandler LostTouchCapture {
     add {
-      if (!_PreviewKeyDown.ContainsKey(swigCPtr.Handle)) {
-        _PreviewKeyDown.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewKeyDown(_raisePreviewKeyDown, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewKeyDown[swigCPtr.Handle] += value;
+      AddHandler(LostTouchCaptureEvent, value);
     }
     remove {
-      if (_PreviewKeyDown.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewKeyDown[swigCPtr.Handle] -= value;
-
-        if (_PreviewKeyDown[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewKeyDown(_raisePreviewKeyDown, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewKeyDown.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(LostTouchCaptureEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewKeyDownCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewKeyDownCallback _raisePreviewKeyDown = RaisePreviewKeyDown;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewKeyDownCallback))]
-  private static void RaisePreviewKeyDown(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewKeyDown.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewKeyDown event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewKeyDown.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewKeyDownHandler handler = _PreviewKeyDown[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new KeyEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewKeyDownHandler> _PreviewKeyDown =
-      new Dictionary<IntPtr, PreviewKeyDownHandler>();
-  #endregion
-
-  #region PreviewKeyUp
-  public delegate void PreviewKeyUpHandler(object sender, KeyEventArgs e);
-  public event PreviewKeyUpHandler PreviewKeyUp {
+  public event TouchEventHandler PreviewTouchMove {
     add {
-      if (!_PreviewKeyUp.ContainsKey(swigCPtr.Handle)) {
-        _PreviewKeyUp.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewKeyUp(_raisePreviewKeyUp, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewKeyUp[swigCPtr.Handle] += value;
+      AddHandler(PreviewTouchMoveEvent, value);
     }
     remove {
-      if (_PreviewKeyUp.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewKeyUp[swigCPtr.Handle] -= value;
-
-        if (_PreviewKeyUp[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewKeyUp(_raisePreviewKeyUp, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewKeyUp.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewTouchMoveEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewKeyUpCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewKeyUpCallback _raisePreviewKeyUp = RaisePreviewKeyUp;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewKeyUpCallback))]
-  private static void RaisePreviewKeyUp(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewKeyUp.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewKeyUp event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewKeyUp.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewKeyUpHandler handler = _PreviewKeyUp[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new KeyEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewKeyUpHandler> _PreviewKeyUp =
-      new Dictionary<IntPtr, PreviewKeyUpHandler>();
-  #endregion
-
-  #region PreviewLostKeyboardFocus
-  public delegate void PreviewLostKeyboardFocusHandler(object sender, KeyboardFocusChangedEventArgs e);
-  public event PreviewLostKeyboardFocusHandler PreviewLostKeyboardFocus {
+  public event TouchEventHandler TouchMove {
     add {
-      if (!_PreviewLostKeyboardFocus.ContainsKey(swigCPtr.Handle)) {
-        _PreviewLostKeyboardFocus.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewLostKeyboardFocus(_raisePreviewLostKeyboardFocus, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewLostKeyboardFocus[swigCPtr.Handle] += value;
+      AddHandler(TouchMoveEvent, value);
     }
     remove {
-      if (_PreviewLostKeyboardFocus.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewLostKeyboardFocus[swigCPtr.Handle] -= value;
-
-        if (_PreviewLostKeyboardFocus[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewLostKeyboardFocus(_raisePreviewLostKeyboardFocus, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewLostKeyboardFocus.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(TouchMoveEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewLostKeyboardFocusCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewLostKeyboardFocusCallback _raisePreviewLostKeyboardFocus = RaisePreviewLostKeyboardFocus;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewLostKeyboardFocusCallback))]
-  private static void RaisePreviewLostKeyboardFocus(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewLostKeyboardFocus.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewLostKeyboardFocus event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewLostKeyboardFocus.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewLostKeyboardFocusHandler handler = _PreviewLostKeyboardFocus[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new KeyboardFocusChangedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewLostKeyboardFocusHandler> _PreviewLostKeyboardFocus =
-      new Dictionary<IntPtr, PreviewLostKeyboardFocusHandler>();
-  #endregion
-
-  #region PreviewMouseDown
-  public delegate void PreviewMouseDownHandler(object sender, MouseButtonEventArgs e);
-  public event PreviewMouseDownHandler PreviewMouseDown {
+  public event TouchEventHandler TouchEnter {
     add {
-      if (!_PreviewMouseDown.ContainsKey(swigCPtr.Handle)) {
-        _PreviewMouseDown.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewMouseDown(_raisePreviewMouseDown, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewMouseDown[swigCPtr.Handle] += value;
+      AddHandler(TouchEnterEvent, value);
     }
     remove {
-      if (_PreviewMouseDown.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewMouseDown[swigCPtr.Handle] -= value;
-
-        if (_PreviewMouseDown[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewMouseDown(_raisePreviewMouseDown, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewMouseDown.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(TouchEnterEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewMouseDownCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewMouseDownCallback _raisePreviewMouseDown = RaisePreviewMouseDown;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewMouseDownCallback))]
-  private static void RaisePreviewMouseDown(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewMouseDown.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewMouseDown event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewMouseDown.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewMouseDownHandler handler = _PreviewMouseDown[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseButtonEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewMouseDownHandler> _PreviewMouseDown =
-      new Dictionary<IntPtr, PreviewMouseDownHandler>();
-  #endregion
-
-  #region PreviewMouseLeftButtonDown
-  public delegate void PreviewMouseLeftButtonDownHandler(object sender, MouseButtonEventArgs e);
-  public event PreviewMouseLeftButtonDownHandler PreviewMouseLeftButtonDown {
+  public event TouchEventHandler TouchLeave {
     add {
-      if (!_PreviewMouseLeftButtonDown.ContainsKey(swigCPtr.Handle)) {
-        _PreviewMouseLeftButtonDown.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewMouseLeftButtonDown(_raisePreviewMouseLeftButtonDown, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewMouseLeftButtonDown[swigCPtr.Handle] += value;
+      AddHandler(TouchLeaveEvent, value);
     }
     remove {
-      if (_PreviewMouseLeftButtonDown.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewMouseLeftButtonDown[swigCPtr.Handle] -= value;
-
-        if (_PreviewMouseLeftButtonDown[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewMouseLeftButtonDown(_raisePreviewMouseLeftButtonDown, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewMouseLeftButtonDown.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(TouchLeaveEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewMouseLeftButtonDownCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewMouseLeftButtonDownCallback _raisePreviewMouseLeftButtonDown = RaisePreviewMouseLeftButtonDown;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewMouseLeftButtonDownCallback))]
-  private static void RaisePreviewMouseLeftButtonDown(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewMouseLeftButtonDown.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewMouseLeftButtonDown event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewMouseLeftButtonDown.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewMouseLeftButtonDownHandler handler = _PreviewMouseLeftButtonDown[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseButtonEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewMouseLeftButtonDownHandler> _PreviewMouseLeftButtonDown =
-      new Dictionary<IntPtr, PreviewMouseLeftButtonDownHandler>();
-  #endregion
-
-  #region PreviewMouseLeftButtonUp
-  public delegate void PreviewMouseLeftButtonUpHandler(object sender, MouseButtonEventArgs e);
-  public event PreviewMouseLeftButtonUpHandler PreviewMouseLeftButtonUp {
+  public event TouchEventHandler PreviewTouchDown {
     add {
-      if (!_PreviewMouseLeftButtonUp.ContainsKey(swigCPtr.Handle)) {
-        _PreviewMouseLeftButtonUp.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewMouseLeftButtonUp(_raisePreviewMouseLeftButtonUp, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewMouseLeftButtonUp[swigCPtr.Handle] += value;
+      AddHandler(PreviewTouchDownEvent, value);
     }
     remove {
-      if (_PreviewMouseLeftButtonUp.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewMouseLeftButtonUp[swigCPtr.Handle] -= value;
-
-        if (_PreviewMouseLeftButtonUp[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewMouseLeftButtonUp(_raisePreviewMouseLeftButtonUp, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewMouseLeftButtonUp.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewTouchDownEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewMouseLeftButtonUpCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewMouseLeftButtonUpCallback _raisePreviewMouseLeftButtonUp = RaisePreviewMouseLeftButtonUp;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewMouseLeftButtonUpCallback))]
-  private static void RaisePreviewMouseLeftButtonUp(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewMouseLeftButtonUp.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewMouseLeftButtonUp event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewMouseLeftButtonUp.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewMouseLeftButtonUpHandler handler = _PreviewMouseLeftButtonUp[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseButtonEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewMouseLeftButtonUpHandler> _PreviewMouseLeftButtonUp =
-      new Dictionary<IntPtr, PreviewMouseLeftButtonUpHandler>();
-  #endregion
-
-  #region PreviewMouseMove
-  public delegate void PreviewMouseMoveHandler(object sender, MouseEventArgs e);
-  public event PreviewMouseMoveHandler PreviewMouseMove {
+  public event TouchEventHandler TouchDown {
     add {
-      if (!_PreviewMouseMove.ContainsKey(swigCPtr.Handle)) {
-        _PreviewMouseMove.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewMouseMove(_raisePreviewMouseMove, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewMouseMove[swigCPtr.Handle] += value;
+      AddHandler(TouchDownEvent, value);
     }
     remove {
-      if (_PreviewMouseMove.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewMouseMove[swigCPtr.Handle] -= value;
-
-        if (_PreviewMouseMove[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewMouseMove(_raisePreviewMouseMove, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewMouseMove.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(TouchDownEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewMouseMoveCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewMouseMoveCallback _raisePreviewMouseMove = RaisePreviewMouseMove;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewMouseMoveCallback))]
-  private static void RaisePreviewMouseMove(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewMouseMove.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewMouseMove event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewMouseMove.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewMouseMoveHandler handler = _PreviewMouseMove[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewMouseMoveHandler> _PreviewMouseMove =
-      new Dictionary<IntPtr, PreviewMouseMoveHandler>();
-  #endregion
-
-  #region PreviewMouseRightButtonDown
-  public delegate void PreviewMouseRightButtonDownHandler(object sender, MouseButtonEventArgs e);
-  public event PreviewMouseRightButtonDownHandler PreviewMouseRightButtonDown {
+  public event TouchEventHandler PreviewTouchUp {
     add {
-      if (!_PreviewMouseRightButtonDown.ContainsKey(swigCPtr.Handle)) {
-        _PreviewMouseRightButtonDown.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewMouseRightButtonDown(_raisePreviewMouseRightButtonDown, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewMouseRightButtonDown[swigCPtr.Handle] += value;
+      AddHandler(PreviewTouchUpEvent, value);
     }
     remove {
-      if (_PreviewMouseRightButtonDown.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewMouseRightButtonDown[swigCPtr.Handle] -= value;
-
-        if (_PreviewMouseRightButtonDown[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewMouseRightButtonDown(_raisePreviewMouseRightButtonDown, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewMouseRightButtonDown.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewTouchUpEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewMouseRightButtonDownCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewMouseRightButtonDownCallback _raisePreviewMouseRightButtonDown = RaisePreviewMouseRightButtonDown;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewMouseRightButtonDownCallback))]
-  private static void RaisePreviewMouseRightButtonDown(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewMouseRightButtonDown.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewMouseRightButtonDown event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewMouseRightButtonDown.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewMouseRightButtonDownHandler handler = _PreviewMouseRightButtonDown[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseButtonEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewMouseRightButtonDownHandler> _PreviewMouseRightButtonDown =
-      new Dictionary<IntPtr, PreviewMouseRightButtonDownHandler>();
-  #endregion
-
-  #region PreviewMouseRightButtonUp
-  public delegate void PreviewMouseRightButtonUpHandler(object sender, MouseButtonEventArgs e);
-  public event PreviewMouseRightButtonUpHandler PreviewMouseRightButtonUp {
+  public event TouchEventHandler TouchUp {
     add {
-      if (!_PreviewMouseRightButtonUp.ContainsKey(swigCPtr.Handle)) {
-        _PreviewMouseRightButtonUp.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewMouseRightButtonUp(_raisePreviewMouseRightButtonUp, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewMouseRightButtonUp[swigCPtr.Handle] += value;
+      AddHandler(TouchUpEvent, value);
     }
     remove {
-      if (_PreviewMouseRightButtonUp.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewMouseRightButtonUp[swigCPtr.Handle] -= value;
-
-        if (_PreviewMouseRightButtonUp[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewMouseRightButtonUp(_raisePreviewMouseRightButtonUp, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewMouseRightButtonUp.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(TouchUpEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewMouseRightButtonUpCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewMouseRightButtonUpCallback _raisePreviewMouseRightButtonUp = RaisePreviewMouseRightButtonUp;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewMouseRightButtonUpCallback))]
-  private static void RaisePreviewMouseRightButtonUp(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewMouseRightButtonUp.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewMouseRightButtonUp event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewMouseRightButtonUp.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewMouseRightButtonUpHandler handler = _PreviewMouseRightButtonUp[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseButtonEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewMouseRightButtonUpHandler> _PreviewMouseRightButtonUp =
-      new Dictionary<IntPtr, PreviewMouseRightButtonUpHandler>();
-  #endregion
-
-  #region PreviewMouseUp
-  public delegate void PreviewMouseUpHandler(object sender, MouseButtonEventArgs e);
-  public event PreviewMouseUpHandler PreviewMouseUp {
+  public event ManipulationStartingEventHandler ManipulationStarting {
     add {
-      if (!_PreviewMouseUp.ContainsKey(swigCPtr.Handle)) {
-        _PreviewMouseUp.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewMouseUp(_raisePreviewMouseUp, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewMouseUp[swigCPtr.Handle] += value;
+      AddHandler(ManipulationStartingEvent, value);
     }
     remove {
-      if (_PreviewMouseUp.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewMouseUp[swigCPtr.Handle] -= value;
-
-        if (_PreviewMouseUp[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewMouseUp(_raisePreviewMouseUp, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewMouseUp.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(ManipulationStartingEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewMouseUpCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewMouseUpCallback _raisePreviewMouseUp = RaisePreviewMouseUp;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewMouseUpCallback))]
-  private static void RaisePreviewMouseUp(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewMouseUp.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewMouseUp event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewMouseUp.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewMouseUpHandler handler = _PreviewMouseUp[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseButtonEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewMouseUpHandler> _PreviewMouseUp =
-      new Dictionary<IntPtr, PreviewMouseUpHandler>();
-  #endregion
-
-  #region PreviewMouseWheel
-  public delegate void PreviewMouseWheelHandler(object sender, MouseWheelEventArgs e);
-  public event PreviewMouseWheelHandler PreviewMouseWheel {
+  public event ManipulationStartedEventHandler ManipulationStarted {
     add {
-      if (!_PreviewMouseWheel.ContainsKey(swigCPtr.Handle)) {
-        _PreviewMouseWheel.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewMouseWheel(_raisePreviewMouseWheel, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewMouseWheel[swigCPtr.Handle] += value;
+      AddHandler(ManipulationStartedEvent, value);
     }
     remove {
-      if (_PreviewMouseWheel.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewMouseWheel[swigCPtr.Handle] -= value;
-
-        if (_PreviewMouseWheel[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewMouseWheel(_raisePreviewMouseWheel, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewMouseWheel.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(ManipulationStartedEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewMouseWheelCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewMouseWheelCallback _raisePreviewMouseWheel = RaisePreviewMouseWheel;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewMouseWheelCallback))]
-  private static void RaisePreviewMouseWheel(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewMouseWheel.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewMouseWheel event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewMouseWheel.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewMouseWheelHandler handler = _PreviewMouseWheel[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new MouseWheelEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewMouseWheelHandler> _PreviewMouseWheel =
-      new Dictionary<IntPtr, PreviewMouseWheelHandler>();
-  #endregion
-
-  #region PreviewTextInput
-  public delegate void PreviewTextInputHandler(object sender, TextCompositionEventArgs e);
-  public event PreviewTextInputHandler PreviewTextInput {
+  public event ManipulationDeltaEventHandler ManipulationDelta {
     add {
-      if (!_PreviewTextInput.ContainsKey(swigCPtr.Handle)) {
-        _PreviewTextInput.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_PreviewTextInput(_raisePreviewTextInput, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PreviewTextInput[swigCPtr.Handle] += value;
+      AddHandler(ManipulationDeltaEvent, value);
     }
     remove {
-      if (_PreviewTextInput.ContainsKey(swigCPtr.Handle)) {
-
-        _PreviewTextInput[swigCPtr.Handle] -= value;
-
-        if (_PreviewTextInput[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_PreviewTextInput(_raisePreviewTextInput, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PreviewTextInput.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(ManipulationDeltaEvent, value);
     }
   }
 
-  internal delegate void RaisePreviewTextInputCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePreviewTextInputCallback _raisePreviewTextInput = RaisePreviewTextInput;
-
-  [MonoPInvokeCallback(typeof(RaisePreviewTextInputCallback))]
-  private static void RaisePreviewTextInput(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PreviewTextInput.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PreviewTextInput event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PreviewTextInput.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PreviewTextInputHandler handler = _PreviewTextInput[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new TextCompositionEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PreviewTextInputHandler> _PreviewTextInput =
-      new Dictionary<IntPtr, PreviewTextInputHandler>();
-  #endregion
-
-  #region TextInput
-  public delegate void TextInputHandler(object sender, TextCompositionEventArgs e);
-  public event TextInputHandler TextInput {
+  public event ManipulationInertiaStartingEventHandler ManipulationInertiaStarting {
     add {
-      if (!_TextInput.ContainsKey(swigCPtr.Handle)) {
-        _TextInput.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_TextInput(_raiseTextInput, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _TextInput[swigCPtr.Handle] += value;
+      AddHandler(ManipulationInertiaStartingEvent, value);
     }
     remove {
-      if (_TextInput.ContainsKey(swigCPtr.Handle)) {
-
-        _TextInput[swigCPtr.Handle] -= value;
-
-        if (_TextInput[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_TextInput(_raiseTextInput, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _TextInput.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(ManipulationInertiaStartingEvent, value);
     }
   }
 
-  internal delegate void RaiseTextInputCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseTextInputCallback _raiseTextInput = RaiseTextInput;
-
-  [MonoPInvokeCallback(typeof(RaiseTextInputCallback))]
-  private static void RaiseTextInput(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_TextInput.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for TextInput event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _TextInput.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        TextInputHandler handler = _TextInput[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new TextCompositionEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, TextInputHandler> _TextInput =
-      new Dictionary<IntPtr, TextInputHandler>();
-  #endregion
-
-  #region FocusableChanged
-  public delegate void FocusableChangedHandler(object sender, DependencyPropertyChangedEventArgs e);
-  public event FocusableChangedHandler FocusableChanged {
+  public event ManipulationCompletedEventHandler ManipulationCompleted {
     add {
-      if (!_FocusableChanged.ContainsKey(swigCPtr.Handle)) {
-        _FocusableChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_FocusableChanged(_raiseFocusableChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _FocusableChanged[swigCPtr.Handle] += value;
+      AddHandler(ManipulationCompletedEvent, value);
     }
     remove {
-      if (_FocusableChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _FocusableChanged[swigCPtr.Handle] -= value;
-
-        if (_FocusableChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_FocusableChanged(_raiseFocusableChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _FocusableChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(ManipulationCompletedEvent, value);
     }
   }
 
-  internal delegate void RaiseFocusableChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseFocusableChangedCallback _raiseFocusableChanged = RaiseFocusableChanged;
-
-  [MonoPInvokeCallback(typeof(RaiseFocusableChangedCallback))]
-  private static void RaiseFocusableChanged(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_FocusableChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for FocusableChanged event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _FocusableChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        FocusableChangedHandler handler = _FocusableChanged[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new DependencyPropertyChangedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, FocusableChangedHandler> _FocusableChanged =
-      new Dictionary<IntPtr, FocusableChangedHandler>();
-  #endregion
-
-  #region IsEnabledChanged
-  public delegate void IsEnabledChangedHandler(object sender, DependencyPropertyChangedEventArgs e);
-  public event IsEnabledChangedHandler IsEnabledChanged {
+  public event QueryContinueDragEventHandler PreviewQueryContinueDrag {
     add {
-      if (!_IsEnabledChanged.ContainsKey(swigCPtr.Handle)) {
-        _IsEnabledChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_IsEnabledChanged(_raiseIsEnabledChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _IsEnabledChanged[swigCPtr.Handle] += value;
+      AddHandler(PreviewQueryContinueDragEvent, value);
     }
     remove {
-      if (_IsEnabledChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _IsEnabledChanged[swigCPtr.Handle] -= value;
-
-        if (_IsEnabledChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_IsEnabledChanged(_raiseIsEnabledChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _IsEnabledChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewQueryContinueDragEvent, value);
     }
   }
 
-  internal delegate void RaiseIsEnabledChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseIsEnabledChangedCallback _raiseIsEnabledChanged = RaiseIsEnabledChanged;
-
-  [MonoPInvokeCallback(typeof(RaiseIsEnabledChangedCallback))]
-  private static void RaiseIsEnabledChanged(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_IsEnabledChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for IsEnabledChanged event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _IsEnabledChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        IsEnabledChangedHandler handler = _IsEnabledChanged[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new DependencyPropertyChangedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, IsEnabledChangedHandler> _IsEnabledChanged =
-      new Dictionary<IntPtr, IsEnabledChangedHandler>();
-  #endregion
-
-  #region IsHitTestVisibleChanged
-  public delegate void IsHitTestVisibleChangedHandler(object sender, DependencyPropertyChangedEventArgs e);
-  public event IsHitTestVisibleChangedHandler IsHitTestVisibleChanged {
+  public event QueryContinueDragEventHandler QueryContinueDrag {
     add {
-      if (!_IsHitTestVisibleChanged.ContainsKey(swigCPtr.Handle)) {
-        _IsHitTestVisibleChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_IsHitTestVisibleChanged(_raiseIsHitTestVisibleChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _IsHitTestVisibleChanged[swigCPtr.Handle] += value;
+      AddHandler(QueryContinueDragEvent, value);
     }
     remove {
-      if (_IsHitTestVisibleChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _IsHitTestVisibleChanged[swigCPtr.Handle] -= value;
-
-        if (_IsHitTestVisibleChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_IsHitTestVisibleChanged(_raiseIsHitTestVisibleChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _IsHitTestVisibleChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(QueryContinueDragEvent, value);
     }
   }
 
-  internal delegate void RaiseIsHitTestVisibleChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseIsHitTestVisibleChangedCallback _raiseIsHitTestVisibleChanged = RaiseIsHitTestVisibleChanged;
-
-  [MonoPInvokeCallback(typeof(RaiseIsHitTestVisibleChangedCallback))]
-  private static void RaiseIsHitTestVisibleChanged(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_IsHitTestVisibleChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for IsHitTestVisibleChanged event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _IsHitTestVisibleChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        IsHitTestVisibleChangedHandler handler = _IsHitTestVisibleChanged[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new DependencyPropertyChangedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, IsHitTestVisibleChangedHandler> _IsHitTestVisibleChanged =
-      new Dictionary<IntPtr, IsHitTestVisibleChangedHandler>();
-  #endregion
-
-  #region IsVisibleChanged
-  public delegate void IsVisibleChangedHandler(object sender, DependencyPropertyChangedEventArgs e);
-  public event IsVisibleChangedHandler IsVisibleChanged {
+  public event GiveFeedbackEventHandler PreviewGiveFeedback {
     add {
-      if (!_IsVisibleChanged.ContainsKey(swigCPtr.Handle)) {
-        _IsVisibleChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_IsVisibleChanged(_raiseIsVisibleChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _IsVisibleChanged[swigCPtr.Handle] += value;
+      AddHandler(PreviewGiveFeedbackEvent, value);
     }
     remove {
-      if (_IsVisibleChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _IsVisibleChanged[swigCPtr.Handle] -= value;
-
-        if (_IsVisibleChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_IsVisibleChanged(_raiseIsVisibleChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _IsVisibleChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewGiveFeedbackEvent, value);
     }
   }
 
-  internal delegate void RaiseIsVisibleChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseIsVisibleChangedCallback _raiseIsVisibleChanged = RaiseIsVisibleChanged;
-
-  [MonoPInvokeCallback(typeof(RaiseIsVisibleChangedCallback))]
-  private static void RaiseIsVisibleChanged(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_IsVisibleChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for IsVisibleChanged event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _IsVisibleChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        IsVisibleChangedHandler handler = _IsVisibleChanged[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new DependencyPropertyChangedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, IsVisibleChangedHandler> _IsVisibleChanged =
-      new Dictionary<IntPtr, IsVisibleChangedHandler>();
-  #endregion
-
-  #region IsMouseCapturedChanged
-  public delegate void IsMouseCapturedChangedHandler(object sender, DependencyPropertyChangedEventArgs e);
-  public event IsMouseCapturedChangedHandler IsMouseCapturedChanged {
+  public event GiveFeedbackEventHandler GiveFeedback {
     add {
-      if (!_IsMouseCapturedChanged.ContainsKey(swigCPtr.Handle)) {
-        _IsMouseCapturedChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_IsMouseCapturedChanged(_raiseIsMouseCapturedChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _IsMouseCapturedChanged[swigCPtr.Handle] += value;
+      AddHandler(GiveFeedbackEvent, value);
     }
     remove {
-      if (_IsMouseCapturedChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _IsMouseCapturedChanged[swigCPtr.Handle] -= value;
-
-        if (_IsMouseCapturedChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_IsMouseCapturedChanged(_raiseIsMouseCapturedChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _IsMouseCapturedChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(GiveFeedbackEvent, value);
     }
   }
 
-  internal delegate void RaiseIsMouseCapturedChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseIsMouseCapturedChangedCallback _raiseIsMouseCapturedChanged = RaiseIsMouseCapturedChanged;
-
-  [MonoPInvokeCallback(typeof(RaiseIsMouseCapturedChangedCallback))]
-  private static void RaiseIsMouseCapturedChanged(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_IsMouseCapturedChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for IsMouseCapturedChanged event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _IsMouseCapturedChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        IsMouseCapturedChangedHandler handler = _IsMouseCapturedChanged[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new DependencyPropertyChangedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, IsMouseCapturedChangedHandler> _IsMouseCapturedChanged =
-      new Dictionary<IntPtr, IsMouseCapturedChangedHandler>();
-  #endregion
-
-  #region IsMouseCaptureWithinChanged
-  public delegate void IsMouseCaptureWithinChangedHandler(object sender, DependencyPropertyChangedEventArgs e);
-  public event IsMouseCaptureWithinChangedHandler IsMouseCaptureWithinChanged {
+  public event DragEventHandler PreviewDragOver {
     add {
-      if (!_IsMouseCaptureWithinChanged.ContainsKey(swigCPtr.Handle)) {
-        _IsMouseCaptureWithinChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_IsMouseCaptureWithinChanged(_raiseIsMouseCaptureWithinChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _IsMouseCaptureWithinChanged[swigCPtr.Handle] += value;
+      AddHandler(PreviewDragOverEvent, value);
     }
     remove {
-      if (_IsMouseCaptureWithinChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _IsMouseCaptureWithinChanged[swigCPtr.Handle] -= value;
-
-        if (_IsMouseCaptureWithinChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_IsMouseCaptureWithinChanged(_raiseIsMouseCaptureWithinChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _IsMouseCaptureWithinChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewDragOverEvent, value);
     }
   }
 
-  internal delegate void RaiseIsMouseCaptureWithinChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseIsMouseCaptureWithinChangedCallback _raiseIsMouseCaptureWithinChanged = RaiseIsMouseCaptureWithinChanged;
-
-  [MonoPInvokeCallback(typeof(RaiseIsMouseCaptureWithinChangedCallback))]
-  private static void RaiseIsMouseCaptureWithinChanged(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_IsMouseCaptureWithinChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for IsMouseCaptureWithinChanged event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _IsMouseCaptureWithinChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        IsMouseCaptureWithinChangedHandler handler = _IsMouseCaptureWithinChanged[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new DependencyPropertyChangedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, IsMouseCaptureWithinChangedHandler> _IsMouseCaptureWithinChanged =
-      new Dictionary<IntPtr, IsMouseCaptureWithinChangedHandler>();
-  #endregion
-
-  #region IsMouseDirectlyOverChanged
-  public delegate void IsMouseDirectlyOverChangedHandler(object sender, DependencyPropertyChangedEventArgs e);
-  public event IsMouseDirectlyOverChangedHandler IsMouseDirectlyOverChanged {
+  public event DragEventHandler DragOver {
     add {
-      if (!_IsMouseDirectlyOverChanged.ContainsKey(swigCPtr.Handle)) {
-        _IsMouseDirectlyOverChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_IsMouseDirectlyOverChanged(_raiseIsMouseDirectlyOverChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _IsMouseDirectlyOverChanged[swigCPtr.Handle] += value;
+      AddHandler(DragOverEvent, value);
     }
     remove {
-      if (_IsMouseDirectlyOverChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _IsMouseDirectlyOverChanged[swigCPtr.Handle] -= value;
-
-        if (_IsMouseDirectlyOverChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_IsMouseDirectlyOverChanged(_raiseIsMouseDirectlyOverChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _IsMouseDirectlyOverChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(DragOverEvent, value);
     }
   }
 
-  internal delegate void RaiseIsMouseDirectlyOverChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseIsMouseDirectlyOverChangedCallback _raiseIsMouseDirectlyOverChanged = RaiseIsMouseDirectlyOverChanged;
-
-  [MonoPInvokeCallback(typeof(RaiseIsMouseDirectlyOverChangedCallback))]
-  private static void RaiseIsMouseDirectlyOverChanged(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_IsMouseDirectlyOverChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for IsMouseDirectlyOverChanged event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _IsMouseDirectlyOverChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        IsMouseDirectlyOverChangedHandler handler = _IsMouseDirectlyOverChanged[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new DependencyPropertyChangedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, IsMouseDirectlyOverChangedHandler> _IsMouseDirectlyOverChanged =
-      new Dictionary<IntPtr, IsMouseDirectlyOverChangedHandler>();
-  #endregion
-
-  #region IsKeyboardFocusedChanged
-  public delegate void IsKeyboardFocusedChangedHandler(object sender, DependencyPropertyChangedEventArgs e);
-  public event IsKeyboardFocusedChangedHandler IsKeyboardFocusedChanged {
+  public event DragEventHandler PreviewDragEnter {
     add {
-      if (!_IsKeyboardFocusedChanged.ContainsKey(swigCPtr.Handle)) {
-        _IsKeyboardFocusedChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_IsKeyboardFocusedChanged(_raiseIsKeyboardFocusedChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _IsKeyboardFocusedChanged[swigCPtr.Handle] += value;
+      AddHandler(PreviewDragEnterEvent, value);
     }
     remove {
-      if (_IsKeyboardFocusedChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _IsKeyboardFocusedChanged[swigCPtr.Handle] -= value;
-
-        if (_IsKeyboardFocusedChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_IsKeyboardFocusedChanged(_raiseIsKeyboardFocusedChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _IsKeyboardFocusedChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PreviewDragEnterEvent, value);
     }
   }
 
-  internal delegate void RaiseIsKeyboardFocusedChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseIsKeyboardFocusedChangedCallback _raiseIsKeyboardFocusedChanged = RaiseIsKeyboardFocusedChanged;
-
-  [MonoPInvokeCallback(typeof(RaiseIsKeyboardFocusedChangedCallback))]
-  private static void RaiseIsKeyboardFocusedChanged(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_IsKeyboardFocusedChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for IsKeyboardFocusedChanged event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _IsKeyboardFocusedChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        IsKeyboardFocusedChangedHandler handler = _IsKeyboardFocusedChanged[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new DependencyPropertyChangedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, IsKeyboardFocusedChangedHandler> _IsKeyboardFocusedChanged =
-      new Dictionary<IntPtr, IsKeyboardFocusedChangedHandler>();
-  #endregion
-
-  #region IsKeyboardFocusWithinChanged
-  public delegate void IsKeyboardFocusWithinChangedHandler(object sender, DependencyPropertyChangedEventArgs e);
-  public event IsKeyboardFocusWithinChangedHandler IsKeyboardFocusWithinChanged {
+  public event DragEventHandler DragEnter {
     add {
-      if (!_IsKeyboardFocusWithinChanged.ContainsKey(swigCPtr.Handle)) {
-        _IsKeyboardFocusWithinChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_UIElement_IsKeyboardFocusWithinChanged(_raiseIsKeyboardFocusWithinChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _IsKeyboardFocusWithinChanged[swigCPtr.Handle] += value;
+      AddHandler(DragEnterEvent, value);
     }
     remove {
-      if (_IsKeyboardFocusWithinChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _IsKeyboardFocusWithinChanged[swigCPtr.Handle] -= value;
-
-        if (_IsKeyboardFocusWithinChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_UIElement_IsKeyboardFocusWithinChanged(_raiseIsKeyboardFocusWithinChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _IsKeyboardFocusWithinChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(DragEnterEvent, value);
     }
   }
 
-  internal delegate void RaiseIsKeyboardFocusWithinChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseIsKeyboardFocusWithinChangedCallback _raiseIsKeyboardFocusWithinChanged = RaiseIsKeyboardFocusWithinChanged;
-
-  [MonoPInvokeCallback(typeof(RaiseIsKeyboardFocusWithinChangedCallback))]
-  private static void RaiseIsKeyboardFocusWithinChanged(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_IsKeyboardFocusWithinChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for IsKeyboardFocusWithinChanged event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _IsKeyboardFocusWithinChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        IsKeyboardFocusWithinChangedHandler handler = _IsKeyboardFocusWithinChanged[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new DependencyPropertyChangedEventArgs(e, false));
-        }
-      }
+  public event DragEventHandler PreviewDragLeave {
+    add {
+      AddHandler(PreviewDragLeaveEvent, value);
     }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
+    remove {
+      RemoveHandler(PreviewDragLeaveEvent, value);
     }
   }
 
-  static Dictionary<IntPtr, IsKeyboardFocusWithinChangedHandler> _IsKeyboardFocusWithinChanged =
-      new Dictionary<IntPtr, IsKeyboardFocusWithinChangedHandler>();
+  public event DragEventHandler DragLeave {
+    add {
+      AddHandler(DragLeaveEvent, value);
+    }
+    remove {
+      RemoveHandler(DragLeaveEvent, value);
+    }
+  }
+
+  public event DragEventHandler PreviewDrop {
+    add {
+      AddHandler(PreviewDropEvent, value);
+    }
+    remove {
+      RemoveHandler(PreviewDropEvent, value);
+    }
+  }
+
+  public event DragEventHandler Drop {
+    add {
+      AddHandler(DropEvent, value);
+    }
+    remove {
+      RemoveHandler(DropEvent, value);
+    }
+  }
   #endregion
 
+  #region Non-routed Events
+  protected void AddEventHandler(string eventId, Delegate handler) {
+    EventHandlerStore.AddHandler(this, eventId, handler);
+  }
+
+  protected void RemoveEventHandler(string eventId, Delegate handler) {
+    EventHandlerStore.RemoveHandler(this, eventId, handler);
+  }
+
+  public event DependencyPropertyChangedEventHandler FocusableChanged {
+    add {
+      AddEventHandler("FocusableChanged", value);
+    }
+    remove {
+      RemoveEventHandler("FocusableChanged", value);
+    }
+  }
+
+  public event DependencyPropertyChangedEventHandler IsEnabledChanged {
+    add {
+      AddEventHandler("IsEnabledChanged", value);
+    }
+    remove {
+      RemoveEventHandler("IsEnabledChanged", value);
+    }
+  }
+
+  public event DependencyPropertyChangedEventHandler IsHitTestVisibleChanged {
+    add {
+      AddEventHandler("IsHitTestVisibleChanged", value);
+    }
+    remove {
+      RemoveEventHandler("IsHitTestVisibleChanged", value);
+    }
+  }
+
+  public event DependencyPropertyChangedEventHandler IsVisibleChanged {
+    add {
+      AddEventHandler("IsVisibleChanged", value);
+    }
+    remove {
+      RemoveEventHandler("IsVisibleChanged", value);
+    }
+  }
+
+  public event DependencyPropertyChangedEventHandler IsMouseCapturedChanged {
+    add {
+      AddEventHandler("IsMouseCapturedChanged", value);
+    }
+    remove {
+      RemoveEventHandler("IsMouseCapturedChanged", value);
+    }
+  }
+
+  public event DependencyPropertyChangedEventHandler IsMouseCaptureWithinChanged {
+    add {
+      AddEventHandler("IsMouseCaptureWithinChanged", value);
+    }
+    remove {
+      RemoveEventHandler("IsMouseCaptureWithinChanged", value);
+    }
+  }
+
+  public event DependencyPropertyChangedEventHandler IsMouseDirectlyOverChanged {
+    add {
+      AddEventHandler("IsMouseDirectlyOverChanged", value);
+    }
+    remove {
+      RemoveEventHandler("IsMouseDirectlyOverChanged", value);
+    }
+  }
+
+  public event DependencyPropertyChangedEventHandler IsKeyboardFocusedChanged {
+    add {
+      AddEventHandler("IsKeyboardFocusedChanged", value);
+    }
+    remove {
+      RemoveEventHandler("IsKeyboardFocusedChanged", value);
+    }
+  }
+
+  public event DependencyPropertyChangedEventHandler IsKeyboardFocusWithinChanged {
+    add {
+      AddEventHandler("IsKeyboardFocusWithinChanged", value);
+    }
+    remove {
+      RemoveEventHandler("IsKeyboardFocusWithinChanged", value);
+    }
+  }
   #endregion
 
   public UIElement() {
@@ -3238,101 +683,83 @@ public class UIElement : Visual {
 
   public bool CaptureMouse() {
     bool ret = NoesisGUI_PINVOKE.UIElement_CaptureMouse(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void ReleaseMouseCapture() {
     NoesisGUI_PINVOKE.UIElement_ReleaseMouseCapture(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public bool CaptureTouch(uint touchDevice) {
     bool ret = NoesisGUI_PINVOKE.UIElement_CaptureTouch(swigCPtr, touchDevice);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool ReleaseTouchCapture(uint touchDevice) {
     bool ret = NoesisGUI_PINVOKE.UIElement_ReleaseTouchCapture(swigCPtr, touchDevice);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void ReleaseAllTouchCaptures() {
     NoesisGUI_PINVOKE.UIElement_ReleaseAllTouchCaptures(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public bool Focus() {
     bool ret = NoesisGUI_PINVOKE.UIElement_Focus(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void InvalidateMeasure() {
     NoesisGUI_PINVOKE.UIElement_InvalidateMeasure(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public bool IsMeasureValid() {
     bool ret = NoesisGUI_PINVOKE.UIElement_IsMeasureValid(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void Measure(Size availableSize) {
     NoesisGUI_PINVOKE.UIElement_Measure(swigCPtr, ref availableSize);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void InvalidateArrange() {
     NoesisGUI_PINVOKE.UIElement_InvalidateArrange(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public bool IsArrangeValid() {
     bool ret = NoesisGUI_PINVOKE.UIElement_IsArrangeValid(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void Arrange(Rect finalRect) {
     NoesisGUI_PINVOKE.UIElement_Arrange(swigCPtr, ref finalRect);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void InvalidateVisual() {
     NoesisGUI_PINVOKE.UIElement_InvalidateVisual(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void UpdateLayout() {
     NoesisGUI_PINVOKE.UIElement_UpdateLayout(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public virtual bool MoveFocus(TraversalRequest request) {
     bool ret = NoesisGUI_PINVOKE.UIElement_MoveFocus(swigCPtr, TraversalRequest.getCPtr(request));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public virtual DependencyObject PredictFocus(FocusNavigationDirection direction) {
     IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PredictFocus(swigCPtr, (int)direction);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public void RaiseEvent(RoutedEventArgs e) {
     NoesisGUI_PINVOKE.UIElement_RaiseEvent(swigCPtr, RoutedEventArgs.getCPtr(e));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DependencyProperty AllowDropProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_AllowDropProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3340,7 +767,6 @@ public class UIElement : Visual {
   public static DependencyProperty ClipProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_ClipProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3348,7 +774,6 @@ public class UIElement : Visual {
   public static DependencyProperty ClipToBoundsProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_ClipToBoundsProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3356,7 +781,6 @@ public class UIElement : Visual {
   public static DependencyProperty FocusableProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_FocusableProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3364,7 +788,6 @@ public class UIElement : Visual {
   public static DependencyProperty IsEnabledProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_IsEnabledProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3372,7 +795,6 @@ public class UIElement : Visual {
   public static DependencyProperty IsFocusedProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_IsFocusedProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3380,7 +802,6 @@ public class UIElement : Visual {
   public static DependencyProperty IsHitTestVisibleProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_IsHitTestVisibleProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3388,7 +809,6 @@ public class UIElement : Visual {
   public static DependencyProperty IsKeyboardFocusedProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_IsKeyboardFocusedProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3396,7 +816,6 @@ public class UIElement : Visual {
   public static DependencyProperty IsKeyboardFocusWithinProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_IsKeyboardFocusWithinProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3404,7 +823,6 @@ public class UIElement : Visual {
   public static DependencyProperty IsMouseCapturedProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_IsMouseCapturedProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3412,7 +830,6 @@ public class UIElement : Visual {
   public static DependencyProperty IsMouseCaptureWithinProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_IsMouseCaptureWithinProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3420,7 +837,6 @@ public class UIElement : Visual {
   public static DependencyProperty IsMouseDirectlyOverProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_IsMouseDirectlyOverProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3428,7 +844,6 @@ public class UIElement : Visual {
   public static DependencyProperty IsMouseOverProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_IsMouseOverProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3436,7 +851,6 @@ public class UIElement : Visual {
   public static DependencyProperty IsManipulationEnabledProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_IsManipulationEnabledProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3444,7 +858,6 @@ public class UIElement : Visual {
   public static DependencyProperty IsVisibleProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_IsVisibleProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3452,7 +865,6 @@ public class UIElement : Visual {
   public static DependencyProperty OpacityMaskProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_OpacityMaskProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3460,7 +872,6 @@ public class UIElement : Visual {
   public static DependencyProperty OpacityProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_OpacityProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3468,7 +879,6 @@ public class UIElement : Visual {
   public static DependencyProperty ProjectionProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_ProjectionProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3476,7 +886,6 @@ public class UIElement : Visual {
   public static DependencyProperty RenderTransformOriginProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_RenderTransformOriginProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3484,7 +893,6 @@ public class UIElement : Visual {
   public static DependencyProperty RenderTransformProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_RenderTransformProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3492,19 +900,616 @@ public class UIElement : Visual {
   public static DependencyProperty VisibilityProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_VisibilityProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent GotFocusEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_GotFocusEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_GotFocusEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent GotKeyboardFocusEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_GotKeyboardFocusEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_GotKeyboardFocusEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent GotMouseCaptureEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_GotMouseCaptureEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_GotMouseCaptureEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent KeyDownEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_KeyDownEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_KeyDownEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent KeyUpEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_KeyUpEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_KeyUpEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent LostFocusEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_LostFocusEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_LostFocusEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent LostKeyboardFocusEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_LostKeyboardFocusEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_LostKeyboardFocusEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent LostMouseCaptureEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_LostMouseCaptureEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_LostMouseCaptureEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseDownEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_MouseDownEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_MouseDownEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseEnterEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_MouseEnterEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_MouseEnterEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseLeaveEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_MouseLeaveEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_MouseLeaveEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseLeftButtonDownEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_MouseLeftButtonDownEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_MouseLeftButtonDownEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseLeftButtonUpEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_MouseLeftButtonUpEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_MouseLeftButtonUpEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseMoveEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_MouseMoveEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_MouseMoveEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseRightButtonDownEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_MouseRightButtonDownEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_MouseRightButtonDownEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseRightButtonUpEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_MouseRightButtonUpEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_MouseRightButtonUpEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseUpEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_MouseUpEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_MouseUpEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent MouseWheelEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_MouseWheelEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_MouseWheelEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent TouchDownEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_TouchDownEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_TouchDownEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent TouchMoveEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_TouchMoveEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_TouchMoveEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent TouchUpEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_TouchUpEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_TouchUpEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent TouchEnterEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_TouchEnterEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_TouchEnterEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent TouchLeaveEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_TouchLeaveEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_TouchLeaveEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent GotTouchCaptureEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_GotTouchCaptureEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_GotTouchCaptureEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent LostTouchCaptureEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_LostTouchCaptureEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_LostTouchCaptureEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewTouchDownEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewTouchDownEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewTouchDownEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewTouchMoveEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewTouchMoveEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewTouchMoveEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewTouchUpEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewTouchUpEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewTouchUpEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent ManipulationStartingEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_ManipulationStartingEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_ManipulationStartingEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent ManipulationStartedEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_ManipulationStartedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_ManipulationStartedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent ManipulationDeltaEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_ManipulationDeltaEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_ManipulationDeltaEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent ManipulationInertiaStartingEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_ManipulationInertiaStartingEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_ManipulationInertiaStartingEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent ManipulationCompletedEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_ManipulationCompletedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_ManipulationCompletedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewGotKeyboardFocusEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewGotKeyboardFocusEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewGotKeyboardFocusEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewKeyDownEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewKeyDownEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewKeyDownEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewKeyUpEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewKeyUpEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewKeyUpEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewLostKeyboardFocusEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewLostKeyboardFocusEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewLostKeyboardFocusEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewMouseDownEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewMouseDownEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewMouseDownEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewMouseLeftButtonDownEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewMouseLeftButtonDownEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewMouseLeftButtonDownEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewMouseLeftButtonUpEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewMouseLeftButtonUpEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewMouseLeftButtonUpEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewMouseMoveEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewMouseMoveEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewMouseMoveEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewMouseRightButtonDownEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewMouseRightButtonDownEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewMouseRightButtonDownEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewMouseRightButtonUpEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewMouseRightButtonUpEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewMouseRightButtonUpEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewMouseUpEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewMouseUpEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewMouseUpEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewMouseWheelEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewMouseWheelEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewMouseWheelEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewTextInputEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewTextInputEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewTextInputEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent QueryCursorEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_QueryCursorEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_QueryCursorEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent TextInputEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_TextInputEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_TextInputEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewQueryContinueDragEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewQueryContinueDragEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewQueryContinueDragEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent QueryContinueDragEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_QueryContinueDragEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_QueryContinueDragEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewGiveFeedbackEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewGiveFeedbackEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewGiveFeedbackEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent GiveFeedbackEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_GiveFeedbackEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_GiveFeedbackEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewDragEnterEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewDragEnterEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewDragEnterEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent DragEnterEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_DragEnterEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_DragEnterEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewDragOverEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewDragOverEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewDragOverEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent DragOverEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_DragOverEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_DragOverEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewDragLeaveEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewDragLeaveEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewDragLeaveEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent DragLeaveEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_DragLeaveEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_DragLeaveEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewDropEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_PreviewDropEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_PreviewDropEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent DropEvent {
+    set {
+      NoesisGUI_PINVOKE.UIElement_DropEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_DropEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public bool AllowDrop {
     set {
       NoesisGUI_PINVOKE.UIElement_AllowDrop_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.UIElement_AllowDrop_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3512,11 +1517,9 @@ public class UIElement : Visual {
   public Geometry Clip {
     set {
       NoesisGUI_PINVOKE.UIElement_Clip_set(swigCPtr, Geometry.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_Clip_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Geometry)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3524,11 +1527,9 @@ public class UIElement : Visual {
   public bool ClipToBounds {
     set {
       NoesisGUI_PINVOKE.UIElement_ClipToBounds_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.UIElement_ClipToBounds_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3536,11 +1537,9 @@ public class UIElement : Visual {
   public bool Focusable {
     set {
       NoesisGUI_PINVOKE.UIElement_Focusable_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.UIElement_Focusable_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3548,11 +1547,9 @@ public class UIElement : Visual {
   public bool IsEnabled {
     set {
       NoesisGUI_PINVOKE.UIElement_IsEnabled_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.UIElement_IsEnabled_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3560,7 +1557,6 @@ public class UIElement : Visual {
   public bool IsFocused {
     get {
       bool ret = NoesisGUI_PINVOKE.UIElement_IsFocused_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3568,11 +1564,9 @@ public class UIElement : Visual {
   public bool IsHitTestVisible {
     set {
       NoesisGUI_PINVOKE.UIElement_IsHitTestVisible_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.UIElement_IsHitTestVisible_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3580,7 +1574,6 @@ public class UIElement : Visual {
   public bool IsKeyboardFocused {
     get {
       bool ret = NoesisGUI_PINVOKE.UIElement_IsKeyboardFocused_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3588,7 +1581,6 @@ public class UIElement : Visual {
   public bool IsKeyboardFocusWithin {
     get {
       bool ret = NoesisGUI_PINVOKE.UIElement_IsKeyboardFocusWithin_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3596,7 +1588,6 @@ public class UIElement : Visual {
   public bool IsMouseCaptured {
     get {
       bool ret = NoesisGUI_PINVOKE.UIElement_IsMouseCaptured_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3604,7 +1595,6 @@ public class UIElement : Visual {
   public bool IsMouseCaptureWithin {
     get {
       bool ret = NoesisGUI_PINVOKE.UIElement_IsMouseCaptureWithin_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3612,7 +1602,6 @@ public class UIElement : Visual {
   public bool IsMouseDirectlyOver {
     get {
       bool ret = NoesisGUI_PINVOKE.UIElement_IsMouseDirectlyOver_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3620,7 +1609,6 @@ public class UIElement : Visual {
   public bool IsMouseOver {
     get {
       bool ret = NoesisGUI_PINVOKE.UIElement_IsMouseOver_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3628,11 +1616,9 @@ public class UIElement : Visual {
   public bool IsManipulationEnabled {
     set {
       NoesisGUI_PINVOKE.UIElement_IsManipulationEnabled_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.UIElement_IsManipulationEnabled_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3640,7 +1626,6 @@ public class UIElement : Visual {
   public bool IsVisible {
     get {
       bool ret = NoesisGUI_PINVOKE.UIElement_IsVisible_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3648,11 +1633,9 @@ public class UIElement : Visual {
   public Brush OpacityMask {
     set {
       NoesisGUI_PINVOKE.UIElement_OpacityMask_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_OpacityMask_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3660,11 +1643,9 @@ public class UIElement : Visual {
   public float Opacity {
     set {
       NoesisGUI_PINVOKE.UIElement_Opacity_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.UIElement_Opacity_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3672,11 +1653,9 @@ public class UIElement : Visual {
   public Projection Projection {
     set {
       NoesisGUI_PINVOKE.UIElement_Projection_set(swigCPtr, Projection.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_Projection_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Projection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3684,12 +1663,10 @@ public class UIElement : Visual {
   public Point RenderTransformOrigin {
     set {
       NoesisGUI_PINVOKE.UIElement_RenderTransformOrigin_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.UIElement_RenderTransformOrigin_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Point>(ret);
       }
@@ -3703,11 +1680,9 @@ public class UIElement : Visual {
   public Transform RenderTransform {
     set {
       NoesisGUI_PINVOKE.UIElement_RenderTransform_set(swigCPtr, Transform.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_RenderTransform_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Transform)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3715,11 +1690,9 @@ public class UIElement : Visual {
   public Visibility Visibility {
     set {
       NoesisGUI_PINVOKE.UIElement_Visibility_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       Visibility ret = (Visibility)NoesisGUI_PINVOKE.UIElement_Visibility_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3727,7 +1700,6 @@ public class UIElement : Visual {
   public CommandBindingCollection CommandBindings {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_CommandBindings_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (CommandBindingCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3735,7 +1707,6 @@ public class UIElement : Visual {
   public InputBindingCollection InputBindings {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_InputBindings_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (InputBindingCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -3743,7 +1714,6 @@ public class UIElement : Visual {
   public Size DesiredSize {
     get {
       IntPtr ret = NoesisGUI_PINVOKE.UIElement_DesiredSize_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Size>(ret);
       }
@@ -3757,7 +1727,6 @@ public class UIElement : Visual {
   public Size RenderSize {
     get {
       IntPtr ret = NoesisGUI_PINVOKE.UIElement_RenderSize_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Size>(ret);
       }
@@ -3772,7 +1741,6 @@ public class UIElement : Visual {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_Mouse_get(swigCPtr);
       Mouse ret = (cPtr == IntPtr.Zero) ? null : new Mouse(cPtr, false);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -3780,22 +1748,17 @@ public class UIElement : Visual {
   public Keyboard Keyboard {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UIElement_Keyboard_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Keyboard)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.UIElement_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_UIElement(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_UIElement(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

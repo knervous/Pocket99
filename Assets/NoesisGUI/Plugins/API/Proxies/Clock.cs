@@ -40,7 +40,6 @@ public class Clock : BaseComponent {
         _Completed.Add(swigCPtr.Handle, null);
 
         NoesisGUI_PINVOKE.BindEvent_Clock_Completed(_raiseCompleted, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       }
 
       _Completed[swigCPtr.Handle] += value;
@@ -52,7 +51,6 @@ public class Clock : BaseComponent {
 
         if (_Completed[swigCPtr.Handle] == null) {
           NoesisGUI_PINVOKE.UnbindEvent_Clock_Completed(_raiseCompleted, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
 
           _Completed.Remove(swigCPtr.Handle);
         }
@@ -81,7 +79,7 @@ public class Clock : BaseComponent {
       }
     }
     catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
+      Noesis.Error.UnhandledException(exception);
     }
   }
 
@@ -94,7 +92,6 @@ public class Clock : BaseComponent {
   public int CurrentIteration {
     get {
       int ret = NoesisGUI_PINVOKE.Clock_CurrentIteration_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -102,7 +99,6 @@ public class Clock : BaseComponent {
   public float CurrentProgress {
     get {
       float ret = NoesisGUI_PINVOKE.Clock_CurrentProgress_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -110,7 +106,6 @@ public class Clock : BaseComponent {
   public double CurrentTime {
     get {
       double ret = NoesisGUI_PINVOKE.Clock_CurrentTime_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -118,7 +113,6 @@ public class Clock : BaseComponent {
   public ClockState CurrentState {
     get {
       ClockState ret = (ClockState)NoesisGUI_PINVOKE.Clock_CurrentState_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -126,7 +120,6 @@ public class Clock : BaseComponent {
   public bool HasControllableRoot {
     get {
       bool ret = NoesisGUI_PINVOKE.Clock_HasControllableRoot_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -134,7 +127,6 @@ public class Clock : BaseComponent {
   public ClockGroup Parent {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Clock_Parent_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (ClockGroup)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -142,14 +134,12 @@ public class Clock : BaseComponent {
   public Timeline Timeline {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Clock_Timeline_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Timeline)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Clock_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

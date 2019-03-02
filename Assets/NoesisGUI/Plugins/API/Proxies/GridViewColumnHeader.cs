@@ -38,7 +38,6 @@ public class GridViewColumnHeader : ButtonBase {
   public static DependencyProperty ColumnProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewColumnHeader_ColumnProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,7 +45,6 @@ public class GridViewColumnHeader : ButtonBase {
   public static DependencyProperty RoleProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewColumnHeader_RoleProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -54,7 +52,6 @@ public class GridViewColumnHeader : ButtonBase {
   public GridViewColumn Column {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.GridViewColumnHeader_Column_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (GridViewColumn)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -62,14 +59,12 @@ public class GridViewColumnHeader : ButtonBase {
   public GridViewColumnHeaderRole Role {
     get {
       GridViewColumnHeaderRole ret = (GridViewColumnHeaderRole)NoesisGUI_PINVOKE.GridViewColumnHeader_Role_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.GridViewColumnHeader_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

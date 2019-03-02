@@ -38,11 +38,9 @@ public class HierarchicalDataTemplate : DataTemplate {
   public Style ItemContainerStyle {
     set {
       NoesisGUI_PINVOKE.HierarchicalDataTemplate_ItemContainerStyle_set(swigCPtr, Style.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.HierarchicalDataTemplate_ItemContainerStyle_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Style)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -50,11 +48,9 @@ public class HierarchicalDataTemplate : DataTemplate {
   public BindingBase ItemsSource {
     set {
       NoesisGUI_PINVOKE.HierarchicalDataTemplate_ItemsSource_set(swigCPtr, BindingBase.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.HierarchicalDataTemplate_ItemsSource_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (BindingBase)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -62,11 +58,9 @@ public class HierarchicalDataTemplate : DataTemplate {
   public DataTemplate ItemTemplate {
     set {
       NoesisGUI_PINVOKE.HierarchicalDataTemplate_ItemTemplate_set(swigCPtr, DataTemplate.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.HierarchicalDataTemplate_ItemTemplate_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DataTemplate)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -74,18 +68,15 @@ public class HierarchicalDataTemplate : DataTemplate {
   public DataTemplateSelector ItemTemplateSelector {
     set {
       NoesisGUI_PINVOKE.HierarchicalDataTemplate_ItemTemplateSelector_set(swigCPtr, DataTemplateSelector.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.HierarchicalDataTemplate_ItemTemplateSelector_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DataTemplateSelector)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.HierarchicalDataTemplate_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

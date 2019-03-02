@@ -11,7 +11,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 
 namespace Noesis
 {
@@ -29,233 +28,41 @@ public class TreeViewItem : HeaderedItemsControl {
   }
 
   #region Events
-  #region Collapsed
-  public delegate void CollapsedHandler(object sender, RoutedEventArgs e);
-  public event CollapsedHandler Collapsed {
+  public event RoutedEventHandler Collapsed {
     add {
-      if (!_Collapsed.ContainsKey(swigCPtr.Handle)) {
-        _Collapsed.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_TreeViewItem_Collapsed(_raiseCollapsed, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _Collapsed[swigCPtr.Handle] += value;
+      AddHandler(CollapsedEvent, value);
     }
     remove {
-      if (_Collapsed.ContainsKey(swigCPtr.Handle)) {
-
-        _Collapsed[swigCPtr.Handle] -= value;
-
-        if (_Collapsed[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_TreeViewItem_Collapsed(_raiseCollapsed, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _Collapsed.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(CollapsedEvent, value);
     }
   }
 
-  internal delegate void RaiseCollapsedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseCollapsedCallback _raiseCollapsed = RaiseCollapsed;
-
-  [MonoPInvokeCallback(typeof(RaiseCollapsedCallback))]
-  private static void RaiseCollapsed(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_Collapsed.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for Collapsed event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _Collapsed.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        CollapsedHandler handler = _Collapsed[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new RoutedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, CollapsedHandler> _Collapsed =
-      new Dictionary<IntPtr, CollapsedHandler>();
-  #endregion
-
-  #region Expanded
-  public delegate void ExpandedHandler(object sender, RoutedEventArgs e);
-  public event ExpandedHandler Expanded {
+  public event RoutedEventHandler Expanded {
     add {
-      if (!_Expanded.ContainsKey(swigCPtr.Handle)) {
-        _Expanded.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_TreeViewItem_Expanded(_raiseExpanded, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _Expanded[swigCPtr.Handle] += value;
+      AddHandler(ExpandedEvent, value);
     }
     remove {
-      if (_Expanded.ContainsKey(swigCPtr.Handle)) {
-
-        _Expanded[swigCPtr.Handle] -= value;
-
-        if (_Expanded[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_TreeViewItem_Expanded(_raiseExpanded, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _Expanded.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(ExpandedEvent, value);
     }
   }
 
-  internal delegate void RaiseExpandedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseExpandedCallback _raiseExpanded = RaiseExpanded;
-
-  [MonoPInvokeCallback(typeof(RaiseExpandedCallback))]
-  private static void RaiseExpanded(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_Expanded.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for Expanded event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _Expanded.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        ExpandedHandler handler = _Expanded[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new RoutedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, ExpandedHandler> _Expanded =
-      new Dictionary<IntPtr, ExpandedHandler>();
-  #endregion
-
-  #region Selected
-  public delegate void SelectedHandler(object sender, RoutedEventArgs e);
-  public event SelectedHandler Selected {
+  public event RoutedEventHandler Selected {
     add {
-      if (!_Selected.ContainsKey(swigCPtr.Handle)) {
-        _Selected.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_TreeViewItem_Selected(_raiseSelected, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _Selected[swigCPtr.Handle] += value;
+      AddHandler(SelectedEvent, value);
     }
     remove {
-      if (_Selected.ContainsKey(swigCPtr.Handle)) {
-
-        _Selected[swigCPtr.Handle] -= value;
-
-        if (_Selected[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_TreeViewItem_Selected(_raiseSelected, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _Selected.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(SelectedEvent, value);
     }
   }
 
-  internal delegate void RaiseSelectedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseSelectedCallback _raiseSelected = RaiseSelected;
-
-  [MonoPInvokeCallback(typeof(RaiseSelectedCallback))]
-  private static void RaiseSelected(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_Selected.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for Selected event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _Selected.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        SelectedHandler handler = _Selected[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new RoutedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, SelectedHandler> _Selected =
-      new Dictionary<IntPtr, SelectedHandler>();
-  #endregion
-
-  #region Unselected
-  public delegate void UnselectedHandler(object sender, RoutedEventArgs e);
-  public event UnselectedHandler Unselected {
+  public event RoutedEventHandler Unselected {
     add {
-      if (!_Unselected.ContainsKey(swigCPtr.Handle)) {
-        _Unselected.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_TreeViewItem_Unselected(_raiseUnselected, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _Unselected[swigCPtr.Handle] += value;
+      AddHandler(UnselectedEvent, value);
     }
     remove {
-      if (_Unselected.ContainsKey(swigCPtr.Handle)) {
-
-        _Unselected[swigCPtr.Handle] -= value;
-
-        if (_Unselected[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_TreeViewItem_Unselected(_raiseUnselected, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _Unselected.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(UnselectedEvent, value);
     }
   }
-
-  internal delegate void RaiseUnselectedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseUnselectedCallback _raiseUnselected = RaiseUnselected;
-
-  [MonoPInvokeCallback(typeof(RaiseUnselectedCallback))]
-  private static void RaiseUnselected(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_Unselected.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for Unselected event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _Unselected.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        UnselectedHandler handler = _Unselected[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new RoutedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, UnselectedHandler> _Unselected =
-      new Dictionary<IntPtr, UnselectedHandler>();
-  #endregion
 
   #endregion
 
@@ -275,7 +82,6 @@ public class TreeViewItem : HeaderedItemsControl {
   public static DependencyProperty IsExpandedProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TreeViewItem_IsExpandedProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -283,7 +89,6 @@ public class TreeViewItem : HeaderedItemsControl {
   public static DependencyProperty IsSelectedProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TreeViewItem_IsSelectedProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -291,19 +96,56 @@ public class TreeViewItem : HeaderedItemsControl {
   public static DependencyProperty IsSelectionActiveProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TreeViewItem_IsSelectionActiveProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent CollapsedEvent {
+    set {
+      NoesisGUI_PINVOKE.TreeViewItem_CollapsedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.TreeViewItem_CollapsedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent ExpandedEvent {
+    set {
+      NoesisGUI_PINVOKE.TreeViewItem_ExpandedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.TreeViewItem_ExpandedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent SelectedEvent {
+    set {
+      NoesisGUI_PINVOKE.TreeViewItem_SelectedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.TreeViewItem_SelectedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent UnselectedEvent {
+    set {
+      NoesisGUI_PINVOKE.TreeViewItem_UnselectedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.TreeViewItem_UnselectedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public bool IsExpanded {
     set {
       NoesisGUI_PINVOKE.TreeViewItem_IsExpanded_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.TreeViewItem_IsExpanded_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -311,38 +153,27 @@ public class TreeViewItem : HeaderedItemsControl {
   public bool IsSelected {
     set {
       NoesisGUI_PINVOKE.TreeViewItem_IsSelected_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.TreeViewItem_IsSelected_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   public bool IsSelectionActive {
-    set {
-      NoesisGUI_PINVOKE.TreeViewItem_IsSelectionActive_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    } 
     get {
       bool ret = NoesisGUI_PINVOKE.TreeViewItem_IsSelectionActive_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TreeViewItem_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_TreeViewItem(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_TreeViewItem(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

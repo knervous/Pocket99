@@ -31,19 +31,13 @@ public class Rectangle : Shape {
   }
 
   protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
-    if ((object)type.TypeHandle == typeof(Rectangle).TypeHandle) {
-      registerExtend = false;
-      return NoesisGUI_PINVOKE.new_Rectangle();
-    }
-    else {
-      return base.CreateExtendCPtr(type, out registerExtend);
-    }
+    registerExtend = false;
+    return NoesisGUI_PINVOKE.new_Rectangle();
   }
 
   public static DependencyProperty RadiusXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Rectangle_RadiusXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -51,7 +45,6 @@ public class Rectangle : Shape {
   public static DependencyProperty RadiusYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Rectangle_RadiusYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -59,11 +52,9 @@ public class Rectangle : Shape {
   public float RadiusX {
     set {
       NoesisGUI_PINVOKE.Rectangle_RadiusX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.Rectangle_RadiusX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -71,27 +62,18 @@ public class Rectangle : Shape {
   public float RadiusY {
     set {
       NoesisGUI_PINVOKE.Rectangle_RadiusY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.Rectangle_RadiusY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Rectangle_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
-  internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_Rectangle(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
-  }
 }
 
 }

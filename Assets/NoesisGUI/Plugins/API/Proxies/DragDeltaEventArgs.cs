@@ -44,32 +44,28 @@ public class DragDeltaEventArgs : RoutedEventArgs {
     }
   }
 
-  public float horizontalChange {
-    set {
-      NoesisGUI_PINVOKE.DragDeltaEventArgs_horizontalChange_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    } 
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    DragDeltaEventHandler handler_ = (DragDeltaEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new DragDeltaEventArgs(args, false));
+    }
+  }
+
+  public float HorizontalChange {
     get {
-      float ret = NoesisGUI_PINVOKE.DragDeltaEventArgs_horizontalChange_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      float ret = NoesisGUI_PINVOKE.DragDeltaEventArgs_HorizontalChange_get(swigCPtr);
       return ret;
     } 
   }
 
-  public float verticalChange {
-    set {
-      NoesisGUI_PINVOKE.DragDeltaEventArgs_verticalChange_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    } 
+  public float VerticalChange {
     get {
-      float ret = NoesisGUI_PINVOKE.DragDeltaEventArgs_verticalChange_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      float ret = NoesisGUI_PINVOKE.DragDeltaEventArgs_VerticalChange_get(swigCPtr);
       return ret;
     } 
   }
 
   public DragDeltaEventArgs(object s, float h, float v) : this(NoesisGUI_PINVOKE.new_DragDeltaEventArgs(Noesis.Extend.GetInstanceHandle(s), h, v), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

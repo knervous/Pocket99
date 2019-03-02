@@ -36,19 +36,16 @@ public class CombinedGeometry : Geometry {
   }
 
   public CombinedGeometry(Geometry geometry1, Geometry geometry2, GeometryCombineMode mode) : this(NoesisGUI_PINVOKE.new_CombinedGeometry__SWIG_1(Geometry.getCPtr(geometry1), Geometry.getCPtr(geometry2), (int)mode), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public override bool IsEmpty() {
     bool ret = NoesisGUI_PINVOKE.CombinedGeometry_IsEmpty(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static DependencyProperty Geometry1Property {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CombinedGeometry_Geometry1Property_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -56,7 +53,6 @@ public class CombinedGeometry : Geometry {
   public static DependencyProperty Geometry2Property {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CombinedGeometry_Geometry2Property_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -64,7 +60,6 @@ public class CombinedGeometry : Geometry {
   public static DependencyProperty GeometryCombineModeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CombinedGeometry_GeometryCombineModeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -72,11 +67,9 @@ public class CombinedGeometry : Geometry {
   public Geometry Geometry1 {
     set {
       NoesisGUI_PINVOKE.CombinedGeometry_Geometry1_set(swigCPtr, Geometry.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CombinedGeometry_Geometry1_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Geometry)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -84,11 +77,9 @@ public class CombinedGeometry : Geometry {
   public Geometry Geometry2 {
     set {
       NoesisGUI_PINVOKE.CombinedGeometry_Geometry2_set(swigCPtr, Geometry.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CombinedGeometry_Geometry2_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Geometry)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -96,18 +87,15 @@ public class CombinedGeometry : Geometry {
   public GeometryCombineMode GeometryCombineMode {
     set {
       NoesisGUI_PINVOKE.CombinedGeometry_GeometryCombineMode_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       GeometryCombineMode ret = (GeometryCombineMode)NoesisGUI_PINVOKE.CombinedGeometry_GeometryCombineMode_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.CombinedGeometry_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

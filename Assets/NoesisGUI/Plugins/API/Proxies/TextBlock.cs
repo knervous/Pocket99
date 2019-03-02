@@ -45,13 +45,11 @@ public class TextBlock : FrameworkElement {
   }
 
   public TextBlock(string text) : this(NoesisGUI_PINVOKE.new_TextBlock__SWIG_1(text != null ? text : string.Empty), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DependencyProperty BackgroundProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_BackgroundProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -59,7 +57,6 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty FontFamilyProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_FontFamilyProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -67,7 +64,6 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty FontSizeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_FontSizeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -75,7 +71,6 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty FontStretchProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_FontStretchProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -83,7 +78,6 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty FontStyleProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_FontStyleProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -91,7 +85,6 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty FontWeightProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_FontWeightProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -99,7 +92,6 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty ForegroundProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_ForegroundProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -107,7 +99,13 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty LineHeightProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_LineHeightProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static DependencyProperty LineStackingStrategyProperty {
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_LineStackingStrategyProperty_get();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -115,7 +113,6 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty PaddingProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_PaddingProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -123,7 +120,6 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty StrokeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_StrokeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -131,7 +127,6 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty StrokeThicknessProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_StrokeThicknessProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -139,7 +134,6 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty TextAlignmentProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_TextAlignmentProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -147,7 +141,6 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty TextDecorationsProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_TextDecorationsProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -155,7 +148,6 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty TextProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_TextProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -163,7 +155,6 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty TextTrimmingProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_TextTrimmingProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -171,7 +162,6 @@ public class TextBlock : FrameworkElement {
   public static DependencyProperty TextWrappingProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_TextWrappingProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -179,11 +169,9 @@ public class TextBlock : FrameworkElement {
   public Brush Background {
     set {
       NoesisGUI_PINVOKE.TextBlock_Background_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_Background_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -191,11 +179,9 @@ public class TextBlock : FrameworkElement {
   public FontFamily FontFamily {
     set {
       NoesisGUI_PINVOKE.TextBlock_FontFamily_set(swigCPtr, FontFamily.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_FontFamily_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (FontFamily)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -203,11 +189,9 @@ public class TextBlock : FrameworkElement {
   public float FontSize {
     set {
       NoesisGUI_PINVOKE.TextBlock_FontSize_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.TextBlock_FontSize_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -215,11 +199,9 @@ public class TextBlock : FrameworkElement {
   public FontStretch FontStretch {
     set {
       NoesisGUI_PINVOKE.TextBlock_FontStretch_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       FontStretch ret = (FontStretch)NoesisGUI_PINVOKE.TextBlock_FontStretch_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -227,11 +209,9 @@ public class TextBlock : FrameworkElement {
   public FontStyle FontStyle {
     set {
       NoesisGUI_PINVOKE.TextBlock_FontStyle_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       FontStyle ret = (FontStyle)NoesisGUI_PINVOKE.TextBlock_FontStyle_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -239,11 +219,9 @@ public class TextBlock : FrameworkElement {
   public FontWeight FontWeight {
     set {
       NoesisGUI_PINVOKE.TextBlock_FontWeight_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       FontWeight ret = (FontWeight)NoesisGUI_PINVOKE.TextBlock_FontWeight_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -251,11 +229,9 @@ public class TextBlock : FrameworkElement {
   public Brush Foreground {
     set {
       NoesisGUI_PINVOKE.TextBlock_Foreground_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_Foreground_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -263,7 +239,6 @@ public class TextBlock : FrameworkElement {
   public InlineCollection Inlines {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_Inlines_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (InlineCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -271,11 +246,19 @@ public class TextBlock : FrameworkElement {
   public float LineHeight {
     set {
       NoesisGUI_PINVOKE.TextBlock_LineHeight_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.TextBlock_LineHeight_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      return ret;
+    } 
+  }
+
+  public LineStackingStrategy LineStackingStrategy {
+    set {
+      NoesisGUI_PINVOKE.TextBlock_LineStackingStrategy_set(swigCPtr, (int)value);
+    } 
+    get {
+      LineStackingStrategy ret = (LineStackingStrategy)NoesisGUI_PINVOKE.TextBlock_LineStackingStrategy_get(swigCPtr);
       return ret;
     } 
   }
@@ -283,12 +266,10 @@ public class TextBlock : FrameworkElement {
   public Thickness Padding {
     set {
       NoesisGUI_PINVOKE.TextBlock_Padding_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.TextBlock_Padding_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Thickness>(ret);
       }
@@ -302,11 +283,9 @@ public class TextBlock : FrameworkElement {
   public Brush Stroke {
     set {
       NoesisGUI_PINVOKE.TextBlock_Stroke_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TextBlock_Stroke_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -314,11 +293,9 @@ public class TextBlock : FrameworkElement {
   public float StrokeThickness {
     set {
       NoesisGUI_PINVOKE.TextBlock_StrokeThickness_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.TextBlock_StrokeThickness_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -326,11 +303,9 @@ public class TextBlock : FrameworkElement {
   public TextAlignment TextAlignment {
     set {
       NoesisGUI_PINVOKE.TextBlock_TextAlignment_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       TextAlignment ret = (TextAlignment)NoesisGUI_PINVOKE.TextBlock_TextAlignment_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -338,11 +313,9 @@ public class TextBlock : FrameworkElement {
   public string Text {
     set {
       NoesisGUI_PINVOKE.TextBlock_Text_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.TextBlock_Text_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -351,11 +324,9 @@ public class TextBlock : FrameworkElement {
   public TextDecorations TextDecorations {
     set {
       NoesisGUI_PINVOKE.TextBlock_TextDecorations_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       TextDecorations ret = (TextDecorations)NoesisGUI_PINVOKE.TextBlock_TextDecorations_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -363,11 +334,9 @@ public class TextBlock : FrameworkElement {
   public TextTrimming TextTrimming {
     set {
       NoesisGUI_PINVOKE.TextBlock_TextTrimming_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       TextTrimming ret = (TextTrimming)NoesisGUI_PINVOKE.TextBlock_TextTrimming_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -375,18 +344,15 @@ public class TextBlock : FrameworkElement {
   public TextWrapping TextWrapping {
     set {
       NoesisGUI_PINVOKE.TextBlock_TextWrapping_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       TextWrapping ret = (TextWrapping)NoesisGUI_PINVOKE.TextBlock_TextWrapping_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   private string ToStringHelper() {
     IntPtr strPtr = NoesisGUI_PINVOKE.TextBlock_ToStringHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
     NoesisGUI_PINVOKE.FreeString(strPtr);
     return str;
@@ -394,15 +360,11 @@ public class TextBlock : FrameworkElement {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TextBlock_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_TextBlock(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_TextBlock(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

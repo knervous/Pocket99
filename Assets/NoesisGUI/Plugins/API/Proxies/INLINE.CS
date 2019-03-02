@@ -38,7 +38,6 @@ public class Inline : TextElement {
   public static DependencyProperty TextDecorationsProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Inline_TextDecorationsProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,7 +45,6 @@ public class Inline : TextElement {
   public InlineCollection SiblingInlines {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Inline_SiblingInlines_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (InlineCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -54,7 +52,6 @@ public class Inline : TextElement {
   public Inline PreviousInline {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Inline_PreviousInline_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Inline)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -62,7 +59,6 @@ public class Inline : TextElement {
   public Inline NextInline {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Inline_NextInline_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Inline)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -70,18 +66,15 @@ public class Inline : TextElement {
   public TextDecorations TextDecorations {
     set {
       NoesisGUI_PINVOKE.Inline_TextDecorations_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       TextDecorations ret = (TextDecorations)NoesisGUI_PINVOKE.Inline_TextDecorations_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Inline_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

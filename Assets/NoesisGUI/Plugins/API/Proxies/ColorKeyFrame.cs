@@ -33,7 +33,6 @@ public class ColorKeyFrame : Freezable {
   public static DependencyProperty KeyTimeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ColorKeyFrame_KeyTimeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -41,7 +40,6 @@ public class ColorKeyFrame : Freezable {
   public static DependencyProperty ValueProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ColorKeyFrame_ValueProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -49,12 +47,10 @@ public class ColorKeyFrame : Freezable {
   public KeyTime KeyTime {
     set {
       NoesisGUI_PINVOKE.ColorKeyFrame_KeyTime_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.ColorKeyFrame_KeyTime_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<KeyTime>(ret);
       }
@@ -68,12 +64,10 @@ public class ColorKeyFrame : Freezable {
   public Color Value {
     set {
       NoesisGUI_PINVOKE.ColorKeyFrame_Value_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.ColorKeyFrame_Value_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Color>(ret);
       }
@@ -86,7 +80,6 @@ public class ColorKeyFrame : Freezable {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ColorKeyFrame_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

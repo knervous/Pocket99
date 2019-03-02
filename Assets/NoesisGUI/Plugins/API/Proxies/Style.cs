@@ -37,17 +37,14 @@ public class Style : BaseComponent {
 
   public void Seal() {
     NoesisGUI_PINVOKE.Style_Seal(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public Type TargetType {
     set {
       NoesisGUI_PINVOKE.Style_TargetType_set(swigCPtr, new HandleRef(value, (value != null ? Noesis.Extend.GetNativeType(value) : IntPtr.Zero)));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Style_TargetType_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (cPtr != IntPtr.Zero) {
         Noesis.Extend.NativeTypeInfo info = Noesis.Extend.GetNativeTypeInfo(cPtr);
         return info.Type;
@@ -59,11 +56,9 @@ public class Style : BaseComponent {
   public Style BasedOn {
     set {
       NoesisGUI_PINVOKE.Style_BasedOn_set(swigCPtr, Style.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Style_BasedOn_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Style)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -71,11 +66,9 @@ public class Style : BaseComponent {
   public ResourceDictionary Resources {
     set {
       NoesisGUI_PINVOKE.Style_Resources_set(swigCPtr, ResourceDictionary.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Style_Resources_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (ResourceDictionary)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -83,7 +76,6 @@ public class Style : BaseComponent {
   public SetterBaseCollection Setters {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Style_Setters_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (SetterBaseCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -91,7 +83,6 @@ public class Style : BaseComponent {
   public TriggerCollection Triggers {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Style_Triggers_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (TriggerCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -99,7 +90,6 @@ public class Style : BaseComponent {
   public bool CanSeal {
     get {
       bool ret = NoesisGUI_PINVOKE.Style_CanSeal_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -107,14 +97,12 @@ public class Style : BaseComponent {
   public bool IsSealed {
     get {
       bool ret = NoesisGUI_PINVOKE.Style_IsSealed_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Style_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

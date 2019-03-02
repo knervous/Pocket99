@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class MouseEventArgs : RoutedEventArgs {
+public class MouseEventArgs : InputEventArgs {
   private HandleRef swigCPtr;
 
   internal MouseEventArgs(IntPtr cPtr, bool cMemoryOwn) : base(cPtr, cMemoryOwn) {
@@ -44,79 +44,59 @@ public class MouseEventArgs : RoutedEventArgs {
     }
   }
 
-  public Noesis.MouseButtonState LeftButton {
-    get {
-      return GetLeftButtonStateHelper();
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    MouseEventHandler handler_ = (MouseEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new MouseEventArgs(args, false));
     }
   }
 
-  public Noesis.MouseButtonState MiddleButton {
+  public MouseButtonState LeftButton {
     get {
-      return GetMiddleButtonStateHelper();
-    }
+      MouseButtonState ret = (MouseButtonState)NoesisGUI_PINVOKE.MouseEventArgs_LeftButton_get(swigCPtr);
+      return ret;
+    } 
   }
 
-  public Noesis.MouseButtonState RightButton {
+  public MouseButtonState MiddleButton {
     get {
-      return GetRightButtonStateHelper();
-    }
+      MouseButtonState ret = (MouseButtonState)NoesisGUI_PINVOKE.MouseEventArgs_MiddleButton_get(swigCPtr);
+      return ret;
+    } 
   }
 
-  public Noesis.MouseButtonState XButton1 {
+  public MouseButtonState RightButton {
     get {
-      return GetXButton1StateHelper();
-    }
+      MouseButtonState ret = (MouseButtonState)NoesisGUI_PINVOKE.MouseEventArgs_RightButton_get(swigCPtr);
+      return ret;
+    } 
   }
 
-  public Noesis.MouseButtonState XButton2 {
+  public MouseButtonState XButton1 {
     get {
-      return GetXButton2StateHelper();
-    }
+      MouseButtonState ret = (MouseButtonState)NoesisGUI_PINVOKE.MouseEventArgs_XButton1_get(swigCPtr);
+      return ret;
+    } 
   }
 
-  public MouseEventArgs(object s, RoutedEvent e, MouseState mouseState) : this(NoesisGUI_PINVOKE.new_MouseEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), MouseState.getCPtr(mouseState)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  public MouseButtonState XButton2 {
+    get {
+      MouseButtonState ret = (MouseButtonState)NoesisGUI_PINVOKE.MouseEventArgs_XButton2_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public MouseEventArgs(object s, RoutedEvent e) : this(NoesisGUI_PINVOKE.new_MouseEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e)), true) {
   }
 
   public Point GetPosition(UIElement relativeTo) {
     IntPtr ret = NoesisGUI_PINVOKE.MouseEventArgs_GetPosition(swigCPtr, UIElement.getCPtr(relativeTo));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Point>(ret);
     }
     else {
       return new Point();
     }
-  }
-
-  private MouseButtonState GetLeftButtonStateHelper() {
-    MouseButtonState ret = (MouseButtonState)NoesisGUI_PINVOKE.MouseEventArgs_GetLeftButtonStateHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private MouseButtonState GetMiddleButtonStateHelper() {
-    MouseButtonState ret = (MouseButtonState)NoesisGUI_PINVOKE.MouseEventArgs_GetMiddleButtonStateHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private MouseButtonState GetRightButtonStateHelper() {
-    MouseButtonState ret = (MouseButtonState)NoesisGUI_PINVOKE.MouseEventArgs_GetRightButtonStateHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private MouseButtonState GetXButton1StateHelper() {
-    MouseButtonState ret = (MouseButtonState)NoesisGUI_PINVOKE.MouseEventArgs_GetXButton1StateHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private MouseButtonState GetXButton2StateHelper() {
-    MouseButtonState ret = (MouseButtonState)NoesisGUI_PINVOKE.MouseEventArgs_GetXButton2StateHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
   }
 
 }

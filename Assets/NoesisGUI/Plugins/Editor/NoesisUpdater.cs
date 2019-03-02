@@ -1,117 +1,94 @@
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.Callbacks;
 using System;
 using System.Text;
 using System.IO;
-using System.Collections;
 using System.Text.RegularExpressions;
 
 [InitializeOnLoad]
-public class NoesisUpdater: EditorWindow
+public class NoesisUpdater
 {
     static NoesisUpdater()
     {
         EditorApplication.update += CheckVersion;
     }
 
-    static void CheckVersion()
+    private static void CheckVersion()
     {
         EditorApplication.update -= CheckVersion;
 
-        string localVersion = NoesisVersion.GetCached();
-        string version = NoesisVersion.Get();
-
-        if (localVersion != version && version != "0.0.0")
+        if (!UnityEditorInternal.InternalEditorUtility.inBatchMode)
         {
-            if (NoesisVersion.RestartNeeded())
+            string localVersion = NoesisVersion.GetCached();
+            string version = NoesisVersion.Get();
+
+            // Remove the file that indicates Noesis package is being installed
+            AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/Editor/installing");
+
+            // Detect if /Library is being recreated
+            string noesisFile = Path.Combine(Application.dataPath, "../Library/noesis");
+            bool libraryFolderRecreated = !File.Exists(noesisFile);
+            if (libraryFolderRecreated)
             {
-                Debug.LogWarning("Please restart Unity to reload NoesisGUI native plugin!");
-                return;
+                File.Create(noesisFile).Dispose();
             }
 
-            var window = (NoesisUpdater)ScriptableObject.CreateInstance(typeof(NoesisUpdater));
-            window.titleContent = new GUIContent("NoesisGUI");
-            window.position = new Rect(Screen.currentResolution.width / 2 - 250, Screen.currentResolution.height / 2 - 22, 500, 55);
-            window.minSize = new Vector2(500, 55);
-            window.maxSize = new Vector2(500, 55);
-            window.localVersion_ = localVersion;
-            window.version_ = version;
-
-            if (localVersion != "")
+            if (localVersion != version && version != "0.0.0")
             {
-                window.label_ = "Upgrading NoesisGUI " + localVersion + " -> " + version;
-            }
-            else
-            {
-                window.label_ = "Installing NoesisGUI " +  version;
-            }
+                if (NoesisVersion.RestartNeeded())
+                {
+                    Debug.LogWarning("Please restart Unity to reload NoesisGUI native plugin! " + 
+                        "If error persists remove 'Assets/NoesisGUI/Plugins' and reimport again.");
+                    return;
+                }
 
-            window.ShowUtility();
+                string title;
+
+                if (localVersion != "")
+                {
+                    title = "Upgrading NoesisGUI " + localVersion + " -> " + version;
+                }
+                else
+                {
+                    title = "Installing NoesisGUI " +  version;
+                }
+
+                EditorUtility.DisplayProgressBar(title, "", 0.0f);
+                GoogleAnalyticsHelper.LogEvent("Install", version, 0);
+
+                EditorUtility.DisplayProgressBar(title, "Upgrading project", 0.10f);
+                Upgrade(localVersion);
+
+                EditorUtility.DisplayProgressBar(title, "Updating version", 0.20f);
+                NoesisVersion.SetCached(version);
+
+                EditorUtility.DisplayProgressBar(title, "Creating default settings", 0.35f);
+                NoesisSettings.Get();
+
+                EditorUtility.DisplayProgressBar(title, "Extracting documentation...", 0.40f);
+                ExtractDocumentation();
+
+                NoesisPostprocessor.ImportAllAssets((progress, asset) =>
+                {
+                    EditorUtility.DisplayProgressBar(title, asset, 0.60f + progress * 0.40f);
+                });
+
+                EditorApplication.update += ShowWelcomeWindow;
+                EditorUtility.ClearProgressBar();
+
+                Debug.Log("NoesisGUI v" + version + " successfully installed");
+            }
+            else if (libraryFolderRecreated)
+            {
+                NoesisPostprocessor.ImportAllAssets();
+            }
         }
     }
 
-    private string localVersion_;
-    private string version_;
-    private string label_;
-    private string state_;
-    private float progress_ = 0.0f;
-    private IEnumerator updater_;
-
-    void OnEnable()
+    private static void ShowWelcomeWindow()
     {
-        updater_ = UpdateVersion();
-    }
-
-    void OnGUI()
-    {
-        GUI.Label(new Rect (5, 5, 420, 20), label_);
-        EditorGUI.ProgressBar(new Rect(5, 25, 490, 20), progress_, state_);
-    }
-
-    void OnInspectorUpdate()
-    {
-        if (updater_.MoveNext())
-        {
-            Repaint();
-        }
-        else
-        {
-            Close();
-        }
-    }
-
-    private IEnumerator UpdateVersion()
-    {
-        GoogleAnalyticsHelper.LogEvent("Install", version_, 0);
-        progress_ = 0.10f;
-
-        state_ = "Upgrading project";
-        yield return null;
-        Upgrade(localVersion_);
-        progress_ = 0.20f;
-
-        state_ = "Updating version";
-        yield return null;
-        NoesisVersion.SetCached(version_);
-        progress_ = 0.35f;
-
-        state_ = "Creating default settings";
-        yield return null;
-        NoesisSettings.Get();
-        progress_ = 0.40f;
-
-        state_ = "Extracting documentation...\n";
-        yield return null;
-        ExtractDocumentation();
-        progress_ = 0.90f;
-
-        state_ = "Opening Welcome Window...\n";
-        yield return null;
-        EditorWindow.GetWindow(typeof(NoesisWelcome), true, "Welcome to NoesisGUI!");
-        progress_ = 1.0f;
-
-        Debug.Log("NoesisGUI v" + version_ + " successfully installed");
+        EditorApplication.update -= ShowWelcomeWindow;
+        NoesisWelcome.Open();
     }
 
     private static string NormalizeVersion(string version)
@@ -182,10 +159,90 @@ public class NoesisUpdater: EditorWindow
             Debug.LogError("Upgrading from '" + version + "' not supported. Please install in a clean project");
         }
 
-        /*if (PatchNeeded(version, "1.2.6f1"))
+        if (PatchNeeded(version, "2.1.0b10"))
         {
-            Upgrade_1_2_6f1();
-        }*/
+            Upgrade_2_1_0_b10();
+        }
+
+        if (PatchNeeded(version, "2.1.0rc4"))
+        {
+            Upgrade_2_1_0_rc4();
+        }
+        
+        if (PatchNeeded(version, "2.2.0b6"))
+        {
+            Upgrade_2_2_0_b6();
+        }
+
+        RemoveEmptyScripts();
+    }
+
+    private static void Upgrade_2_1_0_b10()
+    {
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/Common");
+    }
+
+    private static void Upgrade_2_1_0_rc4()
+    {
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/TicTacToe");
+    }
+
+    private static void Upgrade_2_2_0_b6()
+    {
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/Buttons/ControlResources.xaml");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/Buttons/ControlResources.asset");
+        AssetDatabase.MoveAsset("Assets/NoesisGUI/Samples/Buttons/LogoResources.xaml", "Assets/NoesisGUI/Samples/Buttons/Resources.xaml");
+        AssetDatabase.MoveAsset("Assets/NoesisGUI/Samples/Buttons/LogoResources.asset", "Assets/NoesisGUI/Samples/Buttons/Resources.asset");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/Buttons/ElementExtensions.cs");
+
+        AssetDatabase.MoveAsset("Assets/NoesisGUI/Samples/ControlGallery/Resources", "Assets/NoesisGUI/Samples/ControlGallery/Data");
+
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/Localization/ControlResources.xaml");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/Localization/ControlResources.asset");
+        AssetDatabase.MoveAsset("Assets/NoesisGUI/Samples/Localization/LogoResources.xaml", "Assets/NoesisGUI/Samples/Localization/Resources.xaml");
+        AssetDatabase.MoveAsset("Assets/NoesisGUI/Samples/Localization/LogoResources.asset", "Assets/NoesisGUI/Samples/Localization/Resources.asset");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/Localization/rounded-mgenplus-1c-regular.ttf");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/Localization/rounded-mgenplus-1c-regular.asset");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/Localization/XamlDependencies.cs");
+        
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/Login/ControlResources.xaml");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/Login/ControlResources.asset");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/Login/ElementExtensions.cs");
+        AssetDatabase.MoveAsset("Assets/NoesisGUI/Samples/Login/LogoResources.xaml", "Assets/NoesisGUI/Samples/Login/Resources.xaml");
+        AssetDatabase.MoveAsset("Assets/NoesisGUI/Samples/Login/LogoResources.asset", "Assets/NoesisGUI/Samples/Login/Resources.asset");
+
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/QuestLog/ElementExtensions.cs");
+        AssetDatabase.MoveAsset("Assets/NoesisGUI/Samples/QuestLog/LogoResources.xaml", "Assets/NoesisGUI/Samples/QuestLog/Resources.xaml");
+        AssetDatabase.MoveAsset("Assets/NoesisGUI/Samples/QuestLog/LogoResources.asset", "Assets/NoesisGUI/Samples/QuestLog/Resources.asset");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/QuestLog/Images/QuestImages.xaml");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/QuestLog/Images/QuestImages.asset");
+
+        AssetDatabase.MoveAsset("Assets/NoesisGUI/Samples/Scoreboard/Game.cs", "Assets/NoesisGUI/Samples/Scoreboard/ViewModel.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Samples/Scoreboard/Player.cs");
+    }
+
+    private static void RemoveEmptyScripts()
+    {
+        // From time to time we need to rename scripts (for example Unity doesn't like having a script called Grid.cs)
+        // As there is no way to do the rename when instaling the unity package we need to do this trick: in the 
+        // unity package both the renamed script and the original one (empty) are included. That way, the compilation
+        // phase will succeed. After that, just at this point we remove the empty scripts
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/Collection.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/FrameworkOptions.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/FreezableCollection.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/Grid.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/KeyState.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/Matrix2.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/Matrix3.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/MouseState.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/Pointi.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/Recti.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/Sizei.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/TimelineEventArgs.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/Transform2.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/Transform3.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/API/Proxies/Vector3.cs");
+        AssetDatabase.DeleteAsset("Assets/NoesisGUI/Plugins/NoesisSoftwareKeyboard.cs");
     }
 
     private static void EnsureFolder(string path)

@@ -30,56 +30,127 @@ public class Keyboard : BaseComponent {
   protected Keyboard() {
   }
 
-  public void ResetState() {
-    NoesisGUI_PINVOKE.Keyboard_ResetState(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  public uint GetModifiers() {
-    uint ret = NoesisGUI_PINVOKE.Keyboard_GetModifiers(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public uint GetKeyStates(Key key) {
-    uint ret = NoesisGUI_PINVOKE.Keyboard_GetKeyStates(swigCPtr, (int)key);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  public KeyStates GetKeyStates(Key key) {
+    KeyStates ret = (KeyStates)NoesisGUI_PINVOKE.Keyboard_GetKeyStates(swigCPtr, (int)key);
     return ret;
   }
 
   public bool IsKeyDown(Key key) {
     bool ret = NoesisGUI_PINVOKE.Keyboard_IsKeyDown(swigCPtr, (int)key);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool IsKeyUp(Key key) {
     bool ret = NoesisGUI_PINVOKE.Keyboard_IsKeyUp(swigCPtr, (int)key);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool IsKeyToggled(Key key) {
     bool ret = NoesisGUI_PINVOKE.Keyboard_IsKeyToggled(swigCPtr, (int)key);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
-  }
-
-  public UIElement GetFocused() {
-    IntPtr cPtr = NoesisGUI_PINVOKE.Keyboard_GetFocused(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
   }
 
   public UIElement Focus(UIElement element) {
     IntPtr cPtr = NoesisGUI_PINVOKE.Keyboard_Focus(swigCPtr, UIElement.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
+  }
+
+  public static RoutedEvent GotKeyboardFocusEvent {
+    set {
+      NoesisGUI_PINVOKE.Keyboard_GotKeyboardFocusEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Keyboard_GotKeyboardFocusEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent KeyDownEvent {
+    set {
+      NoesisGUI_PINVOKE.Keyboard_KeyDownEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Keyboard_KeyDownEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent KeyUpEvent {
+    set {
+      NoesisGUI_PINVOKE.Keyboard_KeyUpEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Keyboard_KeyUpEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent LostKeyboardFocusEvent {
+    set {
+      NoesisGUI_PINVOKE.Keyboard_LostKeyboardFocusEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Keyboard_LostKeyboardFocusEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewGotKeyboardFocusEvent {
+    set {
+      NoesisGUI_PINVOKE.Keyboard_PreviewGotKeyboardFocusEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Keyboard_PreviewGotKeyboardFocusEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewKeyDownEvent {
+    set {
+      NoesisGUI_PINVOKE.Keyboard_PreviewKeyDownEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Keyboard_PreviewKeyDownEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewKeyUpEvent {
+    set {
+      NoesisGUI_PINVOKE.Keyboard_PreviewKeyUpEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Keyboard_PreviewKeyUpEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PreviewLostKeyboardFocusEvent {
+    set {
+      NoesisGUI_PINVOKE.Keyboard_PreviewLostKeyboardFocusEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Keyboard_PreviewLostKeyboardFocusEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public ModifierKeys Modifiers {
+    get {
+      ModifierKeys ret = (ModifierKeys)NoesisGUI_PINVOKE.Keyboard_Modifiers_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public UIElement FocusedElement {
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Keyboard_FocusedElement_get(swigCPtr);
+      return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
+    }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Keyboard_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

@@ -11,7 +11,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 
 namespace Noesis
 {
@@ -30,62 +29,14 @@ public class RangeBase : Control {
 
   #region Events
 
-  #region ValueChanged
-  public delegate void ValueChangedHandler(float oldValue, float newValue);
-  public event ValueChangedHandler ValueChanged {
+  public event RoutedPropertyChangedEventHandler<float> ValueChanged {
     add {
-      if (!_ValueChanged.ContainsKey(swigCPtr.Handle)) {
-        _ValueChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_RangeBase_ValueChanged(_raiseValueChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _ValueChanged[swigCPtr.Handle] += value;
+      AddHandler(ValueChangedEvent, value);
     }
     remove {
-      if (_ValueChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _ValueChanged[swigCPtr.Handle] -= value;
-
-        if (_ValueChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_RangeBase_ValueChanged(_raiseValueChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-          _ValueChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(ValueChangedEvent, value);
     }
   }
-
-  internal delegate void RaiseValueChangedCallback(IntPtr cPtr, float oldValue, float newValue);
-  private static RaiseValueChangedCallback _raiseValueChanged = RaiseValueChanged;
-
-  [MonoPInvokeCallback(typeof(RaiseValueChangedCallback))]
-  private static void RaiseValueChanged(IntPtr cPtr, float oldValue, float newValue) {
-    try {
-      if (!_ValueChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for ValueChanged event");
-      }
-      if (oldValue == -1234.5678f && newValue == -1234.5678f) {
-        _ValueChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        ValueChangedHandler handler = _ValueChanged[cPtr];
-        if (handler != null) {
-          handler(oldValue, newValue);
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, ValueChangedHandler> _ValueChanged =
-      new Dictionary<IntPtr, ValueChangedHandler>();
-  #endregion
-
   #endregion
 
   protected RangeBase() {
@@ -94,7 +45,6 @@ public class RangeBase : Control {
   public static DependencyProperty LargeChangeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RangeBase_LargeChangeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -102,7 +52,6 @@ public class RangeBase : Control {
   public static DependencyProperty MaximumProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RangeBase_MaximumProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -110,7 +59,6 @@ public class RangeBase : Control {
   public static DependencyProperty MinimumProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RangeBase_MinimumProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -118,7 +66,6 @@ public class RangeBase : Control {
   public static DependencyProperty SmallChangeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RangeBase_SmallChangeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -126,19 +73,26 @@ public class RangeBase : Control {
   public static DependencyProperty ValueProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RangeBase_ValueProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent ValueChangedEvent {
+    set {
+      NoesisGUI_PINVOKE.RangeBase_ValueChangedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.RangeBase_ValueChangedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public float LargeChange {
     set {
       NoesisGUI_PINVOKE.RangeBase_LargeChange_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.RangeBase_LargeChange_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -146,11 +100,9 @@ public class RangeBase : Control {
   public float Maximum {
     set {
       NoesisGUI_PINVOKE.RangeBase_Maximum_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.RangeBase_Maximum_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -158,11 +110,9 @@ public class RangeBase : Control {
   public float Minimum {
     set {
       NoesisGUI_PINVOKE.RangeBase_Minimum_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.RangeBase_Minimum_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -170,11 +120,9 @@ public class RangeBase : Control {
   public float SmallChange {
     set {
       NoesisGUI_PINVOKE.RangeBase_SmallChange_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.RangeBase_SmallChange_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -182,26 +130,20 @@ public class RangeBase : Control {
   public float Value {
     set {
       NoesisGUI_PINVOKE.RangeBase_Value_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.RangeBase_Value_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.RangeBase_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_RangeBase(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_RangeBase(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

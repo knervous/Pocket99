@@ -47,11 +47,9 @@ public class CanExecuteRoutedEventArgs : RoutedEventArgs {
   public bool canExecute {
     set {
       NoesisGUI_PINVOKE.CanExecuteRoutedEventArgs_canExecute_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.CanExecuteRoutedEventArgs_canExecute_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -59,11 +57,9 @@ public class CanExecuteRoutedEventArgs : RoutedEventArgs {
   public bool continueRouting {
     set {
       NoesisGUI_PINVOKE.CanExecuteRoutedEventArgs_continueRouting_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.CanExecuteRoutedEventArgs_continueRouting_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }

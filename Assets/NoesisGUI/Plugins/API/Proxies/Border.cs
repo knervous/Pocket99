@@ -28,7 +28,6 @@ public class Border : Decorator {
   }
 
   public Border(bool logicalChild) : this(NoesisGUI_PINVOKE.new_Border__SWIG_0(logicalChild), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public Border() {
@@ -47,7 +46,6 @@ public class Border : Decorator {
   public static DependencyProperty BackgroundProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Border_BackgroundProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -55,7 +53,6 @@ public class Border : Decorator {
   public static DependencyProperty BorderBrushProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Border_BorderBrushProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -63,7 +60,6 @@ public class Border : Decorator {
   public static DependencyProperty BorderThicknessProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Border_BorderThicknessProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -71,7 +67,6 @@ public class Border : Decorator {
   public static DependencyProperty CornerRadiusProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Border_CornerRadiusProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -79,7 +74,6 @@ public class Border : Decorator {
   public static DependencyProperty PaddingProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Border_PaddingProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -87,11 +81,9 @@ public class Border : Decorator {
   public Brush Background {
     set {
       NoesisGUI_PINVOKE.Border_Background_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Border_Background_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -99,11 +91,9 @@ public class Border : Decorator {
   public Brush BorderBrush {
     set {
       NoesisGUI_PINVOKE.Border_BorderBrush_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Border_BorderBrush_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -111,12 +101,10 @@ public class Border : Decorator {
   public Thickness BorderThickness {
     set {
       NoesisGUI_PINVOKE.Border_BorderThickness_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.Border_BorderThickness_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Thickness>(ret);
       }
@@ -130,12 +118,10 @@ public class Border : Decorator {
   public CornerRadius CornerRadius {
     set {
       NoesisGUI_PINVOKE.Border_CornerRadius_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.Border_CornerRadius_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<CornerRadius>(ret);
       }
@@ -149,12 +135,10 @@ public class Border : Decorator {
   public Thickness Padding {
     set {
       NoesisGUI_PINVOKE.Border_Padding_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.Border_Padding_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Thickness>(ret);
       }
@@ -167,15 +151,11 @@ public class Border : Decorator {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Border_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_Border(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_Border(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

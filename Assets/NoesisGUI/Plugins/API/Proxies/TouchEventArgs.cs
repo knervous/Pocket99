@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class TouchEventArgs : RoutedEventArgs {
+public class TouchEventArgs : InputEventArgs {
   private HandleRef swigCPtr;
 
   internal TouchEventArgs(IntPtr cPtr, bool cMemoryOwn) : base(cPtr, cMemoryOwn) {
@@ -44,31 +44,31 @@ public class TouchEventArgs : RoutedEventArgs {
     }
   }
 
-  public int TouchDevice {
-    get {
-      return GetTouchDeviceHelper();
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    TouchEventHandler handler_ = (TouchEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new TouchEventArgs(args, false));
     }
   }
 
-  public TouchEventArgs(object s, RoutedEvent e, Point touchPoint, uint touchDevice) : this(NoesisGUI_PINVOKE.new_TouchEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), ref touchPoint, touchDevice), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  public ulong TouchDevice {
+    get {
+      ulong ret = NoesisGUI_PINVOKE.TouchEventArgs_TouchDevice_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public TouchEventArgs(object s, RoutedEvent e, Point touchPoint, ulong touchDevice) : this(NoesisGUI_PINVOKE.new_TouchEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), ref touchPoint, touchDevice), true) {
   }
 
   public Point GetTouchPoint(UIElement relativeTo) {
     IntPtr ret = NoesisGUI_PINVOKE.TouchEventArgs_GetTouchPoint(swigCPtr, UIElement.getCPtr(relativeTo));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Point>(ret);
     }
     else {
       return new Point();
     }
-  }
-
-  private int GetTouchDeviceHelper() {
-    int ret = NoesisGUI_PINVOKE.TouchEventArgs_GetTouchDeviceHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
   }
 
 }

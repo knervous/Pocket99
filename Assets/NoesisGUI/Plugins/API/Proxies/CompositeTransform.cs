@@ -38,7 +38,6 @@ public class CompositeTransform : Transform {
   public static DependencyProperty CenterXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CompositeTransform_CenterXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,7 +45,6 @@ public class CompositeTransform : Transform {
   public static DependencyProperty CenterYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CompositeTransform_CenterYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -54,7 +52,6 @@ public class CompositeTransform : Transform {
   public static DependencyProperty RotationProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CompositeTransform_RotationProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -62,7 +59,6 @@ public class CompositeTransform : Transform {
   public static DependencyProperty ScaleXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CompositeTransform_ScaleXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -70,7 +66,6 @@ public class CompositeTransform : Transform {
   public static DependencyProperty ScaleYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CompositeTransform_ScaleYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -78,7 +73,6 @@ public class CompositeTransform : Transform {
   public static DependencyProperty SkewXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CompositeTransform_SkewXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -86,7 +80,6 @@ public class CompositeTransform : Transform {
   public static DependencyProperty SkewYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CompositeTransform_SkewYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -94,7 +87,6 @@ public class CompositeTransform : Transform {
   public static DependencyProperty TranslateXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CompositeTransform_TranslateXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -102,7 +94,6 @@ public class CompositeTransform : Transform {
   public static DependencyProperty TranslateYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.CompositeTransform_TranslateYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -110,11 +101,9 @@ public class CompositeTransform : Transform {
   public float CenterX {
     set {
       NoesisGUI_PINVOKE.CompositeTransform_CenterX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.CompositeTransform_CenterX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -122,11 +111,9 @@ public class CompositeTransform : Transform {
   public float CenterY {
     set {
       NoesisGUI_PINVOKE.CompositeTransform_CenterY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.CompositeTransform_CenterY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -134,11 +121,9 @@ public class CompositeTransform : Transform {
   public float Rotation {
     set {
       NoesisGUI_PINVOKE.CompositeTransform_Rotation_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.CompositeTransform_Rotation_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -146,11 +131,9 @@ public class CompositeTransform : Transform {
   public float ScaleX {
     set {
       NoesisGUI_PINVOKE.CompositeTransform_ScaleX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.CompositeTransform_ScaleX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -158,11 +141,9 @@ public class CompositeTransform : Transform {
   public float ScaleY {
     set {
       NoesisGUI_PINVOKE.CompositeTransform_ScaleY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.CompositeTransform_ScaleY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -170,11 +151,9 @@ public class CompositeTransform : Transform {
   public float SkewX {
     set {
       NoesisGUI_PINVOKE.CompositeTransform_SkewX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.CompositeTransform_SkewX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -182,11 +161,9 @@ public class CompositeTransform : Transform {
   public float SkewY {
     set {
       NoesisGUI_PINVOKE.CompositeTransform_SkewY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.CompositeTransform_SkewY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -194,11 +171,9 @@ public class CompositeTransform : Transform {
   public float TranslateX {
     set {
       NoesisGUI_PINVOKE.CompositeTransform_TranslateX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.CompositeTransform_TranslateX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -206,18 +181,15 @@ public class CompositeTransform : Transform {
   public float TranslateY {
     set {
       NoesisGUI_PINVOKE.CompositeTransform_TranslateY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.CompositeTransform_TranslateY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.CompositeTransform_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

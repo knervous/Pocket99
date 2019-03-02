@@ -103,7 +103,6 @@ public struct CornerRadius {
 
   public static bool TryParse(string str, out CornerRadius result) {
     bool ret = NoesisGUI_PINVOKE.CornerRadius_TryParse(str != null ? str : string.Empty, out result);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

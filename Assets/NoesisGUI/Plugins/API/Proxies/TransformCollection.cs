@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class TransformCollection : FreezableCollection {
+public class TransformCollection : FreezableCollection<Transform> {
   internal new static TransformCollection CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new TransformCollection(cPtr, cMemoryOwn);
   }
@@ -27,13 +27,17 @@ public class TransformCollection : FreezableCollection {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
-  protected TransformCollection() {
-  }
-
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TransformCollection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
+  }
+
+  public TransformCollection() {
+  }
+
+  protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
+    registerExtend = false;
+    return NoesisGUI_PINVOKE.new_TransformCollection();
   }
 
 }

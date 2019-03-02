@@ -49,23 +49,19 @@ public class ListBox : Selector {
 
   public void SelectAll() {
     NoesisGUI_PINVOKE.ListBox_SelectAll(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void UnselectAll() {
     NoesisGUI_PINVOKE.ListBox_UnselectAll(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void ScrollIntoView(object item) {
     NoesisGUI_PINVOKE.ListBox_ScrollIntoView(swigCPtr, Noesis.Extend.GetInstanceHandle(item));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DependencyProperty SelectedItemsProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ListBox_SelectedItemsProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -73,7 +69,6 @@ public class ListBox : Selector {
   public static DependencyProperty SelectionModeProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ListBox_SelectionModeProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -81,32 +76,25 @@ public class ListBox : Selector {
   public SelectionMode SelectionMode {
     set {
       NoesisGUI_PINVOKE.ListBox_SelectionMode_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       SelectionMode ret = (SelectionMode)NoesisGUI_PINVOKE.ListBox_SelectionMode_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   private object GetSelectedItemsHelper() {
     IntPtr cPtr = NoesisGUI_PINVOKE.ListBox_GetSelectedItemsHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return Noesis.Extend.GetProxy(cPtr, false);
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ListBox_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_ListBox(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_ListBox(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

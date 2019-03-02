@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 namespace Noesis
 {
 
-public class GradientStopCollection : FreezableCollection {
+public class GradientStopCollection : FreezableCollection<GradientStop> {
   internal new static GradientStopCollection CreateProxy(IntPtr cPtr, bool cMemoryOwn) {
     return new GradientStopCollection(cPtr, cMemoryOwn);
   }
@@ -37,7 +37,6 @@ public class GradientStopCollection : FreezableCollection {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.GradientStopCollection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

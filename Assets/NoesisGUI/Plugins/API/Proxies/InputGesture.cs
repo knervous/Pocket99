@@ -32,13 +32,11 @@ public class InputGesture : BaseComponent {
 
   public virtual bool Matches(object target, RoutedEventArgs args) {
     bool ret = NoesisGUI_PINVOKE.InputGesture_Matches(swigCPtr, Noesis.Extend.GetInstanceHandle(target), RoutedEventArgs.getCPtr(args));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.InputGesture_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

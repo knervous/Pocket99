@@ -37,7 +37,6 @@ public class PlaneProjection : Projection {
 
   public static Matrix4 ConstructProjectionMatrix(Size surface, Size size, float centerX, float centerY, float centerZ, float globalOffX, float globalOffY, float globalOffZ, float localOffX, float localOffY, float localOffZ, float rotX, float rotY, float rotZ) {
     IntPtr ret = NoesisGUI_PINVOKE.PlaneProjection_ConstructProjectionMatrix(ref surface, ref size, centerX, centerY, centerZ, globalOffX, globalOffY, globalOffZ, localOffX, localOffY, localOffZ, rotX, rotY, rotZ);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Matrix4>(ret);
     }
@@ -48,13 +47,11 @@ public class PlaneProjection : Projection {
 
   public override bool IsIdentity() {
     bool ret = NoesisGUI_PINVOKE.PlaneProjection_IsIdentity(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public override Matrix4 GetProjection(Size surface, Size size) {
     IntPtr ret = NoesisGUI_PINVOKE.PlaneProjection_GetProjection(swigCPtr, ref surface, ref size);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Matrix4>(ret);
     }
@@ -66,7 +63,6 @@ public class PlaneProjection : Projection {
   public static DependencyProperty CenterOfRotationXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PlaneProjection_CenterOfRotationXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -74,7 +70,6 @@ public class PlaneProjection : Projection {
   public static DependencyProperty CenterOfRotationYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PlaneProjection_CenterOfRotationYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -82,7 +77,6 @@ public class PlaneProjection : Projection {
   public static DependencyProperty CenterOfRotationZProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PlaneProjection_CenterOfRotationZProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -90,7 +84,6 @@ public class PlaneProjection : Projection {
   public static DependencyProperty GlobalOffsetXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PlaneProjection_GlobalOffsetXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -98,7 +91,6 @@ public class PlaneProjection : Projection {
   public static DependencyProperty GlobalOffsetYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PlaneProjection_GlobalOffsetYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -106,7 +98,6 @@ public class PlaneProjection : Projection {
   public static DependencyProperty GlobalOffsetZProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PlaneProjection_GlobalOffsetZProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -114,7 +105,6 @@ public class PlaneProjection : Projection {
   public static DependencyProperty LocalOffsetXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PlaneProjection_LocalOffsetXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -122,7 +112,6 @@ public class PlaneProjection : Projection {
   public static DependencyProperty LocalOffsetYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PlaneProjection_LocalOffsetYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -130,7 +119,6 @@ public class PlaneProjection : Projection {
   public static DependencyProperty LocalOffsetZProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PlaneProjection_LocalOffsetZProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -138,7 +126,6 @@ public class PlaneProjection : Projection {
   public static DependencyProperty ProjectionMatrixProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PlaneProjection_ProjectionMatrixProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -146,7 +133,6 @@ public class PlaneProjection : Projection {
   public static DependencyProperty RotationXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PlaneProjection_RotationXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -154,7 +140,6 @@ public class PlaneProjection : Projection {
   public static DependencyProperty RotationYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PlaneProjection_RotationYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -162,7 +147,6 @@ public class PlaneProjection : Projection {
   public static DependencyProperty RotationZProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PlaneProjection_RotationZProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -170,11 +154,9 @@ public class PlaneProjection : Projection {
   public float CenterOfRotationX {
     set {
       NoesisGUI_PINVOKE.PlaneProjection_CenterOfRotationX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.PlaneProjection_CenterOfRotationX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -182,11 +164,9 @@ public class PlaneProjection : Projection {
   public float CenterOfRotationY {
     set {
       NoesisGUI_PINVOKE.PlaneProjection_CenterOfRotationY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.PlaneProjection_CenterOfRotationY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -194,11 +174,9 @@ public class PlaneProjection : Projection {
   public float CenterOfRotationZ {
     set {
       NoesisGUI_PINVOKE.PlaneProjection_CenterOfRotationZ_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.PlaneProjection_CenterOfRotationZ_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -206,11 +184,9 @@ public class PlaneProjection : Projection {
   public float GlobalOffsetX {
     set {
       NoesisGUI_PINVOKE.PlaneProjection_GlobalOffsetX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.PlaneProjection_GlobalOffsetX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -218,11 +194,9 @@ public class PlaneProjection : Projection {
   public float GlobalOffsetY {
     set {
       NoesisGUI_PINVOKE.PlaneProjection_GlobalOffsetY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.PlaneProjection_GlobalOffsetY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -230,11 +204,9 @@ public class PlaneProjection : Projection {
   public float GlobalOffsetZ {
     set {
       NoesisGUI_PINVOKE.PlaneProjection_GlobalOffsetZ_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.PlaneProjection_GlobalOffsetZ_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -242,11 +214,9 @@ public class PlaneProjection : Projection {
   public float LocalOffsetX {
     set {
       NoesisGUI_PINVOKE.PlaneProjection_LocalOffsetX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.PlaneProjection_LocalOffsetX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -254,11 +224,9 @@ public class PlaneProjection : Projection {
   public float LocalOffsetY {
     set {
       NoesisGUI_PINVOKE.PlaneProjection_LocalOffsetY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.PlaneProjection_LocalOffsetY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -266,11 +234,9 @@ public class PlaneProjection : Projection {
   public float LocalOffsetZ {
     set {
       NoesisGUI_PINVOKE.PlaneProjection_LocalOffsetZ_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.PlaneProjection_LocalOffsetZ_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -278,7 +244,6 @@ public class PlaneProjection : Projection {
   public Matrix4 ProjectionMatrix {
     get {
       IntPtr ret = NoesisGUI_PINVOKE.PlaneProjection_ProjectionMatrix_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Matrix4>(ret);
       }
@@ -292,11 +257,9 @@ public class PlaneProjection : Projection {
   public float RotationX {
     set {
       NoesisGUI_PINVOKE.PlaneProjection_RotationX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.PlaneProjection_RotationX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -304,11 +267,9 @@ public class PlaneProjection : Projection {
   public float RotationY {
     set {
       NoesisGUI_PINVOKE.PlaneProjection_RotationY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.PlaneProjection_RotationY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -316,18 +277,15 @@ public class PlaneProjection : Projection {
   public float RotationZ {
     set {
       NoesisGUI_PINVOKE.PlaneProjection_RotationZ_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.PlaneProjection_RotationZ_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.PlaneProjection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

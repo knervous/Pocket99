@@ -36,20 +36,17 @@ public class Span : Inline {
   }
 
   public Span(Inline childInline) : this(NoesisGUI_PINVOKE.new_Span__SWIG_1(Inline.getCPtr(childInline)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public InlineCollection Inlines {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Span_Inlines_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (InlineCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Span_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

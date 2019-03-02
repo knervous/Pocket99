@@ -32,13 +32,11 @@ public class Projection : Animatable {
 
   public virtual bool IsIdentity() {
     bool ret = NoesisGUI_PINVOKE.Projection_IsIdentity(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public virtual Matrix4 GetProjection(Size surface, Size size) {
     IntPtr ret = NoesisGUI_PINVOKE.Projection_GetProjection(swigCPtr, ref surface, ref size);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Matrix4>(ret);
     }
@@ -50,14 +48,12 @@ public class Projection : Animatable {
   public static Projection Identity {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Projection_Identity_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Projection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Projection_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

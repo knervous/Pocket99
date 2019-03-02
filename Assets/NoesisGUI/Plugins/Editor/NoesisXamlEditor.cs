@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEditor;
 using Noesis;
 
@@ -7,58 +8,57 @@ public class NoesisXamlEditor: Editor
 {
     private Noesis.View _viewPreview;
     private Noesis.View _viewPreviewGUI;
-    private string _error;
     private UnityEngine.Rendering.CommandBuffer _commands;
 
-    private bool DeviceIsD3D()
+    private bool IsGL()
     {
-        return SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Direct3D9 ||
-            SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Direct3D11 ||
-            SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Direct3D12;
+        return
+            SystemInfo.graphicsDeviceType == GraphicsDeviceType.OpenGLES2 ||
+            SystemInfo.graphicsDeviceType == GraphicsDeviceType.OpenGLES3 ||
+            SystemInfo.graphicsDeviceType == GraphicsDeviceType.OpenGLCore;
     }
 
     private void CreatePreviewView()
     {
         try
         {
-            _error = null;
             NoesisXaml xaml = (NoesisXaml)target;
             FrameworkElement root = xaml.Load() as FrameworkElement;
-            View.RenderFlags flags = DeviceIsD3D() ? View.RenderFlags.FlipY : 0;
+            _viewPreview = Noesis.GUI.CreateView(root);
+            _viewPreview.SetFlags(IsGL() ? 0 : RenderFlags.FlipY);
 
-            if (root != null)
-            {
-                _viewPreview = Noesis.GUI.CreateView(root);
-                _viewPreview.SetFlags(flags);
-                NoesisRenderer.RegisterView(_viewPreview);
-            }
+            _commands.Clear();
+            NoesisRenderer.RegisterView(_viewPreview, _commands);
+            Graphics.ExecuteCommandBuffer(_commands);
         }
         catch (System.Exception e)
         {
-            _error = e.Message;
             UnityEngine.Debug.LogException(e);
         }
     }
 
     private void CreatePreviewGUIView()
     {
+        // Avoid logging parse errors twice by muting them when generating thumbnails
+        NoesisUnity.MuteLog();
+
         try
         {
             NoesisXaml xaml = (NoesisXaml)target;
             FrameworkElement root = xaml.Load() as FrameworkElement;
-            View.RenderFlags flags = DeviceIsD3D() ? View.RenderFlags.FlipY : 0;
+            _viewPreviewGUI = Noesis.GUI.CreateView(root);
+            _viewPreviewGUI.SetFlags(IsGL() ? 0 : RenderFlags.FlipY);
 
-            if (root != null)
-            {
-                _viewPreviewGUI = Noesis.GUI.CreateView(root);
-                _viewPreviewGUI.SetFlags(flags);
-                NoesisRenderer.RegisterView(_viewPreviewGUI);
-            }
+            _commands.Clear();
+            NoesisRenderer.RegisterView(_viewPreviewGUI, _commands);
+            Graphics.ExecuteCommandBuffer(_commands);
         }
         catch (System.Exception e)
         {
             UnityEngine.Debug.LogException(e);
         }
+
+        NoesisUnity.UnmuteLog();
     }
 
     public void OnEnable()
@@ -73,14 +73,23 @@ public class NoesisXamlEditor: Editor
     {
         if (_viewPreview != null)
         {
-            NoesisRenderer.Shutdown(_viewPreview);
+            _commands.Clear();
+            NoesisRenderer.UnregisterView(_viewPreview, _commands);
+            Graphics.ExecuteCommandBuffer(_commands);
         }
 
         if (_viewPreviewGUI != null)
         {
-            NoesisRenderer.Shutdown(_viewPreviewGUI);
+            _commands.Clear();
+            NoesisRenderer.UnregisterView(_viewPreviewGUI, _commands);
+            Graphics.ExecuteCommandBuffer(_commands);
         }
     }
+
+    private bool _showTextures = true;
+    private bool _showFonts = true;
+    private bool _showAudios = true;
+    private bool _showXAMLs = true;
 
     public override void OnInspectorGUI()
     {
@@ -89,92 +98,79 @@ public class NoesisXamlEditor: Editor
         EditorGUILayout.LabelField("XAML Dependencies", EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
 
-        EditorGUILayout.Foldout(true, "Textures", false);
-        if (xaml.textures != null)
+        _showTextures = EditorGUILayout.Foldout(_showTextures, "Textures", false);
+        if (_showTextures && xaml.textures != null)
         {
-            EditorGUILayout.BeginHorizontal();
             foreach (var texture in xaml.textures)
             {
-                EditorGUILayout.ObjectField(texture, typeof(Texture2D), false);
+                EditorGUILayout.ObjectField(texture.texture, typeof(Texture2D), false);
             }
-            EditorGUILayout.EndHorizontal();
         }
 
-        EditorGUILayout.Foldout(true, "Fonts", false);
-        if (xaml.fonts != null)
+        _showFonts = EditorGUILayout.Foldout(_showFonts, "Fonts", false);
+        if (_showFonts && xaml.fonts != null)
         {
-            EditorGUILayout.BeginHorizontal();
             foreach (var font in xaml.fonts)
             {
                 EditorGUILayout.ObjectField(font, typeof(NoesisFont), false);
             }
-
-            EditorGUILayout.EndHorizontal();
         }
 
-        EditorGUILayout.Foldout(true, "Resource Dictionaries", false);
-        if (xaml.xamls != null)
+        _showAudios = EditorGUILayout.Foldout(_showAudios, "Audios", false);
+        if (_showAudios && xaml.audios != null)
         {
-            EditorGUILayout.BeginHorizontal();
+            foreach (var audio_ in xaml.audios)
+            {
+                EditorGUILayout.ObjectField(audio_.audio, typeof(AudioClip), false);
+            }
+        }
+
+        _showXAMLs = EditorGUILayout.Foldout(_showXAMLs, "XAMLs", false);
+        if (_showXAMLs && xaml.xamls != null)
+        {
             foreach (var xaml_ in xaml.xamls)
             {
                 EditorGUILayout.ObjectField(xaml_, typeof(NoesisXaml), false);
             }
-            EditorGUILayout.EndHorizontal();
         }
 
         EditorGUI.indentLevel--;
-        EditorGUILayout.Space();
-
-        if (!string.IsNullOrEmpty(_error))
-        {
-            EditorGUILayout.HelpBox(_error, MessageType.Error);
-        }
     }
 
     private bool CanRender()
     {
         NoesisXaml xaml = (NoesisXaml)target;
-        return xaml != null && xaml.CanLoad() && NoesisSettings.Get().previewEnabled &&
-            !UnityEditorInternal.InternalEditorUtility.inBatchMode;
+        return NoesisSettings.IsNoesisEnabled() && xaml != null && xaml.CanLoad() && NoesisSettings.Get().previewEnabled;
     }
 
     public override bool HasPreviewGUI()
     {
-        return CanRender();
-    }
-
-    public override void DrawPreview(UnityEngine.Rect r)
-    {
-        if (CanRender())
+        if (_viewPreview == null)
         {
-            if (r.width > 4 && r.height > 4)
-            {
-                if (_viewPreview == null)
-                {
-                    CreatePreviewView();
-                }
-
-                if (_viewPreview != null)
-                {
-                    Graphics.DrawTexture(r, RenderPreview(_viewPreview, (int)r.width, (int)r.height));
-                }
-            }
+            CreatePreviewView();
         }
+
+        if (_viewPreview == null || _viewPreview.Content == null)
+        {
+            return false;
+        }
+
+        return CanRender();
     }
 
     public override void OnPreviewGUI(UnityEngine.Rect r, GUIStyle background)
     {
-        if (CanRender())
+        if (Event.current.type == EventType.Repaint)
         {
-            if (_viewPreviewGUI == null)
+            if (CanRender())
             {
-                CreatePreviewGUIView();
-            }
-
-            if (_viewPreviewGUI != null)
-            {
-                UnityEngine.GUI.DrawTexture(r, RenderPreview(_viewPreviewGUI, (int)r.width * 2, (int)r.height * 2));
+                if (r.width > 4 && r.height > 4)
+                {
+                    if (_viewPreview != null && _viewPreview.Content != null)
+                    {
+                        UnityEngine.GUI.DrawTexture(r, RenderPreview(_viewPreview, (int)r.width, (int)r.height));
+                    }
+                }
             }
         }
     }
@@ -195,7 +191,7 @@ public class NoesisXamlEditor: Editor
 
         if (_viewPreview != null)
         {
-            View.RenderFlags flags = DeviceIsD3D() ? View.RenderFlags.FlipY : 0;
+            RenderFlags flags = IsGL() ? 0 : RenderFlags.FlipY;
 
             if (_renderMode == RenderMode.Normal)
             {
@@ -203,15 +199,15 @@ public class NoesisXamlEditor: Editor
             }
             else if (_renderMode == RenderMode.Wireframe)
             {
-                _viewPreview.SetFlags(flags | View.RenderFlags.Wireframe);
+                _viewPreview.SetFlags(flags | RenderFlags.Wireframe);
             }
             else if (_renderMode == RenderMode.Batches)
             {
-                _viewPreview.SetFlags(flags | View.RenderFlags.ColorBatches);
+                _viewPreview.SetFlags(flags | RenderFlags.ColorBatches);
             }
             else if (_renderMode == RenderMode.Overdraw)
             {
-                _viewPreview.SetFlags(flags | View.RenderFlags.Overdraw);
+                _viewPreview.SetFlags(flags | RenderFlags.Overdraw);
             }
         }
     }
@@ -225,8 +221,13 @@ public class NoesisXamlEditor: Editor
                 CreatePreviewGUIView();
             }
 
-            if (_viewPreviewGUI != null)
+            if (_viewPreviewGUI != null && _viewPreviewGUI.Content != null)
             {
+                if (NoesisSettings.Get().debugImporter)
+                {
+                    Debug.Log("↔ RenderStaticPreview " + assetPath);
+                }
+
                 RenderTexture rt = RenderPreview(_viewPreviewGUI, width, height);
 
                 if (rt != null)
@@ -251,19 +252,21 @@ public class NoesisXamlEditor: Editor
     {
         try
         {
-            if (CanRender() && view != null)
+            if (CanRender() && view != null && view.Content != null)
             {
                 view.SetSize(width, height);
                 view.Update(0.0f);
 
                 RenderTexture rt = RenderTexture.GetTemporary(width, height, 24, RenderTextureFormat.Default, RenderTextureReadWrite.Default, 8);
-
+  
                 _commands.Clear();
                 NoesisRenderer.RenderOffscreen(view, _commands);
                 _commands.SetRenderTarget(rt);
                 _commands.ClearRenderTarget(true, true, UnityEngine.Color.clear, 0.0f);
                 NoesisRenderer.RenderOnscreen(view, false, _commands);
                 Graphics.ExecuteCommandBuffer(_commands);
+
+                GL.InvalidateState();
 
                 RenderTexture.ReleaseTemporary(rt);
 

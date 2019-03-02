@@ -68,40 +68,24 @@ public struct Vector4 {
     set { this._w = value; }
   }
 
-  public Point XY {
-    get { return new Point(X, Y); }
+  public Vector XY {
+    get { return new Vector(X, Y); }
   }
 
-  public Point XZ {
-    get { return new Point(X, Z); }
+  public Vector XZ {
+    get { return new Vector(X, Z); }
   }
 
-  public Point XW {
-    get { return new Point(X, W); }
+  public Vector XW {
+    get { return new Vector(X, W); }
   }
 
-  public Point YZ {
-    get { return new Point(Y, Z); }
+  public Vector YZ {
+    get { return new Vector(Y, Z); }
   }
 
-  public Point YW {
-    get { return new Point(Y, W); }
-  }
-
-  public Vector3 XYZ {
-    get { return new Vector3(X, Y, Z); }
-  }
-
-  public Vector3 XYW {
-    get { return new Vector3(X, Y, W); }
-  }
-
-  public Vector3 XZW {
-    get { return new Vector3(X, Z, W); }
-  }
-
-  public Vector3 YZW {
-    get { return new Vector3(Y, Z, W); }
+  public Vector YW {
+    get { return new Vector(Y, W); }
   }
 
   public static Vector4 Zero {
@@ -131,10 +115,7 @@ public struct Vector4 {
     this._w = w;
   }
 
-  public Vector4(Vector3 v, float w) : this(v.X, v.Y, v.Z, w) {
-  }
-
-  public Vector4(Point v, float z, float w) : this(v.X, v.Y, z, w) {
+  public Vector4(Vector v, float z, float w) : this(v.X, v.Y, z, w) {
   }
 
   public static Vector4 operator+(Vector4 v) {
@@ -183,7 +164,7 @@ public struct Vector4 {
   }
 
   public override int GetHashCode() {
-    return ((X.GetHashCode() ^ Y.GetHashCode()) ^ Z.GetHashCode()) ^ W.GetHashCode();
+    return X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode() ^ W.GetHashCode();
   }
 
   public override string ToString() {
@@ -202,8 +183,8 @@ public struct Vector4 {
     return v / Length(v);
   }
 
-  public static Vector3 Project(Vector4 v) {
-    return v.XYZ / v.W;
+  public static Vector Project(Vector4 v) {
+    return v.XY / v.W;
   }
 
   public static float Dot(Vector4 v0, Vector4 v1) {

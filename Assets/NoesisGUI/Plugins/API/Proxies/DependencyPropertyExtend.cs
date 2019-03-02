@@ -34,7 +34,7 @@ namespace Noesis
         {
             IntPtr forTypePtr = Noesis.Extend.EnsureNativeType(forType, false);
 
-            Noesis_OverrideMetadata_(forTypePtr, swigCPtr.Handle,
+            Noesis_OverrideMetadata(forTypePtr, swigCPtr.Handle,
                 PropertyMetadata.getCPtr(typeMetadata).Handle);
         }
 
@@ -56,7 +56,7 @@ namespace Noesis
             IntPtr nativeType = ValidatePropertyType(ref propertyType);
 
             // Create and register dependency property
-            IntPtr dependencyPtr = Noesis_RegisterDependencyProperty_(ownerTypePtr,
+            IntPtr dependencyPtr = Noesis_RegisterDependencyProperty(ownerTypePtr,
                 name, nativeType, PropertyMetadata.getCPtr(propertyMetadata).Handle);
 
             DependencyProperty dependencyProperty = new DependencyProperty(dependencyPtr, false);
@@ -95,7 +95,7 @@ namespace Noesis
         private static IntPtr ValidatePropertyType(ref Type propertyType)
         {
             Type validType;
-            if (_validTypes.TryGetValue(propertyType.TypeHandle, out validType))
+            if (_validTypes.TryGetValue(propertyType, out validType))
             {
                 propertyType = validType;
             }
@@ -103,28 +103,27 @@ namespace Noesis
             return Noesis.Extend.EnsureNativeType(propertyType);
         }
 
-        private static Dictionary<RuntimeTypeHandle, Type> _validTypes = CreateValidTypes();
+        private static Dictionary<Type, Type> _validTypes = CreateValidTypes();
 
-        private static Dictionary<RuntimeTypeHandle, Type> CreateValidTypes()
+        private static Dictionary<Type, Type> CreateValidTypes()
         {
-            Dictionary<RuntimeTypeHandle, Type> validTypes =
-                new Dictionary<RuntimeTypeHandle, Type>(13);
+            Dictionary<Type, Type> validTypes = new Dictionary<Type, Type>(13);
 
-            validTypes[typeof(decimal).TypeHandle] = typeof(double);
-            validTypes[typeof(long).TypeHandle] = typeof(int);
-            validTypes[typeof(ulong).TypeHandle] = typeof(uint);
-            validTypes[typeof(char).TypeHandle] = typeof(uint);
-            validTypes[typeof(sbyte).TypeHandle] = typeof(short);
-            validTypes[typeof(byte).TypeHandle] = typeof(ushort);
+            validTypes[typeof(decimal)] = typeof(double);
+            validTypes[typeof(long)] = typeof(int);
+            validTypes[typeof(ulong)] = typeof(uint);
+            validTypes[typeof(char)] = typeof(uint);
+            validTypes[typeof(sbyte)] = typeof(short);
+            validTypes[typeof(byte)] = typeof(ushort);
 
-            validTypes[typeof(decimal?).TypeHandle] = typeof(double?);
-            validTypes[typeof(long?).TypeHandle] = typeof(int?);
-            validTypes[typeof(ulong?).TypeHandle] = typeof(uint?);
-            validTypes[typeof(char?).TypeHandle] = typeof(uint?);
-            validTypes[typeof(sbyte?).TypeHandle] = typeof(short?);
-            validTypes[typeof(byte?).TypeHandle] = typeof(ushort?);
+            validTypes[typeof(decimal?)] = typeof(double?);
+            validTypes[typeof(long?)] = typeof(int?);
+            validTypes[typeof(ulong?)] = typeof(uint?);
+            validTypes[typeof(char?)] = typeof(uint?);
+            validTypes[typeof(sbyte?)] = typeof(short?);
+            validTypes[typeof(byte?)] = typeof(ushort?);
 
-            validTypes[typeof(Type).TypeHandle] = typeof(ResourceKeyType);
+            validTypes[typeof(Type)] = typeof(ResourceKeyType);
 
             return validTypes;
         }
@@ -132,22 +131,6 @@ namespace Noesis
         #endregion
 
         #region Imports
-
-        private static IntPtr Noesis_RegisterDependencyProperty_(IntPtr classType,
-            string propertyName, IntPtr propertyType, IntPtr typeMetadata)
-        {
-            IntPtr result = Noesis_RegisterDependencyProperty(classType, propertyName, propertyType,
-                typeMetadata);
-            Error.Check();
-            return result;
-        }
-
-        private static void Noesis_OverrideMetadata_(IntPtr classType, IntPtr dependencyProperty,
-            IntPtr typeMetadata)
-        {
-            Noesis_OverrideMetadata(classType, dependencyProperty, typeMetadata);
-            Error.Check();
-        }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////
         [DllImport(Library.Name)]

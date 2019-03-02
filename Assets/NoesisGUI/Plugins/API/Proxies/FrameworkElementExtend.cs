@@ -35,8 +35,21 @@ namespace Noesis
             throw new Exception("Only String or Type resource keys supported.");
         }
 
-        protected virtual void Connect(object source, string eventName, string handlerName)
+        protected virtual Size MeasureOverride(Size availableSize)
         {
+            _callBaseMeasure = true;
+            return new Size(0f, 0f);
+        }
+
+        protected virtual Size ArrangeOverride(Size finalSize)
+        {
+            _callBaseArrange = true;
+            return new Size(0f, 0f);
+        }
+
+        protected virtual bool ConnectEvent(object source, string eventName, string handlerName)
+        {
+            return false;
         }
 
         #region FindResource implementation
@@ -44,7 +57,6 @@ namespace Noesis
         private object FindStringResource(string key)
         {
             IntPtr cPtr = NoesisGUI_PINVOKE.FrameworkElement_FindStringResource(swigCPtr, key);
-            if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
             return Noesis.Extend.GetProxy(cPtr, false);
         }
 
@@ -52,13 +64,11 @@ namespace Noesis
         {
             IntPtr nativeType = Noesis.Extend.GetNativeType(key);
             IntPtr cPtr = NoesisGUI_PINVOKE.FrameworkElement_FindTypeResource(swigCPtr, nativeType);
-            if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
             return Noesis.Extend.GetProxy(cPtr, false);
         }
         private object TryFindStringResource(string key)
         {
             IntPtr cPtr = NoesisGUI_PINVOKE.FrameworkElement_TryFindStringResource(swigCPtr, key);
-            if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
             return Noesis.Extend.GetProxy(cPtr, false);
         }
 
@@ -66,17 +76,34 @@ namespace Noesis
         {
             IntPtr nativeType = Noesis.Extend.GetNativeType(key);
             IntPtr cPtr = NoesisGUI_PINVOKE.FrameworkElement_TryFindTypeResource(swigCPtr, nativeType);
-            if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
             return Noesis.Extend.GetProxy(cPtr, false);
         }
 
         #endregion
 
-        #region Connect implementation
+        #region Extend overrides implementation
 
-        internal void CallConnect(object source, string eventName, string handlerName)
+        private bool _callBaseMeasure;
+        internal Size CallMeasureOverride(Size availableSize, out bool callBase)
         {
-            Connect(source, eventName, handlerName);
+            _callBaseMeasure = false;
+            Size desiredSize = MeasureOverride(availableSize);
+            callBase = _callBaseMeasure;
+            return desiredSize;
+        }
+
+        private bool _callBaseArrange;
+        internal Size CallArrangeOverride(Size finalSize, out bool callBase)
+        {
+            _callBaseArrange = false;
+            Size renderSize = ArrangeOverride(finalSize);
+            callBase = _callBaseArrange;
+            return renderSize;
+        }
+
+        internal bool CallConnectEvent(object source, string eventName, string handlerName)
+        {
+            return ConnectEvent(source, eventName, handlerName);
         }
 
         #endregion

@@ -35,32 +35,28 @@ public class MatrixTransform : Transform {
     return NoesisGUI_PINVOKE.new_MatrixTransform__SWIG_0();
   }
 
-  public MatrixTransform(Transform2 matrix) : this(NoesisGUI_PINVOKE.new_MatrixTransform__SWIG_1(ref matrix), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  public MatrixTransform(Matrix matrix) : this(NoesisGUI_PINVOKE.new_MatrixTransform__SWIG_1(ref matrix), true) {
   }
 
   public static DependencyProperty MatrixProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.MatrixTransform_MatrixProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
-  public Transform2 Matrix {
+  public Matrix Matrix {
     set {
       NoesisGUI_PINVOKE.MatrixTransform_Matrix_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.MatrixTransform_Matrix_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
-        return Marshal.PtrToStructure<Transform2>(ret);
+        return Marshal.PtrToStructure<Matrix>(ret);
       }
       else {
-        return new Transform2();
+        return Matrix.Identity;
       }
     }
 
@@ -68,7 +64,6 @@ public class MatrixTransform : Transform {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.MatrixTransform_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

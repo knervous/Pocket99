@@ -38,7 +38,6 @@ public class UniformGrid : Panel {
   public static DependencyProperty FirstColumnProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UniformGrid_FirstColumnProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,7 +45,6 @@ public class UniformGrid : Panel {
   public static DependencyProperty ColumnsProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UniformGrid_ColumnsProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -54,50 +52,42 @@ public class UniformGrid : Panel {
   public static DependencyProperty RowsProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.UniformGrid_RowsProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
-  public uint FirstColumn {
+  public int FirstColumn {
     set {
       NoesisGUI_PINVOKE.UniformGrid_FirstColumn_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
-      uint ret = NoesisGUI_PINVOKE.UniformGrid_FirstColumn_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      int ret = NoesisGUI_PINVOKE.UniformGrid_FirstColumn_get(swigCPtr);
       return ret;
-    } 
+    }
   }
 
-  public uint Columns {
+  public int Columns {
     set {
       NoesisGUI_PINVOKE.UniformGrid_Columns_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
-      uint ret = NoesisGUI_PINVOKE.UniformGrid_Columns_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      int ret = NoesisGUI_PINVOKE.UniformGrid_Columns_get(swigCPtr);
       return ret;
-    } 
+    }
   }
 
-  public uint Rows {
+  public int Rows {
     set {
       NoesisGUI_PINVOKE.UniformGrid_Rows_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
-      uint ret = NoesisGUI_PINVOKE.UniformGrid_Rows_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      int ret = NoesisGUI_PINVOKE.UniformGrid_Rows_get(swigCPtr);
       return ret;
-    } 
+    }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.UniformGrid_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

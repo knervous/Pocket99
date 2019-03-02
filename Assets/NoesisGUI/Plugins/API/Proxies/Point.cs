@@ -40,6 +40,11 @@ public struct Point {
     }
   }
 
+  public Point(float x, float y) {
+    _x = x;
+    _y = y;
+  }
+
   public float X {
     get { return this._x; }
     set { this._x = value; }
@@ -50,72 +55,69 @@ public struct Point {
     set { this._y = value; }
   }
 
-  public static Point Zero {
-    get { return new Point(0.0f, 0.0f); }
+  public void Offset(float offsetX, float offsetY) {
+    _x += offsetX;
+    _y += offsetY;
   }
 
-  public static Point XAxis {
-    get { return new Point(1.0f, 0.0f); }
+  public static Point operator+(Point point, Vector vector) {
+    return new Point(point._x + vector.X, point._y + vector.Y);
   }
 
-  public static Point YAxis {
-    get { return new Point(0.0f, 1.0f); }
+  public static Point Add(Point point, Vector vector) {
+    return new Point(point._x + vector.X, point._y + vector.Y);
   }
 
-  public Point(float x, float y) {
-    this._x = x;
-    this._y = y;
+  public static Point operator-(Point point, Vector vector) {
+    return new Point(point._x - vector.X, point._y - vector.Y);
   }
 
-  public Point(Pointi point) : this((float)point.X, (float)point.Y) {
+  public static Point Subtract(Point point, Vector vector) {
+    return new Point(point._x - vector.X, point._y - vector.Y);
   }
 
-  public Point(Size size) : this(size.Width, size.Height) {
+  public static Vector operator-(Point point1, Point point2) {
+    return new Vector(point1._x - point2._x, point1._y - point2._y);
   }
 
-  public static Point operator+(Point v) {
-    return v;
+  public static Vector Subtract(Point point1, Point point2) {
+    return new Vector(point1._x - point2._x, point1._y - point2._y);
   }
 
-  public static Point operator-(Point v) {
-    return new Point(-v.X, -v.Y);
+  public static Point operator*(Point point, Matrix matrix) {
+    return matrix.Transform(point);
   }
 
-  public static Point operator+(Point v0, Point v1) {
-    return new Point(v0.X + v1.X, v0.Y + v1.Y);
+  public static Point Multiply(Point point, Matrix matrix) {
+    return matrix.Transform(point);
   }
 
-  public static Point operator-(Point v0, Point v1) {
-    return new Point(v0.X - v1.X, v0.Y - v1.Y);
+  public static explicit operator Size(Point point) {
+    return new Size(Math.Abs(point._x), Math.Abs(point._y));
   }
 
-  public static Point operator*(Point v, float f) {
-    return new Point(v.X * f, v.Y * f);
+  public static explicit operator Vector(Point point) {
+    return new Vector(point._x, point._y);
   }
 
-  public static Point operator*(float f, Point v) {
-    return v * f;
+  public static bool operator==(Point p0, Point p1) {
+    return p0._x == p1._x && p0._y == p1._y;
   }
 
-  public static Point operator/(Point v, float f) {
-    if (f == 0.0f) { throw new DivideByZeroException(); }
-    return new Point(v.X / f, v.Y / f);
+  public static bool operator != (Point p0, Point p1) {
+    return !(p0 == p1);
   }
 
-  public static bool operator==(Point v0, Point v1) {
-    return v0.X == v1.X && v0.Y == v1.Y;
+  public static bool Equals (Point p0, Point p1) {
+    return p0 == p1;
   }
 
-  public static bool operator!=(Point v0, Point v1) {
-    return !(v0 == v1);
+  public override bool Equals(Object o) {
+    return o is Point && this == (Point)o;
   }
 
-  public override bool Equals(Object obj) {
-    return obj is Point && this == (Point)obj;
-  }
-
-  public bool Equals(Point v) {
-    return this == v;
+  public bool Equals(Point value) {
+    return this == value;
   }
 
   public override int GetHashCode() {
@@ -124,50 +126,6 @@ public struct Point {
 
   public override string ToString() {
     return String.Format("{0},{1}", X, Y);
-  }
-
-  public static float LengthSquared(Point v) {
-    return v.X * v.X + v.Y * v.Y;
-  }
-
-  public static float Length(Point v) {
-    return (float)Math.Sqrt((double)LengthSquared(v));
-  }
-
-  public static Point Normalize(Point v) {
-    return v / Length(v);
-  }
-
-  public static Point PerpendicularCCW(Point v) {
-    return new Point(-v.Y, v.X);
-  }
-
-  public static Point PerpendicularCW(Point v) {
-    return new Point(v.Y, -v.X);
-  }
-
-  public static Point Perpendicular(Point v, bool cw) {
-    return cw ? PerpendicularCW(v) : PerpendicularCCW(v);
-  }
-
-  public static float Dot(Point v0, Point v1) {
-    return v0.X * v1.X + v0.Y * v1.Y;
-  }
-
-  public static float PerpDot(Point v0, Point v1) {
-    return v0.X * v1.Y - v0.Y * v1.X;
-  }
-
-  private static float Lerp(float x, float y, float t) {
-    return x + t * (y - x);
-  }
-
-  public static Point Lerp(Point v0, Point v1, float t) {
-    return new Point(Lerp(v0.X, v1.X, t), Lerp(v0.Y, v1.Y, t));
-  }
-
-  public static float SignedAngle(Point v0, Point v1) {
-    return (float)Math.Atan2(PerpDot(v0, v1), Dot(v0, v1));
   }
 
   public static Point Parse(string str) {
@@ -180,7 +138,6 @@ public struct Point {
 
   public static bool TryParse(string str, out Point result) {
     bool ret = NoesisGUI_PINVOKE.Point_TryParse(str != null ? str : string.Empty, out result);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

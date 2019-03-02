@@ -38,7 +38,6 @@ public class EasingColorKeyFrame : ColorKeyFrame {
   public static DependencyProperty EasingFunctionProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.EasingColorKeyFrame_EasingFunctionProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,18 +45,15 @@ public class EasingColorKeyFrame : ColorKeyFrame {
   public EasingFunctionBase EasingFunction {
     set {
       NoesisGUI_PINVOKE.EasingColorKeyFrame_EasingFunction_set(swigCPtr, EasingFunctionBase.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.EasingColorKeyFrame_EasingFunction_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (EasingFunctionBase)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.EasingColorKeyFrame_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

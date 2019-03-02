@@ -32,19 +32,16 @@ public class Panel : FrameworkElement {
 
   public static int GetZIndex(DependencyObject element) {
     int ret = NoesisGUI_PINVOKE.Panel_GetZIndex(DependencyObject.getCPtr(element));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static void SetZIndex(DependencyObject element, int value) {
     NoesisGUI_PINVOKE.Panel_SetZIndex(DependencyObject.getCPtr(element), value);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DependencyProperty BackgroundProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Panel_BackgroundProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -52,7 +49,6 @@ public class Panel : FrameworkElement {
   public static DependencyProperty IsItemsHostProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Panel_IsItemsHostProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -60,7 +56,6 @@ public class Panel : FrameworkElement {
   public static DependencyProperty ZIndexProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Panel_ZIndexProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -68,11 +63,9 @@ public class Panel : FrameworkElement {
   public Brush Background {
     set {
       NoesisGUI_PINVOKE.Panel_Background_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Panel_Background_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -80,11 +73,9 @@ public class Panel : FrameworkElement {
   public bool IsItemsHost {
     set {
       NoesisGUI_PINVOKE.Panel_IsItemsHost_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.Panel_IsItemsHost_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -92,22 +83,17 @@ public class Panel : FrameworkElement {
   public UIElementCollection Children {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Panel_Children_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (UIElementCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Panel_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_Panel(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_Panel(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

@@ -77,13 +77,11 @@ public class ItemsChangedEventArgs : EventArgs {
 
   private int GetActionHelper() {
     int ret = NoesisGUI_PINVOKE.ItemsChangedEventArgs_GetActionHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private GeneratorPosition GetPositionHelper() {
     IntPtr ret = NoesisGUI_PINVOKE.ItemsChangedEventArgs_GetPositionHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<GeneratorPosition>(ret);
     }
@@ -94,7 +92,6 @@ public class ItemsChangedEventArgs : EventArgs {
 
   private GeneratorPosition GetOldPositionHelper() {
     IntPtr ret = NoesisGUI_PINVOKE.ItemsChangedEventArgs_GetOldPositionHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<GeneratorPosition>(ret);
     }
@@ -105,13 +102,11 @@ public class ItemsChangedEventArgs : EventArgs {
 
   private int GetItemCountHelper() {
     int ret = NoesisGUI_PINVOKE.ItemsChangedEventArgs_GetItemCountHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private int GetItemUICountHelper() {
     int ret = NoesisGUI_PINVOKE.ItemsChangedEventArgs_GetItemUICountHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

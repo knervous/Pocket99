@@ -33,7 +33,6 @@ public class TriggerBase : DependencyObject {
   public TriggerActionCollection EnterActions {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TriggerBase_EnterActions_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (TriggerActionCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -41,14 +40,12 @@ public class TriggerBase : DependencyObject {
   public TriggerActionCollection ExitActions {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.TriggerBase_ExitActions_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (TriggerActionCollection)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TriggerBase_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

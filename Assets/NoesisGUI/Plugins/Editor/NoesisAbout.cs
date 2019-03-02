@@ -54,7 +54,7 @@ public class NoesisAbout : EditorWindow
         GUILayout.Space(10.0f);
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        GUILayout.Label("(c) 2015 Noesis Technologies S.L. All Rights Reserved", EditorStyles.miniLabel);
+        GUILayout.Label("(c) 2013 Noesis Technologies S.L. All Rights Reserved", EditorStyles.miniLabel);
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();
 

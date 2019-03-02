@@ -50,12 +50,10 @@ public class HitTestResult : IDisposable {
   }
 
   public HitTestResult() : this(NoesisGUI_PINVOKE.new_HitTestResult(), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   private DependencyObject GetVisualHit() {
     IntPtr cPtr = NoesisGUI_PINVOKE.HitTestResult_GetVisualHit(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
   }
 

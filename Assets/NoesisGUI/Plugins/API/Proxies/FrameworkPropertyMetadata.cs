@@ -27,116 +27,129 @@ public partial class FrameworkPropertyMetadata : UIPropertyMetadata {
     return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
   }
 
-  public FrameworkPropertyMetadata() {
-  }
-
-  protected override IntPtr CreateCPtr(Type type, out bool registerExtend) {
-    registerExtend = false;
-    return NoesisGUI_PINVOKE.new_FrameworkPropertyMetadata__SWIG_0();
-  }
-
-  public FrameworkPropertyMetadata(int options) : this(NoesisGUI_PINVOKE.new_FrameworkPropertyMetadata__SWIG_1(options), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-  }
-
   public bool AffectsMeasure {
+    set {
+      NoesisGUI_PINVOKE.FrameworkPropertyMetadata_AffectsMeasure_set(swigCPtr, value);
+    } 
     get {
       bool ret = NoesisGUI_PINVOKE.FrameworkPropertyMetadata_AffectsMeasure_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   public bool AffectsArrange {
+    set {
+      NoesisGUI_PINVOKE.FrameworkPropertyMetadata_AffectsArrange_set(swigCPtr, value);
+    } 
     get {
       bool ret = NoesisGUI_PINVOKE.FrameworkPropertyMetadata_AffectsArrange_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   public bool AffectsParentMeasure {
+    set {
+      NoesisGUI_PINVOKE.FrameworkPropertyMetadata_AffectsParentMeasure_set(swigCPtr, value);
+    } 
     get {
       bool ret = NoesisGUI_PINVOKE.FrameworkPropertyMetadata_AffectsParentMeasure_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   public bool AffectsParentArrange {
+    set {
+      NoesisGUI_PINVOKE.FrameworkPropertyMetadata_AffectsParentArrange_set(swigCPtr, value);
+    } 
     get {
       bool ret = NoesisGUI_PINVOKE.FrameworkPropertyMetadata_AffectsParentArrange_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   public bool AffectsRender {
+    set {
+      NoesisGUI_PINVOKE.FrameworkPropertyMetadata_AffectsRender_set(swigCPtr, value);
+    } 
     get {
       bool ret = NoesisGUI_PINVOKE.FrameworkPropertyMetadata_AffectsRender_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   public bool Inherits {
+    set {
+      NoesisGUI_PINVOKE.FrameworkPropertyMetadata_Inherits_set(swigCPtr, value);
+    } 
     get {
       bool ret = NoesisGUI_PINVOKE.FrameworkPropertyMetadata_Inherits_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   public bool OverridesInheritanceBehavior {
+    set {
+      NoesisGUI_PINVOKE.FrameworkPropertyMetadata_OverridesInheritanceBehavior_set(swigCPtr, value);
+    } 
     get {
       bool ret = NoesisGUI_PINVOKE.FrameworkPropertyMetadata_OverridesInheritanceBehavior_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   public bool IsNotDataBindable {
+    set {
+      NoesisGUI_PINVOKE.FrameworkPropertyMetadata_IsNotDataBindable_set(swigCPtr, value);
+    } 
     get {
       bool ret = NoesisGUI_PINVOKE.FrameworkPropertyMetadata_IsNotDataBindable_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   public bool BindsTwoWayByDefault {
+    set {
+      NoesisGUI_PINVOKE.FrameworkPropertyMetadata_BindsTwoWayByDefault_set(swigCPtr, value);
+    } 
     get {
       bool ret = NoesisGUI_PINVOKE.FrameworkPropertyMetadata_BindsTwoWayByDefault_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
-  public UpdateSourceTrigger DefaultUpdateSourceTrigger {
+  public bool Journal {
+    set {
+      NoesisGUI_PINVOKE.FrameworkPropertyMetadata_Journal_set(swigCPtr, value);
+    } 
     get {
-      UpdateSourceTrigger ret = (UpdateSourceTrigger)NoesisGUI_PINVOKE.FrameworkPropertyMetadata_DefaultUpdateSourceTrigger_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      bool ret = NoesisGUI_PINVOKE.FrameworkPropertyMetadata_Journal_get(swigCPtr);
       return ret;
     } 
   }
 
   public bool SubPropertiesDoNotAffectRender {
+    set {
+      NoesisGUI_PINVOKE.FrameworkPropertyMetadata_SubPropertiesDoNotAffectRender_set(swigCPtr, value);
+    } 
     get {
       bool ret = NoesisGUI_PINVOKE.FrameworkPropertyMetadata_SubPropertiesDoNotAffectRender_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      return ret;
+    } 
+  }
+
+  public UpdateSourceTrigger DefaultUpdateSourceTrigger {
+    set {
+      NoesisGUI_PINVOKE.FrameworkPropertyMetadata_DefaultUpdateSourceTrigger_set(swigCPtr, (int)value);
+    } 
+    get {
+      UpdateSourceTrigger ret = (UpdateSourceTrigger)NoesisGUI_PINVOKE.FrameworkPropertyMetadata_DefaultUpdateSourceTrigger_get(swigCPtr);
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.FrameworkPropertyMetadata_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
-  }
-
-  private object GetDefaultValueHelper() {
-    IntPtr cPtr = NoesisGUI_PINVOKE.FrameworkPropertyMetadata_GetDefaultValueHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return Noesis.Extend.GetProxy(cPtr, false);
   }
 
 }

@@ -11,7 +11,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 
 namespace Noesis
 {
@@ -29,62 +28,14 @@ public class PasswordBox : Control {
   }
 
   #region Events
-  #region PasswordChanged
-  public delegate void PasswordChangedHandler(object sender, RoutedEventArgs e);
-  public event PasswordChangedHandler PasswordChanged {
+  public event RoutedEventHandler PasswordChanged {
     add {
-      if (!_PasswordChanged.ContainsKey(swigCPtr.Handle)) {
-        _PasswordChanged.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_PasswordBox_PasswordChanged(_raisePasswordChanged, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _PasswordChanged[swigCPtr.Handle] += value;
+      AddHandler(PasswordChangedEvent, value);
     }
     remove {
-      if (_PasswordChanged.ContainsKey(swigCPtr.Handle)) {
-
-        _PasswordChanged[swigCPtr.Handle] -= value;
-
-        if (_PasswordChanged[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_PasswordBox_PasswordChanged(_raisePasswordChanged, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _PasswordChanged.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(PasswordChangedEvent, value);
     }
   }
-
-  internal delegate void RaisePasswordChangedCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaisePasswordChangedCallback _raisePasswordChanged = RaisePasswordChanged;
-
-  [MonoPInvokeCallback(typeof(RaisePasswordChangedCallback))]
-  private static void RaisePasswordChanged(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_PasswordChanged.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for PasswordChanged event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _PasswordChanged.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        PasswordChangedHandler handler = _PasswordChanged[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new RoutedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, PasswordChangedHandler> _PasswordChanged =
-      new Dictionary<IntPtr, PasswordChangedHandler>();
-  #endregion
 
   #endregion
 
@@ -103,13 +54,15 @@ public class PasswordBox : Control {
 
   public void SelectAll() {
     NoesisGUI_PINVOKE.PasswordBox_SelectAll(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public void HideCaret() {
+    NoesisGUI_PINVOKE.PasswordBox_HideCaret(swigCPtr);
   }
 
   public static DependencyProperty CaretBrushProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PasswordBox_CaretBrushProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -117,7 +70,6 @@ public class PasswordBox : Control {
   public static DependencyProperty MaxLengthProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PasswordBox_MaxLengthProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -125,7 +77,6 @@ public class PasswordBox : Control {
   public static DependencyProperty PasswordCharProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PasswordBox_PasswordCharProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -133,7 +84,6 @@ public class PasswordBox : Control {
   public static DependencyProperty SelectionBrushProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PasswordBox_SelectionBrushProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -141,19 +91,26 @@ public class PasswordBox : Control {
   public static DependencyProperty SelectionOpacityProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PasswordBox_SelectionOpacityProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent PasswordChangedEvent {
+    set {
+      NoesisGUI_PINVOKE.PasswordBox_PasswordChangedEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.PasswordBox_PasswordChangedEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public Brush CaretBrush {
     set {
       NoesisGUI_PINVOKE.PasswordBox_CaretBrush_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PasswordBox_CaretBrush_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -161,11 +118,9 @@ public class PasswordBox : Control {
   public int MaxLength {
     set {
       NoesisGUI_PINVOKE.PasswordBox_MaxLength_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       int ret = NoesisGUI_PINVOKE.PasswordBox_MaxLength_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -173,23 +128,19 @@ public class PasswordBox : Control {
   public char PasswordChar {
     set {
       NoesisGUI_PINVOKE.PasswordBox_PasswordChar_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    } 
+    }
     get {
-      char ret = NoesisGUI_PINVOKE.PasswordBox_PasswordChar_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+      char ret = (char)NoesisGUI_PINVOKE.PasswordBox_PasswordChar_get(swigCPtr);
       return ret;
-    } 
+    }
   }
 
   public string Password {
     set {
       NoesisGUI_PINVOKE.PasswordBox_Password_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.PasswordBox_Password_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -198,11 +149,9 @@ public class PasswordBox : Control {
   public Brush SelectionBrush {
     set {
       NoesisGUI_PINVOKE.PasswordBox_SelectionBrush_set(swigCPtr, Brush.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.PasswordBox_SelectionBrush_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (Brush)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -210,26 +159,20 @@ public class PasswordBox : Control {
   public float SelectionOpacity {
     set {
       NoesisGUI_PINVOKE.PasswordBox_SelectionOpacity_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.PasswordBox_SelectionOpacity_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.PasswordBox_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_PasswordBox(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_PasswordBox(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

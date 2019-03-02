@@ -31,12 +31,10 @@ public class AnimationClock : Clock {
   }
 
   public AnimationClock(AnimationTimeline animation, bool controllable) : this(NoesisGUI_PINVOKE.new_AnimationClock(AnimationTimeline.getCPtr(animation), controllable), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.AnimationClock_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

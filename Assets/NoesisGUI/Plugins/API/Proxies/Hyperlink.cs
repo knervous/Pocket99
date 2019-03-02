@@ -11,7 +11,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 using System.Windows.Input;
 
 namespace Noesis
@@ -30,121 +29,23 @@ public class Hyperlink : Span {
   }
 
   #region Events
-
-  #region Click
-  public delegate void ClickHandler(object sender, RoutedEventArgs e);
-  public event ClickHandler Click {
+  public event RoutedEventHandler Click {
     add {
-      if (!_Click.ContainsKey(swigCPtr.Handle)) {
-        _Click.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_Hyperlink_Click(_raiseClick, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _Click[swigCPtr.Handle] += value;
+      AddHandler(ClickEvent, value);
     }
     remove {
-      if (_Click.ContainsKey(swigCPtr.Handle)) {
-
-        _Click[swigCPtr.Handle] -= value;
-
-        if (_Click[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_Hyperlink_Click(_raiseClick, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _Click.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(ClickEvent, value);
     }
   }
 
-  internal delegate void RaiseClickCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseClickCallback _raiseClick = RaiseClick;
-
-  [MonoPInvokeCallback(typeof(RaiseClickCallback))]
-  private static void RaiseClick(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_Click.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for Click event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _Click.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        ClickHandler handler = _Click[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new RoutedEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, ClickHandler> _Click =
-      new Dictionary<IntPtr, ClickHandler>();
-  #endregion
-
-  #region RequestNavigate
-  public delegate void RequestNavigateHandler(object sender, RequestNavigateEventArgs e);
-  public event RequestNavigateHandler RequestNavigate {
+  public event RequestNavigateEventHandler RequestNavigate {
     add {
-      if (!_RequestNavigate.ContainsKey(swigCPtr.Handle)) {
-        _RequestNavigate.Add(swigCPtr.Handle, null);
-
-        NoesisGUI_PINVOKE.BindEvent_Hyperlink_RequestNavigate(_raiseRequestNavigate, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-      }
-
-      _RequestNavigate[swigCPtr.Handle] += value;
+      AddHandler(RequestNavigateEvent, value);
     }
     remove {
-      if (_RequestNavigate.ContainsKey(swigCPtr.Handle)) {
-
-        _RequestNavigate[swigCPtr.Handle] -= value;
-
-        if (_RequestNavigate[swigCPtr.Handle] == null) {
-          NoesisGUI_PINVOKE.UnbindEvent_Hyperlink_RequestNavigate(_raiseRequestNavigate, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-
-          _RequestNavigate.Remove(swigCPtr.Handle);
-        }
-      }
+      RemoveHandler(RequestNavigateEvent, value);
     }
   }
-
-  internal delegate void RaiseRequestNavigateCallback(IntPtr cPtr, IntPtr sender, IntPtr e);
-  private static RaiseRequestNavigateCallback _raiseRequestNavigate = RaiseRequestNavigate;
-
-  [MonoPInvokeCallback(typeof(RaiseRequestNavigateCallback))]
-  private static void RaiseRequestNavigate(IntPtr cPtr, IntPtr sender, IntPtr e) {
-    try {
-      if (!_RequestNavigate.ContainsKey(cPtr)) {
-        throw new InvalidOperationException("Delegate not registered for RequestNavigate event");
-      }
-      if (sender == IntPtr.Zero && e == IntPtr.Zero) {
-        _RequestNavigate.Remove(cPtr);
-        return;
-      }
-      if (Noesis.Extend.Initialized) {
-        RequestNavigateHandler handler = _RequestNavigate[cPtr];
-        if (handler != null) {
-          handler(Noesis.Extend.GetProxy(sender, false), new RequestNavigateEventArgs(e, false));
-        }
-      }
-    }
-    catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
-    }
-  }
-
-  static Dictionary<IntPtr, RequestNavigateHandler> _RequestNavigate =
-      new Dictionary<IntPtr, RequestNavigateHandler>();
-  #endregion
-
   #endregion
 
   public ICommand Command {
@@ -165,13 +66,11 @@ public class Hyperlink : Span {
   }
 
   public Hyperlink(Inline childInline) : this(NoesisGUI_PINVOKE.new_Hyperlink__SWIG_1(Inline.getCPtr(childInline)), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DependencyProperty CommandProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Hyperlink_CommandProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -179,7 +78,6 @@ public class Hyperlink : Span {
   public static DependencyProperty CommandParameterProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Hyperlink_CommandParameterProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -187,7 +85,6 @@ public class Hyperlink : Span {
   public static DependencyProperty CommandTargetProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Hyperlink_CommandTargetProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -195,7 +92,6 @@ public class Hyperlink : Span {
   public static DependencyProperty NavigateUriProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Hyperlink_NavigateUriProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -203,19 +99,36 @@ public class Hyperlink : Span {
   public static DependencyProperty TargetNameProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Hyperlink_TargetNameProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent ClickEvent {
+    set {
+      NoesisGUI_PINVOKE.Hyperlink_ClickEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Hyperlink_ClickEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
+    }
+  }
+
+  public static RoutedEvent RequestNavigateEvent {
+    set {
+      NoesisGUI_PINVOKE.Hyperlink_RequestNavigateEvent_set(RoutedEvent.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = NoesisGUI_PINVOKE.Hyperlink_RequestNavigateEvent_get();
+      return (RoutedEvent)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   public object CommandParameter {
     set {
       NoesisGUI_PINVOKE.Hyperlink_CommandParameter_set(swigCPtr, Noesis.Extend.GetInstanceHandle(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Hyperlink_CommandParameter_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -223,11 +136,9 @@ public class Hyperlink : Span {
   public UIElement CommandTarget {
     set {
       NoesisGUI_PINVOKE.Hyperlink_CommandTarget_set(swigCPtr, UIElement.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.Hyperlink_CommandTarget_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (UIElement)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -235,11 +146,9 @@ public class Hyperlink : Span {
   public string NavigateUri {
     set {
       NoesisGUI_PINVOKE.Hyperlink_NavigateUri_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.Hyperlink_NavigateUri_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -248,11 +157,9 @@ public class Hyperlink : Span {
   public string TargetName {
     set {
       NoesisGUI_PINVOKE.Hyperlink_TargetName_set(swigCPtr, value != null ? value : string.Empty);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.Hyperlink_TargetName_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -260,18 +167,15 @@ public class Hyperlink : Span {
 
   private object GetCommandHelper() {
     IntPtr cPtr = NoesisGUI_PINVOKE.Hyperlink_GetCommandHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return Noesis.Extend.GetProxy(cPtr, false);
   }
 
   private void SetCommandHelper(object command) {
     NoesisGUI_PINVOKE.Hyperlink_SetCommandHelper(swigCPtr, Noesis.Extend.GetInstanceHandle(command));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.Hyperlink_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

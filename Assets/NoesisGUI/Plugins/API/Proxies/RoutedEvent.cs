@@ -37,13 +37,11 @@ public class RoutedEvent : BaseComponent {
   }
 
   public RoutedEvent(string name) : this(NoesisGUI_PINVOKE.new_RoutedEvent__SWIG_0(name != null ? name : string.Empty), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public string Name {
     get {
       IntPtr strPtr = NoesisGUI_PINVOKE.RoutedEvent_Name_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       string str = Noesis.Extend.StringFromNativeUtf8(strPtr);
       return str;
     }
@@ -52,24 +50,20 @@ public class RoutedEvent : BaseComponent {
   public RoutingStrategy RoutingStrategy {
     set {
       NoesisGUI_PINVOKE.RoutedEvent_RoutingStrategy_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       RoutingStrategy ret = (RoutingStrategy)NoesisGUI_PINVOKE.RoutedEvent_RoutingStrategy_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
   private IntPtr GetOwnerTypeHelper() {
     IntPtr ret = NoesisGUI_PINVOKE.RoutedEvent_GetOwnerTypeHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.RoutedEvent_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

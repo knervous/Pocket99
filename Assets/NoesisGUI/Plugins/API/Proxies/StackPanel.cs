@@ -42,97 +42,78 @@ public class StackPanel : Panel, Noesis.IScrollInfo {
 
   public void LineLeft() {
     NoesisGUI_PINVOKE.StackPanel_LineLeft(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void LineRight() {
     NoesisGUI_PINVOKE.StackPanel_LineRight(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void LineUp() {
     NoesisGUI_PINVOKE.StackPanel_LineUp(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void LineDown() {
     NoesisGUI_PINVOKE.StackPanel_LineDown(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void PageLeft() {
     NoesisGUI_PINVOKE.StackPanel_PageLeft(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void PageRight() {
     NoesisGUI_PINVOKE.StackPanel_PageRight(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void PageUp() {
     NoesisGUI_PINVOKE.StackPanel_PageUp(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void PageDown() {
     NoesisGUI_PINVOKE.StackPanel_PageDown(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void MouseWheelLeft(float delta) {
     NoesisGUI_PINVOKE.StackPanel_MouseWheelLeft__SWIG_0(swigCPtr, delta);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void MouseWheelLeft() {
     NoesisGUI_PINVOKE.StackPanel_MouseWheelLeft__SWIG_1(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void MouseWheelRight(float delta) {
     NoesisGUI_PINVOKE.StackPanel_MouseWheelRight__SWIG_0(swigCPtr, delta);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void MouseWheelRight() {
     NoesisGUI_PINVOKE.StackPanel_MouseWheelRight__SWIG_1(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void MouseWheelUp(float delta) {
     NoesisGUI_PINVOKE.StackPanel_MouseWheelUp__SWIG_0(swigCPtr, delta);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void MouseWheelUp() {
     NoesisGUI_PINVOKE.StackPanel_MouseWheelUp__SWIG_1(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void MouseWheelDown(float delta) {
     NoesisGUI_PINVOKE.StackPanel_MouseWheelDown__SWIG_0(swigCPtr, delta);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void MouseWheelDown() {
     NoesisGUI_PINVOKE.StackPanel_MouseWheelDown__SWIG_1(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void SetHorizontalOffset(float offset) {
     NoesisGUI_PINVOKE.StackPanel_SetHorizontalOffset(swigCPtr, offset);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void SetVerticalOffset(float offset) {
     NoesisGUI_PINVOKE.StackPanel_SetVerticalOffset(swigCPtr, offset);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public Rect MakeVisible(Visual visual, Rect rect) {
     IntPtr ret = NoesisGUI_PINVOKE.StackPanel_MakeVisible(swigCPtr, Visual.getCPtr(visual), ref rect);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Rect>(ret);
     }
@@ -144,7 +125,6 @@ public class StackPanel : Panel, Noesis.IScrollInfo {
   public static DependencyProperty OrientationProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.StackPanel_OrientationProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -152,11 +132,9 @@ public class StackPanel : Panel, Noesis.IScrollInfo {
   public Orientation Orientation {
     set {
       NoesisGUI_PINVOKE.StackPanel_Orientation_set(swigCPtr, (int)value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       Orientation ret = (Orientation)NoesisGUI_PINVOKE.StackPanel_Orientation_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -164,11 +142,9 @@ public class StackPanel : Panel, Noesis.IScrollInfo {
   public bool CanHorizontallyScroll {
     set {
       NoesisGUI_PINVOKE.StackPanel_CanHorizontallyScroll_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.StackPanel_CanHorizontallyScroll_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -176,11 +152,9 @@ public class StackPanel : Panel, Noesis.IScrollInfo {
   public bool CanVerticallyScroll {
     set {
       NoesisGUI_PINVOKE.StackPanel_CanVerticallyScroll_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       bool ret = NoesisGUI_PINVOKE.StackPanel_CanVerticallyScroll_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -188,7 +162,6 @@ public class StackPanel : Panel, Noesis.IScrollInfo {
   public float ExtentWidth {
     get {
       float ret = NoesisGUI_PINVOKE.StackPanel_ExtentWidth_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -196,7 +169,6 @@ public class StackPanel : Panel, Noesis.IScrollInfo {
   public float ExtentHeight {
     get {
       float ret = NoesisGUI_PINVOKE.StackPanel_ExtentHeight_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -204,7 +176,6 @@ public class StackPanel : Panel, Noesis.IScrollInfo {
   public float ViewportWidth {
     get {
       float ret = NoesisGUI_PINVOKE.StackPanel_ViewportWidth_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -212,7 +183,6 @@ public class StackPanel : Panel, Noesis.IScrollInfo {
   public float ViewportHeight {
     get {
       float ret = NoesisGUI_PINVOKE.StackPanel_ViewportHeight_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -220,7 +190,6 @@ public class StackPanel : Panel, Noesis.IScrollInfo {
   public float HorizontalOffset {
     get {
       float ret = NoesisGUI_PINVOKE.StackPanel_HorizontalOffset_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -228,7 +197,6 @@ public class StackPanel : Panel, Noesis.IScrollInfo {
   public float VerticalOffset {
     get {
       float ret = NoesisGUI_PINVOKE.StackPanel_VerticalOffset_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -236,26 +204,20 @@ public class StackPanel : Panel, Noesis.IScrollInfo {
   public ScrollViewer ScrollOwner {
     set {
       NoesisGUI_PINVOKE.StackPanel_ScrollOwner_set(swigCPtr, ScrollViewer.getCPtr(value));
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.StackPanel_ScrollOwner_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (ScrollViewer)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.StackPanel_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_StackPanel(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_StackPanel(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

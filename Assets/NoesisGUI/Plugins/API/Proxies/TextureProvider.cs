@@ -34,28 +34,26 @@ public class TextureProvider : BaseComponent {
   /// Returns metadata for the given texture filename. Returns 0x0 if no texture is found.
   /// </summary>
   /// <param name="filename">Path to the texture.</param>
-  public virtual void GetTextureInfo(string filename, ref uint width, ref uint height) {
+  public virtual void GetTextureInfo(string filename, out uint width, out uint height) {
+    width = 0;
+    height = 0;
   }
 
   /// <summary>
   /// Creates texture in the given device. Returns null if no texture is found.
   /// </summary>
   /// <param name="filename">Path to the texture being loaded.</param>
-  public virtual Texture LoadTexture(string filename/*, RenderDevice device*/) {
+  public virtual Texture LoadTexture(string filename) {
     return null;
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.TextureProvider_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-
   internal new static IntPtr Extend(string typeName) {
-    IntPtr nativeType = NoesisGUI_PINVOKE.Extend_TextureProvider(Marshal.StringToHGlobalAnsi(typeName));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return nativeType;
+    return NoesisGUI_PINVOKE.Extend_TextureProvider(Marshal.StringToHGlobalAnsi(typeName));
   }
 }
 

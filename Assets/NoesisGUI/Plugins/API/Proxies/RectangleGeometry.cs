@@ -36,27 +36,22 @@ public class RectangleGeometry : Geometry {
   }
 
   public RectangleGeometry(Rect rect, float rX, float rY) : this(NoesisGUI_PINVOKE.new_RectangleGeometry__SWIG_1(ref rect, rX, rY), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public RectangleGeometry(Rect rect, float rX) : this(NoesisGUI_PINVOKE.new_RectangleGeometry__SWIG_2(ref rect, rX), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public RectangleGeometry(Rect rect) : this(NoesisGUI_PINVOKE.new_RectangleGeometry__SWIG_3(ref rect), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   public override bool IsEmpty() {
     bool ret = NoesisGUI_PINVOKE.RectangleGeometry_IsEmpty(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static DependencyProperty RadiusXProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RectangleGeometry_RadiusXProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -64,7 +59,6 @@ public class RectangleGeometry : Geometry {
   public static DependencyProperty RadiusYProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RectangleGeometry_RadiusYProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -72,7 +66,6 @@ public class RectangleGeometry : Geometry {
   public static DependencyProperty RectProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.RectangleGeometry_RectProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -80,11 +73,9 @@ public class RectangleGeometry : Geometry {
   public float RadiusX {
     set {
       NoesisGUI_PINVOKE.RectangleGeometry_RadiusX_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.RectangleGeometry_RadiusX_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -92,11 +83,9 @@ public class RectangleGeometry : Geometry {
   public float RadiusY {
     set {
       NoesisGUI_PINVOKE.RectangleGeometry_RadiusY_set(swigCPtr, value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       float ret = NoesisGUI_PINVOKE.RectangleGeometry_RadiusY_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -104,12 +93,10 @@ public class RectangleGeometry : Geometry {
   public Rect Rect {
     set {
       NoesisGUI_PINVOKE.RectangleGeometry_Rect_set(swigCPtr, ref value);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.RectangleGeometry_Rect_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<Rect>(ret);
       }
@@ -122,7 +109,6 @@ public class RectangleGeometry : Geometry {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.RectangleGeometry_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

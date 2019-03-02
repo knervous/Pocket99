@@ -39,7 +39,6 @@ public class CommandBinding : BaseComponent {
         _PreviewCanExecute.Add(swigCPtr.Handle, null);
 
         NoesisGUI_PINVOKE.BindEvent_CommandBinding_PreviewCanExecute(_raisePreviewCanExecute, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       }
 
       _PreviewCanExecute[swigCPtr.Handle] += value;
@@ -51,7 +50,6 @@ public class CommandBinding : BaseComponent {
 
         if (_PreviewCanExecute[swigCPtr.Handle] == null) {
           NoesisGUI_PINVOKE.UnbindEvent_CommandBinding_PreviewCanExecute(_raisePreviewCanExecute, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
 
           _PreviewCanExecute.Remove(swigCPtr.Handle);
         }
@@ -80,7 +78,7 @@ public class CommandBinding : BaseComponent {
       }
     }
     catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
+      Noesis.Error.UnhandledException(exception);
     }
   }
 
@@ -96,7 +94,6 @@ public class CommandBinding : BaseComponent {
         _CanExecute.Add(swigCPtr.Handle, null);
 
         NoesisGUI_PINVOKE.BindEvent_CommandBinding_CanExecute(_raiseCanExecute, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       }
 
       _CanExecute[swigCPtr.Handle] += value;
@@ -108,7 +105,6 @@ public class CommandBinding : BaseComponent {
 
         if (_CanExecute[swigCPtr.Handle] == null) {
           NoesisGUI_PINVOKE.UnbindEvent_CommandBinding_CanExecute(_raiseCanExecute, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
 
           _CanExecute.Remove(swigCPtr.Handle);
         }
@@ -137,7 +133,7 @@ public class CommandBinding : BaseComponent {
       }
     }
     catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
+      Noesis.Error.UnhandledException(exception);
     }
   }
 
@@ -153,7 +149,6 @@ public class CommandBinding : BaseComponent {
         _PreviewExecuted.Add(swigCPtr.Handle, null);
 
         NoesisGUI_PINVOKE.BindEvent_CommandBinding_PreviewExecuted(_raisePreviewExecuted, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       }
 
       _PreviewExecuted[swigCPtr.Handle] += value;
@@ -165,7 +160,6 @@ public class CommandBinding : BaseComponent {
 
         if (_PreviewExecuted[swigCPtr.Handle] == null) {
           NoesisGUI_PINVOKE.UnbindEvent_CommandBinding_PreviewExecuted(_raisePreviewExecuted, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
 
           _PreviewExecuted.Remove(swigCPtr.Handle);
         }
@@ -194,7 +188,7 @@ public class CommandBinding : BaseComponent {
       }
     }
     catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
+      Noesis.Error.UnhandledException(exception);
     }
   }
 
@@ -210,7 +204,6 @@ public class CommandBinding : BaseComponent {
         _Executed.Add(swigCPtr.Handle, null);
 
         NoesisGUI_PINVOKE.BindEvent_CommandBinding_Executed(_raiseExecuted, swigCPtr.Handle);
-        if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       }
 
       _Executed[swigCPtr.Handle] += value;
@@ -222,7 +215,6 @@ public class CommandBinding : BaseComponent {
 
         if (_Executed[swigCPtr.Handle] == null) {
           NoesisGUI_PINVOKE.UnbindEvent_CommandBinding_Executed(_raiseExecuted, swigCPtr.Handle);
-          if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
 
           _Executed.Remove(swigCPtr.Handle);
         }
@@ -251,7 +243,7 @@ public class CommandBinding : BaseComponent {
       }
     }
     catch (Exception exception) {
-      Noesis.Error.SetNativePendingError(exception);
+      Noesis.Error.UnhandledException(exception);
     }
   }
 
@@ -280,18 +272,15 @@ public class CommandBinding : BaseComponent {
 
   private object GetCommandHelper() {
     IntPtr cPtr = NoesisGUI_PINVOKE.CommandBinding_GetCommandHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return Noesis.Extend.GetProxy(cPtr, false);
   }
 
   private void SetCommandHelper(object command) {
     NoesisGUI_PINVOKE.CommandBinding_SetCommandHelper(swigCPtr, Noesis.Extend.GetInstanceHandle(command));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
   }
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.CommandBinding_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

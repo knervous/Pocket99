@@ -11,38 +11,91 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 namespace Noesis
 {
 
 public static class VisualTreeHelper {
-  public static Visual GetRoot(Visual visual) {
-    IntPtr cPtr = NoesisGUI_PINVOKE.VisualTreeHelper_GetRoot(Visual.getCPtr(visual));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return (Visual)Noesis.Extend.GetProxy(cPtr, false);
+  public static DependencyObject GetRoot(DependencyObject reference) {
+    return GetRootHelper(reference);
   }
 
-  public static Visual GetParent(Visual visual) {
-    IntPtr cPtr = NoesisGUI_PINVOKE.VisualTreeHelper_GetParent(Visual.getCPtr(visual));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return (Visual)Noesis.Extend.GetProxy(cPtr, false);
+  public static DependencyObject GetParent(DependencyObject reference) {
+    return GetParentHelper(reference);
   }
 
-  public static int GetChildrenCount(Visual visual) {
-    int ret = NoesisGUI_PINVOKE.VisualTreeHelper_GetChildrenCount(Visual.getCPtr(visual));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
+  public static int GetChildrenCount(DependencyObject reference) {
+    return GetChildrenCountHelper(reference);
   }
 
-  public static Visual GetChild(Visual visual, int childIndex) {
-    IntPtr cPtr = NoesisGUI_PINVOKE.VisualTreeHelper_GetChild(Visual.getCPtr(visual), childIndex);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return (Visual)Noesis.Extend.GetProxy(cPtr, false);
+  public static DependencyObject GetChild(DependencyObject reference, int childIndex) {
+    return GetChildHelper(reference, childIndex);
   }
+
+  public static HitTestResult HitTest(Visual reference, Point point) {
+    return HitTestHelper(reference, point);
+  }
+
+  public static void HitTest(Visual reference, HitTestFilterCallback filterCallback, HitTestResultCallback resultCallback, HitTestParameters hitTestParameters) {
+    PointHitTestParameters pointParams = (PointHitTestParameters)hitTestParameters;
+    HitTestCallbackInfo info = new HitTestCallbackInfo { Filter = filterCallback, Result = resultCallback };
+    int callbacksId = info.GetHashCode();
+    _hitTestCallbacks[callbacksId] = info;
+    HitTestCallbackHelper(reference, pointParams.HitPoint, callbacksId, _hitTestFilter, _hitTestResult);
+    _hitTestCallbacks.Remove(callbacksId);
+  }
+
+  #region HitTest callbacks
+  private delegate HitTestFilterBehavior Callback_HitTestFilter(int callbacksId, IntPtr targetPtr);
+  private static Callback_HitTestFilter _hitTestFilter = OnHitTestFilter;
+
+  [MonoPInvokeCallback(typeof(Callback_HitTestFilter))]
+  private static HitTestFilterBehavior OnHitTestFilter(int callbacksId, IntPtr targetPtr) {
+    try {
+      HitTestCallbackInfo info = _hitTestCallbacks[callbacksId];
+      return info.Filter((Visual)Extend.GetProxy(targetPtr, false));
+    }
+    catch (Exception e)
+    {
+      Noesis.Error.UnhandledException(e);
+      return HitTestFilterBehavior.Stop;
+    }
+  }
+
+  private delegate HitTestResultBehavior Callback_HitTestResult(int callbacksId, IntPtr hitPtr);
+  private static Callback_HitTestResult _hitTestResult = OnHitTestResult;
+
+  [MonoPInvokeCallback(typeof(Callback_HitTestResult))]
+  private static HitTestResultBehavior OnHitTestResult(int callbacksId, IntPtr hitPtr) {
+    try {
+      HitTestCallbackInfo info = _hitTestCallbacks[callbacksId];
+      return info.Result(new HitTestResult(hitPtr, false));
+    }
+    catch (Exception e)
+    {
+      Noesis.Error.UnhandledException(e);
+      return HitTestResultBehavior.Stop;
+    }
+  }
+
+  private static void HitTestCallbackHelper(Visual reference, Point point, int callbacksId, Callback_HitTestFilter filter, Callback_HitTestResult result) {
+    VisualTreeHelper_HitTestCallback(Visual.getCPtr(reference), ref point, callbacksId, filter, result);
+  }
+
+  [DllImport(Library.Name)]
+  private static extern void VisualTreeHelper_HitTestCallback(HandleRef reference, ref Point point, int callbacksId, Callback_HitTestFilter filter, Callback_HitTestResult result);
+
+  private struct HitTestCallbackInfo {
+    public HitTestFilterCallback Filter { get; set; }
+    public HitTestResultCallback Result { get; set; }
+  }
+
+  private static Dictionary<int, HitTestCallbackInfo> _hitTestCallbacks = new Dictionary<int, HitTestCallbackInfo>();
+  #endregion
 
   public static Rect GetContentBounds(Visual visual) {
     IntPtr ret = NoesisGUI_PINVOKE.VisualTreeHelper_GetContentBounds(Visual.getCPtr(visual));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Rect>(ret);
     }
@@ -53,7 +106,6 @@ public static class VisualTreeHelper {
 
   public static Rect GetDescendantBounds(Visual visual) {
     IntPtr ret = NoesisGUI_PINVOKE.VisualTreeHelper_GetDescendantBounds(Visual.getCPtr(visual));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Rect>(ret);
     }
@@ -64,7 +116,6 @@ public static class VisualTreeHelper {
 
   public static Point GetOffset(Visual visual) {
     IntPtr ret = NoesisGUI_PINVOKE.VisualTreeHelper_GetOffset(Visual.getCPtr(visual));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Point>(ret);
     }
@@ -75,7 +126,6 @@ public static class VisualTreeHelper {
 
   public static Size GetSize(Visual visual) {
     IntPtr ret = NoesisGUI_PINVOKE.VisualTreeHelper_GetSize(Visual.getCPtr(visual));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     if (ret != IntPtr.Zero) {
       return Marshal.PtrToStructure<Size>(ret);
     }
@@ -86,13 +136,31 @@ public static class VisualTreeHelper {
 
   public static Geometry GetClip(Visual visual) {
     IntPtr cPtr = NoesisGUI_PINVOKE.VisualTreeHelper_GetClip(Visual.getCPtr(visual));
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return (Geometry)Noesis.Extend.GetProxy(cPtr, false);
   }
 
-  public static HitTestResult HitTest(Visual visual, Point point) {
-    HitTestResult ret = new HitTestResult(NoesisGUI_PINVOKE.VisualTreeHelper_HitTest__SWIG_0(Visual.getCPtr(visual), ref point), true);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  private static DependencyObject GetRootHelper(DependencyObject reference) {
+    IntPtr cPtr = NoesisGUI_PINVOKE.VisualTreeHelper_GetRootHelper(DependencyObject.getCPtr(reference));
+    return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
+  }
+
+  private static DependencyObject GetParentHelper(DependencyObject reference) {
+    IntPtr cPtr = NoesisGUI_PINVOKE.VisualTreeHelper_GetParentHelper(DependencyObject.getCPtr(reference));
+    return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
+  }
+
+  private static int GetChildrenCountHelper(DependencyObject reference) {
+    int ret = NoesisGUI_PINVOKE.VisualTreeHelper_GetChildrenCountHelper(DependencyObject.getCPtr(reference));
+    return ret;
+  }
+
+  private static DependencyObject GetChildHelper(DependencyObject reference, int childIndex) {
+    IntPtr cPtr = NoesisGUI_PINVOKE.VisualTreeHelper_GetChildHelper(DependencyObject.getCPtr(reference), childIndex);
+    return (DependencyObject)Noesis.Extend.GetProxy(cPtr, false);
+  }
+
+  private static HitTestResult HitTestHelper(Visual reference, Point point) {
+    HitTestResult ret = new HitTestResult(NoesisGUI_PINVOKE.VisualTreeHelper_HitTestHelper(Visual.getCPtr(reference), ref point), true);
     return ret;
   }
 

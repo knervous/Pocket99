@@ -44,15 +44,10 @@ public class MouseButtonEventArgs : MouseEventArgs {
     }
   }
 
-  public Noesis.MouseButtonState ButtonState {
-    get {
-      return GetButtonStateHelper();
-    }
-  }
-
-  public Noesis.MouseButton ChangedButton {
-    get {
-      return GetChangedButtonHelper();
+  internal static new void InvokeHandler(Delegate handler, IntPtr sender, IntPtr args) {
+    MouseButtonEventHandler handler_ = (MouseButtonEventHandler)handler;
+    if (handler_ != null) {
+      handler_(Extend.GetProxy(sender, false), new MouseButtonEventArgs(args, false));
     }
   }
 
@@ -62,25 +57,25 @@ public class MouseButtonEventArgs : MouseEventArgs {
     }
   }
 
-  public MouseButtonEventArgs(object s, RoutedEvent e, MouseState mouseState, MouseButton button, MouseButtonState state, uint clicks) : this(NoesisGUI_PINVOKE.new_MouseButtonEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), MouseState.getCPtr(mouseState), (int)button, (int)state, clicks), true) {
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
+  public MouseButton ChangedButton {
+    get {
+      MouseButton ret = (MouseButton)NoesisGUI_PINVOKE.MouseButtonEventArgs_ChangedButton_get(swigCPtr);
+      return ret;
+    } 
   }
 
-  private MouseButtonState GetButtonStateHelper() {
-    MouseButtonState ret = (MouseButtonState)NoesisGUI_PINVOKE.MouseButtonEventArgs_GetButtonStateHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
+  public MouseButtonState ButtonState {
+    get {
+      MouseButtonState ret = (MouseButtonState)NoesisGUI_PINVOKE.MouseButtonEventArgs_ButtonState_get(swigCPtr);
+      return ret;
+    } 
   }
 
-  private MouseButton GetChangedButtonHelper() {
-    MouseButton ret = (MouseButton)NoesisGUI_PINVOKE.MouseButtonEventArgs_GetChangedButtonHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
-    return ret;
+  public MouseButtonEventArgs(object s, RoutedEvent e, MouseButton button, MouseButtonState state, uint clicks) : this(NoesisGUI_PINVOKE.new_MouseButtonEventArgs(Noesis.Extend.GetInstanceHandle(s), RoutedEvent.getCPtr(e), (int)button, (int)state, clicks), true) {
   }
 
   private int GetClickCountHelper() {
     int ret = NoesisGUI_PINVOKE.MouseButtonEventArgs_GetClickCountHelper(swigCPtr);
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

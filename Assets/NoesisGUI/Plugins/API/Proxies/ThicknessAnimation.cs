@@ -38,7 +38,6 @@ public class ThicknessAnimation : BaseAnimation {
   public static DependencyProperty ByProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ThicknessAnimation_ByProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -46,7 +45,6 @@ public class ThicknessAnimation : BaseAnimation {
   public static DependencyProperty FromProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ThicknessAnimation_FromProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -54,7 +52,6 @@ public class ThicknessAnimation : BaseAnimation {
   public static DependencyProperty ToProperty {
     get {
       IntPtr cPtr = NoesisGUI_PINVOKE.ThicknessAnimation_ToProperty_get();
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       return (DependencyProperty)Noesis.Extend.GetProxy(cPtr, false);
     }
   }
@@ -63,12 +60,10 @@ public class ThicknessAnimation : BaseAnimation {
     set {
       NullableThickness tempvalue = value;
       NoesisGUI_PINVOKE.ThicknessAnimation_From_set(swigCPtr, ref tempvalue);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.ThicknessAnimation_From_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<NullableThickness>(ret);
       }
@@ -83,12 +78,10 @@ public class ThicknessAnimation : BaseAnimation {
     set {
       NullableThickness tempvalue = value;
       NoesisGUI_PINVOKE.ThicknessAnimation_To_set(swigCPtr, ref tempvalue);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.ThicknessAnimation_To_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<NullableThickness>(ret);
       }
@@ -103,12 +96,10 @@ public class ThicknessAnimation : BaseAnimation {
     set {
       NullableThickness tempvalue = value;
       NoesisGUI_PINVOKE.ThicknessAnimation_By_set(swigCPtr, ref tempvalue);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     }
 
     get {
       IntPtr ret = NoesisGUI_PINVOKE.ThicknessAnimation_By_get(swigCPtr);
-      if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
       if (ret != IntPtr.Zero) {
         return Marshal.PtrToStructure<NullableThickness>(ret);
       }
@@ -121,7 +112,6 @@ public class ThicknessAnimation : BaseAnimation {
 
   new internal static IntPtr GetStaticType() {
     IntPtr ret = NoesisGUI_PINVOKE.ThicknessAnimation_GetStaticType();
-    if (NoesisGUI_PINVOKE.SWIGPendingException.Pending) throw NoesisGUI_PINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
